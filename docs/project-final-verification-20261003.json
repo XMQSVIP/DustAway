@@ -1,0 +1,17 @@
+{
+  "RemainingGLogicalBytes": 1451984938.0,
+  "RemainingGLogicalGiB": 1.352,
+  "CurrentFreeBytes": 15851012096,
+  "CurrentFreeGiB": 14.762,
+  "SkippedLinks": [
+    {
+      "Path": "G:\\my_ai\\DustAway\\target",
+      "Target": "F:\\DustAwayBuildCache\\20261003\\target"
+    }
+  ],
+  "RemainingOriginalFixtureRoots": 0,
+  "SourcePresent": true,
+  "RustSourcePresent": true,
+  "DependenciesPresent": true,
+  "CurrentPortableExePresent": true
+}

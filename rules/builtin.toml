@@ -1,0 +1,1193 @@
+# Independently authored rules. No downloaded or executable rules are loaded.
+
+[[rule]]
+id = "windows.user_temp"
+version = 2
+title = "用户临时文件"
+description = "当前用户临时目录中至少 24 小时未修改的文件"
+impact = "删除较早的临时文件；正在使用或最近修改的文件会保留。"
+root = "user_temp"
+relative = ""
+min_age_days = 1
+requires_admin = false
+default_selected = true
+cleanup_policy = "recommended"
+
+[[rule]]
+id = "windows.system_temp"
+version = 2
+title = "系统临时文件"
+description = "Windows 临时目录中至少 24 小时未修改的文件"
+impact = "需要管理员权限；仅处理 Windows 临时目录，不处理系统组件。"
+root = "system_temp"
+relative = ""
+min_age_days = 1
+requires_admin = true
+default_selected = false
+cleanup_policy = "review"
+
+[[rule]]
+id = "edge.http"
+version = 1
+title = "Edge 网页缓存"
+description = "标准用户配置中的 HTTP 磁盘缓存"
+impact = "网页图片和资源需要重新下载；保留登录状态、历史记录和密码。"
+root = "edge"
+relative = "Cache/Cache_Data"
+min_age_days = 0
+process = "msedge.exe"
+requires_admin = false
+default_selected = true
+cleanup_policy = "recommended"
+
+[[rule]]
+id = "edge.code"
+version = 1
+title = "Edge 代码缓存"
+description = "网页脚本与 WebAssembly 的可再生缓存"
+impact = "首次打开网页可能稍慢；网站数据与扩展设置保持不变。"
+root = "edge"
+relative = "Code Cache"
+min_age_days = 0
+process = "msedge.exe"
+requires_admin = false
+default_selected = true
+cleanup_policy = "recommended"
+
+[[rule]]
+id = "edge.gpu"
+version = 1
+title = "Edge 图形缓存"
+description = "浏览器用户配置中的 GPU 缓存"
+impact = "浏览器会重新生成图形缓存；需要完全退出 Edge。"
+root = "edge"
+relative = "GPUCache"
+min_age_days = 0
+process = "msedge.exe"
+requires_admin = false
+default_selected = true
+cleanup_policy = "recommended"
+
+[[rule]]
+id = "chrome.http"
+version = 1
+title = "Chrome 网页缓存"
+description = "标准用户配置中的 HTTP 磁盘缓存"
+impact = "网页图片和资源需要重新下载；保留登录状态、历史记录和密码。"
+root = "chrome"
+relative = "Cache/Cache_Data"
+min_age_days = 0
+process = "chrome.exe"
+requires_admin = false
+default_selected = true
+cleanup_policy = "recommended"
+
+[[rule]]
+id = "chrome.code"
+version = 1
+title = "Chrome 代码缓存"
+description = "网页脚本与 WebAssembly 的可再生缓存"
+impact = "首次打开网页可能稍慢；网站数据与扩展设置保持不变。"
+root = "chrome"
+relative = "Code Cache"
+min_age_days = 0
+process = "chrome.exe"
+requires_admin = false
+default_selected = true
+cleanup_policy = "recommended"
+
+[[rule]]
+id = "chrome.gpu"
+version = 1
+title = "Chrome 图形缓存"
+description = "浏览器用户配置中的 GPU 缓存"
+impact = "浏览器会重新生成图形缓存；需要完全退出 Chrome。"
+root = "chrome"
+relative = "GPUCache"
+min_age_days = 0
+process = "chrome.exe"
+requires_admin = false
+default_selected = true
+cleanup_policy = "recommended"
+
+[[rule]]
+id = "firefox.http"
+version = 1
+title = "Firefox 网页缓存"
+description = "标准用户配置对应的 cache2 磁盘缓存"
+impact = "网页资源需要重新下载；保留书签、登录状态、密码和会话。"
+root = "firefox"
+relative = "cache2"
+min_age_days = 0
+process = "firefox.exe"
+requires_admin = false
+default_selected = true
+cleanup_policy = "recommended"
+
+[[rule]]
+id = "brave.http"
+version = 1
+title = "Brave 网页缓存"
+description = "稳定版标准用户配置中的可再生网页缓存；不含网站离线数据"
+impact = "网页图片和资源需要重新下载；保留登录状态、历史记录和密码。"
+root = "brave"
+relative = "Cache/Cache_Data"
+min_age_days = 0
+process = "brave.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "recommended"
+
+[[rule]]
+id = "brave.code"
+version = 1
+title = "Brave 代码缓存"
+description = "稳定版标准用户配置中的可再生代码缓存；不含网站离线数据"
+impact = "网页脚本与 WebAssembly 缓存会重建；首次打开网页可能稍慢。"
+root = "brave"
+relative = "Code Cache"
+min_age_days = 0
+process = "brave.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "recommended"
+
+[[rule]]
+id = "brave.gpu"
+version = 1
+title = "Brave 图形缓存"
+description = "稳定版标准用户配置中的可再生图形缓存；不含网站离线数据"
+impact = "浏览器会重新生成图形缓存；请完全退出浏览器，包括后台进程。"
+root = "brave"
+relative = "GPUCache"
+min_age_days = 0
+process = "brave.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "recommended"
+
+[[rule]]
+id = "vivaldi.http"
+version = 1
+title = "Vivaldi 网页缓存"
+description = "稳定版标准用户配置中的可再生网页缓存；不含网站离线数据"
+impact = "网页图片和资源需要重新下载；保留登录状态、历史记录和密码。"
+root = "vivaldi"
+relative = "Cache/Cache_Data"
+min_age_days = 0
+process = "vivaldi.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "recommended"
+
+[[rule]]
+id = "vivaldi.code"
+version = 1
+title = "Vivaldi 代码缓存"
+description = "稳定版标准用户配置中的可再生代码缓存；不含网站离线数据"
+impact = "网页脚本与 WebAssembly 缓存会重建；首次打开网页可能稍慢。"
+root = "vivaldi"
+relative = "Code Cache"
+min_age_days = 0
+process = "vivaldi.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "recommended"
+
+[[rule]]
+id = "vivaldi.gpu"
+version = 1
+title = "Vivaldi 图形缓存"
+description = "稳定版标准用户配置中的可再生图形缓存；不含网站离线数据"
+impact = "浏览器会重新生成图形缓存；请完全退出浏览器，包括后台进程。"
+root = "vivaldi"
+relative = "GPUCache"
+min_age_days = 0
+process = "vivaldi.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "recommended"
+[[rule]]
+id = "weixin.http"
+version = 1
+title = "微信网页缓存"
+description = "微信内置网页组件的已识别 HTTP 缓存文件"
+impact = "下次打开网页可能重新下载；保留登录信息、小程序数据和聊天资料。"
+root = "weixin"
+relative = "Cache/Cache_Data"
+min_age_days = 0
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+app_id = "weixin"
+data_kind = "cache"
+
+[[rule]]
+id = "weixin.code"
+version = 1
+title = "微信网页代码缓存"
+description = "微信内置网页组件的已识别 JavaScript 与 WebAssembly 编译缓存"
+impact = "下次打开网页会重新生成代码缓存；保留登录信息、小程序数据和聊天资料。"
+root = "weixin"
+relative = "Code Cache"
+min_age_days = 0
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+app_id = "weixin"
+data_kind = "cache"
+
+[[rule]]
+id = "weixin.gpu"
+version = 1
+title = "微信网页图形缓存"
+description = "微信内置网页组件的已识别 GPU 缓存"
+impact = "图形缓存会重新生成；保留登录信息、小程序数据和聊天资料。"
+root = "weixin"
+relative = "GPUCache"
+min_age_days = 0
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+app_id = "weixin"
+data_kind = "cache"
+
+[[rule]]
+id = "weixin.logs"
+version = 1
+title = "微信历史运行日志"
+description = "微信标准位置中修改满 7 天的 .xlog 日志"
+impact = "删除后无法用于排查过去的问题；保留近期日志、映射缓冲和配置。"
+root = "weixin"
+relative = "log"
+min_age_days = 7
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+app_id = "weixin"
+data_kind = "diagnostics"
+
+
+[[rule]]
+id = "weixin.dumps"
+version = 1
+title = "微信历史崩溃转储"
+description = "微信标准位置中修改满 30 天的 .dmp 转储"
+impact = "删除后无法用于排查过去的崩溃；保留近期转储及其他诊断状态文件。"
+root = "weixin"
+relative = "crashinfo"
+min_age_days = 30
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+app_id = "weixin"
+data_kind = "diagnostics"
+
+
+[[rule]]
+id = "qq.http"
+version = 1
+title = "经典 QQ 网页缓存"
+description = "已验证数字配置目录中的网页资源缓存"
+impact = "网页资源会重新下载；保留登录数据、聊天资料和网页持久数据。"
+root = "qq"
+relative = "Cache/Cache_Data"
+min_age_days = 0
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+app_id = "qq"
+data_kind = "cache"
+
+
+[[rule]]
+id = "qq.code"
+version = 1
+title = "经典 QQ 代码缓存"
+description = "已验证数字配置目录中的可重建脚本缓存"
+impact = "首次打开网页可能稍慢；保留聊天记录、附件和应用设置。"
+root = "qq"
+relative = "Code Cache"
+min_age_days = 0
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+app_id = "qq"
+data_kind = "cache"
+
+
+[[rule]]
+id = "qq.gpu"
+version = 1
+title = "经典 QQ 图形缓存"
+description = "已验证数字配置目录中的可重建图形缓存"
+impact = "应用会重新生成图形缓存；需要退出 QQ 及相关后台组件。"
+root = "qq"
+relative = "GPUCache"
+min_age_days = 0
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+app_id = "qq"
+data_kind = "cache"
+
+
+[[rule]]
+id = "wps.logs"
+version = 1
+title = "WPS 历史运行日志"
+description = "WPS 标准日志位置中修改满 7 天的 .log 文件"
+impact = "删除后无法用于排查过去的问题；保留文档、备份、恢复文件、离线文档和插件。"
+root = "wps"
+relative = "log"
+min_age_days = 7
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+app_id = "wps"
+data_kind = "diagnostics"
+
+
+
+[[rule]]
+id = "windows.crash_dumps"
+version = 2
+title = "旧应用崩溃转储"
+description = "当前用户标准 CrashDumps 中至少 30 天、格式核验通过的旧转储；不检查自定义路径"
+impact = "删除后无法再用这些文件分析过去的崩溃；正在排查故障时请保留。"
+root = "windows_residue"
+relative = "CrashDumps"
+min_age_days = 30
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+data_kind = "diagnostics"
+
+[[rule]]
+id = "windows.wer_archive"
+version = 1
+title = "已归档错误报告"
+description = "当前用户 WER 已归档目录内至少 30 天的报告文件；保留未发送队列"
+impact = "删除后减少历史故障排查资料；不会处理尚未发送的错误报告。"
+root = "windows_residue"
+relative = "Microsoft/Windows/WER/ReportArchive"
+min_age_days = 30
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+data_kind = "diagnostics"
+
+[[rule]]
+id = "windows.directx_cache"
+version = 1
+title = "DirectX 图形缓存"
+description = "当前用户 D3DSCache 中已识别布局、至少 7 天未修改的缓存文件"
+impact = "游戏或图形程序下次运行可能重新编译缓存、短暂变慢。"
+root = "windows_residue"
+relative = "D3DSCache"
+min_age_days = 7
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+
+[[rule]]
+id = "feishu.http"
+version = 1
+title = "飞书网页缓存"
+description = "用于加快网页加载的图片、脚本等资源副本；只读检查指定缓存，不代表整个飞书占用"
+impact = "资源可能重新下载，首次加载可能变慢；保留聊天附件、离线邮件、文档、登录与持久站点数据。真实删除验收尚未完成。"
+root = "feishu"
+relative = "Cache/Cache_Data"
+min_age_days = 0
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+app_id = "feishu"
+data_kind = "cache"
+
+[[rule]]
+id = "feishu.code"
+version = 1
+title = "飞书代码缓存"
+description = "用于加快网页脚本运行的编译缓存；只读检查指定缓存，不包括文档和用户代码"
+impact = "缓存可能重新生成，首次加载可能变慢；保留聊天附件、离线邮件、文档、登录与持久站点数据。真实删除验收尚未完成。"
+root = "feishu"
+relative = "Code Cache"
+min_age_days = 0
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+app_id = "feishu"
+data_kind = "cache"
+
+[[rule]]
+id = "feishu.gpu"
+version = 1
+title = "飞书图形缓存"
+description = "用于加快界面绘制的图形渲染缓存；只读检查指定缓存，不包括聊天图片和视频附件"
+impact = "缓存可能重新生成，首次加载可能变慢；保留聊天附件、离线邮件、文档、登录与持久站点数据。真实删除验收尚未完成。"
+root = "feishu"
+relative = "GPUCache"
+min_age_days = 0
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+app_id = "feishu"
+data_kind = "cache"
+
+[[rule]]
+id = "dingtalk.http"
+version = 1
+title = "钉钉网页缓存"
+description = "用于加快网页加载的图片、脚本等资源副本；仅检查指定缓存，不代表整个钉钉占用"
+impact = "资源可能重新下载，首次加载可能变慢；保留聊天附件、离线资料、文档、登录与持久站点数据。安装身份与目录结构核验通过，退出钉钉及后台组件后可自行选择。"
+root = "dingtalk"
+relative = "Cache/Cache_Data"
+min_age_days = 0
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = true
+app_id = "dingtalk"
+data_kind = "cache"
+
+[[rule]]
+id = "dingtalk.code"
+version = 1
+title = "钉钉代码缓存"
+description = "用于加快网页脚本运行的编译缓存；仅检查指定缓存，不包括文档和用户代码"
+impact = "缓存可能重新生成，首次加载可能变慢；保留聊天附件、离线资料、文档、登录与持久站点数据。安装身份与目录结构核验通过后，可在正常退出应用后自行选择清理。"
+root = "dingtalk"
+relative = "Code Cache"
+min_age_days = 0
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = true
+app_id = "dingtalk"
+data_kind = "cache"
+
+[[rule]]
+id = "baidu_netdisk.http"
+version = 1
+title = "百度网盘网页缓存"
+description = "用于加快网页加载的资源副本；只读检查指定子目录，不代表整个软件占用"
+impact = "缓存可能重新生成，首次加载可能变慢；保留下载文件、下载任务、同步与离线资料、登录及持久存储。真实删除验收尚未完成。"
+root = "baidu_netdisk"
+relative = "Cache/Cache_Data"
+min_age_days = 0
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+app_id = "baidu_netdisk"
+data_kind = "cache"
+
+[[rule]]
+id = "baidu_netdisk.code"
+version = 1
+title = "百度网盘代码缓存"
+description = "用于加快界面脚本运行的编译缓存；只读检查指定子目录，不代表整个软件占用"
+impact = "缓存可能重新生成，首次加载可能变慢；保留下载文件、下载任务、同步与离线资料、登录及持久存储。真实删除验收尚未完成。"
+root = "baidu_netdisk"
+relative = "Code Cache"
+min_age_days = 0
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+app_id = "baidu_netdisk"
+data_kind = "cache"
+
+[[rule]]
+id = "baidu_netdisk.gpu"
+version = 1
+title = "百度网盘图形缓存"
+description = "用于加快界面绘制的图形缓存；只读检查指定子目录，不代表整个软件占用"
+impact = "缓存可能重新生成，首次加载可能变慢；保留下载文件、下载任务、同步与离线资料、登录及持久存储。真实删除验收尚未完成。"
+root = "baidu_netdisk"
+relative = "GPUCache"
+min_age_days = 0
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+app_id = "baidu_netdisk"
+data_kind = "cache"
+
+[[rule]]
+id = "quark_netdisk.code"
+version = 1
+title = "夸克网盘代码缓存"
+description = "用于加快界面脚本运行的编译缓存；只读检查指定子目录，不代表整个软件占用"
+impact = "缓存可能重新生成，首次加载可能变慢；保留下载文件、下载任务、同步与离线资料、登录及持久存储。真实删除验收尚未完成。"
+root = "quark_netdisk"
+relative = "Code Cache"
+min_age_days = 0
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+app_id = "quark_netdisk"
+data_kind = "cache"
+
+[[rule]]
+id = "quark_netdisk.gpu"
+version = 1
+title = "夸克网盘图形缓存"
+description = "用于加快界面绘制的图形缓存；只读检查指定子目录，不代表整个软件占用"
+impact = "缓存可能重新生成，首次加载可能变慢；保留下载文件、下载任务、同步与离线资料、登录及持久存储。真实删除验收尚未完成。"
+root = "quark_netdisk"
+relative = "GPUCache"
+min_age_days = 0
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+app_id = "quark_netdisk"
+data_kind = "cache"
+
+[[rule]]
+id = "thunder.code"
+version = 1
+title = "迅雷代码缓存"
+description = "用于加快界面脚本运行的编译缓存；只读检查指定子目录，不代表整个软件占用"
+impact = "缓存可能重新生成，首次加载可能变慢；保留下载文件、下载任务、同步与离线资料、登录及持久存储。真实删除验收尚未完成。"
+root = "thunder"
+relative = "Code Cache"
+min_age_days = 0
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+app_id = "thunder"
+data_kind = "cache"
+
+[[rule]]
+id = "thunder.gpu"
+version = 1
+title = "迅雷图形缓存"
+description = "用于加快界面绘制的图形缓存；只读检查指定子目录，不代表整个软件占用"
+impact = "缓存可能重新生成，首次加载可能变慢；保留下载文件、下载任务、同步与离线资料、登录及持久存储。真实删除验收尚未完成。"
+root = "thunder"
+relative = "GPUCache"
+min_age_days = 0
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+app_id = "thunder"
+data_kind = "cache"
+
+[[rule]]
+id = "dev.npm_cache"
+version = 1
+title = "npm 下载缓存"
+description = "标准 npm 缓存中超过 30 天的内容寻址文件与索引"
+impact = "再次安装可能需要重新下载；保留项目依赖、全局工具、配置和临时写入。请先结束 Node.js 任务。"
+root = "developer"
+relative = "npm-cache/_cacache"
+min_age_days = 30
+process = "node.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = true
+data_kind = "cache"
+
+[[rule]]
+id = "dev.npm_logs"
+version = 1
+title = "npm 历史日志"
+description = "标准 npm 日志目录中超过 7 天的日志"
+impact = "旧安装诊断记录将不可查看；项目、依赖和配置保留。请先结束 Node.js 任务。"
+root = "developer"
+relative = "npm-cache/_logs"
+min_age_days = 7
+process = "node.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = true
+data_kind = "diagnostics"
+
+[[rule]]
+id = "dev.pip_http"
+version = 1
+title = "pip 下载缓存"
+description = "标准 pip http 与 http-v2 目录中超过 30 天的缓存文件"
+impact = "再次安装可能需要联网下载；保留虚拟环境、已安装库、解释器和配置。请先结束 Python、pip 或 uv 任务。"
+root = "developer"
+relative = "pip/Cache"
+min_age_days = 30
+process = "python.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = true
+data_kind = "cache"
+
+[[rule]]
+id = "dev.pip_wheels"
+version = 1
+title = "pip 构建轮子缓存"
+description = "标准 pip wheels 目录中超过 30 天的 wheel 缓存包"
+impact = "再次安装可能重新下载或编译；保留来源记录、项目和已安装环境。请先结束 Python、pip 或 uv 任务。"
+root = "developer"
+relative = "pip/Cache/wheels"
+min_age_days = 30
+process = "python.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = true
+data_kind = "cache"
+
+[[rule]]
+id = "dev.nuget_http"
+version = 1
+title = "NuGet 下载缓存"
+description = "标准 NuGet HTTP 缓存中超过 7 天的已知格式数据"
+impact = "包还原可能重新访问软件源；保留全局包、项目依赖、SDK、配置及协调锁。请先退出 .NET 构建与 Visual Studio。"
+root = "developer"
+relative = "NuGet/v3-cache"
+min_age_days = 7
+process = "dotnet.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = true
+data_kind = "cache"
+
+[[rule]]
+id = "dev.vscode_cache"
+version = 1
+title = "VS Code 运行缓存"
+description = "VS Code 与 Insiders 标准位置中超过 7 天的网页、脚本与图形缓存"
+impact = "首次打开可能变慢；保留源码、扩展、设置、工作区状态、历史和未保存备份。请先退出 VS Code。"
+root = "developer"
+relative = "Code"
+min_age_days = 7
+process = "Code.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = true
+data_kind = "cache"
+
+[[rule]]
+id = "dev.vscode_logs"
+version = 1
+title = "VS Code 历史日志"
+description = "VS Code 与 Insiders 标准时间目录中超过 7 天的日志"
+impact = "旧诊断日志将不可查看；保留设置、工作区、扩展和未保存内容。请先退出 VS Code。"
+root = "developer"
+relative = "Code"
+min_age_days = 7
+process = "Code.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = true
+data_kind = "diagnostics"
+
+[[rule]]
+id = "dev.jetbrains_logs"
+version = 1
+title = "JetBrains 历史日志"
+description = "已识别 JetBrains IDE 版本目录中超过 7 天的日志文件"
+impact = "旧诊断日志将不可查看；保留项目、索引、本地历史、设置和插件。请先退出相关 IDE 和 Java 进程。"
+root = "developer"
+relative = "JetBrains"
+min_age_days = 7
+process = "idea64.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = true
+data_kind = "diagnostics"
+
+[[rule]]
+id = "dev.uv"
+version = 1
+title = "uv 共享缓存"
+description = "标准位置只读检查，发现占用不代表全部可以释放"
+impact = "通过 uv 官方整理闲置缓存；发现量包含仍在使用的缓存，不等于可释放空间。保留解释器、工具和项目环境。"
+root = "developer"
+relative = "uv/cache"
+min_age_days = 0
+process = "uv.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+data_kind = "cache"
+
+[[rule]]
+id = "dev.poetry"
+version = 1
+title = "Poetry 下载缓存"
+description = "标准位置只读检查，发现占用不代表全部可以释放"
+impact = "只读识别 artifacts 和 cache，保留 virtualenvs；请使用 Poetry 管理缓存。"
+root = "developer"
+relative = "pypoetry/Cache"
+min_age_days = 0
+process = "poetry.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+data_kind = "cache"
+
+[[rule]]
+id = "dev.pdm"
+version = 1
+title = "PDM 下载缓存"
+description = "标准位置只读检查，发现占用不代表全部可以释放"
+impact = "只读识别下载、哈希与元数据缓存；保留 packages 共享安装、虚拟环境和配置。"
+root = "developer"
+relative = "pdm/pdm/Cache"
+min_age_days = 0
+process = "pdm.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+data_kind = "cache"
+
+[[rule]]
+id = "dev.conda_archives"
+version = 1
+title = "Conda / Mamba 下载包"
+description = "已知标准位置中超过 30 天的缓存文件"
+impact = "只清理超过 30 天的 .conda 与 .tar.bz2 下载包；保留解包目录、环境、索引和锁。再次安装可能重新下载。"
+root = "developer"
+relative = ".conda/pkgs"
+min_age_days = 30
+process = "conda.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = true
+data_kind = "cache"
+
+[[rule]]
+id = "dev.pnpm"
+version = 1
+title = "pnpm 共享存储"
+description = "标准位置只读检查，发现占用不代表全部可以释放"
+impact = "共享包可能与项目硬链接；仅查看占用，请使用 pnpm store prune 整理，不直接逐文件删除。"
+root = "developer"
+relative = "pnpm/store"
+min_age_days = 0
+process = "node.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+data_kind = "cache"
+
+[[rule]]
+id = "dev.yarn"
+version = 1
+title = "Yarn Classic 缓存"
+description = "标准位置只读检查，发现占用不代表全部可以释放"
+impact = "仅查看全局缓存；请使用 Yarn 自身管理缓存。保留项目 .yarn、node_modules 与配置。"
+root = "developer"
+relative = "Yarn/Cache"
+min_age_days = 0
+process = "node.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+data_kind = "cache"
+
+[[rule]]
+id = "dev.yarn_berry"
+version = 1
+title = "Yarn Berry 共享缓存"
+description = "标准位置只读检查，发现占用不代表全部可以释放"
+impact = "PnP 项目可能直接引用这些压缩包，不能把总占用当成垃圾；只读展示，保留项目依赖。"
+root = "developer"
+relative = "Yarn/Berry/cache"
+min_age_days = 0
+process = "node.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+data_kind = "cache"
+
+[[rule]]
+id = "dev.bun"
+version = 1
+title = "Bun 共享缓存"
+description = "标准位置只读检查，发现占用不代表全部可以释放"
+impact = "项目可能通过符号链接引用全局存储，缓存也可能与依赖硬链接；仅查看占用，不直接删除。未找到命令不代表已卸载，保留全局工具和项目依赖。"
+root = "developer"
+relative = ".bun/install/cache"
+min_age_days = 0
+process = "bun.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+data_kind = "cache"
+
+[[rule]]
+id = "dev.deno"
+version = 1
+title = "Deno 编译与下载缓存"
+description = "标准位置只读检查，发现占用不代表全部可以释放"
+impact = "只读识别编译和远程依赖缓存；不处理项目目录与已安装工具。离线项目可能仍需这些依赖。"
+root = "developer"
+relative = "deno"
+min_age_days = 0
+process = "deno.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+data_kind = "cache"
+
+[[rule]]
+id = "dev.cargo_archives"
+version = 1
+title = "Cargo 下载包"
+description = "已知标准位置中超过 30 天的缓存文件"
+impact = "只清理超过 30 天的 .crate 压缩包；保留 bin、源码、Git 仓库、项目 target、索引和凭据。再次构建可能重新下载。"
+root = "developer"
+relative = ".cargo/registry/cache"
+min_age_days = 30
+process = "cargo.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = true
+data_kind = "cache"
+
+[[rule]]
+id = "dev.rustup_downloads"
+version = 1
+title = "Rustup 下载缓存"
+description = "已知标准位置中超过 30 天的缓存文件"
+impact = "只清理超过 30 天的完整哈希下载文件；保留工具链、组件、设置和未完成下载。再次安装可能重新下载。"
+root = "developer"
+relative = ".rustup/downloads"
+min_age_days = 30
+process = "rustup.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = true
+data_kind = "cache"
+
+[[rule]]
+id = "dev.sccache"
+version = 1
+title = "sccache 编译缓存"
+description = "标准位置只读检查，发现占用不代表全部可以释放"
+impact = "只读识别编译结果；需由工具维护索引与运行中的缓存服务，不直接删除。"
+root = "developer"
+relative = "Mozilla/sccache"
+min_age_days = 0
+process = "sccache.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+data_kind = "cache"
+
+[[rule]]
+id = "dev.go_build"
+version = 1
+title = "Go 构建缓存"
+description = "标准位置只读检查，发现占用不代表全部可以释放"
+impact = "只读识别构建缓存；请使用 go clean -cache 管理，保留项目与 Go 工具链。"
+root = "developer"
+relative = "go-build"
+min_age_days = 0
+process = "go.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+data_kind = "cache"
+
+[[rule]]
+id = "dev.go_modules"
+version = 1
+title = "Go 模块下载缓存"
+description = "标准位置只读检查，发现占用不代表全部可以释放"
+impact = "只读识别模块下载，保留已展开模块、工作区、全局工具和校验数据；由 Go 管理。"
+root = "developer"
+relative = "go/pkg/mod/cache/download"
+min_age_days = 0
+process = "go.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+data_kind = "cache"
+
+[[rule]]
+id = "dev.gradle"
+version = 1
+title = "Gradle / Kotlin 构建缓存"
+description = "标准位置只读检查，发现占用不代表全部可以释放"
+impact = "共享构建与依赖缓存仅查看占用；交由 Gradle 维护，保留 wrapper、JDK、配置及项目构建目录。"
+root = "developer"
+relative = ".gradle/caches"
+min_age_days = 0
+process = "java.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+data_kind = "cache"
+
+[[rule]]
+id = "dev.gradle_logs"
+version = 1
+title = "Gradle 历史日志"
+description = "已知标准位置中超过 7 天的诊断日志"
+impact = "清理超过 7 天的 daemon 日志；旧诊断记录不可恢复，保留 daemon 注册表、锁与配置。"
+root = "developer"
+relative = ".gradle/daemon"
+min_age_days = 7
+process = "java.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = true
+data_kind = "diagnostics"
+
+[[rule]]
+id = "dev.maven"
+version = 1
+title = "Maven 本地仓库占用"
+description = "标准位置只读检查，发现占用不代表全部可以释放"
+impact = "本地仓库可能包含自行发布且无法重新下载的构件；仅查看占用，不作为可清理垃圾。"
+root = "developer"
+relative = ".m2/repository"
+min_age_days = 0
+process = "java.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+data_kind = "cache"
+
+[[rule]]
+id = "dev.nuget_packages"
+version = 1
+title = "NuGet 共享包占用"
+description = "标准位置只读检查，发现占用不代表全部可以释放"
+impact = "项目可能直接引用共享包；仅查看占用，不计入可清理大小。保留 SDK、项目和配置。"
+root = "developer"
+relative = ".nuget/packages"
+min_age_days = 0
+process = "dotnet.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+data_kind = "cache"
+
+[[rule]]
+id = "dev.composer_archives"
+version = 1
+title = "Composer 下载包"
+description = "已知标准位置中超过 30 天的缓存文件"
+impact = "仅清理超过 30 天的包压缩文件；保留 vendor、全局工具、仓库元数据和认证配置。再次安装可能重新下载。"
+root = "developer"
+relative = "Composer/files"
+min_age_days = 30
+process = "php.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = true
+data_kind = "cache"
+
+[[rule]]
+id = "dev.gem_archives"
+version = 1
+title = "RubyGems 下载包"
+description = "已知标准位置中超过 30 天的缓存文件"
+impact = "仅清理超过 30 天的 .gem 压缩包；保留已安装 gems、原生扩展、规格、项目和配置。再次安装可能重新下载。"
+root = "developer"
+relative = ".gem"
+min_age_days = 30
+process = "ruby.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = true
+data_kind = "cache"
+
+[[rule]]
+id = "dev.bundler"
+version = 1
+title = "Bundler 用户缓存"
+description = "标准位置只读检查，发现占用不代表全部可以释放"
+impact = "仅查看用户下载缓存；保留项目 vendor/cache、已安装 gems 与 Bundler 配置。"
+root = "developer"
+relative = ".bundle/cache"
+min_age_days = 0
+process = "ruby.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+data_kind = "cache"
+
+[[rule]]
+id = "dev.pub"
+version = 1
+title = "Dart / Flutter 共享包占用"
+description = "标准位置只读检查，发现占用不代表全部可以释放"
+impact = "项目可能直接引用 Pub 包；只读展示 hosted 与 git，保留全局命令、Flutter SDK、构建目录和项目。"
+root = "developer"
+relative = "Pub/Cache"
+min_age_days = 0
+process = "dart.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+data_kind = "cache"
+
+[[rule]]
+id = "dev.vcpkg_archives"
+version = 1
+title = "vcpkg 二进制缓存"
+description = "已知标准位置中超过 30 天的缓存文件"
+impact = "只清理超过 30 天的哈希 zip 包；保留 installed、源码、构建树、SDK 和项目。再次构建可能需要重新编译。"
+root = "developer"
+relative = "vcpkg/archives"
+min_age_days = 30
+process = "vcpkg.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = true
+data_kind = "cache"
+
+[[rule]]
+id = "dev.ccache"
+version = 1
+title = "ccache 编译缓存"
+description = "标准位置只读检查，发现占用不代表全部可以释放"
+impact = "编译缓存只读展示，由 ccache 自身维护；不处理源码、编译器与构建目录。"
+root = "developer"
+relative = "ccache"
+min_age_days = 0
+process = "ccache.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+data_kind = "cache"
+
+[[rule]]
+id = "dev.conan"
+version = 1
+title = "Conan 共享包占用"
+description = "标准位置只读检查，发现占用不代表全部可以释放"
+impact = "Conan 缓存包含包、源码与构建数据；只读识别，不逐文件删除，保留配置和项目。"
+root = "developer"
+relative = ".conan2/p"
+min_age_days = 0
+process = "conan.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+data_kind = "cache"
+
+[[rule]]
+id = "dev.android_logs"
+version = 1
+title = "Android Studio 历史日志"
+description = "已知标准位置中超过 7 天的诊断日志"
+impact = "只清理已识别版本目录中超过 7 天的日志；保留 SDK、模拟器、索引、本地历史和项目。"
+root = "developer"
+relative = "Google"
+min_age_days = 7
+process = "studio64.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = true
+data_kind = "diagnostics"
+
+[[rule]]
+id = "dev.visual_studio"
+version = 1
+title = "Visual Studio 组件缓存"
+description = "标准位置只读检查，发现占用不代表全部可以释放"
+impact = "只读识别版本实例中的 ComponentModelCache；保留扩展、设置、组件、项目和恢复数据。"
+root = "developer"
+relative = "Microsoft/VisualStudio"
+min_age_days = 0
+process = "devenv.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = false
+data_kind = "cache"
+
+[[rule]]
+id = "dev.cursor_cache"
+version = 1
+title = "Cursor 运行缓存"
+description = "已知标准位置中超过 7 天的缓存文件"
+impact = "清理超过 7 天的网页、脚本和图形缓存；保留聊天记录、设置、扩展、工作区历史和未保存内容。"
+root = "developer"
+relative = "Cursor"
+min_age_days = 7
+process = "Cursor.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = true
+data_kind = "cache"
+
+[[rule]]
+id = "dev.cursor_logs"
+version = 1
+title = "Cursor 历史日志"
+description = "已知标准位置中超过 7 天的诊断日志"
+impact = "清理超过 7 天的诊断日志；保留聊天记录、配置、扩展、历史和未保存内容。"
+root = "developer"
+relative = "Cursor"
+min_age_days = 7
+process = "Cursor.exe"
+requires_admin = false
+default_selected = false
+cleanup_policy = "review"
+cleanup_validated = true
+data_kind = "diagnostics"
+
+[[rule]]
+id = "windows.iis_logs"
+version = 1
+title = "IIS 历史访问日志"
+description = "标准 inetpub 日志目录中至少 30 天未修改的 IIS 访问日志；自定义位置未覆盖。"
+impact = "删除后无法查阅相应历史访问记录；保留最近 30 天、非标准格式和正在使用的文件。"
+root = "iis_logs"
+relative = ""
+min_age_days = 30
+requires_admin = true
+default_selected = false
+cleanup_policy = "review"
+data_kind = "diagnostics"
+

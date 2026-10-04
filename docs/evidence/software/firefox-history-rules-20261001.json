@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "stage": "per_rule_native_deletion_evidence",
+  "software": "Firefox",
+  "signed_pe_version": "140.17.0.1158",
+  "host": "dedicated acceptance PC",
+  "ordinary_user": true,
+  "same_pre_uninstall_context": true,
+  "official_silent_uninstall_for_data_scenario": true,
+  "interactive_launcher_test": false,
+  "whole_run_passed": true,
+  "production_deletion_entry": false,
+  "sample_generation": {
+    "driver": "official Mozilla geckodriver 0.37.1",
+    "browser_generated_compressed_backups": true,
+    "decoded_bookmark_and_test_tabs_verified": true,
+    "previous_session_verified_after_normal_reopen": true,
+    "loopback_only": true,
+    "marked_profile_only": true,
+    "preparation_failures_retained": [
+      "First seed stopped on an unhandled favicon request; no residual deletion occurred.",
+      "A continuation detected unflushed tab state; the same browser was inspected, flushed, and quit normally.",
+      "A fresh final seed completed two normal browser exits before this evidence run."
+    ],
+    "seed_verification_sha256": "7D43EB96C188A0305F35DC889E1F925C2F17B7A7C65981B75021179F85275C50"
+  },
+  "per_rule_results": [
+    {
+      "deleted_bytes": 990,
+      "deleted_empty_directories": 0,
+      "deleted_files": 1,
+      "excluded_occupied_changed_hardlinked_replaced_files_refused": true,
+      "kind": "local_data",
+      "new_files_preserved": true,
+      "partial_scan_reported": true,
+      "retained_nonempty_directories": 1,
+      "rule_id": "uninstall.firefox.bookmarks",
+      "rule_version": 1,
+      "scope_sha256": "849fdcad1b334ad8659d7e0c19c3c83cd7c55fcae7d6535c87f8ea8565ffd46f",
+      "unselected_hashes_unchanged": true
+    },
+    {
+      "deleted_bytes": 5255,
+      "deleted_empty_directories": 0,
+      "deleted_files": 5,
+      "excluded_occupied_changed_hardlinked_replaced_files_refused": true,
+      "kind": "local_data",
+      "new_files_preserved": true,
+      "partial_scan_reported": true,
+      "retained_nonempty_directories": 1,
+      "rule_id": "uninstall.firefox.sessions",
+      "rule_version": 1,
+      "scope_sha256": "5270742c132e325af3e94acdd9626f850a8eb61af83eb5be28b76291c6b3b090",
+      "unselected_hashes_unchanged": true
+    }
+  ],
+  "shared_parent_unchanged": true,
+  "whole_profile_refused": true,
+  "new_scope_refused": true,
+  "cancelled_scan_reported": true,
+  "original_identity_absent": true,
+  "other_installation_identities_unchanged": true,
+  "source_sha256": {
+    "crates/windows/src/software.rs": "8722638651FA427E81EA7E7CFDE5918D477D3D876FAC1BE87D0AAAE1E7245FEB",
+    "crates/windows/src/software/residual_scope.rs": "D9AFAB3D712F2E8C4E8B7D5443F430D634D8EE9A2654B55C3B297E58DC444C0B",
+    "crates/windows/src/software/firefox_rules_acceptance.rs": "8684E74EDDDAD6D953BA5DF6BD6DAF9C24A093829E48AC5E0E55DDE21B551C90",
+    "scripts/software-acceptance/Run-FirefoxHistoryRules.ps1": "F28A2FFB00EF85735A1F073593E069DE6DB44BF05C952E0D79E6CBDAC931466A",
+    "scripts/software-acceptance/firefox-history-seed.mjs": "1E956E371281F2599C0952A170927FD935EC2349B2ECAAFDE6ACE2345FE7F6FC"
+  },
+  "driver_sha256": "83F57DF8932283514F7C5A1E2B43FBA2D91D7193DCF37BCFFF7D0ACF2C689721",
+  "native_report_sha256": "82F378CDC1862279FC98C4CF3D1569AA6AD614FC7277058B51B71CB67AFC9B33",
+  "uncovered": [
+    "production deletion entry and actual reinstallation protection (separate follow-up required)",
+    "interactive UI for these two scopes",
+    "cloud-provider integration",
+    "other versions"
+  ],
+  "approval_scope": "Only these two independently exercised versioned rules; all runtime identity, process, exclusion and frozen-file guards remain mandatory"
+}

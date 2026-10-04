@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-pick-exclusion"
+description = "Enables the pick_exclusion command without any pre-configured scope."
+commands.allow = ["pick_exclusion"]
+
+[[permission]]
+identifier = "deny-pick-exclusion"
+description = "Denies the pick_exclusion command without any pre-configured scope."
+commands.deny = ["pick_exclusion"]

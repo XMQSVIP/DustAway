@@ -1,0 +1,283 @@
+{
+  "passed": true,
+  "ordinaryUser": true,
+  "signedVersion": "154.1.96.60",
+  "browserVersion": "Chrome/154.0.8037.93",
+  "sameMarkedDefaultProfile": true,
+  "twoGracefulExits": true,
+  "browserGeneratedFiles": true,
+  "bookmarkViaBrowserService": true,
+  "loopbackOnlyPages": true,
+  "observations": [
+    {
+      "cycle": 0,
+      "cookieLocalIndexedVerified": true,
+      "bookmark": {
+        "verified": true,
+        "created": true
+      },
+      "exactProfileVerified": true
+    },
+    {
+      "cycle": 1,
+      "cookieLocalIndexedVerified": true,
+      "bookmark": {
+        "verified": true,
+        "created": false
+      },
+      "exactProfileVerified": true
+    }
+  ],
+  "scopes": [
+    {
+      "scope": "Cache/Cache_Data",
+      "files": [
+        {
+          "name": "index",
+          "bytes": 524656,
+          "sha256": "1e457f421d41830494b40d6106840742aafcc6a7a84e539a5108724181923e28"
+        },
+        {
+          "name": "f_000002",
+          "bytes": 157806,
+          "sha256": "50523824a432781cfd745964ad38d1886e48451f34d489986e14e2a245491ea2"
+        },
+        {
+          "name": "f_000001",
+          "bytes": 451982,
+          "sha256": "b0d80e6b6c5491879365e176ecbd98074602a663429bcfcfb0a5a8375c051f13"
+        },
+        {
+          "name": "data_3",
+          "bytes": 8192,
+          "sha256": "e09f42c398d688dce168570291f1f92d079987deda3099a34adb9e8c0522b30c"
+        },
+        {
+          "name": "data_2",
+          "bytes": 1056768,
+          "sha256": "d63cf1b662eeeb588d7303329be50f357b47827299a98f1cfc5047408fbad454"
+        },
+        {
+          "name": "data_1",
+          "bytes": 270336,
+          "sha256": "459732bdbd9ec26daa5ee52b877e0d05c279fdab7cc3989039334a5cb5d0fcdc"
+        },
+        {
+          "name": "data_0",
+          "bytes": 45056,
+          "sha256": "78474a28581b49a9aa18d59352c55d9e150b7f5ac8469752f4b41c48692d54fd"
+        }
+      ]
+    },
+    {
+      "scope": "Code Cache",
+      "files": [
+        {
+          "name": "wasm\\index-dir\\the-real-index",
+          "bytes": 48,
+          "sha256": "0648534f0b9079ee83f575d559896eb236127b32de7b7544527cf0002f817841"
+        },
+        {
+          "name": "wasm\\index",
+          "bytes": 24,
+          "sha256": "fbcfe23a2ecb82b7100c50811691dde0a33aa3da8d176be9882a9db485dc0f2d"
+        },
+        {
+          "name": "js\\index-dir\\the-real-index",
+          "bytes": 96,
+          "sha256": "8cabd932db38b2c2c3c0e1b1716203f942c3d7a5c60d074b2f896b8927feec91"
+        },
+        {
+          "name": "js\\index",
+          "bytes": 24,
+          "sha256": "fbcfe23a2ecb82b7100c50811691dde0a33aa3da8d176be9882a9db485dc0f2d"
+        },
+        {
+          "name": "js\\7e3373bcf362d248_0",
+          "bytes": 340504,
+          "sha256": "da69c51ac04b834b43310de68471e35f3019818a4889b14ccdf06ccbacf27213"
+        },
+        {
+          "name": "js\\66d0b022c7911217_0",
+          "bytes": 258,
+          "sha256": "a24474b214f2cb10b5bc726aed7773d275261d40b030eb04e0b52d7ef963373d"
+        }
+      ]
+    },
+    {
+      "scope": "GPUCache",
+      "files": [
+        {
+          "name": "index",
+          "bytes": 262512,
+          "sha256": "35c8e63c4cc0f005b61834a0854e92e2a8c3248df2d8ba2fed69a7cd0afd998c"
+        },
+        {
+          "name": "data_3",
+          "bytes": 8192,
+          "sha256": "e09f42c398d688dce168570291f1f92d079987deda3099a34adb9e8c0522b30c"
+        },
+        {
+          "name": "data_2",
+          "bytes": 8192,
+          "sha256": "ec1702806f4cc7c42a82fc2b38e89835fde7c64bb32060e0823c9077ca92efb7"
+        },
+        {
+          "name": "data_1",
+          "bytes": 270336,
+          "sha256": "b147811416d8c8c4846011ba741d651512e1971832496adb307ad29e74b98066"
+        },
+        {
+          "name": "data_0",
+          "bytes": 8192,
+          "sha256": "d6a5fe39cd672781b256e0e3102f7022635f1d4bb7cfcc90a80fffe4d0f3877e"
+        }
+      ]
+    },
+    {
+      "scope": "Preferences",
+      "files": [
+        {
+          "name": "",
+          "bytes": 20137,
+          "sha256": "c7ced09747195349f07cb00f486db20e8014ff162d29cc75cd84aff18321164d"
+        }
+      ]
+    },
+    {
+      "scope": "Secure Preferences",
+      "files": [
+        {
+          "name": "",
+          "bytes": 16301,
+          "sha256": "cd3303477c45169d2029bf61fc0b410e5bbe619a5fddcd38d1cf684c9343353d"
+        }
+      ]
+    },
+    {
+      "scope": "Bookmarks",
+      "files": [
+        {
+          "name": "",
+          "bytes": 1464,
+          "sha256": "d4931b6fb782f5652d68d7983e1aa24524c4c2f43ff6e165aaae6d5690b61717"
+        }
+      ]
+    },
+    {
+      "scope": "History",
+      "files": [
+        {
+          "name": "",
+          "bytes": 163840,
+          "sha256": "2737522a3117eb42e8c7327c9a37b6e378896cd15acd59b27f1e3e212ed59bdc"
+        }
+      ]
+    },
+    {
+      "scope": "Network/Cookies",
+      "files": [
+        {
+          "name": "",
+          "bytes": 20480,
+          "sha256": "d4f801a00ca0390411c569c737b8bfe284220c876d36725abba0462ec220d977"
+        }
+      ]
+    },
+    {
+      "scope": "Local Storage",
+      "files": [
+        {
+          "name": "leveldb\\MANIFEST-000001",
+          "bytes": 41,
+          "sha256": "f9d31b278e215eb0d0e9cd709edfa037e828f36214ab7906f612160fead4b2b4"
+        },
+        {
+          "name": "leveldb\\LOG.old",
+          "bytes": 356,
+          "sha256": "dcdb69491e677fa5674c6ae2a3ee6861a4e40e42f395cc70507d988cb062ff3f"
+        },
+        {
+          "name": "leveldb\\LOG",
+          "bytes": 356,
+          "sha256": "3a98bdd90ca19b732deba3dd35d6644eddf2d8689bf5dff21c9de1f7f0055daf"
+        },
+        {
+          "name": "leveldb\\LOCK",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "leveldb\\CURRENT",
+          "bytes": 16,
+          "sha256": "0f1bad70c7bd1e0a69562853ec529355462fcd0423263a3d39d6d0d70b780443"
+        },
+        {
+          "name": "leveldb\\000003.log",
+          "bytes": 608,
+          "sha256": "136b242ec8f8c30564223b47de0141e803b91b969443e9cc1f89af5140a3d896"
+        }
+      ]
+    },
+    {
+      "scope": "IndexedDB",
+      "files": [
+        {
+          "name": "http_127.0.0.1_19839.indexeddb.leveldb\\MANIFEST-000001",
+          "bytes": 23,
+          "sha256": "720a78803b84cbcc8eb204d5cf8ea6ee2f693be0ab2124ddf2b81455de02a3ed"
+        },
+        {
+          "name": "http_127.0.0.1_19839.indexeddb.leveldb\\LOG.old",
+          "bytes": 410,
+          "sha256": "db16bb606dcb2a2c75cd593326b7ed42b353d79de7246091b4a8a65ab66dbca2"
+        },
+        {
+          "name": "http_127.0.0.1_19839.indexeddb.leveldb\\LOG",
+          "bytes": 410,
+          "sha256": "0df895ff9eceb7c70ab40b331fe68256b7f23b3c1d1e3c7e683eea6c10d956c1"
+        },
+        {
+          "name": "http_127.0.0.1_19839.indexeddb.leveldb\\LOCK",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "http_127.0.0.1_19839.indexeddb.leveldb\\CURRENT",
+          "bytes": 16,
+          "sha256": "0f1bad70c7bd1e0a69562853ec529355462fcd0423263a3d39d6d0d70b780443"
+        },
+        {
+          "name": "http_127.0.0.1_19839.indexeddb.leveldb\\000003.log",
+          "bytes": 2051,
+          "sha256": "af13f7e103d28d2c29335484adb2577c1d15c8eaa59a807e148e896b3b7bf5ea"
+        }
+      ]
+    },
+    {
+      "scope": "Sessions",
+      "files": [
+        {
+          "name": "Tabs_13435288309498333",
+          "bytes": 38781,
+          "sha256": "337cfc97cf4522106faae4474f5054f97fdf5bae77da477a6a96ef98419694d2"
+        },
+        {
+          "name": "Tabs_13435288302399210",
+          "bytes": 19917,
+          "sha256": "6fc14ee107a601952a293015e40d1bf1c69a1b3e73e15602bc1d98d90c751c18"
+        },
+        {
+          "name": "Session_13435288309331765",
+          "bytes": 36941,
+          "sha256": "3aea31008e062c1c172ea79d5f57b0d5a27f48277abbaa847effadbb882a2053"
+        },
+        {
+          "name": "Session_13435288302242154",
+          "bytes": 22275,
+          "sha256": "00a66526a3788192a5bcabbbc844a3b986f73a65269362a1267382ab2bbc2c81"
+        }
+      ]
+    }
+  ]
+}

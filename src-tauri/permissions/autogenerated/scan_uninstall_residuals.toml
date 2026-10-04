@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-scan-uninstall-residuals"
+description = "Enables the scan_uninstall_residuals command without any pre-configured scope."
+commands.allow = ["scan_uninstall_residuals"]
+
+[[permission]]
+identifier = "deny-scan-uninstall-residuals"
+description = "Denies the scan_uninstall_residuals command without any pre-configured scope."
+commands.deny = ["scan_uninstall_residuals"]

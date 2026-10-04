@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DustAway offline recognition catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "revision", "rules"],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "category",
+          "matcher",
+          "patterns",
+          "title",
+          "description",
+          "guidance",
+          "source",
+          "reviewed"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_.]*$"
+          },
+          "category": {
+            "enum": [
+              "windows",
+              "development",
+              "ai",
+              "virtualization",
+              "games",
+              "applications",
+              "media",
+              "documents",
+              "data",
+              "archives"
+            ]
+          },
+          "matcher": {
+            "enum": ["extension", "directory_sequence", "drive_root_file", "file_name"]
+          },
+          "patterns": {
+            "description": "Directory sequences may end a component with _{version}, matching a numeric or dotted numeric suffix. Other matchers use literal patterns.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[^\\\\:*?]+$"
+            }
+          },
+          "within": {
+            "description": "At least one complete directory sequence must precede the main match as an ancestor.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[^\\\\:*?]+$"
+            }
+          },
+          "priority": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 65535,
+            "default": 100
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "guidance": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source": {
+            "type": "string",
+            "pattern": "^https://[^/]+/.+"
+          },
+          "reviewed": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "matcher": {
+                  "const": "extension"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "patterns": {
+                  "items": {
+                    "pattern": "^\\.[^/]+$"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "matcher": {
+                  "enum": ["file_name", "drive_root_file"]
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "patterns": {
+                  "items": {
+                    "pattern": "^[^/]+$"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

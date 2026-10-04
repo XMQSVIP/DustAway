@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "kind": "standard_windows_software_real_firefox_ui_acceptance",
+  "completed": "2026-10-01T05:23:55+08:00",
+  "software": "Mozilla Firefox ESR x64",
+  "signed_pe_version": "140.17.0.1158",
+  "tested_application_sha256": "2CB798728C1E8173883D47545F92D8283B7BB0A53727CD14FB2D513CCDA754A1",
+  "ordinary_user": true,
+  "fixture_provider": false,
+  "passed_with_same_session_continuation": true,
+  "registered_official_silent_option": true,
+  "vendor_wizard_interaction_test": false,
+  "mutations_via_ui": true,
+  "uninstall_dispatches": 1,
+  "residual_delete_dispatches": 1,
+  "deleted_files": 3,
+  "deleted_bytes": "524814",
+  "deleted_directories": 0,
+  "selected_files": [
+    "cache2/entries: real browser cache entry",
+    "user.js: test preferences",
+    "cookies.sqlite: loopback test cookie"
+  ],
+  "skipped_nonempty_parent": 1,
+  "cancel_preserved_files_and_focus": true,
+  "new_file_and_unselected_hashes_preserved": true,
+  "shared_parent_preserved": true,
+  "same_runtime_reconnect_and_rescan": true,
+  "prior_history_preserved_and_authority_redacted": true,
+  "original_failures_retained": [
+    "First cycle: mixed separators in harness comparison; no residual deletion, app subsequently closed with the failed scheduled task.",
+    "Second cycle: bulk WebDriver typing lost characters; original app and task stayed alive. A separate continuation used slow keyboard entry, did not replay uninstall, and passed."
+  ],
+  "limitations": [
+    "Exact six previously approved Firefox scopes only; this UI cycle selected one file each from cache, user preferences and cookies.",
+    "Continuation layout loop encountered the earlier nonmatching search; populated row bounds were asserted by the original second-cycle loop. Original screenshots were retrieved before continuation overwrote those remote names.",
+    "An independent inventory audit superseded the UI refresh after reconnect; screenshot retains the explicit stale-list error. The test harness now waits for the UI list before its independent query; this sequencing update has not been rerun remotely.",
+    "Original harness exit codes remain failed; the same-session continuation has a separate zero exit code.",
+    "No vendor wizard, new rule approval, other version/product, Store package or production account-data claim."
+  ],
+  "evidence_sha256": {
+    "firefox-desktop-delete-20261001/failure.txt": "EDCD1298FC7AE939E916AC71A4D962AD530E6928FB6AEC5440ADDFE18037FBFF",
+    "firefox-desktop-delete-20261001-v2/failure.txt": "54F1037EB74F1F1A79B2B18E66255237EE8E36A4732E10461233BC1AF4E8B501",
+    "firefox-desktop-delete-20261001-v2/verification.json": "151F201E89F79142C52CBE251263673BD0BBC39A6AECDEF94A06B235D0AA7D06",
+    "firefox-desktop-delete-20261001-v2/before-delete.json": "0BB79EBF62E504CDED9B2717CEDD715F93755DF1F82C99CE1183911DEB8EFD4B",
+    "firefox-desktop-delete-20261001-v2/final-task.json": "379E10AEA4EB8C53E8160EDF5BF241200471A8846BD308382B95B4371984AF78",
+    "firefox-desktop-delete-v2-continue-result.json": "E70DFD9FBA5DE77638B97845DB1D91DE51676189E0C5623BCBBCB23C2917E40E",
+    "firefox-desktop-delete-finished.json": "C7C929FB53583A816B277D7413C843D436106A5FCCF393503410D3B2C1286BE5"
+  }
+}

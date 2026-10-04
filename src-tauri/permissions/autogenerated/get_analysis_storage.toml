@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-get-analysis-storage"
+description = "Enables the get_analysis_storage command without any pre-configured scope."
+commands.allow = ["get_analysis_storage"]
+
+[[permission]]
+identifier = "deny-get-analysis-storage"
+description = "Denies the get_analysis_storage command without any pre-configured scope."
+commands.deny = ["get_analysis_storage"]

@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-close-attachment-session"
+description = "Enables the close_attachment_session command without any pre-configured scope."
+commands.allow = ["close_attachment_session"]
+
+[[permission]]
+identifier = "deny-close-attachment-session"
+description = "Denies the close_attachment_session command without any pre-configured scope."
+commands.deny = ["close_attachment_session"]

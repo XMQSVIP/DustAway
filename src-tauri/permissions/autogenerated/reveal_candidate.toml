@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-reveal-candidate"
+description = "Enables the reveal_candidate command without any pre-configured scope."
+commands.allow = ["reveal_candidate"]
+
+[[permission]]
+identifier = "deny-reveal-candidate"
+description = "Denies the reveal_candidate command without any pre-configured scope."
+commands.deny = ["reveal_candidate"]

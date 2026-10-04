@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-get-attachment-locations"
+description = "Enables the get_attachment_locations command without any pre-configured scope."
+commands.allow = ["get_attachment_locations"]
+
+[[permission]]
+identifier = "deny-get-attachment-locations"
+description = "Denies the get_attachment_locations command without any pre-configured scope."
+commands.deny = ["get_attachment_locations"]

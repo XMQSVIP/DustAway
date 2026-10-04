@@ -1,0 +1,7 @@
+target
+artifacts
+licenses
+node_modules
+pnpm-lock.yaml
+src-tauri/gen
+src-tauri/binaries

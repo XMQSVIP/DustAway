@@ -1,0 +1,1710 @@
+{
+  "Date": "2026-10-03",
+  "Workspace": "G:\\my_ai\\DustAway",
+  "CurrentVersion": "0.20.0",
+  "TotalBytes": 9209742851,
+  "TotalFiles": 6967,
+  "Paths": [
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis_tauri_utils.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 34304,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-tests.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 11857920,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\qq-acceptance\\nt-layout",
+      "Category": "Historical test environment",
+      "Bytes": 216318532,
+      "Files": 5
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\performance-0.8\\query.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 3098112,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\performance-0.8\\current.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 3830272,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\performance-0.7\\current.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 3764224,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\performance-0.8\\baseline.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 3764224,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\space-0.11\\current-bench.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 2672128,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\performance-0.7\\baseline.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 3678720,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\space-0.10\\current-bench.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 2638848,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\browser-validation-0.6\\brave",
+      "Category": "Historical test environment",
+      "Bytes": 554864609,
+      "Files": 176
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\space-0.10\\baseline-bench.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 2616320,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\space-0.11\\baseline-bench.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 2680320,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\browser-validation-0.6\\vivaldi",
+      "Category": "Historical test environment",
+      "Bytes": 533632478,
+      "Files": 1279
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\msi",
+      "Category": "Historical test environment",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\portable\\拂尘_0.19.0_windows-x64",
+      "Category": "Historical release",
+      "Bytes": 23556708,
+      "Files": 13
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\weixin-special\\weixin-tests.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 12908032,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\msix",
+      "Category": "Historical test environment",
+      "Bytes": 14193,
+      "Files": 9
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\qq-acceptance\\QQ9.7.25.29417.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 229207216,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\weixin-special\\windows-suite.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 12908032,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\readonly-unlock-20261002\\research",
+      "Category": "Historical test environment",
+      "Bytes": 763480839,
+      "Files": 578
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\performance-0.8-initial\\query.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 3085312,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-million\\r3-benchmark.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 3529216,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\NSIS.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 91346,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\firefox",
+      "Category": "Historical test environment",
+      "Bytes": 81575650,
+      "Files": 5
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\system-cleanup\\Portable-0.19.0.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 20101632,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-million\\hdd-benchmark.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 3499008,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\performance-0.8-initial\\current.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 3828736,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\weixin-special\\installed-payload.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 20844544,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\performance-0.8-initial\\baseline.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 3764224,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\msi-final",
+      "Category": "Historical test environment",
+      "Bytes": 22270,
+      "Files": 10
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\performance-0.7\\baseline-initial.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 3678720,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\home-cleanup-real-20261001\\downloads",
+      "Category": "Historical test environment",
+      "Bytes": 1311591272,
+      "Files": 12
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\firefox-v2",
+      "Category": "Historical test environment",
+      "Bytes": 8505571,
+      "Files": 6
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\makensis.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 2560,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\qq-acceptance\\qq-acceptance-tests.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 12124160,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-million\\ssd-r2-benchmark.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 3501568,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\makensisw.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 1139200,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Bin\\zlib1.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 81964,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\progress-visible-20261002\\build-target",
+      "Category": "Historical Rust build cache",
+      "Bytes": 2440556079,
+      "Files": 4272
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\msi-restart",
+      "Category": "Historical test environment",
+      "Bytes": 22342,
+      "Files": 10
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\msi-attempt2",
+      "Category": "Historical test environment",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\msi-attempt3",
+      "Category": "Historical test environment",
+      "Bytes": 22164,
+      "Files": 9
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-dev\\dustaway.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 24671744,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Bin\\GenPat.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 25088,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\qq-acceptance\\qqnt-acceptance-tests.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 12224512,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\weixin-special\\DustAway_0.20.0_setup.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 8160239,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Bin\\zip2exe.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 23040,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\system-cleanup\\DustAway_0.19.0_setup.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 8147989,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\msi-completion",
+      "Category": "Historical test environment",
+      "Bytes": 22314,
+      "Files": 10
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Bin\\makensis.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 468992,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\qq-acceptance\\QQ_9.9.33_260813_x64_01.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 314581680,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\space-relief-20261002\\remote-evidence.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 7616456,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-verification\\wps-native-20261001",
+      "Category": "Historical test environment",
+      "Bytes": 25697876,
+      "Files": 21
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\bundle\\dustaway.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 18420224,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\tool-fixtures\\old.o",
+      "Category": "Historical binary or test package",
+      "Bytes": 720,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\space-relief-20261002\\bundle\\dustaway.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 17732096,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\space-relief-20261002\\core-performance.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 4186112,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\weixin-special\\DustAway_0.20.0_portable.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 20122112,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Bin\\MakeLangId.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 24576,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-visible-20261001\\remote-residues.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 1154342,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-visible-20261001\\bundle\\dustaway.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 16834048,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-closure-20261002\\remote-evidence.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 5745302,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\bundle-v2\\dustaway.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 18420224,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\bundle-v3\\dustaway.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 18421248,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\bundle-v4\\dustaway.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 18421248,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\tool-fixtures\\recent.o",
+      "Category": "Historical binary or test package",
+      "Bytes": 720,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-closure-20261002\\bundle\\dustaway.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 18221568,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\remote-v3-evidence.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 3319492,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\remote-v2-evidence.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 3321871,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\progress-visible-20261002\\dustaway-final.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 18672128,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\weixin-special\\DustAway_0.20.0_installed.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 20844544,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\performance-current.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 7065088,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-verification\\simple-uninstall-native",
+      "Category": "Historical test environment",
+      "Bytes": 25846324,
+      "Files": 26
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\rule-refresh-bundle.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 14221151,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\space-relief-20261002\\space-relief-bundle.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 8070570,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\space-relief-20261002\\performance-current.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 6690816,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\progress-visible-20261002\\remote-evidence.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 661107,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\geckodriver-0.37.1",
+      "Category": "Historical test environment",
+      "Bytes": 4075136,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-closure-20261002\\core-performance.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 4227584,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\developer-mainstream-20261001\\remote-first.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 271022,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\developer-cleanup-20261001\\remote-evidence.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 2081929,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\performance-baseline.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 6947328,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\desktop-third-round",
+      "Category": "Historical test environment",
+      "Bytes": 49253419,
+      "Files": 7
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\developer-cleanup-20261001\\bundle\\dustaway.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 16869888,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\space-relief-20261002\\performance-baseline.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 10193408,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\readonly-unlock-20261002\\bundle-v1\\dustaway.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 18671616,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-closure-20261002\\tool-fixtures-v2\\old.o",
+      "Category": "Historical binary or test package",
+      "Bytes": 720,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\qq-acceptance\\samples\\DustAway-QQ-test-file.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 233,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-closure-20261002\\tool-fixtures-v3\\old.o",
+      "Category": "Historical binary or test package",
+      "Bytes": 720,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-completion-20261001\\remote-evidence.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 4315517,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\brave-1.96.60-unpack",
+      "Category": "Historical test environment",
+      "Bytes": 169458555,
+      "Files": 6
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\remote-final-evidence.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 6799641,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Contrib\\UIs\\modern.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 6656,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-verification\\simple-uninstall-native-v2",
+      "Category": "Historical test environment",
+      "Bytes": 25464268,
+      "Files": 17
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\qq-acceptance\\samples\\DustAway-QQ-test-space.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 233,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Contrib\\UIs\\default.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 6144,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\progress-visible-20261002\\remote-evidence-v2.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 757897,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\rule-refresh-v4-bundle.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 14222671,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\rule-refresh-v2-bundle.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 14221440,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\rule-refresh-v3-bundle.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 14222342,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\progress-visible-20261002\\bundle-v1\\dustaway.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 18671616,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\performance-current-v3.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 7065600,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\performance-current-v2.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 7065088,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-closure-20261002\\performance-current.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 6947328,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\progress-visible-20261002\\bundle-v2\\dustaway.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 18672128,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\bundle\\bin\\tauri-driver.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 1530880,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\readonly-unlock-20261002\\performance-baseline.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 7323648,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-verification\\residual-v2-native-20261001",
+      "Category": "Historical test environment",
+      "Bytes": 24643108,
+      "Files": 11
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\developer-mainstream-20261001\\attempt2\\remote.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 2955661,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\developer-mainstream-20261001\\bundle\\dustaway.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 17259008,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\remote-initial-evidence.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 443272,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\brave-rules-driver.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 9272832,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\space-relief-20261002\\bundle\\bin\\tauri-driver.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 1530880,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\FirefoxDesktopReal.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 21104010,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\portable\\拂尘_0.18.0_compatibility-test_windows-x64",
+      "Category": "Historical release",
+      "Bytes": 45990558,
+      "Files": 22
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\home-cleanup-real-20261001\\performance-current.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 9475072,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-verification\\capabilities-native-20261001",
+      "Category": "Historical test environment",
+      "Bytes": 25690701,
+      "Files": 21
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-ansi\\Math.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 67584,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\readonly-unlock-20261002\\remote-final-evidence.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 6090494,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\portable\\拂尘_0.18.0_result-clarity-test_windows-x64",
+      "Category": "Historical release",
+      "Bytes": 23004105,
+      "Files": 12
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\developer-cleanup-20261001\\performance-current.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 9763328,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\readonly-unlock-20261002\\isolated-electron-runtime",
+      "Category": "Historical test environment",
+      "Bytes": 482862579,
+      "Files": 114
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-closure-20261002\\tool-fixtures-v2\\recent.o",
+      "Category": "Historical binary or test package",
+      "Bytes": 720,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-closure-20261002\\tool-fixtures-v3\\recent.o",
+      "Category": "Historical binary or test package",
+      "Bytes": 720,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-visible-20261001\\cleanup-visible-bundle.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 7760120,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\home-cleanup-real-20261001\\performance-baseline.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 9312256,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\FirefoxDesktopDelete.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 21302107,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-verification\\simple-uninstall-native-final",
+      "Category": "Historical test environment",
+      "Bytes": 1489536,
+      "Files": 25
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-closure-20261002\\cleanup-closure-bundle.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 14018173,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-completion-20261001\\performance-current.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 9608704,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\bundle-v2\\bin\\tauri-driver.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 1530880,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\DustAwayAcceptanceUac.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 9216,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\application-coverage-20261002\\bundle-v1\\dustaway.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 18621440,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-verification\\status-refresh-native-20261001",
+      "Category": "Historical test environment",
+      "Bytes": 25110430,
+      "Files": 17
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-closure-20261002\\bundle\\bin\\tauri-driver.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 1530880,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-ansi\\VPatch.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 8192,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-ansi\\System.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 12288,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\qq-acceptance\\nt-samples\\DustAway-QQNT-test-file.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 233,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-ansi\\nsExec.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 6656,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-ansi\\Banner.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 4096,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-ansi\\Dialer.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 3584,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\bundle-v3\\bin\\tauri-driver.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 1530880,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\brave-rules-v2-driver.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 9282048,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-ansi\\Splash.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 4096,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\store-data-msix-20261001\\DustAwayAcceptanceData.msix",
+      "Category": "Historical binary or test package",
+      "Bytes": 978281,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\dustaway-fixture-exit.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 23966720,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\bundle-v4\\bin\\tauri-driver.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 1530880,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-ansi\\NSISdl.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 15360,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-completion-20261001\\performance-baseline.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 9572352,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-visible-20261001\\bundle\\bin\\tauri-driver.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 1530880,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Examples\\System\\Resource.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 31744,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-unicode\\Math.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 69120,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-ansi\\TypeLib.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 3584,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-million\\query-profile-buffered-benchmark.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 3551744,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-ansi\\BgImage.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 7680,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\desktop-process-driver.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 9124352,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-ansi\\LangDLL.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 5632,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\developer-mainstream-20261001\\performance-current.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 10193408,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\application-coverage-20261002\\performance-current.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 7320064,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-visible-20261001\\bundle-residues\\dustaway.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 16834048,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\FirefoxDesktopDeleteV2.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 21302313,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-dev\\dustaway-initial-check.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 24671744,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-verification\\software_firefox_rules_test.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 8992256,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-verification\\software_store_process_test.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 8805888,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\developer-cleanup-20261001\\bundle\\bin\\tauri-driver.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 1530880,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\store-data-msix-20261001\\contents\\StoreDataFixture.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 2579456,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\readonly-unlock-20261002\\readonly-unlock-v1-bundle.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 14568375,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-completion-20261001\\remote-bundle\\dustaway.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 16835584,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\space-relief-20261002\\performance-baseline-matched.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 6687232,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-ansi\\UserInfo.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 4096,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\home-cleanup-real-20261001\\dustaway-real-app-tests.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 9445888,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Contrib\\UIs\\modern_nodesc.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 4096,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Contrib\\UIs\\sdbarker_tiny.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 6656,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\firefox-desktop-real-bundle",
+      "Category": "Historical test environment",
+      "Bytes": 49791784,
+      "Files": 6
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\application-coverage-20261002\\performance-baseline.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 7065600,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-ansi\\StartMenu.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 7680,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-closure-20261002\\cleanup-performance-bundle.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 5803494,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\home-cleanup-real-20261001\\performance-current-http.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 9547264,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\developer-cleanup-20261001\\developer-cleanup-bundle.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 9322379,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-ansi\\nsDialogs.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 9728,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\application-coverage-20261002\\remote-final-evidence.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 6105670,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-unicode\\VPatch.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 8704,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-ansi\\AdvSplash.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 5632,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-unicode\\Dialer.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 3584,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\firefox-v2-version-corrected",
+      "Category": "Historical test environment",
+      "Bytes": 8498759,
+      "Files": 4
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-verification\\software_store_isolation_test.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 8688640,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-unicode\\nsExec.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 7168,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-unicode\\NSISdl.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 15360,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-unicode\\Banner.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 4096,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-unicode\\System.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 12288,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\readonly-unlock-20261002\\bundle-v1\\bin\\tauri-driver.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 1530880,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-unicode\\Splash.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 4096,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\progress-visible-20261002\\progress-visible-v2-bundle.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 8367770,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\DustAwayDesktopThirdRound.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 20919254,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\progress-visible-20261002\\bundle-v1\\bin\\tauri-driver.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 1530880,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\home-cleanup-real-20261001\\performance-current-final.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 9549312,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\progress-visible-20261002\\progress-visible-v1-bundle.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 8367314,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\bundle\\bin\\performance-current.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 7065088,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\progress-visible-20261002\\bundle-v2\\bin\\tauri-driver.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 1530880,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\geckodriver-v0.37.1-win64.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 1780114,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-unicode\\BgImage.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 7680,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\DustAwayAcceptanceFixture.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 9216,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-unicode\\TypeLib.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 3584,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-unicode\\LangDLL.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 5632,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\desktop-process-driver-v3.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 9150464,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\desktop-process-driver-v2.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 9130496,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Contrib\\UIs\\modern_smalldesc.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 4096,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\bundle\\bin\\performance-baseline.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 6947328,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\developer-mainstream-20261001\\bundle\\bin\\tauri-driver.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 1530880,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-unicode\\UserInfo.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 4096,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-completion-20261001\\cleanup-completion-bundle.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 7775957,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\readonly-unlock-20261002\\performance-current-delivery.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 7432192,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Contrib\\UIs\\modern_headerbmp.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 4608,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-unicode\\nsDialogs.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 9728,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Contrib\\UIs\\modern_headerbmpr.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 4608,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\software_store_failure_test.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 7916032,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-verification\\software_firefox_production_test.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 9010176,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-unicode\\StartMenu.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 7680,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\firefox-desktop-delete-20261001",
+      "Category": "Historical test environment",
+      "Bytes": 50489283,
+      "Files": 7
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-unicode\\AdvSplash.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 6144,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\developer-mainstream-20261001\\attempt2\\bundle\\dustaway.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 17276416,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-verification\\software_store_shared_guard_test.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 8702976,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\tool-fixtures\\go-project\\fixture.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 1529344,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\bundle-v4\\bin\\performance-current.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 7065600,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-closure-20261002\\bundle\\bin\\performance-current.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 6947328,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\bundle-v3\\bin\\performance-current.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 7065600,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\bundle-v2\\bin\\performance-current.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 7065088,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\developer-cleanup-20261001\\bundle\\bin\\developer_fixture.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 3074048,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\brave-scope-preflight-driver.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 9150464,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\software_firefox_history_test.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 9020928,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\bundle-v4\\bin\\performance-baseline.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 6947328,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\application-coverage-20261002\\bundle-v1\\bin\\tauri-driver.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 1530880,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-closure-20261002\\bundle\\bin\\performance-baseline.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 6690816,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-visible-20261001\\cleanup-visible-residues-bundle.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 7760379,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\bundle-v3\\bin\\performance-baseline.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 6947328,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-ansi\\InstallOptions.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 14848,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\evidence\\exit-retest-evidence.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 70454,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\bundle-v2\\bin\\performance-baseline.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 6947328,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\home-cleanup-real-20261001\\dustaway-uninstall-compatible.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 25218560,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-visible-20261001\\bundle-residues\\bin\\tauri-driver.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 1530880,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\developer-mainstream-20261001\\developer-mainstream-bundle.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 9484795,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\firefox-desktop-delete-20261001-v2",
+      "Category": "Historical test environment",
+      "Bytes": 50489874,
+      "Files": 7
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-verification\\software_firefox_production_ini_test.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 9014272,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\store-data-msix-20261001-handshake\\DustAwayAcceptanceData.msix",
+      "Category": "Historical binary or test package",
+      "Bytes": 980631,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\readonly-unlock-20261002\\bundle-v1\\bin\\performance-current.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 7432192,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\application-coverage-20261002\\performance-current-delivery.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 7323648,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-completion-20261001\\remote-bundle\\bin\\tauri-driver.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 1530880,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\developer-mainstream-20261001\\bundle\\bin\\mainstream_fixture.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 3177984,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\readonly-unlock-20261002\\bundle-v1\\bin\\performance-baseline.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 7323648,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Plugins\\x86-unicode\\InstallOptions.dll",
+      "Category": "Historical binary or test package",
+      "Bytes": 15872,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\store-data-msix-20261001-handshake\\contents\\StoreDataFixture.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 2587136,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\application-coverage-20261002\\application-coverage-v1-bundle.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 14428715,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\BraveBrowserStandaloneSilentSetup.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 165593952,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-closure-20261002\\tool-fixtures-v2\\go-project\\fixture.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 1529344,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-closure-20261002\\tool-fixtures-v3\\go-project\\fixture.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 1529344,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\desktop-process-driver-v2-continue.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 9138688,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\developer-mainstream-20261001\\attempt2\\bundle\\bin\\tauri-driver.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 1530880,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\evidence\\firefox-acceptance-evidence.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 67039,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\application-coverage-20261002\\bundle-v1\\bin\\performance-current.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 7323648,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-closure-20261002\\performance-bundle\\performance-current.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 6947328,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\application-coverage-20261002\\bundle-v1\\bin\\performance-baseline.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 7065600,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Examples\\Plugin\\nsis\\pluginapi-x86-ansi.lib",
+      "Category": "Historical binary or test package",
+      "Bytes": 7004,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\evidence\\desktop-third-round-evidence.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 463365,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-closure-20261002\\performance-bundle\\performance-baseline.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 6690816,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\evidence\\firefox-desktop-real-evidence.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 477896,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance\\software_firefox_history_production_test.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 9020928,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted\\nsis-3.11\\Examples\\Plugin\\nsis\\pluginapi-x86-unicode.lib",
+      "Category": "Historical binary or test package",
+      "Bytes": 7012,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\home-cleanup-real-20261001\\ordinary-home-ready\\dustaway-home-cleanup.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 25211392,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\developer-mainstream-20261001\\attempt2\\developer-mainstream-v2-bundle.zip",
+      "Category": "Historical binary or test package",
+      "Bytes": 9487380,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\developer-mainstream-20261001\\attempt2\\bundle\\bin\\mainstream_fixture_v2.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 3177984,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\home-cleanup-real-20261001\\ordinary-home-ready\\dustaway-ordinary-protection-tests.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 9549312,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\space-relief-20261002\\remote-evidence\\evidence\\uv\\protected-project-env\\Scripts\\python.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 275176,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\space-relief-20261002\\remote-evidence\\evidence\\uv2\\protected-project-env\\Scripts\\python.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 275176,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\space-relief-20261002\\remote-evidence\\evidence\\uv\\protected-project-env\\Scripts\\pythonw.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 263528,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\space-relief-20261002\\remote-evidence\\evidence\\uv2\\protected-project-env\\Scripts\\pythonw.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 263528,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-closure-20261002\\remote-evidence\\evidence\\uv\\protected-project-env\\Scripts\\python.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 275176,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-closure-20261002\\remote-evidence\\evidence\\uv\\protected-project-env\\Scripts\\pythonw.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 263528,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\remote-final-evidence\\evidence\\uv\\protected-project-env\\Scripts\\python.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 275176,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002\\remote-final-evidence\\evidence\\uv\\protected-project-env\\Scripts\\pythonw.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 263528,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\application-coverage-20261002\\baseline-source\\src-tauri\\binaries\\dustaway-helper-x86_64-pc-windows-msvc.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 2731520,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\home-cleanup-real-20261001\\performance-baseline-source\\src-tauri\\binaries\\dustaway-helper-x86_64-pc-windows-msvc.exe",
+      "Category": "Historical binary or test package",
+      "Bytes": 2731520,
+      "Files": 1
+    }
+  ],
+  "Protected": [
+    "G:\\my_ai\\DustAway\\artifacts\\portable",
+    "G:\\my_ai\\DustAway\\artifacts\\webdriver",
+    "G:\\my_ai\\DustAway\\artifacts\\openssh-offline",
+    "G:\\my_ai\\DustAway\\artifacts\\ssh-authorize",
+    "G:\\my_ai\\DustAway\\artifacts\\ssh-connection-info",
+    "G:\\my_ai\\DustAway\\artifacts\\ssh-network-diagnostic",
+    "G:\\my_ai\\DustAway\\artifacts\\ssh-remote"
+  ]
+}

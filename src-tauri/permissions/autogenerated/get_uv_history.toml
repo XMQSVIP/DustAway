@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-get-uv-history"
+description = "Enables the get_uv_history command without any pre-configured scope."
+commands.allow = ["get_uv_history"]
+
+[[permission]]
+identifier = "deny-get-uv-history"
+description = "Denies the get_uv_history command without any pre-configured scope."
+commands.deny = ["get_uv_history"]

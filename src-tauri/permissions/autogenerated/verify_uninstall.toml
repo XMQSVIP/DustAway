@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-verify-uninstall"
+description = "Enables the verify_uninstall command without any pre-configured scope."
+commands.allow = ["verify_uninstall"]
+
+[[permission]]
+identifier = "deny-verify-uninstall"
+description = "Denies the verify_uninstall command without any pre-configured scope."
+commands.deny = ["verify_uninstall"]

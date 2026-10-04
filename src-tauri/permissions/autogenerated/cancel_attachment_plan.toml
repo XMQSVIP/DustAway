@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-cancel-attachment-plan"
+description = "Enables the cancel_attachment_plan command without any pre-configured scope."
+commands.allow = ["cancel_attachment_plan"]
+
+[[permission]]
+identifier = "deny-cancel-attachment-plan"
+description = "Denies the cancel_attachment_plan command without any pre-configured scope."
+commands.deny = ["cancel_attachment_plan"]

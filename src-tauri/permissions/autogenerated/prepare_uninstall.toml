@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-prepare-uninstall"
+description = "Enables the prepare_uninstall command without any pre-configured scope."
+commands.allow = ["prepare_uninstall"]
+
+[[permission]]
+identifier = "deny-prepare-uninstall"
+description = "Denies the prepare_uninstall command without any pre-configured scope."
+commands.deny = ["prepare_uninstall"]

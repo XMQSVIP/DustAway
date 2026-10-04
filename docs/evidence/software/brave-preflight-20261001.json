@@ -1,0 +1,125 @@
+{
+  "authority_persisted": false,
+  "installed_software_scan_refused": true,
+  "nested_cache_name_excluded": true,
+  "ordinary_user": true,
+  "passed": true,
+  "production_deletion_approved": false,
+  "residual_deletion_executed": false,
+  "rules": [
+    {
+      "independently_captured": true,
+      "kind": "cache",
+      "production_deletion_approved": false,
+      "relative": "Cache/Cache_Data",
+      "rule_id": "uninstall.brave.http",
+      "rule_version": 1,
+      "scope_sha256": "df0a1f38d8c2d2702366dd728f679beef59364fbebeeb85a4fbbc5e223dab069",
+      "target": "tree"
+    },
+    {
+      "independently_captured": true,
+      "kind": "cache",
+      "production_deletion_approved": false,
+      "relative": "Code Cache",
+      "rule_id": "uninstall.brave.code",
+      "rule_version": 1,
+      "scope_sha256": "f1679a5e7a430682eb8b8c466517d9dfaca39f6776231b3cc9bad3f75b88281f",
+      "target": "tree"
+    },
+    {
+      "independently_captured": true,
+      "kind": "cache",
+      "production_deletion_approved": false,
+      "relative": "GPUCache",
+      "rule_id": "uninstall.brave.gpu",
+      "rule_version": 1,
+      "scope_sha256": "dde5259737407e7e7089e0d63656c3c7ca7a29a51aad90f7b04a1c8bf3892dd4",
+      "target": "tree"
+    },
+    {
+      "independently_captured": true,
+      "kind": "settings",
+      "production_deletion_approved": false,
+      "relative": "Preferences",
+      "rule_id": "uninstall.brave.preferences",
+      "rule_version": 1,
+      "scope_sha256": "297f626895e70d4749afa28185c9660320e915eb9db32de953104f4c44799ac1",
+      "target": "file"
+    },
+    {
+      "independently_captured": true,
+      "kind": "settings",
+      "production_deletion_approved": false,
+      "relative": "Secure Preferences",
+      "rule_id": "uninstall.brave.secure_preferences",
+      "rule_version": 1,
+      "scope_sha256": "d906b26aff6604e125bbe9a47b6c22eef6ef137caddeacb423ae1384c4f1b3df",
+      "target": "file"
+    },
+    {
+      "independently_captured": true,
+      "kind": "local_data",
+      "production_deletion_approved": false,
+      "relative": "Bookmarks",
+      "rule_id": "uninstall.brave.bookmarks",
+      "rule_version": 1,
+      "scope_sha256": "5857a59454f21991bc5b57d37fdaf3bdbe266ce52eb56c0cf792465d04dca020",
+      "target": "file"
+    },
+    {
+      "independently_captured": true,
+      "kind": "local_data",
+      "production_deletion_approved": false,
+      "relative": "History",
+      "rule_id": "uninstall.brave.history",
+      "rule_version": 1,
+      "scope_sha256": "efeb52cf7e73b1e27f01c5b4ffc1839443a96129489ef469a22fd71efb069728",
+      "target": "file"
+    },
+    {
+      "independently_captured": true,
+      "kind": "local_data",
+      "production_deletion_approved": false,
+      "relative": "Network/Cookies",
+      "rule_id": "uninstall.brave.cookies",
+      "rule_version": 1,
+      "scope_sha256": "6dbf974d864e718f2b8b59ea1838c53c786f9c3deeaaddf9cbc7b6eb9420c9f9",
+      "target": "file"
+    },
+    {
+      "independently_captured": true,
+      "kind": "local_data",
+      "production_deletion_approved": false,
+      "relative": "Local Storage",
+      "rule_id": "uninstall.brave.local_storage",
+      "rule_version": 1,
+      "scope_sha256": "e79abe3c27ed06a3866ceb17e85467c1e1d43103a3c73f66414a695386b79fca",
+      "target": "tree"
+    },
+    {
+      "independently_captured": true,
+      "kind": "local_data",
+      "production_deletion_approved": false,
+      "relative": "IndexedDB",
+      "rule_id": "uninstall.brave.indexed_db",
+      "rule_version": 1,
+      "scope_sha256": "d50841408e573afe4e584b9fcc571a65d33f448292ee62b35b12846fa4f266c6",
+      "target": "tree"
+    },
+    {
+      "independently_captured": true,
+      "kind": "local_data",
+      "production_deletion_approved": false,
+      "relative": "Sessions",
+      "rule_id": "uninstall.brave.sessions",
+      "rule_version": 1,
+      "scope_sha256": "32912d2f21a5a350ac7ad1cd031e12a0cc591c5157c3e591fadb2766996cabd4",
+      "target": "tree"
+    }
+  ],
+  "shared_parent_and_whole_profile_excluded": true,
+  "signed_executable_version": "154.1.96.60",
+  "stage": "pre_uninstall_scope_preflight",
+  "uninstall_executed": false
+}

@@ -1,0 +1,8 @@
+{
+  "npm/stackback/0.0.2": {
+    "status": "development-only-not-distributed",
+    "reviewed": "2026-09-26",
+    "source": "https://github.com/defunctzombie/node-stackback/blob/master/package.json",
+    "reason": "Upstream package.json declares MIT, but the package and upstream repository do not include license text. Only used by Vitest via why-is-node-running; excluded from the application entry point and production bundle. No license text has been reconstructed. Recheck before any runtime use or redistribution of this package."
+  }
+}

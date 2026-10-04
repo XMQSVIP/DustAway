@@ -1,0 +1,16 @@
+export const applicationNames: Record<string, string> = {
+  chrome: 'Google Chrome',
+  edge: 'Microsoft Edge',
+  firefox: 'Mozilla Firefox',
+  brave: 'Brave',
+  vivaldi: 'Vivaldi',
+  weixin: '微信',
+  qq: 'QQ',
+  wps: 'WPS',
+  feishu: '飞书',
+  dingtalk: '钉钉',
+  qqnt: 'QQNT',
+  baidu_netdisk: '百度网盘',
+  quark_netdisk: '夸克网盘',
+  thunder: '迅雷',
+};

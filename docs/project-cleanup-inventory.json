@@ -1,0 +1,820 @@
+{
+  "Date": "2026-10-03",
+  "Workspace": "G:\\my_ai\\DustAway",
+  "Parameters": [
+    "-SkipE2EFixtures",
+    "-IncludeDependencies",
+    "-IncludeBrowserTestAssets",
+    "-MeasureSize"
+  ],
+  "Units": "Logical file bytes; hardlinks can be counted more than once; actual free space may differ",
+  "ExcludedLinkedCache": "G:\\my_ai\\DustAway\\target -> F:\\DustAwayBuildCache\\20261003\\target",
+  "TotalBytes": 3554349693,
+  "TotalFiles": 25097,
+  "Candidates": [
+    {
+      "Path": "G:\\my_ai\\DustAway\\dist",
+      "Category": "Frontend output",
+      "Bytes": 2652491,
+      "Files": 5
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\tsconfig.tsbuildinfo",
+      "Category": "TypeScript cache",
+      "Bytes": 2877,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\src-tauri\\gen",
+      "Category": "Generated Tauri schemas",
+      "Bytes": 446779,
+      "Files": 4
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\src-tauri\\binaries\\dustaway-helper-x86_64-pc-windows-msvc.exe",
+      "Category": "Generated helper",
+      "Bytes": 4441088,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\scripts\\analysis-benchmark\\target",
+      "Category": "Benchmark build output",
+      "Bytes": 328953081,
+      "Files": 533
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\browser-validation-0.6\\brave",
+      "Category": "Optional downloaded test browsers",
+      "Bytes": 554864609,
+      "Files": 176
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\browser-validation-0.6\\vivaldi",
+      "Category": "Optional downloaded test browsers",
+      "Bytes": 533632478,
+      "Files": 1279
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\browser-validation-0.6\\vivaldi-packed",
+      "Category": "Optional downloaded test browsers",
+      "Bytes": 533646395,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\browser-validation-0.6\\downloads",
+      "Category": "Optional downloaded test browsers",
+      "Bytes": 406885850,
+      "Files": 3
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\node_modules",
+      "Category": "Reinstallable dependencies",
+      "Bytes": 187339314,
+      "Files": 9069
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\msedgeedge_BITS_21012_1922341375",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 1922,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\msedgeedge_BITS_2332_351079604",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 8417,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\msedgeedge_BITS_30400_892771950",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 186331,
+      "Files": 1
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir10496_1411472746",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12529530,
+      "Files": 170
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir10580_174481825",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12541407,
+      "Files": 179
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir10980_2141704584",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 10446844,
+      "Files": 163
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir10980_998332208",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir12960_997638228",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12423679,
+      "Files": 178
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir13076_1817648728",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12717904,
+      "Files": 173
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir13076_2093221097",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir13516_1373447300",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir13516_761587368",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 11185387,
+      "Files": 165
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir13988_543660691",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 13083570,
+      "Files": 186
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir15028_1331384478",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 11700480,
+      "Files": 165
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir15028_268092585",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir15824_699450220",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12586193,
+      "Files": 186
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir15872_1559175092",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir15872_1631915349",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 10413314,
+      "Files": 163
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir16072_1050693841",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir16072_1075323831",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 10069337,
+      "Files": 146
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir16944_837358165",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 9359083,
+      "Files": 167
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir16944_890873956",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir17188_190123618",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12524220,
+      "Files": 170
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir17188_649654102",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir1772_347016150",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12555942,
+      "Files": 184
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir18576_1031029712",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir18576_1829751788",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12515206,
+      "Files": 170
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir19244_692622922",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 10443323,
+      "Files": 163
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir1932_1409657587",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir1932_833594474",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 10016472,
+      "Files": 164
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir20176_294196461",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 33517211,
+      "Files": 256
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir20596_41393590",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 9326667,
+      "Files": 163
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir20596_575506982",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir21132_1436364720",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 11203372,
+      "Files": 174
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir21400_1874116093",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12496696,
+      "Files": 174
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir21592_1229710862",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 11146279,
+      "Files": 173
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir21592_2121805710",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir21848_1525990990",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 11606325,
+      "Files": 172
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir21872_2147102974",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 10086051,
+      "Files": 174
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir2304_543106409",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir2304_680713952",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 11200880,
+      "Files": 165
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir23096_620002456",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 10073973,
+      "Files": 171
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir23604_1059105574",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 9804435,
+      "Files": 137
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir23748_2133951830",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 34906678,
+      "Files": 260
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir23748_829498123",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir24336_1172780988",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 9255679,
+      "Files": 135
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir24336_1463331762",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 10035095,
+      "Files": 161
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir24508_657418396",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12496123,
+      "Files": 184
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir24836_290304250",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 10483149,
+      "Files": 161
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir24936_1482527378",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir24936_1787017206",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12639947,
+      "Files": 181
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir25108_1396057049",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 10487178,
+      "Files": 163
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir25108_1416084558",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir26720_2119166427",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 34905034,
+      "Files": 260
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir2692_551541009",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir2692_893783502",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 10456182,
+      "Files": 163
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir26972_1799703055",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 10069381,
+      "Files": 170
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir26972_1811101064",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir27368_1887931152",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 34749109,
+      "Files": 259
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir27420_1183249458",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir27420_902373915",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12971002,
+      "Files": 188
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir27440_1345738646",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir27440_1787502116",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12555810,
+      "Files": 183
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir27768_1643369106",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir27768_856664047",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 10151480,
+      "Files": 165
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir28096_1571759847",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir28096_73391115",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 9354604,
+      "Files": 150
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir28536_1520659165",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 11171949,
+      "Files": 171
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir28536_73902817",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir28588_971369054",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 11228056,
+      "Files": 173
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir28760_201454268",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir28760_441482132",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 9321263,
+      "Files": 164
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir28780_1280768927",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 11162151,
+      "Files": 170
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir29212_1259649806",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 10446727,
+      "Files": 163
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir29212_313411090",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir29632_70262463",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 9987392,
+      "Files": 161
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir29812_1164098641",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12749202,
+      "Files": 178
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir29812_119651308",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir29832_1938995451",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 9866911,
+      "Files": 148
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir3020_1573908380",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12612380,
+      "Files": 181
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir3020_423624683",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir30248_245493047",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12545661,
+      "Files": 183
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir30824_483243855",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 9353535,
+      "Files": 162
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir31316_1882381411",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 11194234,
+      "Files": 164
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir31316_532577835",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir31328_1745960634",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 13041113,
+      "Files": 194
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir31452_1712720966",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12685827,
+      "Files": 174
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir316_1779650745",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 10482598,
+      "Files": 163
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir316_373011334",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir31968_1697622856",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12534864,
+      "Files": 173
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir31968_793303984",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir32024_327591529",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 9982537,
+      "Files": 157
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir3204_1823832849",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12517220,
+      "Files": 182
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir32164_729937277",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12900289,
+      "Files": 173
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir33044_1298505856",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 9188310,
+      "Files": 136
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir33044_1683219998",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir33084_1344552977",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 11034711,
+      "Files": 171
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir34036_282501454",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir34036_880722413",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12520951,
+      "Files": 180
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir34184_1174875837",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir34184_257800213",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 10421673,
+      "Files": 163
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir34244_744776605",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 10016636,
+      "Files": 164
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir34368_2121453880",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir34368_597173622",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 9327880,
+      "Files": 163
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir34420_259579437",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 9388166,
+      "Files": 161
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir34504_2012556930",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 10482580,
+      "Files": 161
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir34740_1020389031",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12509340,
+      "Files": 179
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir35236_1342550812",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir35236_1513210141",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 11204830,
+      "Files": 164
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir36520_1418774994",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 10421790,
+      "Files": 163
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir36520_1909938879",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir37848_1076978571",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12716590,
+      "Files": 173
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir37848_756343563",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir39328_1062995826",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12470364,
+      "Files": 175
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir40992_471624870",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12517065,
+      "Files": 184
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir5372_1169108491",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 9312440,
+      "Files": 149
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir6180_1854972034",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir6180_861532461",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 11194101,
+      "Files": 164
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir6376_1010010086",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir6376_176501260",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12647504,
+      "Files": 181
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir7148_1144823333",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 0,
+      "Files": 0
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir7148_472043233",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 11192282,
+      "Files": 164
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir8504_559540743",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 11278374,
+      "Files": 175
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\scoped_dir9424_497747763",
+      "Category": "WebView / Edge test temporary files",
+      "Bytes": 12568334,
+      "Files": 184
+    }
+  ]
+}

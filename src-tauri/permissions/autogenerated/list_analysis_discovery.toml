@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-list-analysis-discovery"
+description = "Enables the list_analysis_discovery command without any pre-configured scope."
+commands.allow = ["list_analysis_discovery"]
+
+[[permission]]
+identifier = "deny-list-analysis-discovery"
+description = "Denies the list_analysis_discovery command without any pre-configured scope."
+commands.deny = ["list_analysis_discovery"]

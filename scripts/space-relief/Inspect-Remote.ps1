@@ -1,0 +1,4 @@
+﻿$ErrorActionPreference='Stop'
+$taskRoot=Join-Path $env:LOCALAPPDATA 'DustAwayAcceptance/20261002-space-relief'
+if($env:COMPUTERNAME-ne'DESKTOP-24NJTT6'-or[IO.File]::ReadAllText((Join-Path $taskRoot '.dustaway-space-relief'))-ne'DustAway.SpaceRelief.20261002'){throw 'Wrong environment'}
+@{tasks=@(Get-ScheduledTask | Where-Object TaskName -like 'DustAway-SpaceRelief-*' | Select-Object TaskName,State);files=@(Get-ChildItem -LiteralPath (Join-Path $taskRoot 'evidence') -Recurse -File | Where-Object {$_.Name -in @('run.json','failure.json','error.txt','stderr.log','desktop-results.json','complete.json')} | ForEach-Object {@{name=$_.FullName.Substring($taskRoot.Length);text=$(try{$f=[IO.FileStream]::new($_.FullName,[IO.FileMode]::Open,[IO.FileAccess]::Read,[IO.FileShare]::ReadWrite);$reader=[IO.StreamReader]::new($f);try{$reader.ReadToEnd()}finally{$reader.Dispose()}}catch{'writer active'})}})} | ConvertTo-Json -Depth 6

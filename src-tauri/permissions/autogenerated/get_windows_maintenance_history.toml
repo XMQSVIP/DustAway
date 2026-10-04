@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-get-windows-maintenance-history"
+description = "Enables the get_windows_maintenance_history command without any pre-configured scope."
+commands.allow = ["get_windows_maintenance_history"]
+
+[[permission]]
+identifier = "deny-get-windows-maintenance-history"
+description = "Denies the get_windows_maintenance_history command without any pre-configured scope."
+commands.deny = ["get_windows_maintenance_history"]

@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "stage": "production_native_deletion_verification",
+  "finished": "2026-10-01T06:08:00.5080148+08:00",
+  "driver_sha256": "444FEC4B4B37A6ECA50DF9F019E02B5868889819EA111468CD63CACB45AC952C",
+  "bound_acceptance_evidence_sha256": "8419DFA2FF643DE5A073783F63853D25539E664351C574CAB6CFCF3271A5A048",
+  "native_report_sha256": "50BE2F947ED610F0AC0F23FDEA97BD664EE40AA98CCA99155556586C9B0B0A7C",
+  "seed_verification_sha256": "57518E18C6789CA0E44F9093B659BCA38742DADC892C70A0FDE96EB098D08882",
+  "files_include_prior_frozen_test_witnesses": true,
+  "report": {
+    "authority": "compiled per-rule approval and WindowsSoftware.delete",
+    "cancelled_scan_reported": true,
+    "context_persisted": false,
+    "interactive_launcher_test": false,
+    "missing_real_rules": [],
+    "new_scope_refused": true,
+    "not_covered": [
+      "interactive UI",
+      "cloud synchronization provider",
+      "other versions"
+    ],
+    "official_silent_uninstall": true,
+    "ordinary_user": true,
+    "original_identity_absent": true,
+    "other_installation_identities_unchanged": true,
+    "passed": true,
+    "production_deletion_entry": true,
+    "reinstalled_application_refused": true,
+    "rules": [
+      {
+        "deleted_bytes": 1036,
+        "deleted_empty_directories": 0,
+        "deleted_files": 2,
+        "excluded_occupied_changed_hardlinked_replaced_files_refused": true,
+        "kind": "local_data",
+        "new_files_preserved": true,
+        "partial_scan_reported": true,
+        "retained_nonempty_directories": 1,
+        "rule_id": "uninstall.firefox.bookmarks",
+        "rule_version": 1,
+        "scope_sha256": "849fdcad1b334ad8659d7e0c19c3c83cd7c55fcae7d6535c87f8ea8565ffd46f",
+        "unselected_hashes_unchanged": true
+      },
+      {
+        "deleted_bytes": 3174,
+        "deleted_empty_directories": 0,
+        "deleted_files": 3,
+        "excluded_occupied_changed_hardlinked_replaced_files_refused": true,
+        "kind": "local_data",
+        "new_files_preserved": true,
+        "partial_scan_reported": true,
+        "retained_nonempty_directories": 1,
+        "rule_id": "uninstall.firefox.sessions",
+        "rule_version": 1,
+        "scope_sha256": "5270742c132e325af3e94acdd9626f850a8eb61af83eb5be28b76291c6b3b090",
+        "unselected_hashes_unchanged": true
+      }
+    ],
+    "same_in_memory_pre_uninstall_context": true,
+    "shared_parent_unchanged": true,
+    "signed_executable_version": "140.17.0.1158",
+    "whole_profile_refused": true
+  },
+  "cleanup": {
+    "Finished": "2026-10-01T06:10:29.5048393+08:00",
+    "RemovedTasks": [
+      "DustAway-Firefox-History-Prepare-20261001",
+      "DustAway-Firefox-History-SeedContinue-20261001",
+      "DustAway-Firefox-History-FinalSeed-20261001",
+      "DustAway-Firefox-History-Rules-20261001",
+      "DustAway-Firefox-History-ProductionPrepare-20261001",
+      "DustAway-Firefox-History-ProductionRules-20261001"
+    ],
+    "DedicatedProcesses": 0,
+    "FirefoxRegistrations": 0,
+    "DedicatedFirefoxInstalled": false,
+    "ProcessTermination": false,
+    "SecuritySettingsChanged": false,
+    "EvidenceAndMarkedDataRetained": true,
+    "TestSignerTrusted": false
+  }
+}

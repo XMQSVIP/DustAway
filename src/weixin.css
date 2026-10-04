@@ -1,0 +1,55 @@
+.weixin-cleanup {
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 20px 24px;
+  margin: 16px 0 24px;
+  background: var(--surface);
+}
+.weixin-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.weixin-heading .group-heading {
+  flex: 0 1 auto;
+  min-height: 44px;
+}
+.weixin-totals {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 18px 0 12px;
+}
+.weixin-totals dt {
+  font-size: 13px;
+  color: var(--muted);
+}
+.weixin-totals dd {
+  margin: 4px 0 0;
+  font-size: 21px;
+  overflow-wrap: anywhere;
+}
+.weixin-cleanup p {
+  line-height: 1.7;
+}
+.weixin-boundaries {
+  margin-top: 14px;
+}
+.weixin-boundaries summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 12px 0;
+}
+@media (max-width: 800px) {
+  .weixin-cleanup {
+    padding: 16px;
+  }
+  .weixin-totals {
+    gap: 10px;
+  }
+  .weixin-totals dd {
+    font-size: 17px;
+  }
+}

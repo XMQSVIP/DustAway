@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-cancel-tool-cache"
+description = "Enables the cancel_tool_cache command without any pre-configured scope."
+commands.allow = ["cancel_tool_cache"]
+
+[[permission]]
+identifier = "deny-cancel-tool-cache"
+description = "Denies the cancel_tool_cache command without any pre-configured scope."
+commands.deny = ["cancel_tool_cache"]

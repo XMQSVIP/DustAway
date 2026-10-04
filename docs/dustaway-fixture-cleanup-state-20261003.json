@@ -1,0 +1,9 @@
+{
+  "Status": "Stopped",
+  "BeforeFreeBytes": 14996336640,
+  "AfterFreeBytes": 15130112000,
+  "FreedBytes": 133775360,
+  "Error": "Cannot find path 'G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-O6SsAt' because it does not exist.",
+  "Finished": "2026-10-03T18:31:41.5427833+08:00",
+  "Log": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dustaway-fixture-cleanup-20261003.log"
+}

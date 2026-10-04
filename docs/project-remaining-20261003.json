@@ -1,0 +1,5362 @@
+[
+  {
+    "Path": "G:\\my_ai\\DustAway\\node_modules",
+    "Bytes": 180541250,
+    "Files": 9039
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\rule-refresh-20261002",
+    "Bytes": 129499105,
+    "Files": 10540
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-completion-20261001",
+    "Bytes": 120821097,
+    "Files": 130
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\webdriver",
+    "Bytes": 114346848,
+    "Files": 11
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\developer-mainstream-20261001",
+    "Bytes": 111254295,
+    "Files": 187
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\readonly-unlock-20261002",
+    "Bytes": 72284457,
+    "Files": 11143
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\performance-0.8",
+    "Bytes": 48974613,
+    "Files": 17
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\performance-0.8-initial",
+    "Bytes": 48903768,
+    "Files": 15
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\performance-0.7",
+    "Bytes": 48901330,
+    "Files": 17
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-closure-20261002",
+    "Bytes": 47643846,
+    "Files": 530
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\home-cleanup-real-20261001",
+    "Bytes": 34412035,
+    "Files": 821
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable",
+    "Bytes": 23580311,
+    "Files": 15
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\prototype-refined",
+    "Bytes": 23503267,
+    "Files": 42
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\application-coverage-20261002",
+    "Bytes": 20432101,
+    "Files": 10556
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\home-0.17.2",
+    "Bytes": 19461234,
+    "Files": 314
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\space-relief-20261002",
+    "Bytes": 18902586,
+    "Files": 605
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\progress-visible-20261002",
+    "Bytes": 15833700,
+    "Files": 888
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\openssh-offline",
+    "Bytes": 12884028,
+    "Files": 5
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\sculpture-native",
+    "Bytes": 11814268,
+    "Files": 169
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\DustAway-OpenSSH-Offline-10.0.0.0.zip",
+    "Bytes": 11631306,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-0.18.0",
+    "Bytes": 11075361,
+    "Files": 177
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-before-20261001-005530.zip",
+    "Bytes": 10539479,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-speed-baseline-20260930-163321.zip",
+    "Bytes": 10343555,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-cleanup-baseline-20260930-150625.zip",
+    "Bytes": 10325072,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\autonomous-cleanup-baseline-20260930-105930.zip",
+    "Bytes": 10305449,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-experience-baseline-20260930-133159.zip",
+    "Bytes": 10304953,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\disk-selection-baseline-20260930-123218.zip",
+    "Bytes": 10298783,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-baseline.zip",
+    "Bytes": 10278928,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-extension-baseline.zip",
+    "Bytes": 10256426,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\prototype",
+    "Bytes": 10225057,
+    "Files": 4
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-baseline.zip",
+    "Bytes": 10189653,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\discovery-0.16",
+    "Bytes": 9448758,
+    "Files": 409
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\prototype-ui-v4",
+    "Bytes": 8003119,
+    "Files": 43
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-desktop",
+    "Bytes": 7996852,
+    "Files": 88
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\prototype-ui-v3",
+    "Bytes": 7346648,
+    "Files": 30
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-visible-20261001",
+    "Bytes": 6872350,
+    "Files": 69
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\prototype-tide",
+    "Bytes": 6735211,
+    "Files": 37
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-extension-e2e",
+    "Bytes": 5581100,
+    "Files": 61
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\ui-v2",
+    "Bytes": 5534080,
+    "Files": 86
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-e2e",
+    "Bytes": 5308913,
+    "Files": 59
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-e2e",
+    "Bytes": 5141709,
+    "Files": 54
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-extracted",
+    "Bytes": 4829329,
+    "Files": 391
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\baseline-0.7-source",
+    "Bytes": 4781721,
+    "Files": 219
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\developer-cleanup-20261001",
+    "Bytes": 4717054,
+    "Files": 107
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\baseline-0.6-benchmark",
+    "Bytes": 4712245,
+    "Files": 213
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\baseline-0.6-source",
+    "Bytes": 4703057,
+    "Files": 212
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-cleanup-e2e-full",
+    "Bytes": 4396931,
+    "Files": 53
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\prototype-ui-v5",
+    "Bytes": 4358813,
+    "Files": 44
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\sculpture-e2e",
+    "Bytes": 4252976,
+    "Files": 46
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\prototype-ui-restored",
+    "Bytes": 3604824,
+    "Files": 25
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\licenses",
+    "Bytes": 3521457,
+    "Files": 19
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\software-remote-acceptance",
+    "Bytes": 3519637,
+    "Files": 464
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-million",
+    "Bytes": 3510780,
+    "Files": 308
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-dev",
+    "Bytes": 3380908,
+    "Files": 4
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\home-disk-layout",
+    "Bytes": 3307025,
+    "Files": 22
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\applications-0.15",
+    "Bytes": 3235923,
+    "Files": 59
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\prototype-ui",
+    "Bytes": 2911609,
+    "Files": 25
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\src",
+    "Bytes": 2878232,
+    "Files": 107
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\space-0.10",
+    "Bytes": 2876174,
+    "Files": 81
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\discovery-0.17",
+    "Bytes": 2621242,
+    "Files": 27
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\applications-0.14",
+    "Bytes": 2576321,
+    "Files": 54
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-3.11.zip",
+    "Bytes": 2361546,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\sculpture-release-0.18.0",
+    "Bytes": 2143154,
+    "Files": 17
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\discovery-0.18.0",
+    "Bytes": 2101346,
+    "Files": 27
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\baseline-0.4-source.zip",
+    "Bytes": 2071770,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\baseline-0.4-fixed.zip",
+    "Bytes": 2071770,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\completion-0.13",
+    "Bytes": 2026202,
+    "Files": 38
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\qq-acceptance",
+    "Bytes": 1975855,
+    "Files": 109
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\prototype-ui-v2",
+    "Bytes": 1957134,
+    "Files": 23
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\software-verification",
+    "Bytes": 1894187,
+    "Files": 210
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\decision-0.12",
+    "Bytes": 1884676,
+    "Files": 34
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\weixin-special",
+    "Bytes": 1804055,
+    "Files": 108
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\crates",
+    "Bytes": 1728595,
+    "Files": 124
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-standard-desktop",
+    "Bytes": 1683978,
+    "Files": 33
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\docs",
+    "Bytes": 1633676,
+    "Files": 142
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\space-0.11",
+    "Bytes": 1629744,
+    "Files": 102
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\prototype-tide-desktop",
+    "Bytes": 1618339,
+    "Files": 27
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\window-offset-regression",
+    "Bytes": 1606918,
+    "Files": 10
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cargo-metadata.json",
+    "Bytes": 1493028,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\scripts",
+    "Bytes": 1431384,
+    "Files": 306
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-cleanup-e2e",
+    "Bytes": 1348270,
+    "Files": 8
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-release-0.18.0",
+    "Bytes": 1027332,
+    "Files": 17
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-extension-e2e-interrupted",
+    "Bytes": 940137,
+    "Files": 3
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\baseline-0.7-fixed.zip",
+    "Bytes": 904511,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\disk-selection-desktop",
+    "Bytes": 889240,
+    "Files": 10
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\baseline-0.6-fixed.zip",
+    "Bytes": 868593,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-tests.log",
+    "Bytes": 810145,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\system-cleanup",
+    "Bytes": 673410,
+    "Files": 47
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\qq-attachments-ui",
+    "Bytes": 661362,
+    "Files": 10
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-ui",
+    "Bytes": 495197,
+    "Files": 8
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\tests-0.17.json",
+    "Bytes": 458205,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\sculpture-app-home.png",
+    "Bytes": 440125,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\ssh-remote",
+    "Bytes": 372012,
+    "Files": 275
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\src-tauri",
+    "Bytes": 368989,
+    "Files": 150
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\apps-light-0.17.png",
+    "Bytes": 362640,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\apps-light-0.11.png",
+    "Bytes": 356557,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\apps-light-0.10.png",
+    "Bytes": 355784,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\apps-light-0.14.png",
+    "Bytes": 348591,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\apps-light-0.12.png",
+    "Bytes": 348514,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\apps-light-0.13.png",
+    "Bytes": 348377,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\apps-light-0.16.png",
+    "Bytes": 348242,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\apps-light-0.15.png",
+    "Bytes": 348120,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\apps-light-0.9.png",
+    "Bytes": 341303,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-readonly-0.9.png",
+    "Bytes": 339552,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.14.png",
+    "Bytes": 328961,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-readonly-0.10.png",
+    "Bytes": 325346,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-readonly-0.11.png",
+    "Bytes": 325335,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-readonly-0.13.png",
+    "Bytes": 320972,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-readonly-0.12.png",
+    "Bytes": 320114,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\largest-files-0.16.png",
+    "Bytes": 315000,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\largest-files-0.15.png",
+    "Bytes": 312791,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\home-diagnostic-0.11.png",
+    "Bytes": 289697,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\home-diagnostic-0.10.png",
+    "Bytes": 289697,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\preview-760-dpr2.png",
+    "Bytes": 289130,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\baseline-0.5-fixed.zip",
+    "Bytes": 285752,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\home-diagnostic-0.9.png",
+    "Bytes": 285351,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\rules",
+    "Bytes": 258865,
+    "Files": 5
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-results-0.17.png",
+    "Bytes": 249293,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\applications-gated-0.9.png",
+    "Bytes": 243129,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\applications-gated-0.10.png",
+    "Bytes": 242240,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\applications-gated-0.11.png",
+    "Bytes": 242240,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\applications-gated-0.13.png",
+    "Bytes": 241154,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\applications-gated-0.12.png",
+    "Bytes": 240714,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\applications-gated-0.14.png",
+    "Bytes": 236070,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\applications-gated-0.15.png",
+    "Bytes": 236070,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\applications-gated-0.16.png",
+    "Bytes": 236070,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\applications-gated-0.17.png",
+    "Bytes": 235607,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\design-directions",
+    "Bytes": 233566,
+    "Files": 4
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-app-round2.log",
+    "Bytes": 231314,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\sculpture-app-home-760.png",
+    "Bytes": 220991,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\optimization-20261002",
+    "Bytes": 218528,
+    "Files": 27
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\ui-light.png",
+    "Bytes": 217522,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-minimum-0.9.png",
+    "Bytes": 212689,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-results-0.11.png",
+    "Bytes": 208113,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-results-0.10.png",
+    "Bytes": 207898,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-results-0.9.png",
+    "Bytes": 207188,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-minimum-0.10.png",
+    "Bytes": 205125,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-results-0.16.png",
+    "Bytes": 204857,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-results-0.15.png",
+    "Bytes": 204857,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-results-0.14.png",
+    "Bytes": 204857,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-results-0.13.png",
+    "Bytes": 204857,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-results-0.12.png",
+    "Bytes": 204441,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\largest-files-0.18.0.png",
+    "Bytes": 192532,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\uncleared-desktop-check",
+    "Bytes": 165701,
+    "Files": 4
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-real-20261002",
+    "Bytes": 164847,
+    "Files": 16
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\home-diagnostic-0.17.png",
+    "Bytes": 160758,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\home-diagnostic-0.14.png",
+    "Bytes": 152832,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\home-diagnostic-0.13.png",
+    "Bytes": 152823,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\home-diagnostic-0.15.png",
+    "Bytes": 152787,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\home-diagnostic-0.16.png",
+    "Bytes": 152537,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\before-sculpture-application.zip",
+    "Bytes": 146749,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\home-diagnostic-0.12.png",
+    "Bytes": 143728,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-dark-0.15.png",
+    "Bytes": 141066,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-dark-0.16.png",
+    "Bytes": 140896,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-0.9.png",
+    "Bytes": 138724,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-dark-0.12.png",
+    "Bytes": 138319,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-dark-0.13.png",
+    "Bytes": 136970,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-dark-0.12.png",
+    "Bytes": 136596,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\ui-dark-1100.png",
+    "Bytes": 135988,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-dark-0.11.png",
+    "Bytes": 135804,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\Cargo.lock",
+    "Bytes": 132193,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-dark-0.9.png",
+    "Bytes": 131405,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-dark-0.14.png",
+    "Bytes": 129024,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-0.14.png",
+    "Bytes": 128494,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-dark-0.10.png",
+    "Bytes": 128236,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-0.15.png",
+    "Bytes": 128090,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\window-offset-backup",
+    "Bytes": 122732,
+    "Files": 7
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-0.18.0.png",
+    "Bytes": 122607,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.18.0.png",
+    "Bytes": 122074,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-dark-0.11.png",
+    "Bytes": 113922,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-dark-0.9.png",
+    "Bytes": 113441,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.11.png",
+    "Bytes": 111669,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-readonly-0.17.png",
+    "Bytes": 110842,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.9.png",
+    "Bytes": 110305,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-dark-0.18.0.png",
+    "Bytes": 109183,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-light-0.18.0.png",
+    "Bytes": 105547,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-frontend-tests.json",
+    "Bytes": 105291,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-0.11.png",
+    "Bytes": 103962,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-dark-0.13.png",
+    "Bytes": 103632,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.18.0.html",
+    "Bytes": 102692,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-dark-0.16.png",
+    "Bytes": 102409,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-dark-0.15.png",
+    "Bytes": 101983,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-dark-0.18.0.png",
+    "Bytes": 101346,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-dark-0.10.png",
+    "Bytes": 101305,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-dark-0.14.png",
+    "Bytes": 99617,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-readonly-0.14.png",
+    "Bytes": 99411,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.15.png",
+    "Bytes": 99256,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-readonly-0.15.png",
+    "Bytes": 99250,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-readonly-0.16.png",
+    "Bytes": 99228,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-minimum-0.12.png",
+    "Bytes": 97241,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\apps-light-0.8.png",
+    "Bytes": 96290,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\apps-light-0.7.png",
+    "Bytes": 96102,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-dark-0.8.png",
+    "Bytes": 96083,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\apps-light-0.6.png",
+    "Bytes": 96057,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-dark-0.6.png",
+    "Bytes": 95896,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-minimum-0.6.png",
+    "Bytes": 95168,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-minimum-0.7.png",
+    "Bytes": 95138,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-dark-0.6.png",
+    "Bytes": 94689,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-dark-0.7.png",
+    "Bytes": 94662,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-dark-0.7.png",
+    "Bytes": 94561,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\e2e-0.8-control-sync-failure.png",
+    "Bytes": 94061,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.8.png",
+    "Bytes": 94061,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-dark-0.5.png",
+    "Bytes": 93909,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-readonly-0.8.png",
+    "Bytes": 92854,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.12.png",
+    "Bytes": 92759,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-readonly-0.6.png",
+    "Bytes": 92692,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-frontend-targeted.log",
+    "Bytes": 92646,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-readonly-0.7.png",
+    "Bytes": 92634,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\sculpture-app-settings-760-fixed.png",
+    "Bytes": 92572,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-minimum-0.11.png",
+    "Bytes": 92231,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-dark-0.17.png",
+    "Bytes": 91754,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-readonly-0.5.png",
+    "Bytes": 91539,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\home-diagnostic-0.18.0.png",
+    "Bytes": 90899,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\sculpture-app-settings-760.png",
+    "Bytes": 90082,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.3.png",
+    "Bytes": 90071,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\home-diagnostic-0.8.png",
+    "Bytes": 89576,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\release-readonly.png",
+    "Bytes": 88477,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\sculpture-app-home-first.png",
+    "Bytes": 87858,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\largest-files-0.11.png",
+    "Bytes": 85946,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.6.png",
+    "Bytes": 85147,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\window-debug.png",
+    "Bytes": 84115,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-readonly-0.3.png",
+    "Bytes": 83981,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\prototype-ui-v1",
+    "Bytes": 83613,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\largest-files-0.13.png",
+    "Bytes": 83442,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-readonly-0.4.png",
+    "Bytes": 83430,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\largest-files-0.12.png",
+    "Bytes": 83083,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\largest-files-0.14.png",
+    "Bytes": 83062,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\largest-files-0.8.png",
+    "Bytes": 82383,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-0.5.png",
+    "Bytes": 82380,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\pnpm-lock.yaml",
+    "Bytes": 81761,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-readonly-0.2.png",
+    "Bytes": 80313,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-0.4.png",
+    "Bytes": 80293,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-light-0.5.png",
+    "Bytes": 80147,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.4.png",
+    "Bytes": 79623,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-0.7.png",
+    "Bytes": 79605,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-0.6.png",
+    "Bytes": 79535,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-dark-0.8.png",
+    "Bytes": 79392,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-0.10.png",
+    "Bytes": 79118,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-0.3.png",
+    "Bytes": 78987,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-0.8.png",
+    "Bytes": 78875,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-light-0.4.png",
+    "Bytes": 78241,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-light-0.6.png",
+    "Bytes": 78221,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-light-0.3.png",
+    "Bytes": 77979,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-light-0.7.png",
+    "Bytes": 77536,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-light-0.8.png",
+    "Bytes": 77528,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.9.png",
+    "Bytes": 77484,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\tests-0.17-second.json",
+    "Bytes": 77258,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-0.16.png",
+    "Bytes": 76740,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-0.13.png",
+    "Bytes": 76037,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-0.12.png",
+    "Bytes": 75524,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.11.png",
+    "Bytes": 75412,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.16.png",
+    "Bytes": 75358,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.5.png",
+    "Bytes": 75228,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-minimum-0.8.png",
+    "Bytes": 75134,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-0.17.png",
+    "Bytes": 75071,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-light-0.5.png",
+    "Bytes": 74981,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-light-0.6.png",
+    "Bytes": 74812,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.17.html",
+    "Bytes": 74748,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-light-0.7.png",
+    "Bytes": 74719,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\applications-gated-0.18.0.png",
+    "Bytes": 74706,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.15.png",
+    "Bytes": 73973,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.12.png",
+    "Bytes": 73948,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.14.png",
+    "Bytes": 73918,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.13.png",
+    "Bytes": 73819,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.17.png",
+    "Bytes": 73757,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.10.png",
+    "Bytes": 73745,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-light-0.10.png",
+    "Bytes": 73455,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-light-0.11.png",
+    "Bytes": 73359,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-light-0.9.png",
+    "Bytes": 72932,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-0.2.png",
+    "Bytes": 72596,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-light-0.13.png",
+    "Bytes": 71736,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-light-0.15.png",
+    "Bytes": 71641,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-light-0.12.png",
+    "Bytes": 71583,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-light-0.14.png",
+    "Bytes": 71559,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-light-0.16.png",
+    "Bytes": 71516,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-light-0.17.png",
+    "Bytes": 71040,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-details-light-0.2.png",
+    "Bytes": 70978,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-handoff-frontend.json",
+    "Bytes": 70965,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-minimum-0.18.0.png",
+    "Bytes": 70803,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-desktop",
+    "Bytes": 70797,
+    "Files": 8
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.8.png",
+    "Bytes": 70107,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.7.png",
+    "Bytes": 70030,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-frontend-release.json",
+    "Bytes": 69776,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-verified-frontend.json",
+    "Bytes": 69727,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-frontend-final.json",
+    "Bytes": 69141,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.9.html",
+    "Bytes": 68082,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-light-0.8.png",
+    "Bytes": 66953,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-minimum-0.17.png",
+    "Bytes": 66898,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-light-0.11.png",
+    "Bytes": 66705,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\disk-selection-frontend.json",
+    "Bytes": 66508,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-light-0.13.png",
+    "Bytes": 65880,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-light-0.14.png",
+    "Bytes": 65845,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-light-0.12.png",
+    "Bytes": 65842,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-light-0.15.png",
+    "Bytes": 65745,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-minimum-0.14.png",
+    "Bytes": 65515,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-minimum-0.15.png",
+    "Bytes": 65515,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-minimum-0.13.png",
+    "Bytes": 65515,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guides-minimum-0.16.png",
+    "Bytes": 65515,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.5.png",
+    "Bytes": 64135,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-light-0.16.png",
+    "Bytes": 64127,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.6.png",
+    "Bytes": 63985,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\largest-files-0.10.png",
+    "Bytes": 63367,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\largest-files-0.9.png",
+    "Bytes": 63298,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.18.0.png",
+    "Bytes": 62882,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\performance-build-0.8.jsonl",
+    "Bytes": 61997,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.4.png",
+    "Bytes": 61849,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-minimum-0.13.png",
+    "Bytes": 61560,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\sculpture-app-analysis-760.png",
+    "Bytes": 61537,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-targeted.log",
+    "Bytes": 61535,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-results-0.5.png",
+    "Bytes": 61514,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-minimum-0.17.png",
+    "Bytes": 61493,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-minimum-0.15.png",
+    "Bytes": 61481,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-minimum-0.10.png",
+    "Bytes": 61417,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-minimum-0.14.png",
+    "Bytes": 61393,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-minimum-0.12.png",
+    "Bytes": 61386,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-minimum-0.9.png",
+    "Bytes": 61363,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-minimum-0.16.png",
+    "Bytes": 61353,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-minimum-0.11.png",
+    "Bytes": 61322,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.14.html",
+    "Bytes": 61050,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-results-0.8.png",
+    "Bytes": 59328,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-results-0.6.png",
+    "Bytes": 59196,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-results-0.7.png",
+    "Bytes": 59173,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-results-0.18.0.png",
+    "Bytes": 59172,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.12.html",
+    "Bytes": 58742,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\benchmark-build-0.6-final.jsonl",
+    "Bytes": 58440,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\performance-probe-build-0.8.jsonl",
+    "Bytes": 58269,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\benchmark-build-0.7-final.jsonl",
+    "Bytes": 58201,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\benchmark-build-0.6.jsonl",
+    "Bytes": 57997,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\benchmark-build-0.7.jsonl",
+    "Bytes": 57990,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-light-0.18.0.png",
+    "Bytes": 57738,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.16.html",
+    "Bytes": 57180,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.11.html",
+    "Bytes": 57071,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.3.png",
+    "Bytes": 56952,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e.png",
+    "Bytes": 56899,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.15.html",
+    "Bytes": 56676,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-experience-tests.json",
+    "Bytes": 56431,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.17.png",
+    "Bytes": 54366,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\disk-selection-single.json",
+    "Bytes": 53936,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\tests-0.17-final.json",
+    "Bytes": 53877,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-results-0.4.png",
+    "Bytes": 53836,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.16.png",
+    "Bytes": 53755,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-minimum-0.5.png",
+    "Bytes": 51306,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\qq-attachments-release-ui",
+    "Bytes": 50900,
+    "Files": 3
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\qqnt-release-ui",
+    "Bytes": 50900,
+    "Files": 3
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\qq-classic-release-ui",
+    "Bytes": 50900,
+    "Files": 3
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\compatibility-release-ui",
+    "Bytes": 50900,
+    "Files": 3
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-light-0.10.png",
+    "Bytes": 50168,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-light-0.9.png",
+    "Bytes": 49918,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-baseline.json",
+    "Bytes": 48830,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-frontend.log",
+    "Bytes": 47930,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-minimum-0.6.png",
+    "Bytes": 46899,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-minimum-0.7.png",
+    "Bytes": 46866,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\compatibility-frontend-tests.log",
+    "Bytes": 46313,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\tests-0.17-third.json",
+    "Bytes": 46007,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-app-repairs.log",
+    "Bytes": 45752,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-minimum-0.4.png",
+    "Bytes": 44731,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-minimum-0.5.png",
+    "Bytes": 44709,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-minimum-0.6.png",
+    "Bytes": 44709,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-minimum-0.7.png",
+    "Bytes": 44682,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-minimum-0.8.png",
+    "Bytes": 44616,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-minimum-0.8.png",
+    "Bytes": 44603,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-minimum-0.3.png",
+    "Bytes": 44581,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-minimum-0.18.0.png",
+    "Bytes": 43846,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-minimum-0.16.png",
+    "Bytes": 43542,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-tests-final.log",
+    "Bytes": 42545,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-minimum-0.15.png",
+    "Bytes": 41903,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\compatibility-rust-final.log",
+    "Bytes": 41756,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-minimum-0.18.0.png",
+    "Bytes": 41725,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-minimum-0.11.png",
+    "Bytes": 41333,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-minimum-0.14.png",
+    "Bytes": 41301,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-minimum-0.12.png",
+    "Bytes": 41301,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-minimum-0.13.png",
+    "Bytes": 41301,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-rust-tests.log",
+    "Bytes": 40164,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-release-ui",
+    "Bytes": 39518,
+    "Files": 3
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-source.diff",
+    "Bytes": 39484,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-rust-final.log",
+    "Bytes": 39176,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-frontend-initial.log",
+    "Bytes": 38215,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-minimum-0.10.png",
+    "Bytes": 37871,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\compatibility-rust-retry.log",
+    "Bytes": 37464,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-minimum-0.9.png",
+    "Bytes": 37449,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-app-debug.log",
+    "Bytes": 32564,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-synthetic",
+    "Bytes": 32377,
+    "Files": 2
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-compiled-catalog.json",
+    "Bytes": 30341,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\browser-validation-0.7",
+    "Bytes": 29336,
+    "Files": 2
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.6.html",
+    "Bytes": 27094,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-frontend-final.log",
+    "Bytes": 26865,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\source-manifest-0.9.json",
+    "Bytes": 26514,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\.git",
+    "Bytes": 26287,
+    "Files": 18
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\source-manifest-0.8.json",
+    "Bytes": 24964,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\CHANGELOG.md",
+    "Bytes": 24635,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-frontend-tests.log",
+    "Bytes": 24403,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\source-manifest-0.7.json",
+    "Bytes": 23924,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\source-manifest-0.6.json",
+    "Bytes": 23416,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\disk-selection-ui.json",
+    "Bytes": 23308,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\update_docs_02.py",
+    "Bytes": 23155,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\app-tests-0.17.log",
+    "Bytes": 21999,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\baseline-0.4-manifest.json",
+    "Bytes": 21315,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\baseline-0.4-fixed-manifest.json",
+    "Bytes": 21315,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\software-rust-tests.log",
+    "Bytes": 20447,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-frontend-tests.log",
+    "Bytes": 20411,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-final-result-tests.json",
+    "Bytes": 20334,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-final-ui-tests.json",
+    "Bytes": 20325,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.4.html",
+    "Bytes": 20320,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\scroll-tree.json",
+    "Bytes": 20253,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.3.html",
+    "Bytes": 19885,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\browser-validation-0.9",
+    "Bytes": 19500,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\browser-validation-0.8",
+    "Bytes": 19496,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-rust-final.log",
+    "Bytes": 19352,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-rust.log",
+    "Bytes": 19250,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-experience-rust-final.log",
+    "Bytes": 18845,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.18.0.json",
+    "Bytes": 18713,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\README.md",
+    "Bytes": 18620,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-rust.log",
+    "Bytes": 18575,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\browser-validation-0.6",
+    "Bytes": 18556,
+    "Files": 3
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-experience-rust.log",
+    "Bytes": 18173,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-handoff-rust.log",
+    "Bytes": 17987,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\disk-selection-rust.log",
+    "Bytes": 17966,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-receipt-diagnostic.log",
+    "Bytes": 17963,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-rust-regression.log",
+    "Bytes": 17791,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-rust-tests-final.log",
+    "Bytes": 17790,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-local-evidence",
+    "Bytes": 17386,
+    "Files": 2
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-rust-final.log",
+    "Bytes": 16786,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-speed-baseline-20260930-163321.json",
+    "Bytes": 16556,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-cleanup-source-changes.json",
+    "Bytes": 16206,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-rust-final.log",
+    "Bytes": 15552,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-rust-tests-corrected.log",
+    "Bytes": 15552,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-rust-final.log",
+    "Bytes": 14858,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-ui-flow-tests.json",
+    "Bytes": 14810,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\rust-0.17-final.log",
+    "Bytes": 14038,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-rust-tests.log",
+    "Bytes": 14038,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\rust-0.17.log",
+    "Bytes": 13945,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.8.html",
+    "Bytes": 13081,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\e2e-0.8-control-sync-failure.html",
+    "Bytes": 13081,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-final-cancel-tests.json",
+    "Bytes": 13066,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\write-verification-0.8.mjs",
+    "Bytes": 13018,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\home-disk-layout-before-20261001.zip",
+    "Bytes": 12909,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-rust-attempt2.log",
+    "Bytes": 12799,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-app-tests.log",
+    "Bytes": 12613,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\compatibility-tools",
+    "Bytes": 12575,
+    "Files": 4
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\rust-tests-0.9-before-serial-retry.log",
+    "Bytes": 12290,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-components.log",
+    "Bytes": 11915,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-ui-flow-tests-2.json",
+    "Bytes": 11845,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\compatibility-local-probe.json",
+    "Bytes": 11786,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\disk-selection-diagnostic.json",
+    "Bytes": 11327,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-frontend-final.log",
+    "Bytes": 11302,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.17.json",
+    "Bytes": 11163,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\sculpture-release-check.log",
+    "Bytes": 10966,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-local-evidence",
+    "Bytes": 10799,
+    "Files": 2
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-local-evidence-final",
+    "Bytes": 10792,
+    "Files": 2
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-smoke-0.17.json",
+    "Bytes": 10661,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-ui-final.log",
+    "Bytes": 10613,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.16.json",
+    "Bytes": 10302,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.15.json",
+    "Bytes": 10299,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\compatibility-remote-probes.json",
+    "Bytes": 10030,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-rust.log",
+    "Bytes": 10009,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\rust-tests-0.9.log",
+    "Bytes": 9976,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\ui-v2-rust-baseline.log",
+    "Bytes": 9905,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\ssh-authorize",
+    "Bytes": 9714,
+    "Files": 4
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.14.json",
+    "Bytes": 9373,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-failure-0.5.html",
+    "Bytes": 9277,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\expand-domestic-recognition.mjs",
+    "Bytes": 9138,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\rust-tests-0.8.log",
+    "Bytes": 9113,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\source-manifest-0.5.json",
+    "Bytes": 8911,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\performance-test-0.8-initial.log",
+    "Bytes": 8802,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\performance-test-0.8.log",
+    "Bytes": 8753,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\rust-0.8-first.log",
+    "Bytes": 8689,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\compatibility-rust-tests.log",
+    "Bytes": 8663,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-rust-tests.log",
+    "Bytes": 8658,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\core-windows-tests-0.9.log",
+    "Bytes": 8588,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\graded-cleanup-20261002",
+    "Bytes": 8307,
+    "Files": 9
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\rust-tests-0.7.log",
+    "Bytes": 8162,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-rust-tests-final.log",
+    "Bytes": 8155,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\baseline-rust-for-0.8.log",
+    "Bytes": 8091,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\finalize-evidence-0.8.mjs",
+    "Bytes": 7935,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-delivery.json",
+    "Bytes": 7665,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-core-final.log",
+    "Bytes": 7605,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-source-changes.json",
+    "Bytes": 7578,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\core-final-0.17.log",
+    "Bytes": 7548,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\update_ui.py",
+    "Bytes": 7546,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\store-data-msix-20261001-handshake",
+    "Bytes": 7529,
+    "Files": 9
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-app.log",
+    "Bytes": 7515,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-purpose-tests.log",
+    "Bytes": 7473,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-smoke-0.16.json",
+    "Bytes": 7454,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\performance-test-0.7.log",
+    "Bytes": 7392,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.13.json",
+    "Bytes": 7339,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.12.json",
+    "Bytes": 7315,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\store-data-msix-20261001",
+    "Bytes": 7309,
+    "Files": 9
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\tests-rust-0.6.log",
+    "Bytes": 7247,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-smoke-0.15.json",
+    "Bytes": 7211,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-release.log",
+    "Bytes": 7113,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-release-check.log",
+    "Bytes": 7113,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-smoke-0.14.json",
+    "Bytes": 6900,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-smoke-0.12.json",
+    "Bytes": 6886,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-smoke-0.13.json",
+    "Bytes": 6885,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\finalize-evidence-0.7.mjs",
+    "Bytes": 6744,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-app-home-test.log",
+    "Bytes": 6534,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stackback-tree.json",
+    "Bytes": 6430,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-ipc-queries-0.16.json",
+    "Bytes": 6204,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-ipc-queries-0.11.json",
+    "Bytes": 6201,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-smoke-0.11.json",
+    "Bytes": 6192,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-smoke-0.10.json",
+    "Bytes": 6190,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-ipc-queries-0.13.json",
+    "Bytes": 6181,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-ipc-queries-0.9.json",
+    "Bytes": 6173,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-ipc-queries-0.12.json",
+    "Bytes": 6173,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-ipc-queries-0.14.json",
+    "Bytes": 6169,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-ipc-queries-0.10.json",
+    "Bytes": 6162,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-ipc-queries-0.18.0.json",
+    "Bytes": 6156,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-ipc-queries-0.8.json",
+    "Bytes": 6155,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-ipc-queries-0.15.json",
+    "Bytes": 6153,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-last-failures.log",
+    "Bytes": 6022,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-mixed-note.log",
+    "Bytes": 5998,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-cancel-recheck.log",
+    "Bytes": 5998,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-finish-view.log",
+    "Bytes": 5998,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\prettier-package.json",
+    "Bytes": 5872,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\performance-summary-0.7.log",
+    "Bytes": 5805,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stackback-commit.json",
+    "Bytes": 5712,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-template",
+    "Bytes": 5645,
+    "Files": 2
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-template-final",
+    "Bytes": 5645,
+    "Files": 2
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-final-windows-tests.log",
+    "Bytes": 5592,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-prepare-stability.log",
+    "Bytes": 5384,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\ssh-network-diagnostic",
+    "Bytes": 5378,
+    "Files": 3
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-targeted.log",
+    "Bytes": 5368,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\release-manifest-0.6.json",
+    "Bytes": 5173,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-confirm-test.log",
+    "Bytes": 4898,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-smoke-0.9.json",
+    "Bytes": 4834,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\DustAway-SSH-Authorize.zip",
+    "Bytes": 4704,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\ssh-connection-info",
+    "Bytes": 4671,
+    "Files": 3
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\SECURITY.md",
+    "Bytes": 4146,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\nsis-release.json",
+    "Bytes": 3962,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-core-final.log",
+    "Bytes": 3764,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\package.json",
+    "Bytes": 3679,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\cleanup-target-once.ps1",
+    "Bytes": 3664,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-core.log",
+    "Bytes": 3540,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-ui-capture.mjs",
+    "Bytes": 3233,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-core-tests.log",
+    "Bytes": 3204,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-prettier.log",
+    "Bytes": 3166,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.9.json",
+    "Bytes": 3157,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.10.json",
+    "Bytes": 3155,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-source-changes.json",
+    "Bytes": 3130,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.11.json",
+    "Bytes": 3129,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\compatibility-frontend-decision-final.log",
+    "Bytes": 3051,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-format-release.log",
+    "Bytes": 3034,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-experience-format.log",
+    "Bytes": 3029,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-local-evidence-check.log",
+    "Bytes": 3024,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-format-final.log",
+    "Bytes": 3014,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\e2e-0.17.log",
+    "Bytes": 3007,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\startup-stack.cs",
+    "Bytes": 2982,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.8.json",
+    "Bytes": 2950,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\build-frontend-0.8-first.log",
+    "Bytes": 2933,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\scroll-package.json",
+    "Bytes": 2908,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-format.log",
+    "Bytes": 2871,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-performance.json",
+    "Bytes": 2850,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-smoke-0.8.json",
+    "Bytes": 2844,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.7.json",
+    "Bytes": 2819,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.6.json",
+    "Bytes": 2781,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.6-before-prompt-dedup.json",
+    "Bytes": 2776,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\CONTRIBUTING.md",
+    "Bytes": 2758,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-smoke-0.6.json",
+    "Bytes": 2713,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-smoke-0.7.json",
+    "Bytes": 2713,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-format.log",
+    "Bytes": 2702,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\DustAway-SSH-Network-Diagnostic.zip",
+    "Bytes": 2697,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\centralize-copy.mjs",
+    "Bytes": 2649,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\uv-cache-fix-tests.log",
+    "Bytes": 2645,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.5.json",
+    "Bytes": 2612,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\DustAway-SSH-Connection-Info.zip",
+    "Bytes": 2528,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\release-manifest-0.8.json",
+    "Bytes": 2483,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-optimized-release.log",
+    "Bytes": 2423,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-performance-0.18.0.json",
+    "Bytes": 2383,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-performance-0.16.json",
+    "Bytes": 2379,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-performance-0.15.json",
+    "Bytes": 2370,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\release-manifest-0.7.json",
+    "Bytes": 2363,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-clippy-3.log",
+    "Bytes": 2310,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\smoke-release.mjs",
+    "Bytes": 2284,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-frontend-initial.log",
+    "Bytes": 2271,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\source-changes-0.9.json",
+    "Bytes": 2240,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\simple-home-tests.log",
+    "Bytes": 2057,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-software-recheck.log",
+    "Bytes": 2016,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\relax-recognition-versions.mjs",
+    "Bytes": 2005,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\release-manifest-0.5.json",
+    "Bytes": 1965,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\compatibility-tool-tests.log",
+    "Bytes": 1960,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-node-tests.log",
+    "Bytes": 1956,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\compatibility-frontend-retry.log",
+    "Bytes": 1928,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\run-final-0.8.ps1",
+    "Bytes": 1911,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-local-final.log",
+    "Bytes": 1896,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-legacy-v2.log",
+    "Bytes": 1896,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\application-support-0.9.json",
+    "Bytes": 1885,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\scroll-license-blob.json",
+    "Bytes": 1842,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\simple-home-portable.log",
+    "Bytes": 1831,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-baseline-debug.log",
+    "Bytes": 1815,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-evidence.log",
+    "Bytes": 1804,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-tools-final.log",
+    "Bytes": 1802,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-tools-final-2.log",
+    "Bytes": 1801,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\disk-selection-evidence.log",
+    "Bytes": 1799,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-optimized-debug-final.log",
+    "Bytes": 1797,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-evidence-tests.log",
+    "Bytes": 1795,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-node-tests.log",
+    "Bytes": 1794,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-tools.log",
+    "Bytes": 1794,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-clippy-2.log",
+    "Bytes": 1793,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-build-0.9.log",
+    "Bytes": 1792,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-build-0.7.log",
+    "Bytes": 1764,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-build-0.8.log",
+    "Bytes": 1762,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\e2e-0.8-first-attempt.log",
+    "Bytes": 1755,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\application-scan-0.9.json",
+    "Bytes": 1754,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\format-write-final-0.8.log",
+    "Bytes": 1689,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\e2e-0.9-before-enabled-click.log",
+    "Bytes": 1634,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\build-portable-0.6.log",
+    "Bytes": 1624,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\Test-NormalStartup.ps1",
+    "Bytes": 1619,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-portable.log",
+    "Bytes": 1609,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\Cargo.toml",
+    "Bytes": 1606,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\windows-tests-0.7.log",
+    "Bytes": 1597,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-response.log",
+    "Bytes": 1596,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-performance-0.9.json",
+    "Bytes": 1535,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-performance-0.8.json",
+    "Bytes": 1533,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-performance-0.10.json",
+    "Bytes": 1531,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\sculpture-release-build.log",
+    "Bytes": 1528,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-performance-0.13.json",
+    "Bytes": 1527,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-performance-0.12.json",
+    "Bytes": 1527,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-performance-0.14.json",
+    "Bytes": 1525,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-performance-0.11.json",
+    "Bytes": 1512,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\compatibility-frontend-final.log",
+    "Bytes": 1485,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-local-identity-metadata.json",
+    "Bytes": 1484,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\simple-home-all-tests.log",
+    "Bytes": 1470,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\format-0.9.log",
+    "Bytes": 1444,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\compatibility-release-build.log",
+    "Bytes": 1439,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-performance-0.6-before-prompt-dedup.json",
+    "Bytes": 1415,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-performance-0.6.json",
+    "Bytes": 1414,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-performance-0.5.json",
+    "Bytes": 1414,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-performance-0.6-first.json",
+    "Bytes": 1410,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-performance-0.7.json",
+    "Bytes": 1410,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-release-build.log",
+    "Bytes": 1372,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\uncleared-uv-release-build.log",
+    "Bytes": 1371,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-clippy.log",
+    "Bytes": 1353,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-frontend.log",
+    "Bytes": 1350,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-0.17.log",
+    "Bytes": 1339,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-0.17.1.log",
+    "Bytes": 1338,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\format-write-0.8.log",
+    "Bytes": 1332,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\e2e-0.9-before-ready-wait.log",
+    "Bytes": 1332,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\uncleared-uv-frontend-tests.log",
+    "Bytes": 1327,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-evidence.log",
+    "Bytes": 1324,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\disk-selection-rust-locations.log",
+    "Bytes": 1306,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\rolldown-license.txt",
+    "Bytes": 1302,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\disk-selection-source-changes.json",
+    "Bytes": 1264,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\prettier-0.7.log",
+    "Bytes": 1244,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\format-frontend-0.9.log",
+    "Bytes": 1240,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-evidence-tests.log",
+    "Bytes": 1221,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\clippy-0.8-first-attempt.log",
+    "Bytes": 1221,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-evidence-tests-final.log",
+    "Bytes": 1219,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\check-0.8-initial.log",
+    "Bytes": 1218,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-build.log",
+    "Bytes": 1214,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-build-web.log",
+    "Bytes": 1205,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-diagnostic-check.ps1",
+    "Bytes": 1168,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-core-first.log",
+    "Bytes": 1167,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-rust-tests.log",
+    "Bytes": 1156,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\window-offset-session.json",
+    "Bytes": 1152,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\resource-snapshot-0.9.json",
+    "Bytes": 1143,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\resource-snapshot-0.14.json",
+    "Bytes": 1142,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\resource-snapshot-0.5.json",
+    "Bytes": 1140,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\resource-snapshot-0.18.0.json",
+    "Bytes": 1140,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\resource-snapshot-0.17.json",
+    "Bytes": 1139,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\resource-snapshot-0.12.json",
+    "Bytes": 1136,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\resource-snapshot-0.13.json",
+    "Bytes": 1135,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\resource-snapshot.json",
+    "Bytes": 1134,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\resource-snapshot-0.6.json",
+    "Bytes": 1134,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\resource-snapshot-0.15.json",
+    "Bytes": 1133,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\resource-snapshot-0.7.json",
+    "Bytes": 1129,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\resource-snapshot-0.10.json",
+    "Bytes": 1129,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\resource-snapshot-0.8.json",
+    "Bytes": 1128,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\resource-snapshot-0.11.json",
+    "Bytes": 1127,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\resource-snapshot-0.4.json",
+    "Bytes": 1127,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\resource-snapshot-0.16.json",
+    "Bytes": 1126,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\resource-snapshot-0.3.json",
+    "Bytes": 1125,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\application-identities-0.9.json",
+    "Bytes": 1117,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-legacy-evidence.log",
+    "Bytes": 1108,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-legacy-v1.log",
+    "Bytes": 1108,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-failed-fixture-receipt.json",
+    "Bytes": 1080,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\LICENSE",
+    "Bytes": 1078,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\.github",
+    "Bytes": 1077,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-optimized-debug.log",
+    "Bytes": 1077,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-build-final.log",
+    "Bytes": 1064,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-build-final.log",
+    "Bytes": 1062,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-build-final.log",
+    "Bytes": 1062,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-parent-boundary-attempt1.log",
+    "Bytes": 1058,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-parent-boundary.log",
+    "Bytes": 1058,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-evidence-tests.log",
+    "Bytes": 1044,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-changed-files.txt",
+    "Bytes": 1009,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stackback-package.json",
+    "Bytes": 1006,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-dispatch-delete.ps1",
+    "Bytes": 1001,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\prettier-0.17.log",
+    "Bytes": 946,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-frontend-build.log",
+    "Bytes": 946,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\sculpture-build.log",
+    "Bytes": 940,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-build-web-final.log",
+    "Bytes": 938,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-smoke-0.5.json",
+    "Bytes": 931,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-package-status.ps1",
+    "Bytes": 930,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-package-check.json",
+    "Bytes": 928,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\delivery-verification-0.9.json",
+    "Bytes": 925,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\build-frontend-0.7.log",
+    "Bytes": 924,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\frontend-build-0.9.log",
+    "Bytes": 923,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\build-frontend-0.9.log",
+    "Bytes": 923,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\build-frontend-0.6.log",
+    "Bytes": 923,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\delivery-0.17.json",
+    "Bytes": 915,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\compatibility-frontend-build.log",
+    "Bytes": 891,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-build.log",
+    "Bytes": 891,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\uncleared-uv-build.log",
+    "Bytes": 890,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-build.log",
+    "Bytes": 890,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-build-final.log",
+    "Bytes": 890,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-standard-frontend-build.log",
+    "Bytes": 888,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-handoff-build.log",
+    "Bytes": 886,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-reopen.ps1",
+    "Bytes": 873,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\build-frontend-0.8.log",
+    "Bytes": 864,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\vite.config.ts",
+    "Bytes": 833,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\delivery-0.17.1.json",
+    "Bytes": 828,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-regression-0.8.log",
+    "Bytes": 819,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-smoke-0.4.json",
+    "Bytes": 817,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-smoke-0.3.json",
+    "Bytes": 817,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-probe.ps1",
+    "Bytes": 811,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-acceptance.log",
+    "Bytes": 810,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.4.json",
+    "Bytes": 809,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-clippy.log",
+    "Bytes": 800,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-dispatch-running.ps1",
+    "Bytes": 775,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-application-visual.log",
+    "Bytes": 771,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-dispatch-package.ps1",
+    "Bytes": 769,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-dispatch-probe.ps1",
+    "Bytes": 760,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\startup-normal-results.json",
+    "Bytes": 751,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-evidence.log",
+    "Bytes": 750,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-remote-probe.ps1",
+    "Bytes": 729,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-smoke.json",
+    "Bytes": 721,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\simple-home-format.log",
+    "Bytes": 717,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-delivery.json",
+    "Bytes": 706,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-optimization-probe-0.8.json",
+    "Bytes": 673,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-statement-cache-probe-0.8.json",
+    "Bytes": 673,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-inspect-failure.ps1",
+    "Bytes": 664,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-remote-setup.ps1",
+    "Bytes": 653,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-large-preparation.log",
+    "Bytes": 647,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-desktop-e2e.log",
+    "Bytes": 636,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\browser-tests-first-attempt-0.7.log",
+    "Bytes": 623,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-cleanup-verification-summary.json",
+    "Bytes": 586,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-visual.log",
+    "Bytes": 568,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-application-visual.log",
+    "Bytes": 554,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-preview-stress.log",
+    "Bytes": 549,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-recognition.log",
+    "Bytes": 546,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\release-manifest-0.3.json",
+    "Bytes": 530,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\release-manifest-0.4.json",
+    "Bytes": 530,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\release-manifest-0.2.json",
+    "Bytes": 530,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-build.log",
+    "Bytes": 526,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-build.log",
+    "Bytes": 525,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-status.ps1",
+    "Bytes": 504,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-layout-diagnostic-0.6.log",
+    "Bytes": 502,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-desktop-attempt1.log",
+    "Bytes": 502,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-desktop.log",
+    "Bytes": 502,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-format.log",
+    "Bytes": 495,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\release-manifest.json",
+    "Bytes": 489,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\startup-recovery.json",
+    "Bytes": 477,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\uv-inspection-before.json",
+    "Bytes": 471,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\uv-inspection-after.json",
+    "Bytes": 457,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-final-build.log",
+    "Bytes": 454,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-cancel-build.log",
+    "Bytes": 454,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-protection-build.log",
+    "Bytes": 454,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-experience-build.log",
+    "Bytes": 454,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\disk-selection-build.log",
+    "Bytes": 454,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.3.json",
+    "Bytes": 443,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\simple-home-build.log",
+    "Bytes": 435,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\build-0.17-final.log",
+    "Bytes": 435,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-build.log",
+    "Bytes": 434,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\results-relevance-build.log",
+    "Bytes": 434,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\e2e-0.8-control-sync-failure.log",
+    "Bytes": 426,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\tsconfig.json",
+    "Bytes": 426,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\public",
+    "Bytes": 422,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-scan-progress-0.5.json",
+    "Bytes": 415,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-clippy.log",
+    "Bytes": 404,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-clippy.log",
+    "Bytes": 404,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-package-setup.ps1",
+    "Bytes": 402,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\baseline-0.5-validation.json",
+    "Bytes": 395,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-smoke-0.17.log",
+    "Bytes": 392,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-smoke-test-0.8.log",
+    "Bytes": 392,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-smoke-0.9.log",
+    "Bytes": 392,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-smoke-test-0.7.log",
+    "Bytes": 392,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-smoke-0.6.log",
+    "Bytes": 391,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-driver-unit.log",
+    "Bytes": 391,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-confirmation-final.log",
+    "Bytes": 384,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-layout-check.ps1",
+    "Bytes": 366,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-desktop-build.log",
+    "Bytes": 360,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\disk-selection-clippy.log",
+    "Bytes": 349,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\clippy-0.17.log",
+    "Bytes": 349,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-clippy.log",
+    "Bytes": 349,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-experience-clippy.log",
+    "Bytes": 349,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-clippy.log",
+    "Bytes": 349,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\compatibility-clippy.log",
+    "Bytes": 349,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-handoff-clippy.log",
+    "Bytes": 349,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-final-reviewed-clippy.log",
+    "Bytes": 348,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-clippy-final.log",
+    "Bytes": 348,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\clippy-0.9.log",
+    "Bytes": 345,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\clippy-0.8.log",
+    "Bytes": 345,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\clippy-0.6.log",
+    "Bytes": 345,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\uncleared-desktop-check.log",
+    "Bytes": 343,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\format-0.6-tests.log",
+    "Bytes": 337,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-clippy-final.log",
+    "Bytes": 332,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-desktop-build.log",
+    "Bytes": 332,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\e2e-0.9.log",
+    "Bytes": 329,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-test-0.7.log",
+    "Bytes": 329,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\check-system-0.6.log",
+    "Bytes": 329,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-e2e-0.6.log",
+    "Bytes": 329,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\e2e-0.8.log",
+    "Bytes": 329,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\compatibility-package.json",
+    "Bytes": 323,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\uncleared-uv-clippy.log",
+    "Bytes": 322,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\sculpture-e2e.log",
+    "Bytes": 320,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\e2e-0.17-final.log",
+    "Bytes": 320,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-e2e.log",
+    "Bytes": 320,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-desktop-e2e-full.log",
+    "Bytes": 320,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-e2e.log",
+    "Bytes": 320,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-e2e.log",
+    "Bytes": 320,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-desktop-final.log",
+    "Bytes": 320,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\browser-build-0.6.log",
+    "Bytes": 308,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-frontend-tests-final.log",
+    "Bytes": 306,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\index.html",
+    "Bytes": 306,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-frontend.log",
+    "Bytes": 304,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\compatibility-package-remote.json",
+    "Bytes": 301,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\sculpture-app-tests.log",
+    "Bytes": 300,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\frontend-tests-0.8.log",
+    "Bytes": 296,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\frontend-tests-0.7.log",
+    "Bytes": 296,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\baseline-frontend-for-0.8.log",
+    "Bytes": 296,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\tests-frontend-0.6.log",
+    "Bytes": 295,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\frontend-0.8-first.log",
+    "Bytes": 295,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\frontend-0.8-initial.log",
+    "Bytes": 295,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-tests-complete.log",
+    "Bytes": 287,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-frontend.log",
+    "Bytes": 287,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-frontend-final.log",
+    "Bytes": 286,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-frontend-final.log",
+    "Bytes": 286,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-frontend-confirmed.log",
+    "Bytes": 286,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-driver-tests.log",
+    "Bytes": 285,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-final-clippy.log",
+    "Bytes": 281,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-clippy.log",
+    "Bytes": 281,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\frontend-tests-0.9.log",
+    "Bytes": 280,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\simple-home-debug.log",
+    "Bytes": 278,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-desktop-build.log",
+    "Bytes": 277,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-native-build.log",
+    "Bytes": 277,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\disk-selection-fixture-build.log",
+    "Bytes": 277,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-clippy-final.log",
+    "Bytes": 277,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\uncleared-uv-fixture-build.log",
+    "Bytes": 277,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-desktop-build.log",
+    "Bytes": 277,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-final-reviewed-build.log",
+    "Bytes": 277,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\application-support-0.9.log",
+    "Bytes": 276,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\experimental-check-0.9.log",
+    "Bytes": 274,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\check-system-0.8.log",
+    "Bytes": 273,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\simple-home-package-check.json",
+    "Bytes": 271,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-desktop-final-light-760.log",
+    "Bytes": 256,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-manual-desktop.log",
+    "Bytes": 256,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-desktop-final-dark-760.log",
+    "Bytes": 256,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-standard-desktop.log",
+    "Bytes": 256,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-desktop-light-1100.log",
+    "Bytes": 256,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-desktop-dark-760.log",
+    "Bytes": 256,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-desktop-dark-1100.log",
+    "Bytes": 256,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-manual-desktop.log",
+    "Bytes": 256,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-desktop-final-light-1100.log",
+    "Bytes": 256,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-desktop-light-760.log",
+    "Bytes": 255,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-standard-reviewed.log",
+    "Bytes": 255,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-desktop-final-dark-1100.log",
+    "Bytes": 255,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-standard-final.log",
+    "Bytes": 255,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-last-format.log",
+    "Bytes": 254,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-new-tests.log",
+    "Bytes": 243,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\query-performance-0.8-initial.log",
+    "Bytes": 236,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\startup-stuck.json",
+    "Bytes": 236,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-home-regression.log",
+    "Bytes": 235,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-recovery-notice.log",
+    "Bytes": 232,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\focus-progress-0.17.log",
+    "Bytes": 231,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-frontend-final.log",
+    "Bytes": 227,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-frontend-final.log",
+    "Bytes": 226,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-guidance-final.log",
+    "Bytes": 223,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-cart-final.log",
+    "Bytes": 222,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\results-relevance-tests.log",
+    "Bytes": 222,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\uncleared-uv-frontend-final.log",
+    "Bytes": 222,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-final-ui-tests.log",
+    "Bytes": 221,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\ui-final-0.17.log",
+    "Bytes": 221,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-app-retry.log",
+    "Bytes": 220,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-copy-tests.log",
+    "Bytes": 219,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\simple-home-analysis-retry.log",
+    "Bytes": 219,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\guidance-tests-0.9.log",
+    "Bytes": 218,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-focused-tests.log",
+    "Bytes": 217,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-targeted.log",
+    "Bytes": 217,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-desktop-run-final.log",
+    "Bytes": 216,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-desktop-run.log",
+    "Bytes": 216,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\compatibility-probe-build.log",
+    "Bytes": 216,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\results-relevance-final-tests.log",
+    "Bytes": 215,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-frontend-final.log",
+    "Bytes": 215,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-outcome-tests.log",
+    "Bytes": 215,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-format-final.log",
+    "Bytes": 211,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-final-standard-build.log",
+    "Bytes": 209,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\final-consistency-0.8.log",
+    "Bytes": 208,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\check-system-0.7.log",
+    "Bytes": 207,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\clippy-0.7.log",
+    "Bytes": 207,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\baseline-0.7-validation-for-0.8.json",
+    "Bytes": 206,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\baseline-0.6-validation-for-0.7.json",
+    "Bytes": 206,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\application-scan-0.9.log",
+    "Bytes": 205,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-extension-baseline.json",
+    "Bytes": 202,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\compatibility-probes.json",
+    "Bytes": 199,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-before-20261001-005530.zip.json",
+    "Bytes": 199,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-experience-baseline-20260930-133159.zip.json",
+    "Bytes": 197,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\autonomous-cleanup-baseline-20260930-105930.zip.json",
+    "Bytes": 197,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-cleanup-baseline-20260930-150625.json",
+    "Bytes": 192,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\disk-selection-baseline-20260930-123218.zip.json",
+    "Bytes": 191,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-desktop-build-final.log",
+    "Bytes": 190,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-desktop-build.log",
+    "Bytes": 190,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\final-consistency-0.7.log",
+    "Bytes": 184,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-notices.log",
+    "Bytes": 183,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\notices-0.17.log",
+    "Bytes": 183,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-notices.log",
+    "Bytes": 183,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\notices-0.9.log",
+    "Bytes": 182,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\analysis-optimization-probe-0.8.log",
+    "Bytes": 178,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-package.json",
+    "Bytes": 173,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-catalog-check.log",
+    "Bytes": 172,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-projection-check.log",
+    "Bytes": 172,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-applications.log",
+    "Bytes": 172,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-applications.log",
+    "Bytes": 172,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-catalog-generation.log",
+    "Bytes": 165,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\query-performance-0.8.log",
+    "Bytes": 162,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-file-metadata-0.8.json",
+    "Bytes": 160,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\portable-file-metadata-0.7.json",
+    "Bytes": 160,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\release-binary-0.5.json",
+    "Bytes": 160,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-package-verification.json",
+    "Bytes": 160,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-baseline.json",
+    "Bytes": 157,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-frontend-first.log",
+    "Bytes": 156,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-probe-build.log",
+    "Bytes": 148,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-previous-release-check.json",
+    "Bytes": 146,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-format.log",
+    "Bytes": 142,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-recognition.log",
+    "Bytes": 142,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-recognition.log",
+    "Bytes": 142,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-recognition-check.log",
+    "Bytes": 142,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\clippy-core-final-0.17.log",
+    "Bytes": 142,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-recognition.log",
+    "Bytes": 142,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-typecheck.log",
+    "Bytes": 140,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-synthetic-final.log",
+    "Bytes": 139,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\sculpture-native-build.log",
+    "Bytes": 135,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-clippy.log",
+    "Bytes": 135,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-desktop-clippy.log",
+    "Bytes": 135,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-debug.log",
+    "Bytes": 135,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-desktop-build-final.log",
+    "Bytes": 135,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-standard-build.log",
+    "Bytes": 135,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-build-desktop-final.log",
+    "Bytes": 135,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-desktop-build.log",
+    "Bytes": 135,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-desktop-build-final.log",
+    "Bytes": 135,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-handoff-desktop-build.log",
+    "Bytes": 135,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-build-desktop.log",
+    "Bytes": 135,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\disk-selection-desktop-build.log",
+    "Bytes": 135,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desktop-build-0.17.log",
+    "Bytes": 135,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\build-e2e-0.8.log",
+    "Bytes": 134,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\.gitignore",
+    "Bytes": 134,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\build-debug-0.6.log",
+    "Bytes": 134,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\ui-v2-clippy.log",
+    "Bytes": 134,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\build-desktop-debug-0.7.log",
+    "Bytes": 134,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-experience-desktop-build.log",
+    "Bytes": 134,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\dependency-lock-check-0.8.json",
+    "Bytes": 133,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-protection-format.log",
+    "Bytes": 132,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\rust-toolchain.toml",
+    "Bytes": 123,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-ui-check.log",
+    "Bytes": 121,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-home-disks.log",
+    "Bytes": 120,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-home-disks-final.log",
+    "Bytes": 120,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-native-final-format.log",
+    "Bytes": 117,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\startup-round-2.stderr.log",
+    "Bytes": 115,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\startup-round-4.stderr.log",
+    "Bytes": 115,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\startup-round-1.stderr.log",
+    "Bytes": 115,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\startup-round-3.stderr.log",
+    "Bytes": 115,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-format-notice.log",
+    "Bytes": 113,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-format-followup.log",
+    "Bytes": 112,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\browser-tests-0.8.log",
+    "Bytes": 108,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\browser-tests-0.7.log",
+    "Bytes": 108,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\browser-regression-0.9.log",
+    "Bytes": 108,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-release-ui-check.log",
+    "Bytes": 107,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\compatibility-release-ui.log",
+    "Bytes": 107,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-purpose-format.log",
+    "Bytes": 104,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\uncleared-desktop-check-final.log",
+    "Bytes": 102,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-multiple-format.log",
+    "Bytes": 101,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\dependency-lock-check-0.7.json",
+    "Bytes": 101,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-synthetic.log",
+    "Bytes": 94,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-ui-capture.log",
+    "Bytes": 92,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-application-visual-final.log",
+    "Bytes": 91,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-visual-final.log",
+    "Bytes": 91,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-application-visual-2.log",
+    "Bytes": 91,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-confirm-format.log",
+    "Bytes": 89,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\.prettierignore",
+    "Bytes": 87,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-test-binary.json",
+    "Bytes": 86,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\disk-test-format.log",
+    "Bytes": 86,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-experience-tests.log",
+    "Bytes": 84,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-disks-desktop.log",
+    "Bytes": 83,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-final-result-tests.log",
+    "Bytes": 83,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-script-format.log",
+    "Bytes": 83,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-final-cancel-tests.log",
+    "Bytes": 83,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-disks-desktop.log",
+    "Bytes": 83,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\disk-selection-native.log",
+    "Bytes": 83,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-verified-frontend.log",
+    "Bytes": 82,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-handoff-frontend.log",
+    "Bytes": 81,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-frontend-release.log",
+    "Bytes": 81,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-ui-flow-tests-2.log",
+    "Bytes": 80,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\packaging-check-0.7.log",
+    "Bytes": 80,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-frontend-final.log",
+    "Bytes": 79,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-final-ui-tests.log",
+    "Bytes": 79,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-frontend-tests.log",
+    "Bytes": 79,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-script-format.log",
+    "Bytes": 79,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-ui-flow-tests.log",
+    "Bytes": 78,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\disk-selection-ui.log",
+    "Bytes": 75,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\format-guidance-0.9.log",
+    "Bytes": 75,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\tests-0.17-final.log",
+    "Bytes": 74,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\.prettierrc.json",
+    "Bytes": 73,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-cancel-format.log",
+    "Bytes": 72,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-format.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-format-final.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-prettier-check.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\format-0.6.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\prettier-check-0.8.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-format-final.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\sculpture-format-check.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-format-check.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-format.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\results-relevance-format.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-verified-frontend-format.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-final-script-format.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-format.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-format-final.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-prettier-final.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\simple-home-smoke-format-check.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-simplification-format.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\prettier-0.9.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\disk-selection-format.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\simple-home-format-check.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-format-check.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-format-check.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\prettier-0.17-final.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\prettier-check-0.7.log",
+    "Bytes": 68,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-handoff-format.log",
+    "Bytes": 67,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\sculpture-format.log",
+    "Bytes": 67,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\cleanup-preparation-catalog.log",
+    "Bytes": 64,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-catalog-check.log",
+    "Bytes": 64,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\format-final-0.9.log",
+    "Bytes": 64,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-catalog.log",
+    "Bytes": 63,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\attachments-catalog.log",
+    "Bytes": 63,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-home-format.log",
+    "Bytes": 60,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-final-format.log",
+    "Bytes": 58,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-script-format.log",
+    "Bytes": 57,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\document-links-0.7.json",
+    "Bytes": 50,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-layout-format.log",
+    "Bytes": 50,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\document-format-0.7.log",
+    "Bytes": 50,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\document-links-0.8.json",
+    "Bytes": 50,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-visual-format.log",
+    "Bytes": 44,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\format-0.6-last.log",
+    "Bytes": 41,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\disk-native-format.log",
+    "Bytes": 40,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-disk-script-format.log",
+    "Bytes": 40,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-layout-format.log",
+    "Bytes": 40,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\sculpture-home-smoke.log",
+    "Bytes": 39,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\simple-home-native.log",
+    "Bytes": 39,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-native-script-format.log",
+    "Bytes": 39,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-native.log",
+    "Bytes": 39,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-e2e-interrupted.log",
+    "Bytes": 38,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\format-e2e-0.9.log",
+    "Bytes": 35,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-recognition-check.log",
+    "Bytes": 34,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-release-format.log",
+    "Bytes": 31,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-format-final.log",
+    "Bytes": 29,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\simple-home-smoke-format.log",
+    "Bytes": 29,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\selection-test-format.log",
+    "Bytes": 28,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\format-e2e-0.6.log",
+    "Bytes": 23,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\.cargo",
+    "Bytes": 17,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\startup-probe.pid",
+    "Bytes": 7,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-verified-rust-format.log",
+    "Bytes": 0,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\manual-handoff-rust-format.log",
+    "Bytes": 0,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\netdisk-rust-format.log",
+    "Bytes": 0,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\rust-format-0.17.log",
+    "Bytes": 0,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\rust-format-0.9.log",
+    "Bytes": 0,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-rustfmt.log",
+    "Bytes": 0,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\format-0.8.log",
+    "Bytes": 0,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\format-0.7.log",
+    "Bytes": 0,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\types-0.8-initial.log",
+    "Bytes": 0,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\desk-rust-format.log",
+    "Bytes": 0,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\office-extension-rust-format.log",
+    "Bytes": 0,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\stability-typescript.log",
+    "Bytes": 0,
+    "Files": 1
+  },
+  {
+    "Path": "G:\\my_ai\\DustAway\\artifacts\\purpose-rustfmt.log",
+    "Bytes": 0,
+    "Files": 1
+  }
+]

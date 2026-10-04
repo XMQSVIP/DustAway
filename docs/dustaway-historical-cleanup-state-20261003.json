@@ -1,0 +1,9 @@
+{
+  "Status": "Stopped",
+  "BeforeFreeBytes": 5220331520,
+  "AfterFreeBytes": 7161335808,
+  "FreedBytes": 1941004288,
+  "Error": "Exception calling \"DeleteTree\" with \"1\" argument(s): \"Access to the path '\\\\?\\G:\\my_ai\\DustAway\\artifacts\\readonly-unlock-20261002\\research\\cherry-source\\.git\\objects\\pack\\pack-70f820372622ecdecfce22843694c2bc51e6c978.idx' is denied.\"",
+  "Finished": "2026-10-03T18:18:48.3486530+08:00",
+  "Log": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\dustaway-historical-cleanup-20261003.log"
+}

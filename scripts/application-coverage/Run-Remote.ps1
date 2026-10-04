@@ -1,0 +1,43 @@
+param([ValidateSet('matrix','real','uv','performance','fixture')][string]$Phase='matrix',[string]$TestRoot)
+$ErrorActionPreference='Stop'
+$taskRoot=[IO.Path]::GetFullPath($TestRoot)
+if($env:COMPUTERNAME-ne'DESKTOP-24NJTT6'-or$env:USERNAME-ne'MSN'-or[IO.File]::ReadAllText((Join-Path $taskRoot '.dustaway-application-coverage'))-ne'DustAway.ApplicationCoverage.20261002.V1'){throw 'Wrong environment'}
+$taskPrincipal=New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+if($taskPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)){throw 'Limited user required'}
+if(Get-Process -Name dustaway,tauri-driver,msedgedriver -ErrorAction SilentlyContinue){throw 'Another desktop test is active'}
+$taskExe=Join-Path $taskRoot 'dustaway.exe'
+$manifest=Get-Content -LiteralPath (Join-Path $taskRoot 'build.json') -Raw | ConvertFrom-Json
+if((Get-FileHash -LiteralPath $taskExe).Hash-ne$manifest.sha256){throw 'Wrong build'}
+$taskOutput=Join-Path $taskRoot ('evidence/'+$Phase)
+if(Test-Path -LiteralPath $taskOutput){throw 'Never overwrite evidence or replay a requested cleanup'}
+New-Item -ItemType Directory -Path $taskOutput | Out-Null
+$env:DUSTAWAY_TEST_OUTPUT=$taskOutput
+$env:DUSTAWAY_TEST_EXECUTABLE=$taskExe
+$env:PATH=(Join-Path $taskRoot 'bin')+';D:\nodejs;'+$env:PATH
+Set-Location -LiteralPath $taskRoot
+$taskExit=1
+try {
+ if($Phase-eq'matrix'){
+  $env:UV_CACHE_DIR=Join-Path $taskRoot 'uv-fixture-cache'
+  $taskProcess=Start-Process -FilePath 'D:\nodejs\node.exe' -ArgumentList 'scripts/application-coverage/desktop.mjs' -WorkingDirectory $taskRoot -WindowStyle Hidden -Wait -PassThru -RedirectStandardOutput (Join-Path $taskOutput 'stdout.log') -RedirectStandardError (Join-Path $taskOutput 'stderr.log')
+  if($taskProcess.ExitCode-ne 0){throw 'Matrix failed; inspect before any retry'}
+ } elseif($Phase-in@('real','uv')){
+  if(Test-Path Env:UV_CACHE_DIR){Remove-Item Env:UV_CACHE_DIR}
+  $taskScript=if($Phase-eq'real'){'real-files.ps1'}else{'uv-real-v3.ps1'}
+  & ([scriptblock]::Create([IO.File]::ReadAllText((Join-Path $taskRoot ('scripts/application-coverage/'+$taskScript))))) -TestRoot $taskRoot
+ } elseif($Phase-eq'fixture'){
+  foreach($filter in @('app_cache','application_cache')){
+   $taskProcess=Start-Process -FilePath (Join-Path $taskRoot 'bin/performance-current.exe') -ArgumentList @($filter,'--nocapture','--test-threads=1') -WindowStyle Hidden -Wait -PassThru -RedirectStandardOutput (Join-Path $taskOutput ($filter+'.log')) -RedirectStandardError (Join-Path $taskOutput ($filter+'-error.log'))
+   if($taskProcess.ExitCode-ne 0){throw ('Isolated application cache tests failed: '+$filter)}
+  }
+ } elseif($Phase-eq'performance'){
+  $env:DUSTAWAY_HOME_PERF_OUTPUT=Join-Path $taskOutput 'comparison'
+  $env:DUSTAWAY_HOME_PERF_BASELINE=Join-Path $taskRoot 'bin/performance-baseline.exe'
+  $env:DUSTAWAY_HOME_PERF_CURRENT=Join-Path $taskRoot 'bin/performance-current.exe'
+  $taskProcess=Start-Process -FilePath 'D:\nodejs\node.exe' -ArgumentList 'scripts/application-coverage/Compare-ScanPerformance.mjs' -WorkingDirectory $taskRoot -WindowStyle Hidden -Wait -PassThru -RedirectStandardOutput (Join-Path $taskOutput 'stdout.log') -RedirectStandardError (Join-Path $taskOutput 'stderr.log')
+  if($taskProcess.ExitCode-ne 0){throw 'Performance check failed'}
+ }
+ $taskExit=0
+} catch {$_ | Out-String | Set-Content -LiteralPath (Join-Path $taskOutput 'error.txt') -Encoding UTF8}
+@{phase=$Phase;exit_code=$taskExit;ordinary_user=$true;sha256=$manifest.sha256;finished=(Get-Date -Format o)} | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $taskOutput 'run.json') -Encoding UTF8
+exit $taskExit

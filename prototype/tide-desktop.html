@@ -1,0 +1,1046 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>拂尘 · 清理工作台</title>
+  <style>
+
+    :root {
+      --bg:#f7f8fa; --surface:#fff; --ink:#20232b; --muted:#666c79;
+      --blue:#263dbb; --blue-ink:#fff; --blue-soft:#e9edff; --apricot:#efb38b;
+      --line:#dce0e7; --soft:#edf0f5; --success:#38654c; --danger:#b13d4a;
+      --danger-soft:#faecee; --orange-ink:#825033; --shadow:0 22px 80px #18234120;
+      --ticket:#263dbb; --ticket-ink:#fff; --quick:120ms; --ease:cubic-bezier(.2,.8,.2,1);
+      font-family:"Microsoft YaHei UI","Microsoft YaHei","Segoe UI",sans-serif;
+      font-size:15px; color:var(--ink); background:var(--bg); color-scheme:light;
+    }
+    :root[data-theme="dark"] {
+      --bg:#151921; --surface:#202631; --ink:#f1f3f8; --muted:#b0b7c6;
+      --blue:#a3b4ff; --blue-ink:#172354; --blue-soft:#2c3554; --apricot:#efb38b;
+      --line:#3a4252; --soft:#292f3d; --success:#9bcdb2; --danger:#ffa4af;
+      --danger-soft:#442c36; --orange-ink:#efb38b; --shadow:0 22px 80px #0005;
+      --ticket:#2b43c3; --ticket-ink:#fff; color-scheme:dark;
+    }
+    * { box-sizing:border-box }
+    body { margin:0; overflow:hidden }
+    button,input,select { font:inherit }
+    button,a,input,select,summary { -webkit-tap-highlight-color:transparent }
+    button { cursor:pointer; color:inherit; border:0; background:none; touch-action:manipulation }
+    button:disabled { cursor:not-allowed; opacity:.45 }
+    button:not(:disabled):active { transform:translateY(1px) }
+    button,input,select,summary { transition:background var(--quick),color var(--quick),box-shadow var(--quick) }
+    :focus-visible { outline:3px solid var(--blue); outline-offset:4px }
+    [hidden] { display:none!important }
+    h1,h2,h3,p { margin:0 }
+    h1,h2 { font-weight:650; text-wrap:balance }
+    h1 { font-size:32px; letter-spacing:-1px; line-height:1.35 }
+    h2 { font-size:20px; line-height:1.4 }
+    h3 { font-size:16px; font-weight:650 }
+    p { line-height:1.7 }
+    small,.small { font-size:13px }
+    svg.icon { width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:1.65; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0 }
+    .muted { color:var(--muted) }
+    .number { font-variant-numeric:tabular-nums; font-family:"Segoe UI Variable Display","Segoe UI","Microsoft YaHei UI",sans-serif }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0 }
+    .skip { position:fixed; left:24px; top:-80px; z-index:30; padding:12px; background:var(--surface); border:2px solid var(--blue); color:var(--ink) }
+    .skip:focus { top:12px }
+    .button { display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:44px; padding:10px 18px; border:1px solid var(--line); border-radius:12px; font-weight:550; background:var(--surface); white-space:nowrap }
+    .button:hover:not(:disabled) { background:var(--soft) }
+    .button.primary { background:var(--blue); color:var(--blue-ink); border-color:transparent; box-shadow:0 4px 10px #3155d91a }
+    .button.primary:hover:not(:disabled) { filter:brightness(1.07); background:var(--blue) }
+    .button.hero-button { min-height:56px; padding:14px 24px; font-size:16px; border-radius:15px; min-width:190px; justify-content:space-between }
+    .button.danger { background:var(--danger); color:var(--surface); border-color:transparent }
+    .text-button { display:inline-flex; align-items:center; justify-content:center; gap:7px; color:var(--blue); font-size:14px; min-height:38px; padding:6px 2px; white-space:nowrap }
+    .text-button:hover { text-decoration:underline; text-underline-offset:4px }
+    .tag { display:inline-flex; align-items:center; gap:6px; font-size:12px; border-radius:6px; padding:4px 8px; color:var(--muted); background:var(--soft); white-space:nowrap }
+    .tag.warm { color:var(--orange-ink); background:color-mix(in srgb,var(--apricot) 20%,var(--surface)) }
+    .tag.blue { color:var(--blue); background:var(--blue-soft) }
+    .tag.success { color:var(--success); background:color-mix(in srgb,var(--success) 9%,var(--surface)) }
+
+    h1 { font-size:32px; font-weight:500; letter-spacing:-1.2px; line-height:1.35 }
+    h2 { font-weight:550 } button { font-weight:400 }
+    .app { height:100vh; height:100dvh; display:flex; flex-direction:column; max-width:1600px; margin:auto }
+    .topbar { height:84px; display:flex; align-items:center; gap:30px; padding:0 44px; flex-shrink:0 }
+    .brand { display:flex; align-items:center; gap:10px; min-width:160px }
+    .brand-mark { width:29px; height:35px; color:var(--blue); flex-shrink:0 }
+    .brand-name { font-size:23px; font-weight:650; letter-spacing:3px }
+    .brand-note { font-family:"Segoe UI",sans-serif; color:var(--muted); font-size:10px; letter-spacing:.5px; margin-top:3px }
+    .navigation { display:flex; gap:8px; margin:auto; align-items:center }
+    .nav-button { min-height:40px; padding:8px 19px; color:var(--muted); font-size:14px; border-radius:22px; white-space:nowrap }
+    .nav-button:hover { color:var(--ink); background:var(--soft) }
+    .nav-button[aria-current="page"] { background:var(--ink); color:var(--surface) }
+    .top-actions { display:flex; gap:15px; align-items:center }
+    .local-label { display:flex; align-items:center; gap:8px; color:var(--muted); font-size:11px; white-space:nowrap }
+    .local-label i { height:5px; width:5px; background:var(--success); border-radius:50% }
+    .icon-button { border:1px solid var(--line); border-radius:50%; width:36px; height:36px; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0 }
+    .icon-button:hover { background:var(--soft) }
+    .workspace { flex:1; min-height:0; overflow:auto; scrollbar-gutter:stable; scroll-padding:24px }
+    .page { margin:auto; max-width:1380px; padding:26px 44px 34px }
+    .page-head { display:flex; justify-content:space-between; align-items:center; gap:20px; margin-bottom:25px }
+    .page-head p { color:var(--muted); margin-top:9px; font-size:13px }
+    .button { border-radius:8px; box-shadow:none!important; font-size:14px }
+    .button.primary { font-weight:500 }
+    .text-button { color:var(--blue); display:inline-flex; align-items:center; gap:7px; padding:7px 0; min-height:36px; font-size:13px }
+    .text-button:hover { text-decoration:underline; text-underline-offset:4px }
+    .tag { border-radius:4px; font-size:11px; padding:4px 7px }
+    .footer { min-height:34px; padding:0 44px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-shrink:0; color:var(--muted); font-size:10px; border-top:1px solid var(--line) }
+    .prototype-mark { display:flex; align-items:center; gap:7px; white-space:nowrap }
+    .prototype-mark i { height:4px; width:4px; border-radius:50%; background:var(--orange-ink) }
+    .footer-right { display:flex; align-items:center; gap:18px }
+    .footer button { color:var(--muted); font-size:10px; min-height:28px }
+    .footer button:hover { color:var(--blue) }
+    .space-heading { display:flex; align-items:flex-start; justify-content:space-between; gap:28px }
+    .space-heading h1 { font-size:42px; letter-spacing:-2px; line-height:1.4 }
+    .space-heading p { margin-top:9px; font-size:13px; color:var(--muted) }
+    .drive-label { display:flex; gap:10px; align-items:center; min-height:42px; margin-top:9px; font-size:12px; color:var(--muted) }
+    .drive-label .drive-letter { width:33px; height:37px; display:flex; align-items:center; justify-content:center; font-size:15px; color:var(--ink); border:1px solid var(--line); border-radius:7px; background:var(--surface) }
+    .drive-label strong { display:block; color:var(--ink); font-size:12px; margin-bottom:4px; font-weight:500 }
+    .space-landscape { position:relative; margin:8px -8px 0; min-height:270px }
+    .landscape-svg { width:100%; height:auto; display:block; overflow:visible }
+    .landscape-svg .fin { transition:transform 260ms var(--ease),opacity 260ms var(--ease) }
+    .landscape-svg .land-group:hover .fin { transform:translateY(-6px) }
+    .landscape-svg .land-group { cursor:pointer }
+    .landscape-svg .land-group:focus-visible { outline:none }
+    .landscape-svg .land-group:focus-visible .region-floor { stroke:var(--blue); stroke-width:3 }
+    .free-space { position:absolute; left:73.8%; top:23%; color:var(--ink); pointer-events:none }
+    .free-space .free-label { font-size:12px; color:var(--muted); display:flex; align-items:center; gap:8px; margin-bottom:11px }
+    .free-space .free-label::before { content:""; width:6px; height:6px; border:1px solid var(--muted); border-radius:50% }
+    .free-space strong { font-family:"Segoe UI Variable Display","Segoe UI",sans-serif; font-size:clamp(47px,5.6vw,78px); font-weight:300; letter-spacing:-3px; line-height:1 }
+    .free-space em { font-style:normal; font-size:15px; color:var(--muted); margin-left:7px }
+    .free-space p { margin-top:12px; font-size:11px; color:var(--muted) }
+    .map-legend { display:grid; grid-template-columns:29.1fr 23.4fr 13fr 34.5fr; margin:0 4.2% 0 3.2%; gap:12px; align-items:start }
+    .legend-item { display:flex; align-items:flex-start; gap:8px; text-align:left; padding:9px 0; color:var(--muted); font-size:12px; min-height:44px }
+    .legend-item i { width:8px; height:8px; display:block; margin-top:5px; background:var(--swatch); flex-shrink:0 }
+    .legend-item strong { font-size:13px; color:var(--ink); font-weight:550; display:block; margin-bottom:6px }
+    .legend-item:hover strong { color:var(--blue) }
+    .legend-last { padding-left:9px; font-size:11px; color:var(--muted); padding-top:10px; line-height:1.7 }
+    .home-console { display:grid; grid-template-columns:minmax(0,1fr) 366px; margin-top:23px; border-top:1px solid var(--line); padding-top:22px; gap:34px; align-items:center }
+    .home-assurance { display:flex; align-items:flex-start; gap:13px; font-size:13px }
+    .home-assurance>.icon { color:var(--blue); width:20px; height:20px; margin-top:3px }
+    .home-assurance h2 { font-size:14px; margin-bottom:6px; font-weight:550 }
+    .home-assurance p { font-size:12px; color:var(--muted); line-height:1.8 }
+    .home-assurance .text-button { font-size:12px; min-height:28px }
+    .scan-console { display:flex; align-items:center; gap:16px; padding:10px 10px 10px 19px; background:var(--ink); color:var(--surface); border-radius:13px; min-height:79px }
+    .scan-console>div { flex:1; min-width:0 }
+    .scan-console strong { font-size:13px; font-weight:500; display:block; margin-bottom:6px }
+    .scan-console small { font-size:10px; opacity:.7 }
+    .scan-console .button { min-height:56px; background:var(--apricot); color:#252222; border:0; padding:10px 19px; border-radius:8px; min-width:134px; font-size:15px; font-weight:550 }
+    .scan-console .button:hover { background:#fac7a5 }
+    .review-layout { display:grid; grid-template-columns:minmax(0,1fr) 254px; gap:30px; align-items:start }
+    .review-main { min-width:0 }
+    .stage-head { display:flex; align-items:flex-start; justify-content:space-between; gap:20px; margin-bottom:28px }
+    .stage-head h1 { font-size:31px; font-weight:500; margin:10px 0 8px }
+    .stage-head p { font-size:12px; color:var(--muted) }
+    .stage-title { display:flex; align-items:center; gap:8px }
+    .found-total { text-align:right; padding-top:18px; flex-shrink:0 }
+    .found-total strong { display:block; color:var(--ink); font-size:32px; font-weight:400; letter-spacing:-1px }
+    .found-total small { font-size:11px; color:var(--muted) }
+    .filter-bar { display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:12px }
+    .filters { display:flex; flex-wrap:wrap; gap:2px; align-items:center }
+    .filter { border:1px solid transparent; padding:8px 10px; min-height:36px; border-radius:6px; color:var(--muted); font-size:12px }
+    .filter:hover { background:var(--soft) }
+    .filter[aria-pressed="true"] { border-color:var(--line); color:var(--ink); background:var(--surface); font-weight:550 }
+    .filter .count { font-size:10px; margin-left:5px; color:var(--muted) }
+    .filter-bar>.text-button { font-size:11px }
+    .result-list { border-top:1px solid var(--line) }
+    .result-row { display:grid; grid-template-columns:23px 32px minmax(0,1fr) 76px; gap:12px; padding:19px 0; min-height:107px; align-items:center; border-bottom:1px solid var(--line) }
+    .check-hit { display:flex; align-items:center; justify-content:center; min-width:23px; min-height:36px; cursor:pointer }
+    input[type="checkbox"] { appearance:auto; accent-color:var(--blue); width:17px; height:17px; margin:0; cursor:pointer; flex-shrink:0 }
+    .app-tile { width:32px; height:34px; display:flex; align-items:center; justify-content:center; color:var(--blue); background:var(--blue-soft); border-radius:7px }
+    .app-tile .icon { width:18px; height:18px }
+    .app-tile.warm { color:var(--orange-ink); background:color-mix(in srgb,var(--apricot) 20%,var(--surface)) }
+    .app-tile.quiet { color:var(--muted); background:var(--soft) }
+    .result-name { display:flex; align-items:center; flex-wrap:wrap; gap:7px }
+    .result-name strong { font-size:14px; font-weight:550 }
+    .result-description { color:var(--muted); font-size:12px; margin-top:6px; line-height:1.6 }
+    .result-amount { font-size:16px; font-weight:500; text-align:right }
+    .result-amount small { display:block; color:var(--muted); font-size:10px; font-weight:400; margin-top:6px }
+    .row-detail { grid-column:3/5; justify-self:start; display:flex; align-items:center; gap:4px; color:var(--blue); font-size:12px; margin-top:-8px; min-height:28px; padding:2px 0 }
+    .row-detail .icon { width:13px; height:13px }
+    .row-detail:hover { text-decoration:underline }
+    #review-aside { position:sticky; top:16px; padding-top:3px }
+    .task-dock { flex-shrink:0; border-top:1px solid var(--line); background:var(--surface); display:flex; align-items:center; justify-content:space-between; padding:15px 44px; gap:20px }
+    .dock-info { display:flex; align-items:center; gap:12px }
+    .dock-info>.icon { color:var(--blue); width:23px; height:23px }
+    .dock-info strong { font-weight:550; font-size:14px }
+    .dock-info small { display:block; font-size:11px; color:var(--muted); margin-top:5px }
+    .dock-actions { display:flex; align-items:center; gap:15px }
+    .cleanup-ticket { position:relative; padding:24px 22px; display:block; border:0; border-radius:13px 13px 8px 8px; background:var(--ticket); color:var(--ticket-ink); overflow:visible }
+    .cleanup-ticket::before,.cleanup-ticket::after { content:""; width:18px; height:18px; background:var(--bg); border-radius:50%; position:absolute; top:244px; left:-9px }
+    .cleanup-ticket::after { left:auto; right:-9px }
+    .ticket-caption { display:flex; align-items:center; justify-content:space-between; font-size:12px; opacity:.9; padding-bottom:22px; border-bottom:1px solid #ffffff38 }
+    .ticket-caption .icon { width:17px; height:17px }
+    .ticket-amount { font-family:"Segoe UI Variable Display","Segoe UI",sans-serif; font-size:49px; font-weight:350; line-height:1.2; letter-spacing:-1.7px; margin:23px 0 8px }
+    .ticket-note { font-size:11px; color:#e0e5ff; line-height:1.8 }
+    .ticket-stats { display:flex; justify-content:space-between; align-items:center; gap:10px; padding:19px 0; margin-top:17px; border-top:1px dashed #ffffff59; border-bottom:1px dashed #ffffff59; font-size:11px; color:#e0e5ff }
+    .ticket-stats strong { font-size:15px; color:white; font-weight:450 }
+    .cleanup-ticket .ticket-action { display:flex; width:100%; margin-top:25px; justify-content:space-between; background:var(--apricot); color:#252222; border:0; font-weight:550; min-height:47px }
+    .cleanup-ticket .ticket-action:hover { background:#fac7a5 }
+    .ticket-secondary { color:#e0e5ff; width:100%; font-size:11px; padding:14px 0 0; min-height:35px; text-align:center }
+    .ticket-secondary:hover { text-decoration:underline }
+    .ticket-footer { color:var(--muted); font-size:11px; line-height:1.8; padding:19px 9px 0; display:flex; gap:8px; align-items:flex-start }
+    .ticket-footer .icon { width:15px; height:15px; margin-top:3px; flex-shrink:0 }
+    .inline-notice { display:flex; gap:9px; align-items:flex-start; padding:13px 15px; background:var(--soft); border-radius:7px; color:var(--muted); font-size:12px; line-height:1.8; margin:15px 0 }
+    .inline-notice .icon { width:17px; height:17px; flex-shrink:0; margin-top:2px }
+    .progress-header { display:flex; align-items:flex-start; justify-content:space-between; gap:30px; margin-bottom:5px }
+    .progress-header h1 { font-size:35px; margin:14px 0 9px }
+    .progress-header p { font-size:13px; color:var(--muted) }
+    .progress-reading { text-align:right; padding-top:36px }
+    .progress-reading strong { font-size:43px; font-weight:350; letter-spacing:-1px }
+    .progress-reading small { color:var(--muted); font-size:12px; display:block; margin-top:6px }
+    .progress-caption { display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--line); padding-top:18px; gap:16px; font-size:12px; color:var(--muted) }
+    .live-dot { width:6px; height:6px; background:var(--blue); display:inline-block; border-radius:50%; margin-right:8px }
+    [data-stage="scanning"] .landscape-svg .land-group:nth-of-type(2) .fin { animation:find-space 1.8s var(--ease) 2 }
+    @keyframes find-space { 0%,100% {transform:none} 50% {transform:translateY(-9px)} }
+    .complete-head { display:grid; grid-template-columns:1fr auto; gap:30px; align-items:center; padding:9px 0 20px }
+    .complete-head h1 { font-size:40px; margin:15px 0 10px }
+    .complete-head p { font-size:13px; color:var(--muted) }
+    .freed-readout { font-size:65px; color:var(--blue); font-weight:300; font-family:"Segoe UI",sans-serif; letter-spacing:-3px }
+    .freed-readout small { color:var(--muted); display:block; font-size:12px; letter-spacing:0; text-align:right; margin-bottom:8px }
+    .complete-footer { display:flex; align-items:center; justify-content:space-between; gap:24px; border-top:1px solid var(--line); padding-top:22px }
+    .complete-footer p { font-size:12px; color:var(--muted) }
+    .complete-head + .space-landscape { min-height:0 }
+    .complete-head + .space-landscape .landscape-svg { height:200px }
+    .complete-head + .space-landscape .free-space strong { font-size:49px }
+    .button-row { display:flex; gap:10px; align-items:center; flex-wrap:wrap }
+    .analysis-top { display:flex; gap:24px; align-items:center; justify-content:space-between; margin-bottom:24px }
+    .analysis-top p { font-size:13px; color:var(--muted); margin-top:9px }
+    .analysis-disk { display:flex; justify-content:space-between; padding-bottom:20px; border-bottom:1px solid var(--line); align-items:center; gap:25px }
+    .analysis-disk .drive-label { margin:0 }
+    .analysis-capacity { display:flex; gap:30px; align-items:baseline; font-size:12px; color:var(--muted) }
+    .analysis-capacity strong { font-size:24px; color:var(--ink); font-weight:400; margin-right:5px }
+    .analysis-map { margin-top:13px }
+    .analysis-map .space-landscape { min-height:0; margin-top:-18px; max-height:250px; overflow:hidden }
+    .analysis-map .landscape-svg { height:250px; }
+    .analysis-map .free-space { top:27%; left:76% }
+    .analysis-map .free-space strong { font-size:48px }
+    .analysis-map .free-space p { display:none }
+    .analysis-map .map-legend { display:none }
+    .analysis-controls { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin:12px 0 17px }
+    .search-box { display:flex; position:relative; align-items:center; min-width:0 }
+    .search-box>.icon { position:absolute; left:12px; width:16px; height:16px; color:var(--muted) }
+    input[type="search"] { min-height:40px; border:1px solid var(--line); border-radius:7px; background:var(--surface); color:var(--ink); width:100%; min-width:0; padding:9px 12px 9px 37px; font-size:12px }
+    input::placeholder { color:var(--muted); opacity:1 }
+    .analysis-search { width:220px }
+    .ranking { border-top:1px solid var(--line) }
+    .rank-row { display:grid; grid-template-columns:25px minmax(0,1fr) 85px 35px; gap:15px; align-items:center; padding:15px 0; border-bottom:1px solid var(--line); min-height:87px }
+    .rank-order { font-size:11px; color:var(--muted) }
+    .rank-title { display:flex; justify-content:space-between; gap:12px; align-items:center; font-size:14px; font-weight:500 }
+    .rank-path { color:var(--muted); font-size:11px; margin:6px 0 10px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap }
+    .rank-bar { height:3px; background:var(--soft); overflow:hidden }
+    .rank-bar span { display:block; height:100%; background:var(--blue); opacity:.6 }
+    .rank-size { font-size:17px; font-weight:400; text-align:right }
+    .rank-open { color:var(--blue); min-height:40px; display:flex; align-items:center; justify-content:center }
+    .rank-open:hover { background:var(--blue-soft); border-radius:7px }
+    .ranking-note { font-size:11px; color:var(--muted); margin-top:15px }
+    .empty { text-align:center; padding:46px 20px; color:var(--muted); font-size:13px }
+    .empty h2 { margin-bottom:13px; font-size:20px; color:var(--ink) }
+    .history-intro { display:flex; align-items:baseline; gap:15px; padding:6px 0 25px; margin-bottom:27px }
+    .history-intro strong { color:var(--blue); font-family:"Segoe UI",sans-serif; font-size:47px; font-weight:300; letter-spacing:-1.5px }
+    .history-intro span { font-size:12px; color:var(--muted) }
+    .history-day { display:grid; grid-template-columns:100px 1fr; gap:27px; margin-bottom:27px }
+    .history-date { padding:20px 0; color:var(--muted); font-family:"Segoe UI",sans-serif; font-size:11px }
+    .history-date strong { display:block; font-size:22px; color:var(--ink); font-weight:400; margin-bottom:6px }
+    .history-receipt { position:relative; background:var(--surface); border:1px solid var(--line); border-radius:6px; margin-bottom:13px }
+    .history-receipt::before { content:""; width:5px; position:absolute; top:15px; bottom:15px; left:0; background:var(--blue) }
+    .history-receipt summary { list-style:none; cursor:pointer; display:grid; grid-template-columns:34px 1fr auto 18px; align-items:center; gap:20px; padding:24px 27px; min-height:101px }
+    summary::-webkit-details-marker { display:none }
+    .receipt-icon { color:var(--blue); border:1px solid var(--line); border-radius:50%; width:32px; height:32px; display:flex; justify-content:center; align-items:center }
+    .receipt-icon .icon { width:15px; height:15px }
+    .history-receipt summary strong { display:block; margin-bottom:9px; font-size:14px; font-weight:500 }
+    .history-receipt summary small { color:var(--muted); font-size:11px }
+    .history-receipt summary>.number { font-size:27px; font-weight:350; letter-spacing:-.7px }
+    .history-receipt summary>.icon { width:15px; height:15px }
+    .history-receipt[open] summary>.icon { transform:rotate(180deg) }
+    .receipt-detail { font-size:12px; color:var(--muted); padding:0 28px 22px 82px; line-height:1.8 }
+    .settings-grid { display:grid; grid-template-columns:minmax(0,1.45fr) minmax(260px,1fr); gap:45px; padding-top:15px }
+    .settings-section { margin-bottom:30px }
+    .settings-section h2 { font-size:16px; font-weight:500; margin-bottom:10px }
+    .settings-section>p { font-size:12px; color:var(--muted); margin-bottom:21px }
+    .theme-options { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px }
+    .theme-choice { border:1px solid var(--line); border-radius:9px; padding:6px 6px 12px; text-align:left; min-width:0 }
+    .theme-choice[aria-pressed="true"] { border:2px solid var(--blue); padding:5px 5px 11px }
+    .theme-preview { height:103px; background:#f1f3f8; border-radius:5px; position:relative; overflow:hidden; margin-bottom:13px }
+    .theme-preview::before { content:""; position:absolute; left:12%; bottom:18%; width:49%; height:52%; background:repeating-linear-gradient(90deg,#3853c9 0 4px,#879bea 4px 5px,#d1daf3 5px 7px); transform:skewY(-15deg) }
+    .theme-preview::after { content:""; position:absolute; right:16%; bottom:27%; width:24%; height:35%; background:repeating-linear-gradient(90deg,#d6966d 0 4px,#f4c9a9 4px 5px,#fcdfc4 5px 7px); transform:skewY(-15deg) }
+    .dark-preview { background:#171d29 } .system-preview { background:linear-gradient(90deg,#f1f3f8 50%,#171d29 50%) }
+    .theme-name { display:flex; align-items:center; justify-content:space-between; padding:0 4px; font-size:12px; gap:6px }
+    .theme-name>.icon { width:14px; height:14px; color:var(--blue); visibility:hidden }
+    .theme-choice[aria-pressed="true"] .theme-name>.icon { visibility:visible }
+    .setting-row { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:23px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line) }
+    .setting-row label { cursor:pointer; flex:1 }
+    .setting-row strong { display:block; font-size:13px; font-weight:500; margin-bottom:8px }
+    .setting-row small { font-size:11px; color:var(--muted); line-height:1.9; display:block }
+    .setting-row input { height:21px; width:21px; margin-right:5px }
+    .exclusion-panel { padding:0 0 0 30px; border-left:1px solid var(--line) }
+    .exclusion-panel h2 { display:flex; align-items:center; gap:9px; font-size:16px; margin-bottom:12px }
+    .exclusion-panel>p { font-size:12px; color:var(--muted); line-height:1.8 }
+    .exclusion-list { list-style:none; margin:20px 0 0; padding:0 }
+    .exclusion-list li { border-bottom:1px solid var(--line); display:flex; align-items:center; gap:12px; padding:20px 0; font-size:12px }
+    .exclusion-list li .icon { color:var(--muted); width:17px; height:17px }
+    .exclusion-list small { display:block; margin-top:7px; font-size:10px; color:var(--muted); overflow-wrap:anywhere }
+    .about-note { color:var(--muted); font-size:11px; line-height:1.9 }
+    dialog { color:var(--ink); border:1px solid var(--line); background:var(--surface); padding:0; box-shadow:var(--shadow); max-width:calc(100vw - 40px); max-height:calc(100dvh - 40px); border-radius:22px; width:500px; overflow:hidden }
+    dialog::backdrop { background:#111a3b66; backdrop-filter:blur(4px) }
+    dialog[open] { display:flex; flex-direction:column; animation:dialog-in 220ms var(--ease) }
+    @keyframes dialog-in { from { opacity:0; transform:translateY(12px) } to { opacity:1; transform:none } }
+    .dialog-header { padding:23px 25px 18px; display:flex; gap:20px; align-items:flex-start; justify-content:space-between; border-bottom:1px solid var(--line); flex-shrink:0 }
+    .dialog-header h2 { font-size:21px; margin-top:3px }
+    .dialog-header p { font-size:12px; color:var(--muted); margin-top:7px }
+    .dialog-header .icon-button { width:34px; height:34px; background:none }
+    .dialog-body { padding:23px 25px; min-height:0; overflow:auto; overscroll-behavior:contain }
+    .dialog-body p { color:var(--muted); font-size:14px }
+    .dialog-actions { display:flex; justify-content:flex-end; gap:12px; padding:18px 25px; border-top:1px solid var(--line); background:var(--surface); flex-shrink:0; align-items:center }
+    .dialog-actions .dialog-selection { margin-right:auto; color:var(--muted); font-size:12px }
+    .confirm-total { font-size:43px; color:var(--blue); line-height:1.3; margin-bottom:6px }
+    .confirm-list { list-style:none; padding:0; margin:20px 0 }
+    .confirm-list li { display:flex; gap:16px; justify-content:space-between; font-size:13px; padding:10px 0; border-bottom:1px solid var(--line) }
+    .danger-note { padding:14px; color:var(--danger)!important; background:var(--danger-soft); border-radius:10px; font-size:12px!important; line-height:1.8 }
+    dialog.side-sheet { position:fixed; inset:12px 12px 12px auto; margin:0; width:550px; height:calc(100dvh - 24px); max-height:none; max-width:calc(100vw - 24px); border-radius:20px; animation-name:sheet-in }
+    @keyframes sheet-in { from { opacity:0; transform:translateX(24px) } to { opacity:1; transform:none } }
+    .sheet-toolbar { padding:15px 25px; border-bottom:1px solid var(--line); flex-shrink:0 }
+    .sheet-toolbar .search-box { width:100% }
+    .sheet-toolbar .file-select-all { display:flex; align-items:center; justify-content:space-between; font-size:12px; color:var(--muted); margin-top:12px; min-height:30px }
+    .sheet-toolbar label { display:flex; align-items:center; gap:9px; min-height:30px; cursor:pointer }
+    .file-row { display:grid; grid-template-columns:22px minmax(0,1fr) auto; gap:12px; align-items:start; padding:18px 0; border-bottom:1px solid var(--line) }
+    .file-row .check-hit { min-height:28px; min-width:22px }
+    .file-row strong { font-size:13px; display:block; font-weight:550; overflow-wrap:anywhere }
+    .file-row .file-path { color:var(--muted); font-size:11px; margin-top:6px; overflow-wrap:anywhere; line-height:1.6 }
+    .file-row .number { font-size:13px; white-space:nowrap; margin-top:3px }
+    .file-row small { display:block; color:var(--muted); margin-top:7px; font-size:11px }
+    .detail-path { font-size:12px!important; overflow-wrap:anywhere; padding:14px; background:var(--soft); border-radius:9px; margin:16px 0 22px; user-select:all }
+    .advice-list { padding-left:21px; margin:14px 0; color:var(--muted); font-size:14px; line-height:1.9 }
+    .toast { position:fixed; left:50%; bottom:56px; transform:translateX(-50%); padding:12px 20px; color:var(--blue-ink); background:var(--blue); border-radius:12px; z-index:20; font-size:13px; box-shadow:var(--shadow); max-width:calc(100vw - 40px); text-align:center }
+
+    dialog { border-radius:13px } dialog.side-sheet { border-radius:13px }
+    .dialog-header h2 { font-size:21px; font-weight:550 }
+    .confirm-total { font-family:"Segoe UI",sans-serif; font-weight:350; letter-spacing:-1.5px }
+    .file-row strong { font-weight:500 }
+    @media(min-width:1300px) {
+      .page { padding:32px 60px 38px } .topbar { padding:0 60px }
+      .space-heading h1 { font-size:49px } .home-console { margin-top:28px }
+      .review-layout { grid-template-columns:minmax(0,1fr) 280px; gap:50px }
+      .ticket-amount { font-size:58px } .cleanup-ticket { padding:27px }
+    }
+    @media(max-width:959px) {
+      .topbar { height:72px; padding:0 26px; gap:15px } .brand { min-width:120px } .brand-name { font-size:21px }
+      .brand-mark { width:25px; height:29px } .brand-note { font-size:9px } .nav-button { padding:8px 13px; font-size:13px }
+      .local-label { display:none } .navigation { gap:3px }
+      .page { padding:24px 27px 29px } .space-heading h1 { font-size:33px; letter-spacing:-1.5px }
+      .space-heading p { font-size:12px } .drive-label { margin-top:4px }
+      .space-landscape { min-height:0; margin-top:6px } .free-space { top:23%; left:73.5% }
+      .home .landscape-svg { height:174px }
+      .free-space strong { font-size:49px; letter-spacing:-2px } .free-space em { font-size:12px }
+      .free-space .free-label { font-size:10px; margin-bottom:9px } .free-space p { font-size:10px; margin-top:10px }
+      .legend-item { gap:6px; font-size:10px; padding:6px 0; min-height:36px }
+      .legend-item strong { font-size:11px; margin-bottom:4px } .legend-item i { width:6px; height:6px; margin-top:4px }
+      .legend-last { font-size:10px; padding-top:5px } .map-legend { gap:8px }
+      .home-console { grid-template-columns:minmax(0,1fr) 320px; gap:22px; margin-top:17px; padding-top:18px }
+      .home-assurance { gap:10px } .home-assurance h2 { font-size:12px } .home-assurance p { font-size:10px }
+      .home-assurance .text-button { font-size:10px; min-height:25px }
+      .scan-console { padding:9px 9px 9px 15px; min-height:68px; gap:12px } .scan-console strong { font-size:11px }
+      .scan-console small { font-size:9px } .scan-console .button { min-height:49px; min-width:122px; font-size:14px; padding:10px 16px }
+      .footer { padding:0 27px; min-height:32px } .task-dock { padding:13px 27px; }
+      .review-layout { grid-template-columns:1fr; gap:0 } #review-aside { display:none }
+      .stage-head { margin-bottom:24px } .stage-head h1 { font-size:27px } .found-total strong { font-size:28px }
+      .result-row { grid-template-columns:23px 34px minmax(0,1fr) 80px; gap:12px; padding:17px 0; min-height:93px }
+      .row-detail { grid-column:3/5 } .result-name strong { font-size:13px }
+      .progress-header h1 { font-size:28px } .progress-reading strong { font-size:35px }
+      .progress-caption { font-size:11px } .complete-head h1 { font-size:32px } .freed-readout { font-size:49px }
+      .complete-head p { font-size:12px } .complete-footer { gap:16px; padding-top:17px }
+      .complete-footer p { font-size:11px } .complete-footer .button { font-size:12px }
+      .complete-head + .space-landscape,.complete-head + .space-landscape + .map-legend { display:none }
+      .analysis-map { display:none }
+      .analysis-map .landscape-svg { height:210px } .analysis-map .space-landscape { max-height:210px }
+      .analysis-map .free-space { left:75%; top:28% } .analysis-map .free-space strong { font-size:42px }
+      .analysis-capacity { gap:20px; font-size:11px } .analysis-capacity strong { font-size:20px }
+      .settings-grid { gap:26px; grid-template-columns:minmax(0,1.35fr) minmax(230px,1fr) }
+      .exclusion-panel { padding-left:22px } .theme-options { gap:8px } .theme-preview { height:83px }
+      .history-day { grid-template-columns:80px 1fr; gap:20px } .history-receipt summary { padding:23px; gap:15px }
+      dialog.side-sheet { width:calc(100vw - 24px) }
+    }
+    @media(max-height:680px) and (min-width:960px) {
+      .space-landscape .landscape-svg { height:255px } .space-landscape { min-height:0 }
+      .space-heading h1 { font-size:34px } .home-console { margin-top:15px; padding-top:16px }
+      .free-space strong { font-size:58px }
+    }
+    @media(max-width:650px) {
+      .topbar { height:auto; min-height:102px; padding:14px 20px 0; flex-wrap:wrap; gap:8px }
+      .brand { margin-right:auto } .brand-note { display:none } .navigation { order:3; width:100%; justify-content:space-between; margin:0 }
+      .nav-button { flex:1; padding:7px 8px; font-size:12px; min-height:36px } .top-actions .icon-button { width:32px; height:32px }
+      .page { padding:24px 20px } .space-heading { gap:12px } .space-heading h1 { font-size:27px; letter-spacing:-1px }
+      .space-heading p { font-size:11px; max-width:220px; line-height:1.8 } .drive-label { font-size:10px }
+      .drive-label .drive-letter { width:28px; height:32px; font-size:12px } .drive-label strong { font-size:10px }
+      .space-landscape { margin:17px -15px 0 } .landscape-svg { min-height:160px }
+      .home .landscape-svg { height:160px }
+      .free-space { left:74%; top:27% } .free-space strong { font-size:34px; letter-spacing:-1px }
+      .free-space .free-label { font-size:9px; margin-bottom:8px; gap:5px } .free-space em { font-size:10px; margin-left:3px } .free-space p { display:none }
+      .map-legend { grid-template-columns:1fr 1fr 1fr; gap:9px; margin:0 } .legend-last { display:none }
+      .home-console { grid-template-columns:1fr; gap:20px; margin-top:23px } .scan-console { order:-1; padding:11px 11px 11px 19px }
+      .scan-console strong { font-size:13px } .scan-console small { font-size:10px } .scan-console .button { min-height:51px; min-width:142px }
+      .home-assurance h2 { font-size:13px } .home-assurance p { font-size:11px } .home-assurance .text-button { font-size:11px }
+      .footer { padding:0 20px; font-size:9px } .footer button { font-size:9px } .footer-right>span { display:none }
+      .stage-head { gap:15px; margin-bottom:23px } .stage-head h1 { font-size:23px } .stage-head p { font-size:11px }
+      .found-total strong { font-size:22px } .found-total small { font-size:10px } .filter { font-size:11px; padding:7px 8px }
+      .result-row { grid-template-columns:22px 29px minmax(0,1fr) 65px; gap:8px } .result-name strong { font-size:12px }
+      .result-description { font-size:10px } .app-tile { width:28px; height:31px } .result-amount { font-size:14px }
+      .result-amount small { font-size:9px } .result-name .tag { font-size:9px; padding:3px 4px } .row-detail { font-size:10px }
+      .task-dock { padding:12px 20px; gap:12px; flex-wrap:wrap } .dock-info>.icon { display:none }
+      .dock-info strong { font-size:12px } .dock-info small { display:none } .dock-actions { gap:12px; margin-left:auto }
+      .dock-actions .button { font-size:12px; padding:9px 12px; min-height:40px } .dock-actions .text-button { font-size:11px }
+      .progress-header h1 { font-size:25px } .progress-header p { font-size:11px }
+      .progress-reading { padding-top:45px } .progress-reading strong { font-size:28px } .progress-reading small { font-size:10px }
+      .progress-caption { flex-direction:column; align-items:flex-start; gap:8px; font-size:11px }
+      .complete-head { grid-template-columns:1fr; gap:16px } .complete-head h1 { font-size:29px }
+      .freed-readout { font-size:53px } .freed-readout small { text-align:left; font-size:11px }
+      .complete-footer { align-items:flex-start; flex-direction:column; gap:18px } .complete-footer .button { font-size:12px }
+      .page-head h1,.analysis-top h1 { font-size:26px } .page-head p,.analysis-top p { font-size:11px }
+      .page-head .button,.analysis-top .button { font-size:11px; padding:8px 11px; min-height:38px }
+      .analysis-disk { gap:12px } .analysis-capacity { display:block; text-align:right; font-size:10px; line-height:1.9 }
+      .analysis-capacity strong { font-size:17px } .analysis-map .landscape-svg { height:160px }
+      .analysis-map .space-landscape { max-height:160px; margin-top:0 } .analysis-map .free-space { top:28%; left:75% }
+      .analysis-map .free-space strong { font-size:31px } .analysis-map .free-space .free-label { font-size:9px }
+      .analysis-search { width:100% } .rank-row { grid-template-columns:19px minmax(0,1fr) 64px 23px; gap:8px }
+      .rank-title { font-size:12px } .rank-title .tag { display:none } .rank-size { font-size:14px } .rank-path { font-size:10px }
+      .history-intro strong { font-size:39px } .history-intro span { font-size:11px }
+      .history-day { grid-template-columns:1fr; gap:8px } .history-date { padding:0; display:flex; align-items:baseline; gap:12px }
+      .history-date strong { font-size:19px } .history-receipt summary { grid-template-columns:29px 1fr auto 14px; gap:12px; padding:20px 16px }
+      .history-receipt summary strong { font-size:12px } .history-receipt summary>.number { font-size:22px }
+      .history-receipt summary small { font-size:10px } .receipt-icon { width:27px; height:27px }
+      .receipt-detail { padding-left:58px; font-size:11px }
+      .settings-grid { grid-template-columns:1fr; gap:30px; padding-top:2px }
+      .theme-preview { height:95px } .theme-name { font-size:11px } .exclusion-panel { border-left:0; padding:0; border-top:1px solid var(--line); padding-top:25px }
+      .dialog-header,.dialog-body { padding:20px } .dialog-actions { padding:15px 20px; flex-wrap:wrap; gap:10px }
+      .dialog-actions .button { font-size:12px } .sheet-toolbar { padding:14px 20px }
+      .dialog-actions .dialog-selection { width:100% } .file-row { gap:8px }
+    }
+    @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none!important; transition:none!important; scroll-behavior:auto!important } }
+    :root[data-motion="reduced"] *, :root[data-motion="reduced"] *::before, :root[data-motion="reduced"] *::after { animation:none!important; transition:none!important; scroll-behavior:auto!important }
+    @media(forced-colors:active) {
+      .landscape-svg { opacity:.6 } button,input,select,.tag { border:1px solid ButtonText }
+      .cleanup-ticket { border:2px solid CanvasText } .cleanup-ticket::before,.cleanup-ticket::after { display:none }
+      .nav-button[aria-current="page"],.filter[aria-pressed="true"] { outline:2px solid Highlight }
+    }
+
+
+
+/* EBB / Tide: a continuous coastline, quiet controls, measurable space. */
+:root{--bg:#f5f5ef;--surface:#fffffa;--ink:#202c31;--muted:#727c7e;--blue:#2946d6;--blue-ink:#fff;--blue-soft:#e8ecfb;--apricot:#f4b88f;--line:#d8ddda;--soft:#eceee9;--success:#427262;--ticket:#203cc3;--ticket-ink:#fff;--sea:#2946d6;--sea-deep:#203cc3;--sea-text:#fff;--orange-ink:#815334;font-family:"Microsoft YaHei UI","Microsoft YaHei","Segoe UI",sans-serif;color-scheme:light}
+:root[data-theme="dark"]{--bg:#121d27;--surface:#1a2934;--ink:#ecf1ee;--muted:#a1b3bb;--blue:#aebfff;--blue-ink:#13203b;--blue-soft:#263a55;--line:#334650;--soft:#213440;--sea:#294bc0;--sea-deep:#2342ac;--ticket:#2342ac;--ticket-ink:#fff;--apricot:#f4b88f;--orange-ink:#f4b88f;--success:#a3d7c2;color-scheme:dark}
+body{background:var(--bg)}a{color:inherit}button{font-weight:500}.number{font-family:"Bahnschrift","Segoe UI",sans-serif;font-weight:400;font-variant-numeric:tabular-nums}h1,h2{font-weight:600}h1{font-size:34px;letter-spacing:-1.4px}.app{max-width:1800px}.topbar{height:82px;padding:0 44px;gap:36px;border-bottom:1px solid var(--line);z-index:4;background:var(--bg)}.brand{min-width:173px;gap:12px}.brand-mark{width:38px;height:38px;color:var(--blue)}.brand-name{font-size:23px;letter-spacing:2px;line-height:1.1}.brand-note{font-size:8px;letter-spacing:2px;margin-top:6px}.navigation{height:100%;gap:23px;background:none;border:0;border-radius:0;padding:0;margin-left:0}.nav-button{position:relative;padding:9px 3px;height:100%;border-radius:0;font-size:13px;min-width:49px;display:flex;align-items:center;gap:9px}.nav-index{font-size:9px;opacity:.5;font-family:"Bahnschrift",sans-serif}.nav-button[aria-current="page"]{background:none;color:var(--ink)}.nav-button[aria-current="page"]:after{content:"";position:absolute;bottom:-1px;left:0;right:0;height:3px;background:var(--blue)}.nav-button:hover{background:none;color:var(--blue)}.top-actions{margin-left:auto;gap:18px}.local-label{font:10px "Bahnschrift",sans-serif;letter-spacing:1.5px}.local-label i{background:var(--blue)}.icon-button{width:36px;height:36px;border-radius:50%;background:none}.workspace{scrollbar-gutter:auto}.page{padding:37px 44px;max-width:1440px}.footer{height:32px;min-height:32px;padding:0 44px;font-size:9px;background:var(--bg);z-index:3}.footer-right{gap:20px}.footer button,.footer a{font-size:9px;color:var(--muted);text-underline-offset:3px}.footer a:hover{color:var(--blue)}.prototype-mark{font-size:9px;letter-spacing:.2px}.button{border-radius:5px;font-size:12px;padding:11px 17px;min-height:43px;box-shadow:none!important}.button.primary{background:var(--blue);color:var(--blue-ink)}.text-button{font-size:12px}.tag{font-size:10px;border-radius:3px;padding:4px 7px}.tag .icon{width:13px;height:13px}.page-head{margin-bottom:24px}.page-head p{font-size:12px}.page-kicker{font:10px "Bahnschrift",sans-serif;letter-spacing:2.4px;color:var(--muted);margin-bottom:12px;display:block}.page-head h1,.analysis-top h1{font-size:33px}
+#page-clean[data-view="idle"]{height:100%;padding:0;max-width:none;overflow:hidden}.tide-home{height:100%;min-height:610px;position:relative;isolation:isolate;overflow:hidden}.tide-canvas{position:absolute;inset:0;z-index:-1;pointer-events:none}.tide-canvas svg{width:100%;height:100%;display:block}.coast-fill{fill:var(--sea)}.coast-depth{fill:var(--sea-deep)}.coast-line{fill:none;stroke:#fff;stroke-opacity:.15;stroke-width:1;vector-effect:non-scaling-stroke}.coast-line:first-child{stroke-opacity:.38}.tide-copy{position:absolute;top:49px;left:44px;width:42%;z-index:2}.tide-eyebrow{display:flex;align-items:center;gap:11px;font-size:10px;letter-spacing:1px;color:var(--muted)}.tide-eyebrow span{border:1px solid var(--line);border-radius:3px;padding:5px 7px;font-family:"Bahnschrift",sans-serif;color:var(--ink)}.tide-copy h1{font-size:66px;font-weight:600;line-height:1.26;letter-spacing:-3.5px;margin:36px 0 24px}.tide-copy h1 em{font-style:normal;color:var(--blue)}.tide-copy>p{font-size:13px;line-height:2;color:var(--muted)}.tide-readout{position:absolute;right:5.5%;top:51px;color:#fff;width:27%;text-align:left}.tide-readout .eyebrow{font-size:11px;display:flex;align-items:center;gap:10px;letter-spacing:1px}.tide-readout .eyebrow:before{content:"";height:6px;width:6px;background:var(--apricot);border-radius:50%}.tide-value{display:flex;align-items:baseline;margin-top:21px;gap:9px}.tide-value strong{font-size:100px;font-weight:350;line-height:.95;letter-spacing:-4px}.tide-value span{font-size:16px}.tide-readout small{display:block;font-size:10px;color:#dce4ff;margin-top:16px;letter-spacing:.5px}.tide-capacity-track{height:2px;background:#ffffff26;margin-top:23px;display:flex}.tide-capacity-track i{display:block;background:var(--apricot)}.tide-capacity-track b{display:block;background:#fff}.tide-capacity-ends{display:flex;justify-content:space-between;font:9px "Bahnschrift",sans-serif;opacity:.6;margin-top:8px}
+.tide-home-action{position:absolute;left:44px;bottom:113px;z-index:2}.tide-launch{background:var(--ink);color:var(--bg);min-height:64px;width:254px;padding:9px 10px 9px 25px;border-radius:5px;display:flex;align-items:center;justify-content:space-between;font-size:16px;text-align:left;gap:26px}.tide-launch .launch-arrow{display:grid;place-items:center;width:43px;height:43px;background:var(--apricot);color:#273237;border-radius:50%}.tide-launch:hover{box-shadow:0 8px 24px #14223219}.tide-home-action p{font-size:10px;color:var(--muted);margin-top:12px}.tide-categories{position:absolute;right:5.5%;width:25%;bottom:122px;color:white}.tide-categories>p{font-size:9px;letter-spacing:2px;color:#ccd6ff;margin-bottom:15px}.tide-category{display:flex;align-items:center;justify-content:space-between;gap:15px;width:100%;min-height:37px;border-top:1px solid #ffffff2e;color:#fff;font-size:11px;text-align:left;padding:7px 0}.tide-category .number{font-size:17px;white-space:nowrap}.tide-category small{font-size:9px;color:#d0dbff;margin-left:4px}.tide-category:hover{color:var(--apricot)}.tide-category .icon{height:13px;width:13px;opacity:.6}.tide-categories .text-button{color:#fff;font-size:10px;gap:14px;margin-top:10px;padding:4px 0}.tide-home-bottom{position:absolute;bottom:0;left:44px;right:44px;height:77px;display:flex;align-items:center;justify-content:space-between;gap:20px}.tide-assurance{display:flex;align-items:center;gap:12px;font-size:11px;color:var(--muted);max-width:38%}.tide-assurance .icon{width:18px;height:18px}.tide-assurance strong{display:block;font-weight:500;color:var(--ink);margin-bottom:4px}.tide-assurance p{font-size:9px}.tide-edition{color:#c7d5ff;font:9px "Bahnschrift",sans-serif;letter-spacing:1.8px;text-align:right;display:flex;gap:35px}.coast-signature{position:absolute;left:50.5%;top:60%;width:108px;color:white;font-size:9px;letter-spacing:.5px;transform:rotate(-29deg);display:flex;align-items:center;gap:8px}.coast-signature:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--apricot)}
+.tide-scene{height:263px;position:relative;margin:19px 0 8px;overflow:hidden;border-bottom:1px solid var(--blue)}.tide-scene svg{display:block;width:100%;height:100%}.tide-scene .current-level{fill:var(--sea);transition:d 850ms ease}.tide-scene .previous-level{fill:var(--apricot);opacity:.55;transition:d 850ms ease}.tide-scene .level-line{fill:none;stroke:#ffffff65;stroke-width:1;vector-effect:non-scaling-stroke;transition:d 850ms ease}.tide-scene .tide-sweep{stroke:var(--apricot);stroke-width:2;opacity:.8;animation:survey 3s linear infinite}.tide-scene:not([data-stage="scanning"]) .tide-sweep{display:none}@keyframes survey{from{transform:translateX(0)}to{transform:translateX(1020px)}}.tide-scene-label{position:absolute;left:23px;top:17px;color:var(--ink);font-size:11px;display:flex;align-items:baseline;gap:9px}.tide-scene-label strong{font-size:27px;color:var(--blue)}.tide-scene-bottom{position:absolute;bottom:19px;left:23px;right:23px;color:#e0e8ff;font-size:10px;display:flex;justify-content:space-between;gap:14px}.tide-scene-bottom b{font-weight:500;color:#fff}.tide-scale{position:absolute;top:11px;right:22px;display:flex;gap:17px;align-items:center;font:9px "Bahnschrift",sans-serif;color:var(--muted)}.tide-scale:before{content:"";width:54px;height:11px;border-bottom:1px solid var(--line);background:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 9px)}.journey-track{height:3px;background:var(--soft);margin-top:18px;overflow:hidden}.journey-track span{display:block;background:var(--apricot);height:100%;width:0;transition:width 300ms}.fold-stepbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:14px 0 8px}.fold-step{font-size:10px;color:var(--muted);padding:7px 9px;border-bottom:1px solid var(--line);opacity:.5}.fold-step.found{opacity:1;color:var(--blue);border-color:var(--blue)}.fold-step.current{background:var(--blue-soft)}.progress-header h1{font-size:32px}.progress-header p{font-size:12px}.progress-reading strong{font-family:"Bahnschrift",sans-serif;font-size:44px}.progress-reading small{font-size:10px}.progress-caption{border:0;font-size:11px;padding-top:12px;margin-top:0!important}
+.stage-head{margin-bottom:24px}.stage-head h1{font-size:31px;font-weight:600;margin-top:12px}.found-total strong{font-size:37px;font-family:"Bahnschrift",sans-serif}.found-total small{font-size:10px}.review-layout{grid-template-columns:minmax(0,1fr) 249px;gap:30px}.review-main{padding:0}.result-list{border-top:1px solid var(--line)}.filter{border-radius:3px;font-size:11px;min-height:36px;padding:8px 10px}.filter[aria-pressed="true"]{background:var(--blue);color:var(--blue-ink);border-color:transparent}.filter[aria-pressed="true"] .count{color:inherit;opacity:.8}.result-row{grid-template-columns:22px 31px minmax(0,1fr) 80px;min-height:106px;gap:11px;padding:18px 0}.result-name strong{font-size:13px}.result-description{font-size:11px}.result-amount{font-size:19px}.result-amount small{font-size:9px}.app-tile{border-radius:3px;width:31px;height:34px}.row-detail{font-size:11px}.result-row:has(input:checked){background:linear-gradient(90deg,var(--blue-soft),transparent 52%);background-size:100% 1px;background-position:left bottom;background-repeat:no-repeat}.task-dock:not(.cleanup-ticket){padding:14px 44px;background:var(--surface);border-top:1px solid var(--line)}.dock-info strong{font-size:13px}.dock-info small{font-size:10px}.dock-info>.icon{width:20px}.cleanup-ticket{border-radius:4px;padding:22px;background:var(--ticket);color:#fff;overflow:hidden;border:0}.cleanup-ticket:before,.cleanup-ticket:after{display:none}.ticket-caption{font-size:11px;border:0;padding:0}.ticket-caption .icon{width:15px;height:15px}.ticket-amount{font-family:"Bahnschrift",sans-serif;font-size:43px;font-weight:400;margin:19px 0 8px;letter-spacing:-1px}.ticket-note{font-size:10px;color:#d4dfff}.ticket-stats{font-size:10px;padding:15px 0;margin-top:18px;border-color:#ffffff40}.ticket-stats strong{font-size:14px}.cleanup-ticket .ticket-action{border-radius:3px;background:var(--apricot);color:#22303c;margin-top:23px;min-height:46px;font-size:13px}.ticket-secondary{font-size:10px;color:#d4dfff;padding-top:13px}.ticket-footer{font-size:10px;padding:17px 4px}.ticket-tide{height:83px;margin:20px -22px 0;position:relative;overflow:hidden}.ticket-tide svg{width:100%;height:100%;display:block}.ticket-tide .preview-base{fill:#ffffff17}.ticket-tide .preview-selected{fill:var(--apricot);transition:d 400ms ease}.ticket-tide:after{content:"";position:absolute;left:22px;right:22px;top:20px;height:52px;background:repeating-linear-gradient(90deg,transparent 0 16px,#fff1 16px 17px);pointer-events:none}.selection-preview-note{display:none}.dock-tide{width:47px;height:27px;flex-shrink:0;background:var(--blue);border-radius:3px;overflow:hidden}.dock-tide svg{width:100%;height:100%;display:block}.dock-tide .preview-base{fill:#ffffff20}.dock-tide .preview-selected{fill:var(--apricot)}.dock-info>.dock-tide+.icon{display:none}.complete-head h1{font-size:34px;font-weight:600}.complete-head p{font-size:12px}.freed-readout{font-family:"Bahnschrift",sans-serif;font-size:60px;letter-spacing:-2px}.complete-head+.tide-scene{height:215px;margin-top:2px}.complete-footer{margin-top:22px!important}.complete-footer p{font-size:11px}.complete-footer .button{font-size:12px}
+.analysis-top{margin-bottom:26px}.analysis-top p{font-size:12px}.analysis-disk{padding-bottom:15px;border-bottom:0}.analysis-capacity{gap:27px;font-size:11px}.analysis-capacity strong{font-family:"Bahnschrift",sans-serif;font-size:26px}.capacity-strip{display:flex;gap:4px;height:120px;margin:12px 0 22px;border-bottom:1px solid var(--line);align-items:stretch}.capacity-block{display:flex;flex-direction:column;justify-content:flex-end;gap:11px;text-align:left;padding:16px;color:#fff;background:var(--sea);border-radius:55% 0 0 0/18px 0 0 0;position:relative;min-width:85px;overflow:hidden;font-size:10px}.capacity-block:before{content:"";position:absolute;top:25%;left:-20%;width:140%;height:100%;border-radius:50%;border-top:1px solid #ffffff2c;transform:rotate(-10deg);pointer-events:none}.capacity-block:focus-visible{outline-offset:-4px;outline-color:var(--apricot)}.capacity-block strong{font:27px "Bahnschrift",sans-serif;white-space:nowrap}.capacity-block strong small{font-size:10px;margin-left:5px}.capacity-block.personal{background:#778fde;color:#101f57}.capacity-block.system{background:#384861}.capacity-block.free{background:var(--soft);color:var(--ink);border-radius:0;border-top:1px dashed var(--line)}.capacity-block:hover:not(.free){filter:brightness(1.08)}.analysis-controls{margin-bottom:8px}.ranking{border-top:1px solid var(--line)}.rank-row{min-height:90px;padding:15px 0}.rank-title{font-size:13px}.rank-path{font-size:10px}.rank-size{font-size:22px}.rank-bar{height:3px;background:var(--soft)}.rank-bar span{opacity:1;background:var(--blue);border-radius:0 100% 0 0}.rank-order{font-size:11px}.analysis-search{width:260px}.search-box input{background:transparent;border-radius:3px;font-size:11px}.rank-open{min-width:32px}.ranking-note{font-size:10px}
+.history-intro{display:flex;justify-content:space-between;align-items:center;padding:27px 30px;margin-bottom:35px;background:var(--sea);color:#fff;position:relative;overflow:hidden}.history-intro:before,.history-intro:after{content:"";position:absolute;left:30%;top:-90%;width:50%;height:250%;border:1px solid #ffffff29;border-radius:45%;transform:rotate(30deg);pointer-events:none}.history-intro:after{left:38%;width:42%}.history-intro strong{color:#fff;font:65px "Bahnschrift",sans-serif;letter-spacing:-2px;z-index:1}.history-intro span{color:#d6e2ff;font-size:11px;z-index:1}.history-day{grid-template-columns:112px 1fr;gap:25px;margin-bottom:21px}.history-date{border-right:1px solid var(--line);background:repeating-linear-gradient(0deg,transparent 0 11px,var(--line) 11px 12px) right 12px top 18px/8px 72px no-repeat;font-size:10px;padding:18px 20px 18px 0}.history-date strong{font-family:"Bahnschrift",sans-serif;font-size:22px}.history-receipt{background:transparent;border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:0;margin-bottom:13px}.history-receipt:before{width:4px;top:22px;bottom:22px;background:var(--apricot)}.history-receipt summary{padding:24px 24px;min-height:101px;gap:20px}.history-receipt summary strong{font-size:13px}.history-receipt summary small{font-size:10px}.history-receipt summary>.number{font-size:29px}.receipt-icon{background:none;width:31px;height:31px}.receipt-detail{font-size:11px;padding-left:76px}.settings-grid{grid-template-columns:1.2fr 1fr;gap:49px;padding-top:12px}.settings-section{padding:0;margin-bottom:28px}.settings-section h2{font-size:16px}.settings-section>p{font-size:11px}.theme-choice{border-radius:4px;padding:6px 6px 12px}.theme-preview{height:110px;border-radius:1px;background:#f5f5ef}.theme-preview:before{width:130%;height:230%;right:-45%;left:auto;bottom:-90%;border:0;background:#2946d6;border-radius:50%;transform:rotate(30deg);box-shadow:none}.theme-preview:after{width:120%;height:220%;right:-55%;bottom:-85%;background:transparent;border:1px solid #ffffff70;border-radius:50%;transform:rotate(30deg)}.theme-preview.dark-preview{background:#121d27}.theme-preview.system-preview{background:linear-gradient(90deg,#f5f5ef 50%,#121d27 50%)}.theme-name{font-size:11px}.setting-row{padding:21px 0}.setting-row strong{font-size:13px}.setting-row small{font-size:11px}.exclusion-panel{border:0;border-left:1px solid var(--line);background:none;padding:4px 0 0 35px}.exclusion-panel h2{font-size:16px}.exclusion-panel>p{font-size:11px}.exclusion-list li{font-size:12px;padding:22px 0}.exclusion-list small{font-size:10px}.about-note{font-size:10px}
+dialog,dialog.side-sheet{border-radius:9px}.dialog-header h2{font-size:22px}.dialog-body p{font-size:12px}.dialog-header p{font-size:11px}.dialog-actions .button{font-size:12px}.confirm-total{font-family:"Bahnschrift",sans-serif;font-size:49px}.inline-notice{border-radius:3px;font-size:11px}.file-row strong{font-size:12px}.file-row .number{font-size:13px}.file-row .file-path{font-size:10px}.dialog-actions .dialog-selection{font-size:11px}.toast{font-size:12px;border-radius:4px}
+@media(min-width:1300px){.topbar,.footer{padding-left:60px;padding-right:60px}.page{padding-left:60px;padding-right:60px}.tide-copy{left:60px;top:65px}.tide-copy h1{font-size:83px}.tide-home-action{left:60px;bottom:135px}.tide-home-bottom{left:60px;right:60px}.tide-readout{top:74px}.tide-value strong{font-size:128px}.tide-categories{bottom:145px}.tide-home{min-height:650px}}
+@media(max-width:959px){.topbar{height:72px;padding:0 27px;gap:24px}.brand{min-width:139px;gap:9px}.brand-mark{height:31px;width:31px}.brand-name{font-size:20px}.brand-note{font-size:7px}.navigation{gap:16px}.nav-button{font-size:12px;gap:5px;min-width:40px}.nav-index{font-size:8px}.top-actions{gap:7px}.local-label{display:none}.icon-button{width:32px;height:32px}.page{padding:26px 27px}.footer{height:30px;min-height:30px;padding:0 27px}.footer-right{gap:15px}.tide-home{min-height:478px}.tide-copy{left:27px;top:30px;width:44%}.tide-eyebrow{font-size:9px;gap:8px}.tide-eyebrow span{font-size:10px;padding:4px 5px}.tide-copy h1{font-size:48px;letter-spacing:-2.5px;margin:28px 0 20px;line-height:1.25}.tide-copy>p{font-size:11px;line-height:1.9}.tide-readout{top:34px;right:4%;width:27%}.tide-readout .eyebrow{font-size:10px}.tide-value{margin-top:20px;gap:6px}.tide-value strong{font-size:74px;letter-spacing:-3px}.tide-value span{font-size:12px}.tide-readout small{font-size:9px;margin-top:11px}.tide-capacity-track{margin-top:16px}.tide-capacity-ends{font-size:8px;margin-top:7px}.tide-home-action{left:27px;bottom:82px}.tide-launch{width:219px;min-height:55px;font-size:14px;padding:8px 9px 8px 21px}.tide-launch .launch-arrow{width:36px;height:36px}.tide-home-action p{font-size:9px;margin-top:10px}.tide-categories{bottom:94px;right:4%;width:25%}.tide-categories>p{font-size:8px;margin-bottom:11px;letter-spacing:1.4px}.tide-category{font-size:9px;min-height:31px;gap:7px}.tide-category .number{font-size:14px}.tide-category small{font-size:8px}.tide-categories .text-button{font-size:9px;margin-top:5px;min-height:28px}.tide-home-bottom{left:27px;right:27px;height:58px}.tide-assurance{font-size:9px;gap:8px;max-width:39%}.tide-assurance p{font-size:8px}.tide-assurance .icon{width:15px;height:15px}.tide-edition{font-size:8px;gap:21px;letter-spacing:1px}.coast-signature{font-size:8px;left:50%;top:57%;width:95px}.page-head h1,.analysis-top h1{font-size:27px}.page-kicker{font-size:9px;margin-bottom:10px}.page-head p,.analysis-top p{font-size:11px}.stage-head h1{font-size:25px}.stage-head p{font-size:11px}.found-total strong{font-size:29px}.found-total small{font-size:9px}.review-layout{grid-template-columns:1fr;gap:0}#review-aside{display:none}.filter{font-size:10px;min-height:33px;padding:6px 9px}.result-row{min-height:94px;padding:15px 0}.result-name strong{font-size:12px}.result-description{font-size:10px}.result-amount{font-size:18px}.row-detail{font-size:10px}.filter-bar>.text-button{font-size:10px}.task-dock:not(.cleanup-ticket){padding:11px 27px}.dock-info{gap:10px}.dock-info strong{font-size:11px}.dock-info small{font-size:9px}.dock-actions{gap:14px}.dock-actions .text-button{font-size:11px}.dock-actions .button{min-height:40px;font-size:12px}.progress-header h1{font-size:26px}.progress-header p{font-size:11px}.progress-reading strong{font-size:33px}.progress-reading small{font-size:9px}.tide-scene{height:184px;margin:14px 0 8px}.tide-scene-label{font-size:10px;top:12px;left:16px}.tide-scene-label strong{font-size:22px}.tide-scene-bottom{font-size:9px;left:16px;right:16px;bottom:14px}.tide-scale{right:16px;font-size:8px}.fold-stepbar{gap:6px;margin-top:11px;margin-bottom:5px}.fold-step{font-size:9px;padding:5px 7px}.journey-track{margin-top:11px}.progress-caption{font-size:10px}.complete-head h1{font-size:27px}.complete-head p{font-size:10px}.freed-readout{font-size:46px}.freed-readout small{font-size:10px}.complete-head+.tide-scene{height:153px}.complete-footer{margin-top:16px!important;gap:15px}.complete-footer p{font-size:10px}.complete-footer .button{font-size:11px;padding:10px 12px}.analysis-top{margin-bottom:19px}.analysis-capacity{font-size:10px;gap:21px}.analysis-capacity strong{font-size:22px}.analysis-disk{padding-bottom:6px}.capacity-strip{height:101px;margin:10px 0 18px}.capacity-block{font-size:9px;padding:12px;gap:10px;min-width:73px}.capacity-block strong{font-size:23px}.capacity-block strong small{font-size:8px}.analysis-search{width:226px}.rank-row{min-height:81px;gap:12px}.rank-title{font-size:12px}.rank-size{font-size:19px}.rank-path{font-size:9px}.history-intro{padding:23px;margin-bottom:26px}.history-intro strong{font-size:50px}.history-intro span{font-size:10px}.history-day{grid-template-columns:90px 1fr;gap:20px}.history-receipt summary{padding:20px;gap:14px;min-height:88px}.history-receipt summary strong{font-size:12px}.history-receipt summary>.number{font-size:24px}.settings-grid{grid-template-columns:1.2fr 1fr;gap:27px;padding-top:7px}.theme-options{gap:9px}.theme-preview{height:79px}.theme-name{font-size:10px}.settings-section h2,.exclusion-panel h2{font-size:14px}.settings-section>p{font-size:10px}.setting-row strong{font-size:12px}.setting-row small{font-size:10px}.exclusion-panel{padding-left:23px}.exclusion-panel>p{font-size:10px}.exclusion-list{margin-top:12px}.exclusion-list li{font-size:11px;padding:18px 0;gap:9px}.exclusion-list small{font-size:9px}.about-note{font-size:9px}}
+@media(max-height:650px) and (min-width:960px){.tide-home{min-height:475px}.tide-copy{top:25px}.tide-copy h1{font-size:49px;margin:25px 0 17px}.tide-home-action{bottom:86px}.tide-launch{min-height:55px}.tide-readout{top:33px}.tide-value strong{font-size:80px}.tide-categories{bottom:90px}.tide-home-bottom{height:59px}.tide-scene{height:175px}}
+@media(max-width:650px){.topbar{height:108px;min-height:108px;flex-wrap:wrap;padding:15px 20px 0;gap:3px}.brand{min-width:0;margin-right:auto}.navigation{order:3;flex:0 0 100%;height:47px;justify-content:space-between;gap:8px}.nav-button{font-size:11px;height:47px}.top-actions{margin:0}.page{padding:23px 20px}.footer{padding:0 20px}.footer-right>span{display:none}.footer-right{gap:12px}.tide-home{min-height:700px;height:700px}.tide-canvas{top:245px}.tide-copy{top:22px;left:20px;width:90%}.tide-copy h1{font-size:42px;line-height:1.15;margin:22px 0 15px}.tide-copy h1 br{display:none}.tide-copy>p{font-size:10px}.tide-readout{top:301px;right:5%;width:31%}.tide-value strong{font-size:57px}.tide-value span{font-size:10px}.tide-readout small{font-size:8px}.tide-readout .eyebrow{font-size:9px}.tide-capacity-ends{display:none}.tide-categories{display:none}.tide-home-action{top:206px;bottom:auto;left:20px}.tide-launch{width:220px;min-height:51px}.tide-home-action p{display:none}.tide-home-bottom{left:20px;right:20px;height:70px}.tide-assurance{max-width:47%;font-size:8px}.tide-assurance p{display:none}.tide-edition span:last-child{display:none}.coast-signature{top:71%;left:54%;font-size:8px}.stage-head{gap:12px}.stage-head h1{font-size:21px}.found-total strong{font-size:24px}.found-total small{font-size:8px}.stage-head p{font-size:10px}.result-row{grid-template-columns:20px 27px minmax(0,1fr) 66px;gap:7px}.result-amount{font-size:15px}.result-name strong{font-size:11px}.app-tile{width:27px;height:31px}.result-description{font-size:9px}.task-dock:not(.cleanup-ticket){padding:10px 20px;gap:8px}.dock-tide{display:none}.dock-info strong{font-size:10px}.dock-info small{display:none}.dock-actions{gap:9px}.dock-actions .text-button{font-size:10px}.dock-actions .button{font-size:10px;padding:9px}.complete-head{grid-template-columns:1fr;gap:5px}.complete-head h1{font-size:26px}.freed-readout{font-size:39px}.freed-readout small{text-align:left}.complete-head+.tide-scene{height:150px}.complete-footer{flex-direction:column;align-items:flex-start}.progress-header h1{font-size:22px}.progress-header{gap:16px}.progress-reading strong{font-size:27px}.progress-header p{font-size:10px}.tide-scene{height:175px}.tide-scene-bottom{font-size:8px}.tide-scene-bottom span:last-child{display:none}.fold-stepbar{gap:4px}.fold-step{font-size:8px;padding:5px}.analysis-top h1,.page-head h1{font-size:25px}.analysis-top{gap:10px}.analysis-top .button{font-size:10px;padding:9px}.capacity-block{padding:9px 6px;min-width:0;font-size:8px}.capacity-block strong{font-size:17px}.capacity-block strong small{font-size:7px;margin-left:2px}.capacity-strip{height:94px}.analysis-capacity{gap:12px;font-size:9px}.analysis-capacity strong{font-size:17px}.drive-label{font-size:9px}.analysis-search{width:100%}.rank-row{grid-template-columns:17px 1fr 65px 25px;gap:7px}.rank-size{font-size:16px}.rank-title{font-size:11px}.history-intro{display:block;padding:20px}.history-intro strong{font-size:44px}.history-intro span{display:block;margin-top:10px}.history-day{grid-template-columns:1fr;gap:8px}.history-date{padding:6px 0;border:0;background:none}.history-date strong{display:inline-block;margin-right:12px;font-size:19px}.history-receipt summary{padding:19px 14px;gap:10px;grid-template-columns:27px 1fr auto 14px}.history-receipt summary>.number{font-size:21px}.receipt-icon{width:27px;height:27px}.receipt-detail{padding-left:51px;font-size:10px}.settings-grid{grid-template-columns:1fr;gap:20px}.exclusion-panel{border-left:0;border-top:1px solid var(--line);padding:23px 0 0}.theme-preview{height:90px}}
+@media(prefers-reduced-motion:reduce){.tide-sweep{animation:none!important;display:none!important}*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
+:root[data-motion="reduced"] .tide-sweep{animation:none!important;display:none!important}:root[data-motion="reduced"] *,:root[data-motion="reduced"] *:before,:root[data-motion="reduced"] *:after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+/* Keep the numeric readout inside the blue field at both target sizes. */
+.tide-readout{width:25%}.coast-signature{left:58%;top:63%;white-space:nowrap;width:auto;transform:rotate(-24deg);letter-spacing:1px}.tide-scene .previous-level{fill:none;stroke:var(--muted);stroke-width:1;stroke-dasharray:4 5;opacity:.45;vector-effect:non-scaling-stroke}.tide-scene[data-stage="scanning"] .previous-level{display:none}
+@media(max-width:959px){.tide-readout{width:25%}.coast-signature{left:58%;top:61%;font-size:8px;letter-spacing:.5px}}
+@media(max-width:650px){.tide-readout{width:31%}.coast-signature{top:75%;left:58%}}
+.tide-action-note{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:12px;max-width:254px}.tide-action-note p{margin:0;font-size:9px}.tide-action-note button{padding:0;min-height:22px;font-size:9px;color:var(--muted);text-decoration:underline;text-underline-offset:4px}.tide-action-note button:hover{color:var(--blue)}.tide-scene[data-stage="complete"] .level-line{opacity:.25}
+@media(max-width:959px){.tide-action-note{max-width:219px;gap:10px;margin-top:8px}.tide-action-note p,.tide-action-note button{font-size:8px}}
+@media(max-width:650px){.tide-copy h1{font-size:38px;line-height:1.2}.tide-copy h1 br{display:initial}.tide-home-action{top:235px}.tide-canvas{top:300px}.tide-readout{top:377px;right:4%;width:25%}.tide-value{gap:4px}.tide-value strong{font-size:46px;letter-spacing:-2px}.tide-value span{font-size:9px}.tide-readout .eyebrow{font-size:8px;gap:5px}.tide-readout .eyebrow:before{height:4px;width:4px}.tide-readout small{font-size:7px;line-height:1.7}}
+
+/* The tide becomes a persistent storage instrument inside a desktop workspace. */
+:root{--bg:#f4f6f6;--surface:#fff;--ink:#233238;--muted:#69797e;--line:#dce3e4;--soft:#eaf0f1;--blue:#3152d5;--blue-soft:#e7edff;--sea:#294bd0;--sea-deep:#233fb4}
+:root[data-theme="dark"]{--bg:#17232c;--surface:#1d2c37;--ink:#edf3f4;--muted:#a5b6c1;--line:#344751;--soft:#263947;--blue:#aebfff;--blue-soft:#293e61;--sea:#2544ad;--sea-deep:#233e9b}
+.app{max-width:1800px}.topbar{height:58px;min-height:58px;padding:0 22px;gap:0;background:var(--surface)}.brand{min-width:198px;gap:9px}.brand-mark{width:26px;height:26px}.brand-name{font-size:19px;letter-spacing:1px}.brand-note{display:none}.navigation{margin-left:0;margin-right:auto;gap:6px;height:auto}.nav-button{height:34px;min-width:64px;padding:8px 14px;gap:7px;min-height:34px;font-size:12px;border-radius:5px}.nav-index{display:none}.nav-button[aria-current="page"]{background:var(--blue-soft);color:var(--blue);font-weight:600}.nav-button[aria-current="page"]:after{display:none}.nav-button:hover{background:var(--soft)}.top-actions{gap:13px}.icon-button{width:29px;height:29px;border-radius:5px}.icon-button .icon{width:16px;height:16px}.local-label{font:10px "Microsoft YaHei UI",sans-serif;letter-spacing:0}.local-label i{background:var(--success);width:5px;height:5px}.workbody{display:grid;grid-template-columns:210px minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;flex:1;min-height:0;min-width:0}.workspace{grid-column:2;grid-row:1;min-width:0;min-height:0;background:var(--bg);scrollbar-gutter:auto}.storage-rail{grid-column:1;grid-row:1/-1;min-height:0;min-width:0;overflow:auto;position:relative;isolation:isolate;padding:26px 20px 18px;display:flex;flex-direction:column;background:var(--sea);color:#fff}.storage-rail:after{content:"";pointer-events:none;position:absolute;width:260px;height:480px;border:1px solid #ffffff12;border-radius:48%;transform:rotate(32deg);top:210px;left:-190px;z-index:-1}.rail-disk{display:flex;align-items:center;gap:10px}.rail-drive{display:grid;place-items:center;flex-shrink:0;border:1px solid #ffffff44;border-radius:6px;width:35px;height:38px;font:16px "Bahnschrift",sans-serif;background:#ffffff0c}.rail-disk strong{display:block;font-size:12px;font-weight:500}.rail-disk small{display:block;font-size:9px;color:#c3d2ff;margin-top:6px}.rail-capacity{margin-top:35px}.rail-capacity p{font-size:11px;color:#d0dcff}.rail-capacity>div{display:flex;align-items:baseline;gap:8px;margin-top:9px}.rail-capacity strong{font-size:47px;font-weight:400;line-height:1.1;letter-spacing:-1.5px}.rail-capacity>div>span{font-size:12px;color:#d8e2ff}.rail-capacity>small{display:flex;justify-content:space-between;font-size:9px;color:#c3d2ff;margin-top:11px;gap:5px}.rail-tide{position:relative;height:104px;margin:22px -20px 24px;flex-shrink:0}.rail-tide svg{width:100%;height:100%;display:block}.rail-fill{fill:#ffffff16;stroke:none}.rail-contour{stroke:#ffffff35;stroke-width:1;fill:none;vector-effect:non-scaling-stroke}.rail-tide>div{position:absolute;bottom:9px;left:20px;right:20px;display:flex;justify-content:space-between;font-size:9px;color:#c9d7ff}.rail-tide strong{font-size:11px;font-weight:400;color:#fff}.rail-breakdown>p{font-size:10px;color:#b9caff;margin-bottom:12px}.rail-breakdown button{display:flex;align-items:center;justify-content:space-between;min-height:39px;gap:7px;width:100%;border-top:1px solid #ffffff20;font-size:10px;padding:8px 0;color:#fff}.rail-breakdown button>span{display:flex;align-items:center;gap:6px;white-space:nowrap}.rail-breakdown button i{width:4px;height:4px;background:#c6d3ff;display:inline-block}.rail-breakdown button i.swatch-personal{background:var(--apricot)}.rail-breakdown button i.swatch-system{background:#869ad7}.rail-breakdown button b{font-size:12px;white-space:nowrap}.rail-breakdown small{font-size:8px;font-weight:400;opacity:.7}.rail-breakdown button:hover{color:var(--apricot)}.storage-rail :focus-visible{outline-color:var(--apricot);outline-offset:2px}.rail-released{display:flex;justify-content:space-between;align-items:center;font-size:10px;color:#e2eaff;border-top:1px solid #ffffff30;padding-top:15px;margin-top:19px}.rail-released strong{font-size:15px;color:var(--apricot)}.rail-protection{display:flex;gap:9px;margin-top:auto;padding-top:34px;align-items:flex-start}.rail-protection>.icon{width:16px;height:16px;color:#b8ceff;margin-top:1px}.rail-protection strong{display:block;font-size:10px;font-weight:500;color:#deE7ff}.rail-protection button{display:flex;align-items:center;gap:5px;font-size:9px;min-height:27px;padding:4px 0;color:#b9cfff}.rail-protection button .icon{width:11px;height:11px}.rail-protection button:hover{color:#fff}
+.page{padding:26px;max-width:none;margin:0}.page-head h1,.analysis-top h1,h1{font-size:23px;letter-spacing:-.5px}.page-head p,.analysis-top p{font-size:11px;margin-top:7px}.page-kicker{display:none}.page-head,.analysis-top{margin-bottom:21px;align-items:center;gap:15px}.footer{height:27px;min-height:27px;padding:0 17px;background:var(--surface);font-size:9px}.footer-right{gap:15px}.prototype-mark,.footer a,.footer button{font-size:9px}.button{font-size:12px;min-height:36px;padding:8px 13px;border-radius:5px}.button .icon{width:16px;height:16px}.text-button{font-size:11px;min-height:29px}.text-button .icon{width:13px;height:13px}.tag{padding:3px 6px;font-size:10px}.tag .icon{width:12px;height:12px}.task-dock:not(.cleanup-ticket){grid-column:2;grid-row:2;padding:15px 26px;background:var(--surface);border-top:1px solid var(--line);gap:16px}.dock-info{gap:10px}.dock-info strong{font-size:12px;font-weight:550}.dock-info small{font-size:10px;margin-top:4px}.dock-info>.icon{width:19px;height:19px}.dock-actions{gap:15px}.dock-actions .button{min-height:38px;font-size:12px}.idle-dock .dock-info>.icon{color:var(--success)}.idle-dock #start-scan{min-width:125px;justify-content:center;gap:15px}.idle-dock .dock-actions .text-button{font-size:11px}.page#page-clean[data-view="idle"]{height:auto;min-height:100%;padding:26px;overflow:visible}.utility-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:26px}.utility-heading h1{font-size:24px;font-weight:600;letter-spacing:-.5px}.utility-heading p{font-size:11px;color:var(--muted);margin-top:7px}.ready-status{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--success);padding-top:6px;white-space:nowrap}.ready-status i{display:block;width:5px;height:5px;border-radius:50%;background:var(--success)}.scope-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:35px;padding-bottom:12px}.scope-toolbar>strong{font-size:12px;font-weight:550}.scope-toolbar>strong span{font:10px "Bahnschrift",sans-serif;margin-left:7px;color:var(--muted);background:var(--soft);padding:2px 5px;border-radius:3px}.scope-toolbar .text-button{font-size:10px;color:var(--muted)}.scope-columns{display:grid;grid-template-columns:1fr 88px 64px 14px;gap:16px;padding:9px 13px 9px 14px;background:var(--soft);color:var(--muted);font-size:10px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.scope-columns span:nth-child(3){text-align:right}.scope-list{background:var(--surface);border-bottom:1px solid var(--line)}.scope-entry{border-bottom:1px solid var(--line)}.scope-entry:last-child{border:0}.scope-entry summary{list-style:none;display:grid;grid-template-columns:31px minmax(0,1fr) 88px 64px 14px;gap:16px;align-items:center;min-height:69px;padding:11px 13px;cursor:pointer;transition:background 120ms}.scope-entry summary:hover{background:var(--blue-soft)}.scope-app-icon{display:grid;place-items:center;width:30px;height:32px;background:var(--blue-soft);border-radius:5px;color:var(--blue)}.scope-app-icon .icon{width:16px;height:16px}.scope-app-icon.warm{background:color-mix(in srgb,var(--apricot) 20%,var(--surface));color:var(--orange-ink)}.scope-app-icon.quiet{background:var(--soft);color:var(--muted)}.scope-name{min-width:0}.scope-name strong{display:block;font-size:12px;font-weight:550;color:var(--ink)}.scope-name small{display:block;font-size:10px;margin-top:5px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.scope-method{font-size:10px;color:var(--success)}.scope-method.review{color:var(--orange-ink)}.scope-method.blocked{color:var(--muted)}.scope-size{font-size:10px;color:var(--muted);text-align:right}.scope-entry summary>.icon{width:13px;height:13px;color:var(--muted)}.scope-entry[open] summary>.icon{transform:rotate(180deg)}.scope-entry[open] summary{background:var(--blue-soft)}.scope-rule{padding:14px 22px 16px 60px;border-top:1px solid var(--line);font-size:11px;background:var(--surface);color:var(--muted)}.scope-rule strong{font-size:10px;font-weight:550;color:var(--ink)}.scope-rule code{display:block;font:10px/1.7 Consolas,monospace;overflow-wrap:anywhere;margin:5px 0 10px}.scope-rule p{font-size:11px;line-height:1.8}.scope-preserve{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:10px;padding:15px 0 0}.scope-preserve>.icon{width:15px;height:15px;color:var(--success)}.scope-preserve .text-button{margin-left:auto;font-size:10px;white-space:nowrap}
+.stage-head{margin-bottom:21px;gap:15px}.stage-head h1{font-size:23px;font-weight:600;margin:10px 0 7px}.stage-head p{font-size:11px}.found-total{padding-top:21px}.found-total strong{font-size:29px;letter-spacing:-.5px}.found-total small{font-size:9px}.review-layout{grid-template-columns:minmax(0,1fr) 213px;gap:22px}.review-main{min-width:0}.filter-bar{gap:8px;flex-wrap:wrap;margin-bottom:10px}.filters{gap:2px}.filter{font-size:10px;padding:6px 8px;min-height:30px;border-radius:4px}.filter-bar>.text-button{font-size:10px}.filter[aria-pressed="true"]{background:var(--blue-soft);color:var(--blue);border-color:transparent}.filter .count{font-size:9px;margin-left:4px}.result-row{grid-template-columns:20px 27px minmax(0,1fr) 70px;gap:9px;min-height:91px;padding:14px 0}.app-tile{width:27px;height:31px;border-radius:4px}.app-tile .icon{width:16px;height:16px}.result-name strong{font-size:12px}.result-description{font-size:10px;line-height:1.6;margin-top:4px}.result-amount{font-size:17px}.result-amount small{font-size:9px}.row-detail{font-size:10px;min-height:25px;margin-top:-8px}.cleanup-ticket{border:1px solid var(--line);border-top:3px solid var(--blue);border-radius:5px;background:var(--surface);color:var(--ink);padding:18px}.ticket-caption{color:var(--muted);font-size:10px}.ticket-caption .icon{color:var(--blue);height:14px;width:14px}.ticket-tide{height:57px;margin:15px -18px 0;background:var(--blue)}.ticket-amount{color:var(--blue);font-size:34px;margin:18px 0 7px;letter-spacing:-.5px}.ticket-note{color:var(--muted);font-size:9px}.ticket-stats{color:var(--muted);font-size:9px;border-color:var(--line);padding:13px 0;margin-top:16px;gap:4px}.ticket-stats strong{color:var(--ink);font-size:12px}.cleanup-ticket .ticket-action{background:var(--blue);color:var(--blue-ink);min-height:39px;font-size:12px;margin-top:19px;border-radius:4px}.cleanup-ticket .ticket-action:hover{background:var(--blue);filter:brightness(1.06)}.ticket-secondary{color:var(--muted);font-size:10px;padding-top:11px;min-height:31px}.ticket-footer{font-size:9px;padding:12px 2px}.ticket-footer .icon{width:13px;height:13px}.progress-header h1{font-size:24px;margin:12px 0 8px}.progress-header p{font-size:11px}.progress-reading{padding-top:32px}.progress-reading strong{font-size:33px}.progress-reading small{font-size:10px}.tide-scene{height:206px;margin-top:23px}.tide-scene-label{font-size:11px;left:16px;top:13px}.tide-scene-label strong{font-size:24px}.tide-scale{right:16px;top:15px;font-size:8px}.tide-scene-bottom{left:16px;right:16px;font-size:9px;bottom:17px}.fold-stepbar{margin-top:16px;gap:5px}.fold-step{font-size:9px;padding:6px 8px}.journey-track{margin-top:15px}.progress-caption{font-size:10px}.complete-head h1{font-size:24px;margin:12px 0 8px}.complete-head p{font-size:11px}.freed-readout{font-size:43px;letter-spacing:-1px}.freed-readout small{font-size:10px}.complete-head+.tide-scene{height:182px;margin-top:12px}.complete-footer{margin-top:22px!important;padding-top:19px}.complete-footer p{font-size:10px}.complete-footer .button{font-size:11px}
+.analysis-disk{padding-bottom:10px}.drive-label{font-size:10px}.drive-label strong{font-size:11px}.drive-letter{height:32px!important;width:29px!important;font-size:12px!important}.analysis-capacity{font-size:10px;gap:20px}.analysis-capacity strong{font-size:21px}.capacity-strip{height:88px;margin:8px 0 18px}.capacity-block{padding:12px;gap:9px;font-size:10px;min-width:70px}.capacity-block strong{font-size:23px}.capacity-block strong small{font-size:8px}.analysis-controls{margin-bottom:7px;gap:10px}.analysis-search{width:221px}.rank-row{grid-template-columns:20px minmax(0,1fr) 76px 25px;gap:11px;min-height:81px;padding:12px 0}.rank-title{font-size:12px}.rank-path{font-size:10px;margin:5px 0 9px}.rank-size{font-size:19px}.rank-order{font-size:10px}.rank-open{min-width:25px;min-height:32px}.ranking-note{font-size:10px}.history-intro{padding:18px 0;margin-bottom:24px;background:none;border-bottom:1px solid var(--line);color:var(--ink);align-items:baseline}.history-intro:before,.history-intro:after{display:none}.history-intro strong{font-size:36px;color:var(--blue);letter-spacing:-1px}.history-intro span{color:var(--muted);font-size:11px}.history-day{grid-template-columns:86px 1fr;gap:19px;margin-bottom:16px}.history-date{font-size:10px;padding-top:16px;background-position:right 4px top 15px;background-size:7px 60px}.history-date strong{font-size:21px}.history-receipt{background:var(--surface);border:1px solid var(--line);border-radius:4px}.history-receipt:before{top:18px;bottom:18px;width:3px}.history-receipt summary{padding:19px 18px;gap:13px;min-height:85px;grid-template-columns:29px 1fr auto 14px}.history-receipt summary strong{font-size:12px;margin-bottom:7px}.history-receipt summary small{font-size:10px}.history-receipt summary>.number{font-size:23px}.receipt-icon{width:29px;height:29px}.receipt-detail{font-size:10px;padding:0 21px 18px 62px}.settings-grid{grid-template-columns:1.1fr 1fr;gap:31px;padding-top:4px}.settings-section h2,.exclusion-panel h2{font-size:14px}.settings-section>p{font-size:11px;margin-bottom:17px}.theme-options{gap:9px}.theme-preview{height:80px;margin-bottom:10px}.theme-name{font-size:10px}.theme-choice{padding-bottom:10px}.theme-choice[aria-pressed="true"]{padding-bottom:9px}.setting-row strong{font-size:12px}.setting-row small{font-size:10px}.setting-row{padding:19px 0}.settings-section{margin-bottom:22px}.exclusion-panel{padding-left:25px}.exclusion-panel>p{font-size:11px}.exclusion-list{margin-top:13px}.exclusion-list li{padding:19px 0;font-size:11px;gap:9px}.exclusion-list small{font-size:9px}.about-note{font-size:10px}
+@media(min-width:1300px){.workbody{grid-template-columns:230px minmax(0,1fr)}.brand{min-width:218px}.storage-rail{padding-left:24px;padding-right:24px}.rail-tide{margin-left:-24px;margin-right:-24px}.rail-capacity strong{font-size:53px}.rail-tide{height:130px}.page,.page#page-clean[data-view="idle"]{padding:29px 34px}.task-dock:not(.cleanup-ticket){padding:16px 34px}.scope-entry summary{min-height:73px}.review-layout{grid-template-columns:minmax(0,1fr) 238px;gap:27px}.ticket-amount{font-size:40px}.scope-name strong{font-size:13px}.scope-name small{font-size:11px}}
+@media(max-width:959px){.topbar{height:55px;min-height:55px;padding:0 16px}.brand{min-width:171px;gap:8px}.brand-name{font-size:18px}.brand-mark{width:24px;height:24px}.navigation{gap:2px}.nav-button{font-size:11px;padding:7px 12px;min-width:52px;height:32px;min-height:32px}.top-actions{gap:7px}.local-label{display:none}.workbody{grid-template-columns:177px minmax(0,1fr)}.storage-rail{padding:20px 16px 15px}.rail-drive{width:30px;height:34px;font-size:14px}.rail-disk{gap:8px}.rail-disk strong{font-size:11px}.rail-disk small{font-size:8px;line-height:1.5;margin-top:4px}.rail-capacity{margin-top:25px}.rail-capacity p{font-size:10px}.rail-capacity strong{font-size:42px}.rail-capacity>div>span{font-size:10px}.rail-capacity>small{font-size:8px;margin-top:9px}.rail-tide{height:81px;margin:17px -16px 20px}.rail-tide>div{left:16px;right:16px;font-size:8px}.rail-tide strong{font-size:10px}.rail-breakdown>p{font-size:9px;margin-bottom:8px}.rail-breakdown button{font-size:9px;min-height:33px}.rail-breakdown button b{font-size:11px}.rail-breakdown small{font-size:7px}.rail-breakdown button>span{gap:4px}.rail-protection{gap:7px;padding-top:24px}.rail-protection strong{font-size:9px}.rail-protection button{font-size:8px;min-height:24px}.rail-protection>.icon{width:14px;height:14px}.rail-released{font-size:9px;padding-top:12px;margin-top:13px}.rail-released strong{font-size:13px}.page,.page#page-clean[data-view="idle"]{padding:20px}.footer{height:25px;min-height:25px;padding:0 13px}.footer-right{gap:12px}.footer-right>span{display:none}.task-dock:not(.cleanup-ticket){padding:12px 20px;gap:10px}.dock-info strong{font-size:11px}.dock-info small{font-size:9px}.dock-info>.icon{width:17px}.dock-actions{gap:12px}.dock-actions .button{font-size:11px;min-height:36px;padding:8px 11px}.dock-actions .text-button{font-size:10px}.dock-tide{display:none}.idle-dock #start-scan{min-width:110px}.idle-dock .dock-actions .text-button{font-size:10px}.utility-heading{margin-bottom:18px;gap:13px}.utility-heading h1{font-size:21px}.utility-heading p{font-size:10px;margin-top:6px}.ready-status{font-size:9px;padding-top:4px}.scope-toolbar{min-height:30px;padding-bottom:10px}.scope-toolbar>strong{font-size:11px}.scope-toolbar .text-button{font-size:9px}.scope-columns{grid-template-columns:1fr 67px 47px 12px;gap:10px;padding:8px 10px;font-size:9px}.scope-entry summary{grid-template-columns:27px minmax(0,1fr) 67px 47px 12px;gap:10px;min-height:60px;padding:10px}.scope-app-icon{width:27px;height:29px}.scope-app-icon .icon{height:15px;width:15px}.scope-name strong{font-size:11px}.scope-name small{font-size:9px;margin-top:4px}.scope-method,.scope-size{font-size:9px}.scope-rule{padding:12px 14px 14px 46px}.scope-rule code{font-size:9px}.scope-rule p{font-size:10px}.scope-preserve{font-size:9px;gap:7px;padding-top:12px}.scope-preserve .text-button{font-size:9px}.scope-preserve>.icon{width:14px;height:14px}.review-layout{grid-template-columns:1fr;gap:0}#review-aside{display:none}.stage-head h1{font-size:21px}.stage-head p{font-size:10px}.stage-head{margin-bottom:16px}.found-total strong{font-size:26px}.found-total small{font-size:8px}.result-row{min-height:85px;gap:8px}.filter{font-size:9px;padding:6px 7px;min-height:28px}.filter-bar>.text-button{font-size:9px}.result-name strong{font-size:11px}.result-description{font-size:9px}.result-amount{font-size:16px}.row-detail{font-size:9px}.progress-header h1{font-size:22px}.progress-header p{font-size:10px}.progress-reading strong{font-size:29px}.progress-reading small{font-size:9px}.progress-header{gap:15px}.tide-scene{height:172px;margin-top:18px}.tide-scene-label{font-size:10px;left:13px;top:12px}.tide-scene-label strong{font-size:20px}.tide-scale{right:13px;font-size:7px;gap:9px}.tide-scale:before{width:36px}.tide-scene-bottom{font-size:8px;left:13px;right:13px;bottom:13px}.tide-scene-bottom span:last-child{max-width:60%;text-align:right}.fold-stepbar{gap:4px;margin-top:12px}.fold-step{font-size:8px;padding:5px 6px}.journey-track{margin-top:12px}.progress-caption{font-size:9px}.complete-head h1{font-size:21px}.complete-head p{font-size:10px}.freed-readout{font-size:35px}.freed-readout small{font-size:9px}.complete-head+.tide-scene{height:143px;margin-top:10px}.complete-footer{gap:13px;margin-top:17px!important;padding-top:15px;flex-wrap:wrap}.complete-footer p{font-size:9px}.complete-footer .button{font-size:10px;padding:8px 10px}.page-head h1,.analysis-top h1{font-size:22px}.page-head p,.analysis-top p{font-size:10px}.analysis-top .button,.page-head .button{font-size:10px;min-height:34px;padding:8px 11px}.analysis-top,.page-head{margin-bottom:18px}.analysis-capacity{font-size:9px;gap:13px}.analysis-capacity strong{font-size:18px}.analysis-disk{gap:12px}.drive-label strong{font-size:10px}.drive-label{font-size:9px}.capacity-strip{height:79px;margin:7px 0 16px;gap:3px}.capacity-block{font-size:8px;padding:10px 8px;min-width:61px;gap:8px}.capacity-block strong{font-size:19px}.capacity-block strong small{font-size:7px;margin-left:3px}.analysis-search{width:195px}.analysis-search input{font-size:10px;min-height:35px}.rank-row{min-height:77px;gap:8px;grid-template-columns:18px minmax(0,1fr) 66px 24px}.rank-title{font-size:11px}.rank-title .tag{font-size:8px}.rank-path{font-size:9px}.rank-size{font-size:17px}.ranking-note{font-size:9px}.history-intro{padding:10px 0 17px;margin-bottom:19px}.history-intro strong{font-size:30px}.history-intro span{font-size:9px}.history-day{grid-template-columns:70px 1fr;gap:13px}.history-date strong{font-size:18px}.history-date{font-size:9px}.history-receipt summary{padding:15px 12px;gap:10px;grid-template-columns:25px 1fr auto 12px;min-height:79px}.receipt-icon{width:25px;height:25px}.history-receipt summary strong{font-size:11px}.history-receipt summary small{font-size:9px;line-height:1.7;display:block}.history-receipt summary>.number{font-size:20px}.receipt-detail{font-size:9px;padding-left:47px}.settings-grid{grid-template-columns:1fr;gap:23px}.settings-section h2,.exclusion-panel h2{font-size:13px}.theme-preview{height:86px}.theme-name{font-size:11px}.settings-section>p{font-size:10px}.exclusion-panel{border-left:0;border-top:1px solid var(--line);padding:21px 0 0}.exclusion-panel>p{font-size:10px}.setting-row{padding:16px 0}.settings-section{margin-bottom:20px}.about-note{font-size:9px}.exclusion-list small{font-size:9px}}
+@media(max-height:650px) and (min-width:651px){.storage-rail{padding-top:19px}.rail-capacity{margin-top:21px}.rail-tide{height:67px;margin-top:16px;margin-bottom:16px}.rail-protection{padding-top:17px}.utility-heading{margin-bottom:12px}.scope-entry summary{min-height:51px;padding-top:7px;padding-bottom:7px}.scope-preserve{display:none}.scope-toolbar{padding-bottom:7px}.scope-columns{padding-top:7px;padding-bottom:7px}.page#page-clean[data-view="idle"]{padding-top:18px}.rail-breakdown button{min-height:31px}.rail-released{padding-top:9px;margin-top:10px}.tide-scene{height:155px}}
+@media(max-width:650px){.topbar{height:100px;min-height:100px;flex-wrap:wrap;padding:11px 17px 0;gap:3px}.brand{min-width:0;margin-right:auto}.navigation{order:3;flex:0 0 100%;height:44px;justify-content:space-between;margin:0;gap:3px}.nav-button{height:31px;min-height:31px;flex:1;padding:6px 9px}.top-actions{margin:0}.workbody{grid-template-columns:minmax(0,1fr)}.storage-rail{display:none}.workspace,.task-dock:not(.cleanup-ticket){grid-column:1}.page,.page#page-clean[data-view="idle"]{padding:20px 17px}.task-dock:not(.cleanup-ticket){padding:12px 17px}.footer{padding:0 12px}.footer-right{gap:10px}.footer a,.footer button,.prototype-mark{font-size:8px}.utility-heading h1{font-size:21px}.utility-heading{gap:10px}.ready-status{font-size:8px}.scope-entry summary{grid-template-columns:24px minmax(0,1fr) 58px 13px;gap:8px;padding:10px 8px;min-height:61px}.scope-app-icon{width:24px;height:28px}.scope-name strong{font-size:11px}.scope-name small{font-size:8px}.scope-size{display:none}.scope-columns{grid-template-columns:1fr 58px 13px;padding:8px;gap:8px}.scope-columns span:nth-child(3){display:none}.scope-method{font-size:8px}.scope-rule{padding:12px}.scope-preserve{font-size:8px;flex-wrap:wrap}.scope-preserve .text-button{margin-left:0}.idle-dock .dock-actions .text-button{display:none}.idle-dock .dock-info small{display:none}.idle-dock #start-scan{min-width:105px}.dock-info strong{font-size:10px}.stage-head h1{font-size:21px}.scope-toolbar .text-button{font-size:9px}.found-total strong{font-size:23px}.progress-header h1{font-size:22px}.progress-header p{font-size:10px}.tide-scene{height:167px}.progress-caption{font-size:9px}.tide-scene-bottom span:last-child{display:none}.complete-head{grid-template-columns:1fr;gap:6px}.complete-head+.tide-scene{height:153px}.freed-readout{font-size:33px}.freed-readout small{text-align:left}.complete-footer{align-items:flex-start;flex-direction:column}.analysis-search{width:100%}.capacity-block{font-size:8px;min-width:0}.capacity-block strong{font-size:17px}.history-day{grid-template-columns:1fr;gap:8px}.history-date{border:0;background:none;padding:5px 0}.history-date strong{display:inline-block;margin-right:10px}.history-intro{display:flex}.history-intro strong{font-size:30px}.history-intro span{font-size:8px;max-width:43%}.settings-grid{grid-template-columns:1fr}}
+/* Keep the storage instrument contained; only the working list scrolls. */
+.storage-rail{overflow:hidden}.storage-rail:after{inset:0;width:auto;height:auto;border:0;border-radius:0;transform:none;background:repeating-radial-gradient(ellipse at -40% 100%,transparent 0 115px,#ffffff0a 116px 117px,transparent 118px 160px)}
+.scope-entry summary{min-height:60px;padding-top:10px;padding-bottom:10px}.theme-preview:before{left:0;right:auto;top:0;bottom:0;width:25%;height:100%;border-radius:0;transform:none;background:#3152d5}.theme-preview:after{left:36%;right:auto;top:25%;bottom:auto;width:49%;height:4px;border:0;border-radius:1px;transform:none;background:#b0bec7;box-shadow:0 14px 0 #b0bec7,0 28px 0 #b0bec7}.theme-preview.dark-preview:after{background:#627789;box-shadow:0 14px 0 #627789,0 28px 0 #627789}
+@media(max-height:650px) and (min-width:651px){.scope-entry summary{min-height:48px;padding-top:6px;padding-bottom:6px}.scope-name small{margin-top:3px}.page#page-clean[data-view="idle"]{padding-bottom:8px}}
+
+</style>
+</head>
+<body>
+  <a class="skip" href="#workspace">跳到主要内容</a>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand" aria-label="拂尘">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 10c10-9 24-4 29 5M4 18c10-9 24-4 29 5M4 26c10-9 24-4 29 5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <div><div class="brand-name">拂尘</div><div class="brand-note">DUSTAWAY / EBB</div></div>
+      </div>
+      <nav class="navigation" aria-label="主导航">
+        <button class="nav-button" data-nav="clean" aria-current="page"><span class="nav-index" aria-hidden="true">01</span>清理</button>
+        <button class="nav-button" data-nav="analysis"><span class="nav-index" aria-hidden="true">02</span>空间分析</button>
+        <button class="nav-button" data-nav="history"><span class="nav-index" aria-hidden="true">03</span>历史</button>
+        <button class="nav-button" data-nav="settings"><span class="nav-index" aria-hidden="true">04</span>设置</button>
+      </nav>
+      <div class="top-actions"><span class="local-label"><i></i>本地运行</span><button id="theme-toggle" class="icon-button" data-action="toggle-theme" aria-label="切换为深色"></button></div>
+    </header>
+    <div class="workbody" id="workbody"><aside id="storage-rail" class="storage-rail" aria-label="磁盘状态"></aside><main class="workspace" id="workspace" tabindex="-1">
+      <section id="page-clean" class="page" aria-label="清理"></section>
+      <section id="page-analysis" class="page" aria-label="空间分析" hidden></section>
+      <section id="page-history" class="page" aria-label="历史" hidden></section>
+      <section id="page-settings" class="page" aria-label="设置" hidden></section>
+    </main>
+    <div id="task-dock" class="task-dock" hidden></div></div>
+    <footer class="footer"><span class="prototype-mark"><i></i>交互原型 · 模拟数据</span><div class="footer-right"><button id="background-task" data-action="return-task" hidden></button><span>不会读取或删除电脑文件</span><a href="./restored.html" target="_blank" rel="noopener">原版对照</a><button data-action="reset">重置演示</button></div></footer>
+  </div>
+  <dialog id="modal" aria-labelledby="modal-title"></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <div id="announcer" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+  <script>
+    'use strict';
+    const $ = (id) => document.getElementById(id);
+    const MiB = 1024 * 1024, GiB = 1024 * MiB;
+    const esc = (value) => String(value).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const icons = {
+      arrow:'<path d="M4 12h15m-6-6 6 6-6 6"/>',
+      chevron:'<path d="m9 5 7 7-7 7"/>',
+      down:'<path d="m6 9 6 6 6-6"/>',
+      close:'<path d="m6 6 12 12M6 18 18 6"/>',
+      sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/>',
+      moon:'<path d="M20.7 13a9 9 0 0 1-9.7-9.7A9 9 0 1 0 20.7 13Z"/>',
+      scan:'<path d="M8 3H4a1 1 0 0 0-1 1v4m13-5h4a1 1 0 0 1 1 1v4M3 16v4a1 1 0 0 0 1 1h4m8 0h4a1 1 0 0 0 1-1v-4M5 12h14"/>',
+      shield:'<path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6Z"/><path d="m8 12 3 3 5-6"/>',
+      disk:'<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 13h18m-5 3h2"/>',
+      folder:'<path d="M3 8V6a2 2 0 0 1 2-2h5l2 3h7a2 2 0 0 1 2 2v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z"/><path d="M3 10h18"/>',
+      globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c5 5 5 13 0 18-5-5-5-13 0-18Z"/>',
+      window:'<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 9v12"/>',
+      image:'<rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.5"/><path d="m21 16-5-6L7 21"/>',
+      file:'<path d="M14 3H5v18h14V8Z"/><path d="M14 3v5h5M8 13h8m-8 4h5"/>',
+      lock:'<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/>',
+      check:'<path d="m5 12 4 4L19 6"/>',
+      info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v.1"/>',
+      search:'<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/>',
+      refresh:'<path d="M20 7v5h-5M4 17v-5h5"/><path d="M5 7a8 8 0 0 1 14 0m0 10a8 8 0 0 1-14 0"/>',
+      history:'<path d="M3 4v5h5"/><path d="M3.8 8A9 9 0 1 1 3 14m9-7v5l3 2"/>',
+      archive:'<rect x="3" y="3" width="18" height="5" rx="1"/><path d="M5 8v13h14V8m-9 4h4"/>',
+      stop:'<rect x="6" y="6" width="12" height="12" rx="2"/>',
+      spark:'<path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5Z"/>'
+    };
+    const icon = (name) => '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">' + (icons[name] || icons.file) + '</svg>';
+    function coastline(offset=0,close=false){
+      const x=n=>n+offset;
+      return 'M '+x(646)+' -20 C '+x(740)+' 97 '+x(636)+' 195 '+x(581)+' 272 C '+x(500)+' 386 '+x(586)+' 404 '+x(526)+' 482 C '+x(461)+' 565 '+x(355)+' 570 '+x(355)+' 670'+(close?' L 1500 670 L 1500 -20 Z':'');
+    }
+    function coastArt(){
+      const shift=(freeBytes()/GiB-88.4)/256*1000;
+      return '<div class="tide-canvas" aria-hidden="true"><svg viewBox="0 0 1000 650" preserveAspectRatio="none"><path class="coast-fill" d="'+coastline(shift,true)+'"/><path class="coast-depth" d="'+coastline(218+shift,true)+'"/>'+[24,49,88,142,218,319].map(n=>'<path class="coast-line" d="'+coastline(n+shift)+'"/>').join('')+'</svg></div>';
+    }
+    function levelPath(level,close=true){
+      const y=Math.max(8,Math.min(230,level));
+      return 'M 0 '+y+' C 160 '+(y-35)+' 330 '+(y+35)+' 500 '+y+' S 840 '+(y-35)+' 1000 '+y+(close?' V 260 H 0 Z':'');
+    }
+    function selectedRatio(){
+      const total=sum(visibleGroups().filter(g=>g.kind!=='blocked').flatMap(remaining));
+      return total?sum(selectedFiles())/total:0;
+    }
+    function tidePreview(){
+      return '<svg viewBox="0 0 1000 260" preserveAspectRatio="none" role="img" aria-label="当前可清理示例中的已选比例"><path class="preview-base" d="'+levelPath(65)+'"/><path class="preview-selected" data-preview-tide d="'+levelPath(245-selectedRatio()*190)+'"/></svg>';
+    }
+    function tideProgress(){
+      const start=state.tideStartFree??freeBytes(),planned=state.tidePlanned||0;
+      return planned?Math.max(0,Math.min(1,(freeBytes()-start)/planned)):0;
+    }
+    function tideScene(stage){
+      const free=freeBytes()/GiB,base=85+tideProgress()*110;
+      const active=['cleaning','complete'].includes(stage),start=state.tideStartFree??freeBytes();
+      const scale=active?'本次变化 / '+(start/GiB).toFixed(1)+' → '+((start+(state.tidePlanned||0))/GiB).toFixed(1)+' GB':'C: / 256 GB';
+      return '<div class="tide-scene" data-stage="'+stage+'" role="img" aria-label="'+(active?'本次清理范围的放大示意，潮线随实际模拟释放退去':'扫描进度场景，空间占用尚未改变')+'"><svg viewBox="0 0 1000 260" preserveAspectRatio="none" aria-hidden="true"><path class="previous-level" data-previous-level d="'+levelPath(85,false)+'"/><path class="current-level" data-current-level d="'+levelPath(base)+'"/>'+[19,43,75,117].map(n=>'<path class="level-line" data-level-offset="'+n+'" d="'+levelPath(base+n,false)+'"/>').join('')+'<path class="tide-sweep" d="M -10 0 V 260"/></svg><div class="tide-scene-label">当前可用 <strong class="number" data-scene-free>'+free.toFixed(1)+'</strong>GB</div><div class="tide-scale">'+scale+'</div><div class="tide-scene-bottom"><span>'+(active?'本次已释放':'当前已用')+' <b class="number" data-scene-used>'+(active?bytes(freeBytes()-start):(256-free).toFixed(1)+' GB')+'</b></span><span>'+(stage==='complete'?'这一段留白，来自你的整理。':stage==='cleaning'?'潮线正在退去，文件按确认范围处理。':'扫描只检查文件，空间占用尚未改变。')+'</span></div></div>'+
+        (stage==='scanning'?'<div class="fold-stepbar" aria-label="已检查的类别">'+groups.map(g=>'<span class="fold-step" data-scan-chip="'+g.id+'">'+({edge:'Edge 缓存',chrome:'Chrome 缓存',windows:'临时文件',thumb:'缩略图',reports:'诊断报告',wechat:'应用日志'}[g.id])+'</span>').join('')+'</div>':'')+
+        (['scanning','cleaning'].includes(stage)?'<div class="journey-track" id="journey-progress" role="progressbar" aria-label="模拟任务进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="journey-fill"></span></div>':'');
+    }
+    function syncTide(){
+      updateStorageRail();
+      const selected=sum(selectedFiles()),free=freeBytes()/GiB,level=85+tideProgress()*110;
+      document.querySelectorAll('[data-preview-tide]').forEach(p=>{p.setAttribute('d',levelPath(245-selectedRatio()*190));p.dataset.previewBytes=selected;});
+      document.querySelectorAll('[data-current-level]').forEach(p=>{p.setAttribute('d',levelPath(level));p.dataset.freeBytes=freeBytes();});
+      document.querySelectorAll('[data-previous-level]').forEach(p=>p.setAttribute('d',levelPath(85,false)));
+      document.querySelectorAll('[data-level-offset]').forEach(p=>p.setAttribute('d',levelPath(level+Number(p.dataset.levelOffset),false)));
+      document.querySelectorAll('[data-scene-free]').forEach(p=>p.textContent=free.toFixed(1));
+      document.querySelectorAll('[data-scene-used]').forEach(p=>p.textContent=['cleaning','complete'].includes(state.stage)?bytes(freeBytes()-(state.tideStartFree??freeBytes())):(256-free).toFixed(1)+' GB');
+    }
+    function renderStorageRail(){
+      $('storage-rail').innerHTML='<div class="rail-disk"><span class="rail-drive">C:</span><div><strong>系统磁盘</strong><small>本地固定磁盘 · 示例</small></div></div>'+ 
+        '<div class="rail-capacity"><p>可用空间</p><div><strong class="number" data-rail-free>88.4</strong><span>GB</span></div><small>共 256 GB <span data-rail-percent>34.5% 可用</span></small></div>'+
+        '<div class="rail-tide" role="img" aria-label="磁盘空间占用示意"><svg viewBox="0 0 1000 260" preserveAspectRatio="none" aria-hidden="true"><path class="rail-fill" data-rail-level d="'+levelPath(90)+'"/>'+[18,53,99].map(n=>'<path class="rail-contour" data-rail-offset="'+n+'" d="'+levelPath(90+n,false)+'"/>').join('')+'</svg><div><span>已用</span><strong class="number" data-rail-used>167.6 GB</strong></div></div>'+
+        '<div class="rail-breakdown"><p>容量分布</p>'+[['apps','应用与缓存','74.4'],['personal','个人文件','59.9'],['system','系统与其他','33.3']].map(p=>'<button data-map="'+p[0]+'" aria-label="查看'+p[1]+'占用"><span><i class="swatch-'+p[0]+'"></i>'+p[1]+'</span><b class="number" data-rail-part="'+p[0]+'">'+p[2]+' <small>GB</small></b></button>').join('')+'</div>'+
+        '<div class="rail-released" hidden><span>本次已释放</span><strong class="number" data-rail-released>0 B</strong></div>'+
+        '<div class="rail-protection">'+icon('shield')+'<div><strong>个人文件受保护</strong><button data-nav="settings">查看保留清单 '+icon('chevron')+'</button></div></div>';
+    }
+    function updateStorageRail(){
+      if(!$('storage-rail'))return;
+      const free=freeBytes()/GiB,removed=allFiles.filter(f=>state.deleted.has(f.id)),released=sum(removed),apps=sum(removed.filter(f=>['edge','chrome','wechat'].includes(f.group)))/GiB;
+      document.querySelectorAll('[data-rail-free]').forEach(el=>el.textContent=free.toFixed(1));
+      document.querySelectorAll('[data-rail-used]').forEach(el=>el.textContent=(256-free).toFixed(1)+' GB');
+      document.querySelectorAll('[data-rail-percent]').forEach(el=>el.textContent=(free/256*100).toFixed(1)+'% 可用');
+      const values={apps:74.4-apps,personal:59.9,system:33.3-(released/GiB-apps)};
+      document.querySelectorAll('[data-rail-part]').forEach(el=>el.innerHTML=values[el.dataset.railPart].toFixed(1)+' <small>GB</small>');
+      document.querySelectorAll('[data-rail-level]').forEach(el=>el.setAttribute('d',levelPath(free/256*260)));
+      document.querySelectorAll('[data-rail-offset]').forEach(el=>el.setAttribute('d',levelPath(free/256*260+Number(el.dataset.railOffset),false)));
+      const total=document.querySelector('[data-rail-released]');if(total){total.textContent=bytes(released);total.parentElement.hidden=!released;}
+    }
+    function renderHome(){
+      return '<div class="utility-home"><div class="utility-heading"><div><h1>清理工作台</h1><p>检查临时文件与缓存，扫描后再选择清理。</p></div><span class="ready-status"><i></i>准备就绪</span></div>'+
+        '<div class="scope-toolbar"><strong>检查类别 <span>'+groups.length+'</span></strong><button class="text-button" data-action="scope">查看完整范围 '+icon('chevron')+'</button></div>'+
+        '<div class="scope-columns" aria-hidden="true"><span>项目</span><span>处理方式</span><span>占用</span><i></i></div>'+ 
+        '<div class="scope-list">'+groups.map((g,i)=>'<details class="scope-entry"><summary><span class="scope-app-icon '+(g.kind==='blocked'?'quiet':g.kind==='review'?'warm':'')+'">'+icon(g.icon)+'</span><span class="scope-name"><strong>'+g.name+'</strong><small>'+({edge:'网页缓存，不包含历史与密码',chrome:'网页缓存，不包含登录信息',windows:'超过 7 天未修改的临时文件',thumb:'文件预览产生的缩略图',reports:'旧的问题诊断与错误报告',wechat:'应用日志，仅展示占用'}[g.id])+'</small></span><span class="scope-method '+g.kind+'">'+({recommended:'建议清理',review:'手动确认',blocked:'仅供查看'}[g.kind])+'</span><span class="scope-size">未扫描</span>'+icon('down')+'</summary><div class="scope-rule"><strong>检查位置</strong><code>'+esc(g.root)+'</code><p>'+g.desc+'。'+(g.kind==='blocked'?'此类别不会进入清理范围。':'扫描完成后可以逐项查看文件，确认前不会模拟删除。')+'</p></div></details>').join('')+'</div>'+
+        '<div class="scope-preserve">'+icon('shield')+'<span>文档、照片、密码与聊天内容始终保留。</span><button class="text-button" data-nav="settings">保留清单 '+icon('chevron')+'</button></div></div>';
+    }
+
+    function sculpture(stage) {
+      if(stage==='analysis') {
+        const removed=allFiles.filter(f=>state.deleted.has(f.id));
+        const appRemoved=sum(removed.filter(f=>['edge','chrome','wechat'].includes(f.group)));
+        const parts=[['apps','应用与缓存',74.4*GiB-appRemoved],['personal','个人文件',59.9*GiB],['system','系统其他',33.3*GiB-(sum(removed)-appRemoved)],['free','可用空间',freeBytes()]];
+        return '<div class="capacity-strip" aria-label="磁盘容量分布">'+parts.map(p=>{
+          const tag=p[0]==='free'?'div':'button';
+          return '<'+tag+' class="capacity-block '+p[0]+'" '+(tag==='button'?'data-map="'+p[0]+'" aria-label="查看'+p[1]+'占用"':'')+' style="flex:'+p[2]/GiB+'"><span>'+p[1]+'</span><strong>'+ (p[2]/GiB).toFixed(1)+'<small>GB</small></strong></'+tag+'>';
+        }).join('')+'</div>';
+      }
+
+      return tideScene(stage);
+    }
+    function updateJourney(percent) {
+      const progress=$('journey-progress');if(progress){progress.setAttribute('aria-valuenow',String(Math.round(percent)));$('journey-fill').style.width=percent+'%';}
+      document.querySelectorAll('[data-scan-chip]').forEach(chip=>{chip.classList.toggle('found',state.scannedGroups.includes(chip.dataset.scanChip));chip.classList.toggle('current',chip.dataset.scanChip===state.scannedGroups.at(-1));});
+      syncTide();
+    }
+    const groups = [
+      {id:'edge',name:'Microsoft Edge',kind:'recommended',icon:'globe',desc:'网页缓存 · 再次访问时会重新生成',root:'C:\\Users\\Demo\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\Cache\\Cache_Data',files:[['data_0',918],['data_1',384],['f_000024',256]]},
+      {id:'chrome',name:'Google Chrome',kind:'recommended',icon:'globe',desc:'网页缓存 · 保留密码、历史和登录信息',root:'C:\\Users\\Demo\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Cache\\Cache_Data',files:[['data_2',512],['f_00008b',204]]},
+      {id:'windows',name:'Windows 临时文件',kind:'recommended',icon:'window',desc:'超过 7 天未修改的临时文件',root:'C:\\Users\\Demo\\AppData\\Local\\Temp',files:[['setup-cache.tmp',176],['preview-buffer.tmp',91],['session-archive.tmp',64]]},
+      {id:'thumb',name:'缩略图缓存',kind:'recommended',icon:'image',desc:'文件预览缩略图 · 需要时自动重建',root:'C:\\Users\\Demo\\AppData\\Local\\Microsoft\\Windows\\Explorer',files:[['thumbcache_256.db',112],['thumbcache_1024.db',39]]},
+      {id:'reports',name:'旧诊断报告',kind:'review',icon:'file',desc:'不再排查旧问题时，可选择移除示例报告',root:'C:\\Users\\Demo\\AppData\\Local\\Diagnostics\\Archive',files:[['app-diagnostic-0921.log',128],['session-0920-report.log',46]]},
+      {id:'wechat',name:'微信应用日志',kind:'blocked',icon:'lock',desc:'此类项目仅展示，不提供清理操作',root:'C:\\Users\\Demo\\AppData\\Local\\Tencent\\WeChat\\Logs',files:[['runtime.log',352],['diagnostic.log',186]]}
+    ];
+    groups.forEach((g) => { g.files = g.files.map((f,i) => ({id:g.id+'-'+i,name:f[0],bytes:f[1]*MiB,path:g.root+'\\'+f[0],group:g.id})); });
+    const allFiles = groups.flatMap((g) => g.files);
+    const initialHistory = () => [
+      {id:'sample-1',date:'2026-09-27',time:'21:42',bytes:2.14*GiB,count:1860,scope:'Windows 临时文件、Edge 网页缓存',stopped:false,sample:true},
+      {id:'sample-2',date:'2026-09-24',time:'10:18',bytes:864*MiB,count:742,scope:'Chrome 网页缓存、缩略图缓存',stopped:false,sample:true}
+    ];
+    const state = {
+      page:'clean',stage:'idle',theme:'light',motion:false,filter:'all',
+      selected:new Set(),deleted:new Set(),scannedGroups:[],scanTick:0,incomplete:false,
+      scanTimer:null,cleanupTimer:null,pending:[],processed:[],totalToClean:0,lastReport:null,
+      history:initialHistory(),analysisFilter:'all',analysisSearch:'',analysisBusy:false,
+      analysisTimer:null,analysisHasRun:false,dialogGroup:null,fileSearch:'',scroll:{}
+    };
+    const analysisItems = [
+      {name:'已安装的应用',path:'C:\\Program Files',bytes:52.8*GiB,type:'apps',label:'应用',advice:'通过 Windows“已安装的应用”卸载不再使用的软件。',tips:['先确认软件是否仍在使用。','不要直接删除安装目录，可能导致软件无法正常卸载。']},
+      {name:'项目与工作文件',path:'C:\\Users\\Demo\\Documents\\Projects',bytes:31.6*GiB,type:'personal',label:'个人文件',advice:'先整理已完成的项目，再按需移动到其他磁盘。',tips:['移动前检查备份。','确认项目依赖，避免只移动部分文件。']},
+      {name:'Windows 系统文件',path:'C:\\Windows',bytes:28.4*GiB,type:'system',label:'系统',advice:'使用 Windows 存储设置查看系统支持的清理项目。',tips:['不要手动删除系统文件。','拂尘的空间分析只帮助了解占用。']},
+      {name:'下载文件夹',path:'C:\\Users\\Demo\\Downloads',bytes:18.7*GiB,type:'personal',label:'个人文件',advice:'检查旧安装包与重复下载，保留仍需要的文件。',tips:['优先按日期查看较早的下载。','个人文件由你决定，本原型不会删除它们。']},
+      {name:'开发工具与缓存',path:'C:\\Users\\Demo\\AppData\\Local\\DevTools',bytes:14.2*GiB,type:'apps',label:'应用',advice:'在对应开发工具中管理缓存与旧版本。',tips:['确认没有正在运行的构建任务。','清理后首次构建可能需要更长时间。']},
+      {name:'照片与视频',path:'C:\\Users\\Demo\\Pictures',bytes:9.6*GiB,type:'personal',label:'个人文件',advice:'备份原始照片后，再整理重复导出的副本。',tips:['不要只凭文件名判断重复。','确认备份可正常打开后再处理本地副本。']},
+      {name:'浏览器资料',path:'C:\\Users\\Demo\\AppData\\Local\\Browsers',bytes:7.4*GiB,type:'apps',label:'应用',advice:'可先使用清理页检查网页缓存。',tips:['密码、历史、会话与网页缓存是不同内容。','不要直接移除整个浏览器用户资料目录。']}
+    ];
+    function bytes(n) {
+      if (n >= GiB) return (n/GiB).toFixed(2).replace(/0$/,'').replace(/\.$/,'')+' GB';
+      if (n >= MiB) return (n/MiB).toFixed(n%MiB?1:0)+' MB';
+      return n === 0 ? '0 B' : Math.round(n/1024)+' KB';
+    }
+    const remaining = (g) => g.files.filter((f) => !state.deleted.has(f.id));
+    const visibleGroups = () => groups.filter((g) => state.scannedGroups.includes(g.id) && remaining(g).length);
+    const selectedFiles = () => allFiles.filter((f) => state.selected.has(f.id) && !state.deleted.has(f.id));
+    const sum = (files) => files.reduce((n,f) => n+f.bytes,0);
+    const freeBytes = () => 88.4*GiB + sum(allFiles.filter((f) => state.deleted.has(f.id)));
+    function announce(text) { $('announcer').textContent = text; }
+    let toastTimer;
+    function toast(text) { clearTimeout(toastTimer); $('toast').textContent=text; $('toast').hidden=false; toastTimer=setTimeout(() => $('toast').hidden=true,2800); }
+    function effectiveTheme() { return state.theme==='system' ? (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light') : state.theme; }
+    function applyTheme() {
+      const theme=effectiveTheme();
+      document.documentElement.dataset.theme=theme;
+      syncTide();
+
+      $('theme-toggle').innerHTML=icon(theme==='dark'?'sun':'moon');
+      $('theme-toggle').setAttribute('aria-label',theme==='dark'?'切换为浅色':'切换为深色');
+      $('theme-toggle').title=theme==='dark'?'切换为浅色':'切换为深色';
+      document.querySelectorAll('[data-theme-choice]').forEach((b) => b.setAttribute('aria-pressed',String(b.dataset.themeChoice===state.theme)));
+    }
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change',() => { if(state.theme==='system') applyTheme(); });
+    function setPage(page) {
+      if (!['clean','analysis','history','settings'].includes(page)) return;
+      state.scroll[state.page]=$('workspace').scrollTop;
+      state.page=page;
+      if(page==='analysis') renderAnalysis();
+      if(page==='history') renderHistory();
+      if(page==='settings') renderSettings();
+      document.querySelectorAll('.page').forEach((p) => p.hidden=p.id!=='page-'+page);
+      document.querySelectorAll('[data-nav]').forEach((b) => { if(b.dataset.nav===page)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current'); });
+      $('workspace').scrollTop=state.scroll[page]||0;
+      renderDock();
+      updateBackgroundTask();
+      syncTide();
+    }
+
+    function renderScanning() {
+      return '<div data-stage="scanning"><div class="progress-header"><div><span class="tag blue"><span class="live-dot"></span>正在模拟扫描</span><h1>正在扫描</h1><p>正在检查 <span id="scan-current">Microsoft Edge</span>。扫描不会删除文件。</p></div>'+
+        '<div class="progress-reading"><strong id="scan-count" class="number">0</strong><small>项已检查</small></div></div>'+sculpture('scanning')+
+        '<div class="progress-caption" style="margin-top:23px"><span id="scan-found">正在准备示例结果…</span><span>停止后保留已检查的结果</span></div></div>';
+    }
+    const kindName = (g) => g.kind==='review'?'需要你确认':g.kind==='blocked'?'仅供查看':'建议清理';
+
+    function renderReview() {
+      const found=visibleGroups(), amount=sum(found.flatMap(remaining));
+      return '<div class="stage-head"><div><div class="stage-title"><span class="tag '+(state.incomplete?'warm':'success')+'">'+icon(state.incomplete?'info':'check')+(state.incomplete?'扫描已停止':'扫描完成')+'</span></div><h1>扫描结果</h1><p>建议项已选好。打开文件明细，可以继续保留。</p></div>'+
+        '<div class="found-total"><strong class="number">'+bytes(amount)+'</strong><small>全部发现 · 含只读项目</small></div></div>'+
+        (state.incomplete?'<div class="inline-notice">'+icon('info')+'模拟扫描已停止，仅展示已检查的类别。可以处理当前结果，或重新扫描。</div>':'')+
+        '<div class="review-layout"><div class="review-main"><div class="filter-bar"><div class="filters" aria-label="按清理建议筛选">'+[
+          ['all','全部发现',found.length],['recommended','建议清理',found.filter((g)=>g.kind==='recommended').length],
+          ['review','需确认',found.filter((g)=>g.kind==='review').length],['blocked','只读',found.filter((g)=>g.kind==='blocked').length]
+        ].map((f)=>'<button class="filter" data-filter="'+f[0]+'" aria-pressed="'+(state.filter===f[0])+'">'+f[1]+'<span class="count">'+f[2]+'</span></button>').join('')+
+        '</div><button class="text-button" data-action="recommended">只选择建议项</button></div><div class="result-list" id="result-list"></div></div>'+
+        '<aside id="review-aside" aria-label="本次清理"><div id="ticket-holder"></div><p class="ticket-footer">'+icon('shield')+'下一步会再次核对范围。<br>所有操作仅为模拟。</p></aside></div>';
+    }
+    function renderRows() {
+      const target=$('result-list'); if(!target) return;
+      const rows=visibleGroups().filter((g)=>state.filter==='all'||g.kind===state.filter);
+      target.innerHTML=rows.length ? rows.map((g)=>{
+        const files=remaining(g), selected=files.filter((f)=>state.selected.has(f.id));
+        return '<article class="result-row">' +
+          (g.kind==='blocked'?'<span class="muted" style="display:flex;justify-content:center">'+icon('lock')+'</span>':'<label class="check-hit"><input type="checkbox" data-group-check="'+g.id+'" aria-label="选择'+esc(g.name)+'" '+(selected.length===files.length?'checked':'')+'></label>') +
+          '<div class="app-tile '+(g.kind==='review'?'warm':g.kind==='blocked'?'quiet':'')+'">'+icon(g.icon)+'</div><div><div class="result-name"><strong>'+g.name+'</strong>'+(g.kind!=='recommended'?'<span class="tag '+(g.kind==='review'?'warm':'')+'">'+kindName(g)+'</span>':'')+'</div><p class="result-description">'+g.desc+'</p></div>' +
+          '<div class="result-amount number">'+bytes(sum(files))+'<small>'+files.length+' 个示例文件</small></div><button id="detail-'+g.id+'" class="row-detail" data-detail="'+g.id+'" aria-label="查看'+esc(g.name)+'文件">查看文件'+icon('chevron')+'</button></article>';
+      }).join('') : '<div class="empty"><h2>这里没有发现项目</h2><p>切换筛选，或重新扫描查看示例结果。</p></div>';
+      updateChecks();
+    }
+
+    function renderComplete() {
+      const r=state.lastReport;
+      return '<div class="complete-head"><div><span class="tag '+(r.stopped?'warm':'success')+'">'+icon(r.stopped?'stop':'check')+(r.stopped?'模拟清理已停止':'模拟清理完成')+'</span><h1>'+(r.stopped?'模拟清理已停止':'模拟清理完成')+'</h1><p>本次模拟移除 '+r.count+' 个示例文件。'+(r.stopped?'尚未处理的项目仍然保留。':'未选择的文件保持原样。')+'</p></div>'+
+        '<div class="freed-readout number"><small>本次模拟释放</small>'+bytes(r.bytes)+'</div></div>'+sculpture('complete')+
+        '<div class="complete-footer" style="margin-top:24px"><p>可用空间更新为 <strong class="number">'+bytes(freeBytes())+'</strong><br>以上为模拟结果，你电脑上的文件未发生变化。</p><div class="button-row"><button class="button" data-action="scan">再扫描一次</button><button class="button primary" data-nav="history">查看清理记录</button></div></div>';
+    }
+
+    function renderCleaning() {
+      return '<div data-stage="cleaning"><div class="progress-header"><div><span class="tag blue">正在模拟清理</span><h1>正在清理已选项目</h1><p>只处理刚刚确认的示例文件，随时可以停止。</p></div><div class="progress-reading"><strong id="cleanup-count" class="number">0</strong><small>/ '+state.totalToClean+' 个文件</small></div></div>'+
+        sculpture('cleaning')+'<div class="progress-caption" style="margin-top:23px"><span>已模拟移除 <strong class="number" id="cleanup-bytes">0 B</strong></span><span>未处理的项目会保留</span></div></div>';
+    }
+
+    function renderClean() {
+      const dock=$('task-dock');
+      $('workbody').appendChild(dock);
+      $('page-clean').dataset.view=state.stage;
+      $('page-clean').innerHTML=state.stage==='idle'?renderHome():state.stage==='scanning'?renderScanning():state.stage==='review'?renderReview():state.stage==='cleaning'?renderCleaning():renderComplete();
+      if(state.stage==='review') renderRows();
+      renderDock();updateBackgroundTask();syncTide();
+    }
+
+    function renderDock() {
+      const dock=$('task-dock');
+      const holder=$('ticket-holder');
+      const ticket=state.stage==='review'&&innerWidth>=960&&holder;
+      if(ticket) holder.appendChild(dock);
+      else $('workbody').appendChild(dock);
+      dock.className=ticket?'task-dock cleanup-ticket':'task-dock';
+      dock.hidden=state.page!=='clean'||state.stage==='complete';
+      if(dock.hidden)return;
+      if(state.stage==='idle'){
+        dock.className='task-dock idle-dock';
+        dock.innerHTML='<div class="dock-info">'+icon('shield')+'<div><strong>扫描不会删除文件</strong><small>6 个检查类别 · 完成后可逐项选择</small></div></div><div class="dock-actions"><button class="text-button" data-nav="history">清理历史</button><button id="start-scan" class="button primary" data-action="scan">'+icon('scan')+'开始扫描</button></div>';
+        return;
+      }
+      if(state.stage==='review') {
+        const files=selectedFiles();
+        if(ticket) {
+          dock.innerHTML='<div class="ticket-caption">本次预计释放'+icon('archive')+'</div><div class="ticket-tide">'+tidePreview()+'</div><div id="ticket-amount" class="ticket-amount number">'+bytes(sum(files))+'</div><p class="ticket-note">选择预览 · 尚未开始清理。</p>'+
+            '<div class="ticket-stats"><span id="selected-summary">已选择 '+files.length+' 个文件</span><strong id="ticket-free" class="number">'+((freeBytes()+sum(files))/GiB).toFixed(1)+' GB</strong></div><p class="ticket-note" style="text-align:right;margin-top:7px">模拟清理后预计可用</p>'+
+            '<button id="prepare-cleanup" class="button ticket-action" data-action="prepare" '+(!files.length?'disabled':'')+'>清理已选'+icon('arrow')+'</button><button class="ticket-secondary" data-action="scan">重新扫描</button>';
+        } else {
+          dock.innerHTML='<div class="dock-info"><div class="dock-tide">'+tidePreview()+'</div>'+icon('archive')+'<div><strong id="selected-summary">已选 '+files.length+' 个文件 · <span class="number">'+bytes(sum(files))+'</span></strong><small>预计释放 · 下一步核对清理范围</small></div></div><div class="dock-actions"><button class="text-button" data-action="scan">重新扫描</button><button id="prepare-cleanup" class="button primary" data-action="prepare" '+(!files.length?'disabled':'')+'>清理已选'+icon('arrow')+'</button></div>';
+        }
+      } else {
+        const cleaning=state.stage==='cleaning';
+        dock.innerHTML='<div class="dock-info">'+icon(cleaning?'archive':'scan')+'<div><strong>'+(cleaning?'正在模拟处理示例文件':'只检查，不删除')+'</strong><small>'+(cleaning?'停止后保留尚未处理的项目':'可以切换页面，当前演示会继续')+'</small></div></div><div class="dock-actions"><button id="stop-task" class="button" data-action="stop">'+icon('stop')+(cleaning?'停止清理':'停止扫描')+'</button></div>';
+      }
+      syncTide();
+    }
+    function updateBackgroundTask() {
+      const running=['scanning','cleaning'].includes(state.stage);
+      $('background-task').hidden=!running||state.page==='clean';
+      $('background-task').textContent=state.stage==='scanning'?'扫描中 · 返回查看':'清理中 · 返回查看';
+    }
+    function updateChecks() {
+      document.querySelectorAll('[data-group-check]').forEach((input)=>{
+        const files=remaining(groups.find((g)=>g.id===input.dataset.groupCheck));
+        const count=files.filter((f)=>state.selected.has(f.id)).length;
+        input.checked=count===files.length && count>0;
+        input.indeterminate=count>0&&count<files.length;
+      });
+      document.querySelectorAll('[data-file-check]').forEach((input)=>input.checked=state.selected.has(input.dataset.fileCheck));
+      const files=selectedFiles();
+      if($('ticket-amount')) {
+        $('ticket-amount').textContent=bytes(sum(files));
+        $('selected-summary').textContent='已选择 '+files.length+' 个文件';
+        $('ticket-free').textContent=((freeBytes()+sum(files))/GiB).toFixed(1)+' GB';
+      } else if($('selected-summary')) $('selected-summary').innerHTML='已选 '+files.length+' 个文件 · <span class="number">'+bytes(sum(files))+'</span>';
+      if($('prepare-cleanup')) $('prepare-cleanup').disabled=!files.length;
+      if(state.dialogGroup && $('modal').open) {
+        const g=groups.find((g)=>g.id===state.dialogGroup);
+        const groupFiles=remaining(g), groupSelected=groupFiles.filter((f)=>state.selected.has(f.id));
+        if($('file-selection')) $('file-selection').textContent=g.kind==='blocked'?'此类别仅供查看':'本类别已选 '+groupSelected.length+' 项 · '+bytes(sum(groupSelected));
+        const displayed=fileMatches(g);
+        if($('file-all')) {
+          const count=displayed.filter((f)=>state.selected.has(f.id)).length;
+          $('file-all').checked=!!displayed.length&&count===displayed.length;
+          $('file-all').indeterminate=count>0&&count<displayed.length;
+          $('file-all').disabled=!displayed.length;
+        }
+      }
+      syncTide();
+    }
+    function startScan() {
+      if(['scanning','cleaning'].includes(state.stage)) return;
+      clearInterval(state.scanTimer);
+      state.tideStartFree=freeBytes();state.tidePlanned=0;state.stage='scanning'; state.scanTick=0;state.scannedGroups=[];state.selected.clear();state.filter='all';state.incomplete=false;
+      renderClean(); setPage('clean');$('workspace').scrollTop=0;
+      $('stop-task').focus({preventScroll:true});
+      announce('模拟扫描开始。');
+      state.scanTimer=setInterval(()=>{
+        const g=groups[state.scanTick];
+        if(g) {
+          state.scannedGroups.push(g.id);
+          state.scanTick++;updateJourney(state.scanTick/groups.length*100);
+          if($('scan-current')) $('scan-current').textContent=g.name;
+          if($('scan-count')) $('scan-count').textContent=(state.scanTick*1486).toLocaleString('zh-CN');
+          if($('scan-found')) $('scan-found').textContent='已发现 '+bytes(sum(visibleGroups().flatMap(remaining)))+' 示例内容';
+        } else finishScan(false);
+      },570);
+    }
+    function finishScan(stopped) {
+      clearInterval(state.scanTimer);state.scanTimer=null;state.stage='review';state.incomplete=stopped;
+      visibleGroups().filter((g)=>g.kind==='recommended').flatMap(remaining).forEach((f)=>state.selected.add(f.id));
+      renderClean();$('workspace').scrollTop=0;
+      if(state.page==='clean') {
+        const focus=$('prepare-cleanup');
+        if(focus&&!focus.disabled) focus.focus({preventScroll:true});
+        else $('page-clean').querySelector('button')?.focus({preventScroll:true});
+      }
+      announce(stopped?'模拟扫描已停止，已检查的结果已保留。':'模拟扫描完成，建议项已选择，可查看文件并调整。');
+    }
+    function startCleanup() {
+      if(state.stage!=='review'||!state.pending.length) return;
+      state.tideStartFree=freeBytes();state.tidePlanned=sum(allFiles.filter(f=>state.pending.includes(f.id)));state.stage='cleaning';state.processed=[];state.totalToClean=state.pending.length;
+      closeModal();renderClean();setPage('clean');$('workspace').scrollTop=0;
+      $('stop-task').focus({preventScroll:true});announce('开始模拟清理。');
+      state.cleanupTimer=setInterval(()=>{
+        const id=state.pending.shift();
+        if(id) { state.deleted.add(id);state.selected.delete(id);state.processed.push(id); }
+        updateJourney(state.processed.length/state.totalToClean*100);
+        if($('cleanup-count')) $('cleanup-count').textContent=state.processed.length;
+        if($('cleanup-bytes')) $('cleanup-bytes').textContent=bytes(sum(allFiles.filter((f)=>state.processed.includes(f.id))));
+        if(!state.pending.length) finishCleanup(false);
+      },350);
+    }
+    function finishCleanup(stopped) {
+      clearInterval(state.cleanupTimer);state.cleanupTimer=null;
+      const now=new Date(), files=allFiles.filter((f)=>state.processed.includes(f.id));
+      const pad=(n)=>String(n).padStart(2,'0');
+      const report={id:'demo-'+Date.now(),date:now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate()),time:pad(now.getHours())+':'+pad(now.getMinutes()),bytes:sum(files),count:files.length,scope:groups.filter((g)=>files.some((f)=>f.group===g.id)).map((g)=>g.name).join('、')||'尚未处理文件',stopped,sample:false};
+      state.lastReport=report;state.history.unshift(report);state.stage='complete';state.pending=[];
+      renderClean();if(state.page==='history')renderHistory();
+      if(state.page==='clean') { $('workspace').scrollTop=0;$('page-clean').querySelector('.button')?.focus({preventScroll:true}); }
+      announce((stopped?'模拟清理已停止。':'模拟清理完成。')+'本次处理 '+report.count+' 个示例文件，'+bytes(report.bytes)+'。');
+    }
+    function stopTask() { if(state.stage==='scanning')finishScan(true);else if(state.stage==='cleaning')finishCleanup(true); }
+    let modalOpener=null;
+    function openModal(content,side,description) {
+      const modal=$('modal');
+      if(modal.open) modal.close();
+      modalOpener=document.activeElement;
+      modal.className=side?'side-sheet':'';
+      modal.innerHTML=content;
+      if(description)modal.setAttribute('aria-describedby',description);else modal.removeAttribute('aria-describedby');
+      modal.showModal();
+      const first=modal.querySelector('[data-autofocus]')||modal.querySelector('[data-action="close-modal"]');
+      first?.focus({preventScroll:true});
+    }
+    function closeModal() { $('modal').close(); }
+    $('modal').addEventListener('close',()=>{
+      state.dialogGroup=null;state.fileSearch='';
+      const opener=modalOpener;modalOpener=null;
+      if(opener?.isConnected)opener.focus({preventScroll:true});
+    });
+    $('modal').addEventListener('click',(event)=>{
+      if(event.target!==$('modal'))return;
+      const r=$('modal').getBoundingClientRect();
+      if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom) closeModal();
+    });
+    $('modal').addEventListener('keydown',(event)=>{
+      if(event.key!=='Tab')return;
+      const modal=$('modal');
+      const focusable=[...modal.querySelectorAll('button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),a[href],[tabindex]:not([tabindex="-1"])')].filter((el)=>el.getClientRects().length);
+      const first=focusable[0],last=focusable[focusable.length-1];
+      if(!first) { event.preventDefault();return; }
+      if(event.shiftKey&&(document.activeElement===first||!modal.contains(document.activeElement))) {
+        event.preventDefault();last.focus();
+      } else if(!event.shiftKey&&(document.activeElement===last||!modal.contains(document.activeElement))) {
+        event.preventDefault();first.focus();
+      }
+    });
+    function modalHeader(title,sub) { return '<div class="dialog-header"><div><h2 id="modal-title">'+title+'</h2>'+(sub?'<p>'+sub+'</p>':'')+'</div><button class="icon-button" data-action="close-modal" aria-label="关闭弹窗">'+icon('close')+'</button></div>'; }
+    function fileMatches(g) { const q=state.fileSearch.trim().toLowerCase();return remaining(g).filter((f)=>(f.name+' '+f.path).toLowerCase().includes(q)); }
+    function openFiles(id) {
+      const g=groups.find((g)=>g.id===id);if(!g)return;
+      state.dialogGroup=id;state.fileSearch='';
+      openModal(modalHeader(g.name,kindName(g)+' · 示例文件明细')+
+        '<div class="sheet-toolbar"><label class="search-box">'+icon('search')+'<input type="search" id="file-search" aria-label="搜索示例文件名或路径" placeholder="搜索文件名或路径"></label><div class="file-select-all">'+(g.kind==='blocked'?'<span>'+icon('lock')+' 此类项目不可选择</span>':'<label><input type="checkbox" id="file-all">选择当前结果</label>')+'<span id="file-count"></span></div></div>' +
+        '<div class="dialog-body" style="flex:1"><p style="font-size:12px">'+esc(g.desc)+'</p><div id="file-list"></div></div><div class="dialog-actions"><span id="file-selection" class="dialog-selection"></span><button class="button primary" data-action="close-modal">完成查看</button></div>',true);
+      state.dialogGroup=id;
+      renderFiles();
+    }
+    function renderFiles() {
+      const g=groups.find((g)=>g.id===state.dialogGroup);if(!g)return;
+      const files=fileMatches(g);
+      $('file-count').textContent=files.length+' 项';
+      $('file-list').innerHTML=files.length?files.map((f)=>'<div class="file-row">'+
+        (g.kind==='blocked'?'<span class="muted">'+icon('lock')+'</span>':'<label class="check-hit"><input type="checkbox" data-file-check="'+f.id+'" aria-label="选择 '+esc(f.name)+'" '+(state.selected.has(f.id)?'checked':'')+'></label>')+
+        '<div><strong>'+esc(f.name)+'</strong><p class="file-path">'+esc(f.path)+'</p><small>示例文件 · 12 天前修改</small></div><span class="number">'+bytes(f.bytes)+'</span></div>').join(''):'<div class="empty"><h2>没有匹配的文件</h2><p>试试其他文件名，或清空搜索。</p></div>';
+      updateChecks();
+    }
+    function prepareCleanup() {
+      const files=selectedFiles();if(state.stage!=='review'||!files.length)return;
+      state.pending=files.map((f)=>f.id);
+      openModal(modalHeader('确认清理这些项目？','你可以随时返回，继续调整选择。')+
+        '<div class="dialog-body"><div class="confirm-total number">'+bytes(sum(files))+'</div><p>'+files.length+' 个示例文件已选择</p><ul class="confirm-list">'+
+        groups.filter((g)=>files.some((f)=>f.group===g.id)).map((g)=>'<li><span>'+g.name+'</span><span class="number">'+bytes(sum(files.filter((f)=>f.group===g.id)))+'</span></li>').join('')+
+        '</ul><p class="danger-note" id="confirm-description">正式软件中的清理为永久删除，不进入回收站。当前为交互原型，确认后仅模拟处理，不会删除电脑上的文件。</p></div>'+
+        '<div class="dialog-actions"><button class="button" data-action="close-modal" data-autofocus>返回检查</button><button class="button primary" data-action="execute">确认模拟清理</button></div>',false,'confirm-description');
+    }
+    function showScope() {
+      openModal(modalHeader('本次检查范围','以下类别用于演示清理流程。')+'<div class="dialog-body"><p>实际软件以本机识别结果为准。原型不会检查已安装的软件，也不会读取文件。</p><ul class="confirm-list">'+groups.map((g)=>'<li><span>'+g.name+'</span><span class="tag '+(g.kind==='review'?'warm':'')+'">'+kindName(g)+'</span></li>').join('')+'</ul><div class="inline-notice">'+icon('shield')+'文档、照片、下载内容、密码和聊天内容均不进入本次模拟清理。</div></div><div class="dialog-actions"><button class="button primary" data-action="close-modal">知道了</button></div>',false);
+    }
+
+    function renderAnalysis() {
+      $('page-analysis').innerHTML='<div class="analysis-top"><div><span class="page-kicker">02 / SPACE ATLAS</span><h1>空间分析</h1><p>查看容量分布、目录排行与处理建议。</p></div><button id="analyze-button" class="button" data-action="analyze" '+(state.analysisBusy?'disabled':'')+'>'+icon('refresh')+(state.analysisBusy?'正在模拟分析…':'重新分析')+'</button></div>'+
+        '<div class="analysis-disk"><div class="drive-label"><span class="drive-letter number">C:</span><span><strong>系统磁盘</strong>本地固定磁盘 · 示例</span></div><div class="analysis-capacity"><span><strong class="number">256</strong>GB 总容量</span><span><strong class="number">'+(freeBytes()/GiB).toFixed(1)+'</strong>GB 可用</span></div></div>'+
+        '<div class="analysis-map">'+sculpture('analysis')+'</div>'+
+        '<div class="analysis-controls"><div class="filters" aria-label="按用途筛选">'+[['all','全部'],['apps','应用'],['personal','个人文件'],['system','系统']].map((f)=>'<button class="filter" data-analysis-filter="'+f[0]+'" aria-pressed="'+(state.analysisFilter===f[0])+'">'+f[1]+'</button>').join('')+'</div><label class="search-box analysis-search">'+icon('search')+'<input type="search" id="analysis-search" aria-label="搜索目录或路径" placeholder="搜索目录或路径" value="'+esc(state.analysisSearch)+'"></label></div><div id="analysis-status" class="inline-notice" '+(!state.analysisBusy&&!state.analysisHasRun?'hidden':'')+' role="status">'+icon('info')+(state.analysisBusy?'正在模拟读取示例目录，当前列表仍可查看。':'示例分析已更新。没有读取你的电脑文件。')+'</div><div id="ranking" class="ranking"></div><p class="ranking-note">按示例大小排序 · 条带相对当前结果最大项 · 空间分析不会删除文件</p>';
+      renderRanking();
+    }
+    function renderRanking() {
+      const q=state.analysisSearch.trim().toLowerCase();
+      const rows=analysisItems.filter((item)=>(state.analysisFilter==='all'||item.type===state.analysisFilter)&&(item.name+' '+item.path).toLowerCase().includes(q));
+      $('ranking').innerHTML=rows.length?rows.map((item,i)=>'<article class="rank-row"><span class="rank-order number">'+String(i+1).padStart(2,'0')+'</span><div style="min-width:0"><div class="rank-title"><span>'+item.name+'</span><span class="tag">'+item.label+'</span></div><div class="rank-path" title="'+esc(item.path)+'">'+esc(item.path)+'</div><div class="rank-bar" aria-hidden="true"><span style="width:'+(item.bytes/rows[0].bytes*100)+'%"></span></div></div><span class="rank-size number">'+bytes(item.bytes)+'</span><button id="rank-detail-'+analysisItems.indexOf(item)+'" class="rank-open" data-analysis-detail="'+analysisItems.indexOf(item)+'" aria-label="查看'+item.name+'处理建议">'+icon('chevron')+'</button></article>').join(''):'<div class="empty"><h2>没有匹配的目录</h2><p>试试其他关键词，或切换用途筛选。</p><button class="text-button" data-action="clear-analysis">清空筛选</button></div>';
+    }
+    function openAnalysisDetail(index) {
+      const item=analysisItems[index];if(!item)return;
+      openModal(modalHeader(item.name,'空间分析 · 只读示例')+'<div class="dialog-body"><span class="tag">'+item.label+'</span><div class="confirm-total number" style="margin-top:15px">'+bytes(item.bytes)+'</div><p class="detail-path">'+esc(item.path)+'</p><h3>可以怎样整理</h3><p style="margin-top:13px">'+item.advice+'</p><ul class="advice-list">'+item.tips.map((t)=>'<li>'+t+'</li>').join('')+'</ul><div class="inline-notice">'+icon('shield')+'此面板用于查看建议，不提供直接删除目录的操作。</div></div><div class="dialog-actions">'+(index===6?'<button class="button primary" data-action="go-clean">前往清理</button>':'<button class="button primary" data-action="close-modal">返回排行</button>')+'</div>',true);
+    }
+    function runAnalysis() {
+      if(state.analysisBusy)return;
+      state.analysisBusy=true;renderAnalysis();announce('开始模拟空间分析。');
+      state.analysisTimer=setTimeout(()=>{
+        state.analysisBusy=false;state.analysisHasRun=true;
+        if(state.page==='analysis') { renderAnalysis();$('analyze-button').focus({preventScroll:true}); }
+        announce('模拟空间分析完成。');
+      },1600);
+    }
+    function renderHistory() {
+      const total=state.history.reduce((n,r)=>n+r.bytes,0),dates=[...new Set(state.history.map((r)=>r.date))];
+      $('page-history').innerHTML='<div class="page-head"><div><span class="page-kicker">03 / TIDE RECORDS</span><h1>清理历史</h1><p>按日期查看处理范围与释放空间。</p></div><button class="button" data-action="clear-history" '+(!state.history.length?'disabled':'')+'>清空记录</button></div>'+
+        (state.history.length?'<div class="history-intro"><strong class="number">'+bytes(total)+'</strong><span>'+state.history.length+' 次演示记录中的处理总量</span></div>'+dates.map((date)=>'<section class="history-day"><div class="history-date"><strong>'+date.slice(5).replace('-',' / ')+'</strong>'+date.slice(0,4)+'</div><div>'+state.history.filter((r)=>r.date===date).map((r)=>'<details class="history-receipt"><summary><span class="receipt-icon">'+icon(r.stopped?'stop':'check')+'</span><div><strong>'+(r.stopped?'停止后保留未处理项目':'清理完成')+'</strong><small>'+r.time+' · '+r.count.toLocaleString('zh-CN')+' 个文件 · '+(r.sample?'示例记录':'本次演示')+'</small></div><span class="number">'+bytes(r.bytes)+'</span>'+icon('down')+'</summary><div class="receipt-detail"><p>处理范围：'+esc(r.scope)+'</p><p>'+(r.stopped?'任务已停止，尚未处理的示例文件仍保留。':'仅处理当次选中的示例项目。')+'</p><p>模拟记录，不代表你的电脑发生过实际清理。</p></div></details>').join('')+'</div></section>').join(''):'<div class="empty">'+icon('history')+'<h2 style="margin-top:18px">这里，还留着空白。</h2><p>完成一次模拟清理后，记录会出现在这里。</p><button class="button primary" data-nav="clean" style="margin-top:24px">去清理</button></div>');
+    }
+    function renderSettings() {
+      $('page-settings').innerHTML='<div class="page-head"><div><span class="page-kicker">04 / YOUR RHYTHM</span><h1>设置</h1><p>调整外观、动效与保留规则。</p></div></div><div class="settings-grid"><div><section class="settings-section"><h2>界面外观</h2><p>换一种光线，不打断正在进行的整理。</p><div class="theme-options">'+[['light','浅色',''],['dark','深色','dark-preview'],['system','跟随系统','system-preview']].map((t)=>'<button class="theme-choice" data-theme-choice="'+t[0]+'" aria-pressed="'+(state.theme===t[0])+'"><div class="theme-preview '+t[2]+'" aria-hidden="true"></div><span class="theme-name">'+t[1]+icon('check')+'</span></button>').join('')+'</div></section><section class="settings-section"><div class="setting-row"><label for="reduce-motion"><strong>减少动效</strong><small>关闭潮线过渡与扫描光线，直接呈现状态。<br>系统已减少动效时，这里也会自动尊重设置。</small></label><input type="checkbox" id="reduce-motion" '+(state.motion?'checked':'')+'></div></section><div class="about-note"><strong>拂尘 · 交互原型</strong><br>所有数据均为示例，调整仅在当前页面会话内生效。<br>关闭或刷新页面后，演示会恢复初始状态。</div></div><section class="exclusion-panel"><h2>'+icon('shield')+'安心保留</h2><p>以下位置始终保留。这个原型仅展示保留清单。</p><ul class="exclusion-list"><li>'+icon('folder')+'<div>文档与工作文件<small>C:\\Users\\Demo\\Documents</small></div></li><li>'+icon('image')+'<div>照片与视频<small>C:\\Users\\Demo\\Pictures</small></div></li><li>'+icon('lock')+'<div>密码与聊天内容<small>不进入模拟清理范围</small></div></li></ul><p style="margin-top:5px">保留什么，始终由你决定。</p></section></div>';
+    }
+    function askClearHistory() {
+      openModal(modalHeader('清空演示记录？','只影响当前原型中的历史列表。')+'<div class="dialog-body"><p>清空后可以重新体验清理，生成新的演示记录。不会影响电脑上的任何数据。</p></div><div class="dialog-actions"><button class="button" data-action="close-modal" data-autofocus>保留记录</button><button class="button primary" data-action="confirm-clear-history">清空演示记录</button></div>',false);
+    }
+    function resetDemo() {
+      clearInterval(state.scanTimer);clearInterval(state.cleanupTimer);clearTimeout(state.analysisTimer);
+      if($('modal').open)closeModal();
+      state.tideStartFree=null;state.tidePlanned=0;state.stage='idle';state.selected.clear();state.deleted.clear();state.scannedGroups=[];state.pending=[];state.processed=[];state.lastReport=null;state.incomplete=false;
+      state.filter='all';state.history=initialHistory();state.analysisBusy=false;state.analysisHasRun=false;state.analysisSearch='';state.analysisFilter='all';state.scroll={};
+      renderClean();setPage('clean');$('workspace').scrollTop=0;$('start-scan').focus({preventScroll:true});toast('已重置演示数据，外观设置继续保留。');
+    }
+    document.addEventListener('click',(event)=>{
+      const region=event.target.closest('[data-map]');
+      if(region) {
+        state.analysisFilter=region.dataset.map;state.analysisSearch='';
+        setPage('analysis');$('workspace').scrollTop=0;
+        document.querySelector('[data-analysis-filter="'+state.analysisFilter+'"]')?.focus({preventScroll:true});
+        announce('已显示'+({apps:'应用',personal:'个人文件',system:'系统'}[state.analysisFilter])+'占用。');
+        return;
+      }
+      const el=event.target.closest('button');if(!el||el.disabled)return;
+      el.focus({preventScroll:true});
+      if(el.dataset.nav) { setPage(el.dataset.nav);return; }
+      if(el.dataset.filter) {
+        state.filter=el.dataset.filter;
+        document.querySelectorAll('[data-filter]').forEach((b)=>b.setAttribute('aria-pressed',String(b.dataset.filter===state.filter)));
+        renderRows();return;
+      }
+      if(el.dataset.detail) { openFiles(el.dataset.detail);return; }
+      if(el.dataset.analysisFilter) {
+        state.analysisFilter=el.dataset.analysisFilter;
+        document.querySelectorAll('[data-analysis-filter]').forEach((b)=>b.setAttribute('aria-pressed',String(b.dataset.analysisFilter===state.analysisFilter)));
+        renderRanking();return;
+      }
+      if(el.dataset.analysisDetail!==undefined) { openAnalysisDetail(Number(el.dataset.analysisDetail));return; }
+      if(el.dataset.themeChoice) { state.theme=el.dataset.themeChoice;applyTheme();announce('外观已切换。');return; }
+      switch(el.dataset.action) {
+        case 'scan': startScan();break;
+        case 'stop': stopTask();break;
+        case 'prepare': prepareCleanup();break;
+        case 'execute': startCleanup();break;
+        case 'close-modal': closeModal();break;
+        case 'scope': showScope();break;
+        case 'toggle-theme': state.theme=effectiveTheme()==='light'?'dark':'light';applyTheme();break;
+        case 'recommended':
+          state.selected.clear();visibleGroups().filter((g)=>g.kind==='recommended').flatMap(remaining).forEach((f)=>state.selected.add(f.id));
+          updateChecks();announce('已只选择建议项，共 '+selectedFiles().length+' 个示例文件。');break;
+        case 'analyze': runAnalysis();break;
+        case 'clear-analysis': state.analysisSearch='';state.analysisFilter='all';renderAnalysis();$('analysis-search').focus();break;
+        case 'clear-history': askClearHistory();break;
+        case 'confirm-clear-history': state.history=[];closeModal();renderHistory();$('page-history').querySelector('[data-nav="clean"]').focus({preventScroll:true});toast('演示记录已清空。');break;
+        case 'go-clean': closeModal();setPage('clean');break;
+        case 'return-task': setPage('clean');break;
+        case 'reset': resetDemo();break;
+      }
+    });
+    document.addEventListener('change',(event)=>{
+      const input=event.target;
+      if(input.dataset.groupCheck) {
+        const g=groups.find((g)=>g.id===input.dataset.groupCheck);
+        if(g.kind==='blocked')return;
+        remaining(g).forEach((f)=>input.checked?state.selected.add(f.id):state.selected.delete(f.id));updateChecks();
+        announce('已选 '+selectedFiles().length+' 个示例文件，共 '+bytes(sum(selectedFiles()))+'。');
+      }
+      if(input.dataset.fileCheck) {
+        const f=allFiles.find((f)=>f.id===input.dataset.fileCheck);
+        if(groups.find((g)=>g.id===f.group).kind==='blocked')return;
+        input.checked?state.selected.add(f.id):state.selected.delete(f.id);updateChecks();
+      }
+      if(input.id==='file-all'&&state.dialogGroup) {
+        const g=groups.find((g)=>g.id===state.dialogGroup);if(g.kind==='blocked')return;
+        fileMatches(g).forEach((f)=>input.checked?state.selected.add(f.id):state.selected.delete(f.id));updateChecks();
+      }
+      if(input.id==='reduce-motion') { state.motion=input.checked;document.documentElement.dataset.motion=state.motion?'reduced':'system';announce(state.motion?'已减少动效。':'动效跟随系统。'); }
+    });
+    document.addEventListener('input',(event)=>{
+      if(event.target.id==='file-search') { state.fileSearch=event.target.value;renderFiles(); }
+      if(event.target.id==='analysis-search') { state.analysisSearch=event.target.value;renderRanking(); }
+    });
+    document.addEventListener('keydown',(event)=>{
+      if((event.key==='Enter'||event.key===' ')&&event.target.matches('g[data-map]')) {
+        event.preventDefault();event.target.dispatchEvent(new MouseEvent('click',{bubbles:true}));
+      }
+    });
+    addEventListener('resize',()=>{if(state.stage==='review')renderDock();});
+    renderStorageRail();applyTheme();renderClean();syncTide();
+  </script>
+</body>
+</html>

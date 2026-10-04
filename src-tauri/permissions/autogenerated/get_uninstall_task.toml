@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-get-uninstall-task"
+description = "Enables the get_uninstall_task command without any pre-configured scope."
+commands.allow = ["get_uninstall_task"]
+
+[[permission]]
+identifier = "deny-get-uninstall-task"
+description = "Denies the get_uninstall_task command without any pre-configured scope."
+commands.deny = ["get_uninstall_task"]

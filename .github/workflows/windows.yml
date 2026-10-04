@@ -1,0 +1,34 @@
+name: Windows verification
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.30.3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: rustup show
+      - run: pnpm install --frozen-lockfile
+      - run: cargo fmt --all --check
+      - run: pnpm notices
+      - run: pnpm build
+      - run: cargo clippy --workspace --all-targets -- -D warnings
+      - run: cargo test --workspace --locked
+      - run: pnpm test
+      - run: pnpm test:evidence
+      - run: pnpm test:acceptance
+      - run: pnpm test:desktop-driver
+      - run: pnpm check:applications
+      - run: cargo check -p dustaway --features system-cleanup
+      - run: pnpm portable
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DustAway-unsigned-preview-x64
+          path: artifacts/portable/拂尘_*_windows-x64/*

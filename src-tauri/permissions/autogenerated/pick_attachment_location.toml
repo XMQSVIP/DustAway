@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-pick-attachment-location"
+description = "Enables the pick_attachment_location command without any pre-configured scope."
+commands.allow = ["pick_attachment_location"]
+
+[[permission]]
+identifier = "deny-pick-attachment-location"
+description = "Denies the pick_attachment_location command without any pre-configured scope."
+commands.deny = ["pick_attachment_location"]

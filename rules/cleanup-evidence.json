@@ -1,0 +1,1308 @@
+[
+  {
+    "rule_id": "weixin.http",
+    "rule_version": 1,
+    "root": "weixin",
+    "relative": "Cache/Cache_Data",
+    "layout_id": "weixin-radium-web-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-03",
+    "applicability": "已签名的微信安装、限定 Radium 网页配置目录及缓存格式",
+    "conclusion": "仅显示网页响应缓存占用；共享索引和块文件保留，暂不提供逐文件删除。",
+    "sources": [
+      {
+        "title": "Chromium 磁盘缓存实现",
+        "url": "https://chromium.googlesource.com/chromium/src/+/main/net/disk_cache/"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "weixin.code",
+    "rule_version": 1,
+    "root": "weixin",
+    "relative": "Code Cache",
+    "layout_id": "weixin-radium-web-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-03",
+    "applicability": "已签名的微信安装、限定 Radium 网页配置目录及缓存格式",
+    "conclusion": "仅显示已识别缓存占用；该项清理能力尚在验证，保留登录、小程序数据和聊天资料。",
+    "sources": [
+      {
+        "title": "Chromium 磁盘缓存实现",
+        "url": "https://chromium.googlesource.com/chromium/src/+/main/net/disk_cache/"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "weixin.gpu",
+    "rule_version": 1,
+    "root": "weixin",
+    "relative": "GPUCache",
+    "layout_id": "weixin-radium-web-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-03",
+    "applicability": "已签名的微信安装、限定 Radium 网页配置目录及缓存格式",
+    "conclusion": "仅显示已识别缓存占用；该项清理能力尚在验证，保留登录、小程序数据和聊天资料。",
+    "sources": [
+      {
+        "title": "Chromium 磁盘缓存实现",
+        "url": "https://chromium.googlesource.com/chromium/src/+/main/net/disk_cache/"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "weixin.logs",
+    "rule_version": 1,
+    "root": "weixin",
+    "relative": "log",
+    "layout_id": "weixin:log",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "仅识别已知应用布局；该规则未取得独立删除许可",
+    "conclusion": "仅识别固定位置的历史诊断资料；该类诊断资料与目录边界的独立删除依据尚不足，不处理恢复、备份或文档。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "weixin.dumps",
+    "rule_version": 1,
+    "root": "weixin",
+    "relative": "crashinfo",
+    "layout_id": "weixin:crashinfo",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "仅识别已知应用布局；该规则未取得独立删除许可",
+    "conclusion": "仅识别固定位置的历史诊断资料；该类诊断资料与目录边界的独立删除依据尚不足，不处理恢复、备份或文档。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "qq.http",
+    "rule_version": 1,
+    "root": "qq",
+    "relative": "Cache/Cache_Data",
+    "layout_id": "qq:Cache/Cache_Data",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "仅识别已知应用布局；该规则未取得独立删除许可",
+    "conclusion": "缺少该应用数据布局与本规则的充分删除依据；同名 Chromium 缓存不能证明本目录均可删除。保留登录、数据库、同步内容及个人文件。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "qq.code",
+    "rule_version": 1,
+    "root": "qq",
+    "relative": "Code Cache",
+    "layout_id": "qq:Code Cache",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "仅识别已知应用布局；该规则未取得独立删除许可",
+    "conclusion": "缺少该应用数据布局与本规则的充分删除依据；同名 Chromium 缓存不能证明本目录均可删除。保留登录、数据库、同步内容及个人文件。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "qq.gpu",
+    "rule_version": 1,
+    "root": "qq",
+    "relative": "GPUCache",
+    "layout_id": "qq:GPUCache",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "仅识别已知应用布局；该规则未取得独立删除许可",
+    "conclusion": "缺少该应用数据布局与本规则的充分删除依据；同名 Chromium 缓存不能证明本目录均可删除。保留登录、数据库、同步内容及个人文件。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "wps.logs",
+    "rule_version": 1,
+    "root": "wps",
+    "relative": "log",
+    "layout_id": "wps:log",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "仅识别已知应用布局；该规则未取得独立删除许可",
+    "conclusion": "仅识别固定位置的历史诊断资料；该类诊断资料与目录边界的独立删除依据尚不足，不处理恢复、备份或文档。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "windows.crash_dumps",
+    "rule_version": 2,
+    "root": "windows_residue",
+    "relative": "CrashDumps",
+    "layout_id": "windows_residue:CrashDumps",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "Windows 11 / 当前用户标准目录",
+    "conclusion": "识别超过 30 天且格式核验通过的历史诊断文件；本轮没有达到时间门槛的真实验收样本，继续只读。官方说明用途，非声明所有 .dmp 都是垃圾。",
+    "sources": [
+      {
+        "url": "https://learn.microsoft.com/en-us/windows/win32/wer/collecting-user-mode-dumps",
+        "kind": "official",
+        "role": "file_purpose"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "windows.wer_archive",
+    "rule_version": 1,
+    "root": "windows_residue",
+    "relative": "Microsoft/Windows/WER/ReportArchive",
+    "layout_id": "windows_residue:Microsoft/Windows/WER/ReportArchive",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "Windows 11 / 当前用户标准目录",
+    "conclusion": "已归档诊断报告与待发送队列不同；当前只识别有效报告，本轮不开放直接删除。",
+    "sources": [
+      {
+        "url": "https://learn.microsoft.com/en-us/windows/win32/api/werapi/nf-werapi-werstoreopen",
+        "kind": "official",
+        "role": "file_purpose"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "windows.directx_cache",
+    "rule_version": 1,
+    "root": "windows_residue",
+    "relative": "D3DSCache",
+    "layout_id": "windows_residue:D3DSCache",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "Windows 11 / 当前用户标准目录",
+    "conclusion": "可再生着色器缓存；系统提供清理方式，本轮未适配应用占用与完整布局，不直接删除。",
+    "sources": [
+      {
+        "url": "https://microsoft.github.io/DirectX-Specs/d3d/ShaderCache.html",
+        "kind": "official",
+        "role": "file_purpose"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "feishu.http",
+    "rule_version": 1,
+    "root": "feishu",
+    "relative": "Cache/Cache_Data",
+    "layout_id": "feishu:Cache/Cache_Data",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "仅识别已知应用布局；该规则未取得独立删除许可",
+    "conclusion": "缺少该应用数据布局与本规则的充分删除依据；同名 Chromium 缓存不能证明本目录均可删除。保留登录、数据库、同步内容及个人文件。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "feishu.code",
+    "rule_version": 1,
+    "root": "feishu",
+    "relative": "Code Cache",
+    "layout_id": "feishu:Code Cache",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "仅识别已知应用布局；该规则未取得独立删除许可",
+    "conclusion": "缺少该应用数据布局与本规则的充分删除依据；同名 Chromium 缓存不能证明本目录均可删除。保留登录、数据库、同步内容及个人文件。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "feishu.gpu",
+    "rule_version": 1,
+    "root": "feishu",
+    "relative": "GPUCache",
+    "layout_id": "feishu:GPUCache",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "仅识别已知应用布局；该规则未取得独立删除许可",
+    "conclusion": "缺少该应用数据布局与本规则的充分删除依据；同名 Chromium 缓存不能证明本目录均可删除。保留登录、数据库、同步内容及个人文件。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "baidu_netdisk.http",
+    "rule_version": 1,
+    "root": "baidu_netdisk",
+    "relative": "Cache/Cache_Data",
+    "layout_id": "baidu_netdisk:Cache/Cache_Data",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "仅识别已知应用布局；该规则未取得独立删除许可",
+    "conclusion": "缺少该应用数据布局与本规则的充分删除依据；同名 Chromium 缓存不能证明本目录均可删除。保留登录、数据库、同步内容及个人文件。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "baidu_netdisk.code",
+    "rule_version": 1,
+    "root": "baidu_netdisk",
+    "relative": "Code Cache",
+    "layout_id": "baidu_netdisk:Code Cache",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "仅识别已知应用布局；该规则未取得独立删除许可",
+    "conclusion": "缺少该应用数据布局与本规则的充分删除依据；同名 Chromium 缓存不能证明本目录均可删除。保留登录、数据库、同步内容及个人文件。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "baidu_netdisk.gpu",
+    "rule_version": 1,
+    "root": "baidu_netdisk",
+    "relative": "GPUCache",
+    "layout_id": "baidu_netdisk:GPUCache",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "仅识别已知应用布局；该规则未取得独立删除许可",
+    "conclusion": "缺少该应用数据布局与本规则的充分删除依据；同名 Chromium 缓存不能证明本目录均可删除。保留登录、数据库、同步内容及个人文件。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "quark_netdisk.code",
+    "rule_version": 1,
+    "root": "quark_netdisk",
+    "relative": "Code Cache",
+    "layout_id": "quark_netdisk:Code Cache",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "仅识别已知应用布局；该规则未取得独立删除许可",
+    "conclusion": "缺少该应用数据布局与本规则的充分删除依据；同名 Chromium 缓存不能证明本目录均可删除。保留登录、数据库、同步内容及个人文件。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "quark_netdisk.gpu",
+    "rule_version": 1,
+    "root": "quark_netdisk",
+    "relative": "GPUCache",
+    "layout_id": "quark_netdisk:GPUCache",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "仅识别已知应用布局；该规则未取得独立删除许可",
+    "conclusion": "缺少该应用数据布局与本规则的充分删除依据；同名 Chromium 缓存不能证明本目录均可删除。保留登录、数据库、同步内容及个人文件。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "thunder.code",
+    "rule_version": 1,
+    "root": "thunder",
+    "relative": "Code Cache",
+    "layout_id": "thunder:Code Cache",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "仅识别已知应用布局；该规则未取得独立删除许可",
+    "conclusion": "缺少该应用数据布局与本规则的充分删除依据；同名 Chromium 缓存不能证明本目录均可删除。保留登录、数据库、同步内容及个人文件。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "thunder.gpu",
+    "rule_version": 1,
+    "root": "thunder",
+    "relative": "GPUCache",
+    "layout_id": "thunder:GPUCache",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "仅识别已知应用布局；该规则未取得独立删除许可",
+    "conclusion": "缺少该应用数据布局与本规则的充分删除依据；同名 Chromium 缓存不能证明本目录均可删除。保留登录、数据库、同步内容及个人文件。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "dev.uv",
+    "rule_version": 1,
+    "root": "developer",
+    "relative": "uv/cache",
+    "layout_id": "developer:uv/cache",
+    "method": "official_tool",
+    "reviewed": "2026-10-02",
+    "applicability": "uv 已适配布局",
+    "conclusion": "现有 uv 官方整理；扫描总量不是闲置量。",
+    "sources": [
+      {
+        "url": "https://docs.astral.sh/uv/concepts/cache/",
+        "kind": "official",
+        "role": "fixed_command"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "dev.poetry",
+    "rule_version": 1,
+    "root": "developer",
+    "relative": "pypoetry/Cache",
+    "layout_id": "developer:pypoetry/Cache",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "Poetry 文档；删除布局尚未适配",
+    "conclusion": "仅识别下载与仓库缓存；虚拟环境可能位于同一缓存父目录，未适配官方操作，不能清空根目录。",
+    "sources": [
+      {
+        "url": "https://python-poetry.org/docs/cli/#cache",
+        "kind": "official",
+        "role": "purpose_and_constraints"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "dev.pdm",
+    "rule_version": 1,
+    "root": "developer",
+    "relative": "pdm/pdm/Cache",
+    "layout_id": "developer:pdm/pdm/Cache",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "PDM 2.x 文档；删除布局尚未适配",
+    "conclusion": "PDM 存在集中安装缓存；保留 packages 与虚拟环境，下载子目录尚未取得独立删除许可。",
+    "sources": [
+      {
+        "url": "https://pdm-project.org/en/latest/usage/config/",
+        "kind": "official",
+        "role": "purpose_and_constraints"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "dev.pnpm",
+    "rule_version": 1,
+    "root": "developer",
+    "relative": "pnpm/store",
+    "layout_id": "developer:pnpm/store",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "pnpm 10.x；官方操作适配受阻，当前不开放执行",
+    "conclusion": "pnpm 10.30.3 常规存储中已观察到项目登记链接；当前未适配含重解析点的布局，保持只读。不会以移除登记链接或项目依赖的方式开放清理。",
+    "sources": [
+      {
+        "url": "https://pnpm.io/10.x/cli/store",
+        "kind": "official",
+        "role": "fixed_command"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "dev.yarn",
+    "rule_version": 1,
+    "root": "developer",
+    "relative": "Yarn/Cache",
+    "layout_id": "developer:Yarn/Cache",
+    "method": "official_tool",
+    "reviewed": "2026-10-02",
+    "applicability": "Yarn 1.x / v6",
+    "conclusion": "清空全局下载缓存；下次安装需要重新下载，不影响已安装依赖。",
+    "sources": [
+      {
+        "url": "https://classic.yarnpkg.com/lang/en/docs/cli/cache/",
+        "kind": "official",
+        "role": "fixed_command"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "dev.yarn_berry",
+    "rule_version": 1,
+    "root": "developer",
+    "relative": "Yarn/Berry/cache",
+    "layout_id": "developer:Yarn/Berry/cache",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "Yarn 2+ / PnP",
+    "conclusion": "PnP 项目可能直接加载缓存包；这些文件仍是项目依赖，不作为普通垃圾。",
+    "sources": [
+      {
+        "url": "https://yarnpkg.com/features/pnp",
+        "kind": "official",
+        "role": "purpose_and_constraints"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "dev.bun",
+    "rule_version": 1,
+    "root": "developer",
+    "relative": ".bun/install/cache",
+    "layout_id": "developer:.bun/install/cache",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "Bun 全局存储；本机布局未适配",
+    "conclusion": "项目可能通过符号链接直接引用全局存储；无法确认未使用时保留，命令缺失不等于已卸载。",
+    "sources": [
+      {
+        "url": "https://bun.com/docs/pm/global-store",
+        "kind": "official",
+        "role": "purpose_and_constraints"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "dev.deno",
+    "rule_version": 1,
+    "root": "developer",
+    "relative": "deno",
+    "layout_id": "developer:deno",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "Deno 当前文档；版本未适配",
+    "conclusion": "缓存包含远程模块及 npm 依赖；离线使用可能受影响，尚未适配官方清理范围。",
+    "sources": [
+      {
+        "url": "https://docs.deno.com/runtime/reference/cli/clean/",
+        "kind": "official",
+        "role": "purpose_and_constraints"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "dev.sccache",
+    "rule_version": 1,
+    "root": "developer",
+    "relative": "Mozilla/sccache",
+    "layout_id": "developer:Mozilla/sccache",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "sccache 本地缓存",
+    "conclusion": "本地缓存由 sccache 服务及索引维护，未适配停止与整理协议，不逐文件删除。",
+    "sources": [
+      {
+        "url": "https://github.com/mozilla/sccache/blob/main/docs/Local.md",
+        "kind": "official",
+        "role": "purpose_and_constraints"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "dev.go_build",
+    "rule_version": 1,
+    "root": "developer",
+    "relative": "go-build",
+    "layout_id": "developer:go-build",
+    "method": "official_tool",
+    "reviewed": "2026-10-02",
+    "applicability": "Go 1.21+ / 1.x",
+    "conclusion": "仅清理构建缓存；下次编译较慢，保留模块、工具与模糊测试语料。",
+    "sources": [
+      {
+        "url": "https://go.dev/cmd/go/",
+        "kind": "official",
+        "role": "fixed_command"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "dev.go_modules",
+    "rule_version": 1,
+    "root": "developer",
+    "relative": "go/pkg/mod/cache/download",
+    "layout_id": "developer:go/pkg/mod/cache/download",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "Go 模块缓存",
+    "conclusion": "模块缓存含下载与解包源码，离线构建仍可能需要；本轮只开放独立构建缓存。",
+    "sources": [
+      {
+        "url": "https://go.dev/cmd/go/",
+        "kind": "official",
+        "role": "purpose_and_constraints"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "dev.gradle",
+    "rule_version": 1,
+    "root": "developer",
+    "relative": ".gradle/caches",
+    "layout_id": "developer:.gradle/caches",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "Gradle 当前文档；版本布局未适配",
+    "conclusion": "Gradle 按使用情况维护缓存；不清空整个 caches，不处理 wrapper、JDK 或项目。",
+    "sources": [
+      {
+        "url": "https://docs.gradle.org/current/userguide/directory_layout.html",
+        "kind": "official",
+        "role": "purpose_and_constraints"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "dev.maven",
+    "rule_version": 1,
+    "root": "developer",
+    "relative": ".m2/repository",
+    "layout_id": "developer:.m2/repository",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "Maven 本地仓库",
+    "conclusion": "本地仓库既有下载副本，也可能有仅本地发布的构件，不能认定都能重新下载。",
+    "sources": [
+      {
+        "url": "https://maven.apache.org/guides/introduction/introduction-to-repositories.html",
+        "kind": "official",
+        "role": "purpose_and_constraints"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "dev.nuget_packages",
+    "rule_version": 1,
+    "root": "developer",
+    "relative": ".nuget/packages",
+    "layout_id": "developer:.nuget/packages",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "NuGet 全局包",
+    "conclusion": "项目直接使用全局 packages 中的文件；保留共享依赖，本轮不清空全局包目录。",
+    "sources": [
+      {
+        "url": "https://learn.microsoft.com/en-us/nuget/consume-packages/managing-the-global-packages-and-cache-folders",
+        "kind": "official",
+        "role": "purpose_and_constraints"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "dev.bundler",
+    "rule_version": 1,
+    "root": "developer",
+    "relative": ".bundle/cache",
+    "layout_id": "developer:.bundle/cache",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "Bundler 用户缓存；布局未适配",
+    "conclusion": "缓存可能用于离线安装与本地 Git/路径依赖，不能仅凭 cache 名称认定闲置。",
+    "sources": [
+      {
+        "url": "https://bundler.io/v2.3/man/bundle-config.1.html",
+        "kind": "official",
+        "role": "purpose_and_constraints"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "dev.pub",
+    "rule_version": 1,
+    "root": "developer",
+    "relative": "Pub/Cache",
+    "layout_id": "developer:Pub/Cache",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "Dart Pub 系统缓存",
+    "conclusion": "系统包缓存被 Dart/Flutter 项目及全局工具使用；未区分引用关系，保留。",
+    "sources": [
+      {
+        "url": "https://dart.dev/tools/pub/cmd/pub-cache",
+        "kind": "official",
+        "role": "purpose_and_constraints"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "dev.ccache",
+    "rule_version": 1,
+    "root": "developer",
+    "relative": "ccache",
+    "layout_id": "developer:ccache",
+    "method": "official_tool",
+    "reviewed": "2026-10-02",
+    "applicability": "ccache 4.7+ / 4.x",
+    "conclusion": "由 ccache 整理 30 天未使用的编译缓存，保留配置。",
+    "sources": [
+      {
+        "url": "https://ccache.dev/manual/4.14.html",
+        "kind": "official",
+        "role": "fixed_command"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "dev.conan",
+    "rule_version": 1,
+    "root": "developer",
+    "relative": ".conan2/p",
+    "layout_id": "developer:.conan2/p",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "Conan 2.x",
+    "conclusion": "缓存含源码、构建和包数据；官方提供分类管理命令，本轮未适配，不能清空根目录。",
+    "sources": [
+      {
+        "url": "https://docs.conan.io/2/reference/commands/cache.html",
+        "kind": "official",
+        "role": "purpose_and_constraints"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "dev.visual_studio",
+    "rule_version": 1,
+    "root": "developer",
+    "relative": "Microsoft/VisualStudio",
+    "layout_id": "developer:Microsoft/VisualStudio",
+    "method": "readonly",
+    "reviewed": "2026-10-02",
+    "applicability": "Visual Studio 实例；版本未适配",
+    "conclusion": "ComponentModelCache 用于组件组合；没有完成实例版本及正常重建验证，保留设置与扩展。",
+    "sources": [
+      {
+        "url": "https://learn.microsoft.com/en-us/visualstudio/extensibility/managed-extensibility-framework-in-the-editor",
+        "kind": "official",
+        "role": "purpose_and_constraints"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.trae",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "Trae",
+    "method": "readonly",
+    "conclusion": "固定网页与渲染缓存，仅识别。保护账号、对话、下载和工程；尚缺该类缓存可独立删除的依据。",
+    "applicability": "Trae / Cache, Code Cache, GPUCache, DawnCache, Partitions/trae-webview/Cache, Partitions/trae-webview/Code Cache, Partitions/trae-webview/GPUCache, Partitions/trae-webview/DawnCache, CachedData, CachedExtensionVSIXs",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": []
+  },
+  {
+    "rule_id": "appcache.trae_cn",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "Trae CN",
+    "method": "readonly",
+    "conclusion": "固定网页与渲染缓存，仅识别。保护账号、对话、下载和工程；尚缺该类缓存可独立删除的依据。",
+    "applicability": "Trae CN / Cache, Code Cache, GPUCache, DawnCache, Partitions/trae-webview/Cache, Partitions/trae-webview/Code Cache, Partitions/trae-webview/GPUCache, Partitions/trae-webview/DawnCache, Partitions/icube-web-crawler-shared-session-v1.0/Cache, Partitions/icube-web-crawler-shared-session-v1.0/Code Cache, Partitions/icube-web-crawler-shared-session-v1.0/GPUCache, Partitions/icube-web-crawler-shared-session-v1.0/DawnCache, CachedData, CachedExtensionVSIXs",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": []
+  },
+  {
+    "rule_id": "appcache.kiro",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "Kiro",
+    "method": "readonly",
+    "conclusion": "固定网页与渲染缓存，仅识别。保护账号、对话、下载和工程；尚缺该类缓存可独立删除的依据。",
+    "applicability": "Kiro / Cache, Code Cache, GPUCache, DawnCache, CachedData, CachedExtensionVSIXs",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": []
+  },
+  {
+    "rule_id": "appcache.lingma",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "Lingma",
+    "method": "readonly",
+    "conclusion": "固定网页与渲染缓存，仅识别。保护账号、对话、下载和工程；尚缺该类缓存可独立删除的依据。",
+    "applicability": "Lingma / Cache, Code Cache, GPUCache, DawnCache, CachedData, CachedExtensionVSIXs",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": []
+  },
+  {
+    "rule_id": "appcache.workbuddy",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "WorkBuddy",
+    "method": "readonly",
+    "conclusion": "固定网页与渲染缓存，仅识别。保护账号、对话、下载和工程；尚缺该类缓存可独立删除的依据。",
+    "applicability": "WorkBuddy / Cache, Code Cache, GPUCache, DawnCache, Partitions/genie-webview/Cache, Partitions/genie-webview/Code Cache, Partitions/genie-webview/GPUCache, Partitions/genie-webview/DawnCache, CachedData, CachedExtensionVSIXs",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": []
+  },
+  {
+    "rule_id": "appcache.hbuilder",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "HBuilder X",
+    "method": "readonly",
+    "conclusion": "固定网页与渲染缓存，仅识别。保护账号、对话、下载和工程；尚缺该类缓存可独立删除的依据。",
+    "applicability": "HBuilder X / Cache, Code Cache, GPUCache, DawnCache",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": []
+  },
+  {
+    "rule_id": "appcache.adrive",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "aDrive",
+    "method": "readonly",
+    "conclusion": "固定网页与渲染缓存，仅识别。保护账号、对话、下载和工程；尚缺该类缓存可独立删除的依据。",
+    "applicability": "aDrive / Cache, Code Cache, GPUCache, DawnCache, Partitions/adrive/Cache, Partitions/adrive/Code Cache, Partitions/adrive/GPUCache, Partitions/adrive/DawnCache",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": []
+  },
+  {
+    "rule_id": "appcache.123pan",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "123pan",
+    "method": "readonly",
+    "conclusion": "固定网页与渲染缓存，仅识别。保护账号、对话、下载和工程；尚缺该类缓存可独立删除的依据。",
+    "applicability": "123pan / Cache, Code Cache, GPUCache, DawnCache",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": []
+  },
+  {
+    "rule_id": "appcache.cherry",
+    "rule_version": 2,
+    "root": "application_cache",
+    "relative": "CherryStudio",
+    "method": "readonly",
+    "conclusion": "网页缓存和未适配格式暂时保留；代码与图形缓存单独提供清理。网页缓存存在共享索引，逐文件删除的恢复检查未通过；账号、对话和持久存储不清理。",
+    "applicability": "CherryStudio / Cache, Code Cache, GPUCache, DawnCache, Partitions/webview/Cache, Partitions/webview/Code Cache, Partitions/webview/GPUCache, Partitions/webview/DawnCache",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": []
+  },
+  {
+    "rule_id": "appcache.apipost",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "Apipost",
+    "method": "readonly",
+    "conclusion": "固定网页与渲染缓存，仅识别。保护账号、对话、下载和工程；尚缺该类缓存可独立删除的依据。",
+    "applicability": "Apipost / Cache, Code Cache, GPUCache, DawnCache",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": []
+  },
+  {
+    "rule_id": "appcache.apipost7",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "ApiPost7",
+    "method": "readonly",
+    "conclusion": "固定网页与渲染缓存，仅识别。保护账号、对话、下载和工程；尚缺该类缓存可独立删除的依据。",
+    "applicability": "ApiPost7 / Cache, Code Cache, GPUCache, DawnCache",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": []
+  },
+  {
+    "rule_id": "appcache.redis_manager",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "another-redis-desktop-manager",
+    "method": "readonly",
+    "conclusion": "固定网页与渲染缓存，仅识别。保护账号、对话、下载和工程；尚缺该类缓存可独立删除的依据。",
+    "applicability": "another-redis-desktop-manager / Cache, Code Cache, GPUCache, DawnCache",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": []
+  },
+  {
+    "rule_id": "appcache.ziniao",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "ziniaobrowser",
+    "method": "readonly",
+    "conclusion": "固定网页与渲染缓存，仅识别。保护账号、对话、下载和工程；尚缺该类缓存可独立删除的依据。",
+    "applicability": "ziniaobrowser / Cache, Code Cache, GPUCache, DawnCache, instances/userdata1/Cache, instances/userdata1/Code Cache, instances/userdata1/GPUCache, instances/userdata1/DawnCache",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": []
+  },
+  {
+    "rule_id": "appcache.bcut",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "BCUT",
+    "method": "readonly",
+    "conclusion": "固定网页与渲染缓存，仅识别。保护账号、对话、下载和工程；尚缺该类缓存可独立删除的依据。",
+    "applicability": "BCUT / Cache",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": []
+  },
+  {
+    "rule_id": "appcache.opencode",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "OpenCode",
+    "method": "readonly",
+    "conclusion": "固定网页与渲染缓存，仅识别。保护账号、对话、下载和工程；尚缺该类缓存可独立删除的依据。",
+    "applicability": "OpenCode / EBWebView/Default/Cache, EBWebView/Default/Code Cache, EBWebView/Default/GPUCache, EBWebView/ShaderCache, EBWebView/GrShaderCache",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": []
+  },
+  {
+    "rule_id": "appcache.vscode_vsix",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "Code",
+    "method": "files",
+    "conclusion": "最后修改满 30 天的完整扩展下载包；不删除已安装扩展，以后可能需要重新下载。",
+    "applicability": "VS Code 1.134.0 / 对应 Insiders 包版本；Microsoft 签名、产品版本与构建标记核验；其他版本只读。固定下载包与 Simple Cache v5/v9 布局。",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/microsoft/vscode/110a328ea54b42367b803ec53ee0bf52ef26b419/src/vs/platform/extensionManagement/node/extensionDownloader.ts"
+      }
+    ]
+  },
+  {
+    "rule_id": "appcache.vscode_code",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "Code",
+    "method": "files",
+    "conclusion": "保留当前构建；仅处理旧构建目录最后修改超过 90 天且文件也满 90 天的代码缓存，下次启动可能重新生成。",
+    "applicability": "VS Code 1.134.0 / 对应 Insiders 包版本；Microsoft 签名、产品版本与构建标记核验；其他版本只读。固定下载包与 Simple Cache v5/v9 布局。",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/microsoft/vscode/110a328ea54b42367b803ec53ee0bf52ef26b419/src/vs/code/electron-utility/sharedProcess/contrib/codeCacheCleaner.ts"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/chromium/chromium/main/net/disk_cache/simple/simple_entry_format.h",
+        "title": "Chromium Simple Cache 文件格式（仅用于格式核验，不单独授予应用删除许可）"
+      }
+    ]
+  },
+  {
+    "rule_id": "appcache.vscode_insiders_vsix",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "Code - Insiders",
+    "method": "files",
+    "conclusion": "最后修改满 30 天的完整扩展下载包；不删除已安装扩展，以后可能需要重新下载。",
+    "applicability": "VS Code 1.134.0 / 对应 Insiders 包版本；Microsoft 签名、产品版本与构建标记核验；其他版本只读。固定下载包与 Simple Cache v5/v9 布局。",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/microsoft/vscode/110a328ea54b42367b803ec53ee0bf52ef26b419/src/vs/platform/extensionManagement/node/extensionDownloader.ts"
+      }
+    ]
+  },
+  {
+    "rule_id": "appcache.vscode_insiders_code",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "Code - Insiders",
+    "method": "files",
+    "conclusion": "保留当前构建；仅处理旧构建目录最后修改超过 7 天且文件也满 7 天的代码缓存，下次启动可能重新生成。",
+    "applicability": "VS Code 1.134.0 / 对应 Insiders 包版本；Microsoft 签名、产品版本与构建标记核验；其他版本只读。固定下载包与 Simple Cache v5/v9 布局。",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/microsoft/vscode/110a328ea54b42367b803ec53ee0bf52ef26b419/src/vs/code/electron-utility/sharedProcess/contrib/codeCacheCleaner.ts"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/chromium/chromium/main/net/disk_cache/simple/simple_entry_format.h",
+        "title": "Chromium Simple Cache 文件格式（仅用于格式核验，不单独授予应用删除许可）"
+      }
+    ]
+  },
+  {
+    "rule_id": "appcache.jetbrains",
+    "rule_version": 2,
+    "root": "application_cache",
+    "relative": "JetBrains",
+    "method": "readonly",
+    "conclusion": "索引、Python 存根和文件系统缓存请使用 IDE 内的 Invalidate Caches；浏览器中已适配的缓存单独提供清理。保护 Local History、配置、插件和项目。",
+    "applicability": "JetBrains / caches, index, python_stubs, jcef_cache",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://www.jetbrains.com/help/pycharm/invalidate-caches.html"
+      }
+    ]
+  },
+  {
+    "rule_id": "appcache.visual_studio",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "Microsoft/VisualStudio",
+    "method": "readonly",
+    "conclusion": "模板、图像及渲染目录仅供查看；配置、BackupFiles、扩展、组件与项目不属于本规则。",
+    "applicability": "Microsoft/VisualStudio / ImageLibrary, TextMateCache, WebView2Cache",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": []
+  },
+  {
+    "rule_id": "appcache.update_cherry",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "cherrystudio-updater",
+    "method": "readonly",
+    "conclusion": "更新下载内容仅供查看，可能包含待安装更新或重试所需安装包；不计入垃圾及可清理大小。",
+    "applicability": "cherrystudio-updater / ",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/electron-updater/src/DownloadedUpdateHelper.ts"
+      }
+    ]
+  },
+  {
+    "rule_id": "appcache.update_adrive",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "adrive-desktop-updater",
+    "method": "readonly",
+    "conclusion": "更新下载内容仅供查看，可能包含待安装更新或重试所需安装包；不计入垃圾及可清理大小。",
+    "applicability": "adrive-desktop-updater / ",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/electron-updater/src/DownloadedUpdateHelper.ts"
+      }
+    ]
+  },
+  {
+    "rule_id": "appcache.update_123pan",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "123pan-updater",
+    "method": "readonly",
+    "conclusion": "更新下载内容仅供查看，可能包含待安装更新或重试所需安装包；不计入垃圾及可清理大小。",
+    "applicability": "123pan-updater / ",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/electron-updater/src/DownloadedUpdateHelper.ts"
+      }
+    ]
+  },
+  {
+    "rule_id": "appcache.update_redis_manager",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "another-redis-desktop-manager-updater",
+    "method": "readonly",
+    "conclusion": "更新下载内容仅供查看，可能包含待安装更新或重试所需安装包；不计入垃圾及可清理大小。",
+    "applicability": "another-redis-desktop-manager-updater / ",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/electron-updater/src/DownloadedUpdateHelper.ts"
+      }
+    ]
+  },
+  {
+    "rule_id": "appcache.update_ziniao",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "ziniaobrowser-updater",
+    "method": "readonly",
+    "conclusion": "更新下载内容仅供查看，可能包含待安装更新或重试所需安装包；不计入垃圾及可清理大小。",
+    "applicability": "ziniaobrowser-updater / ",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/electron-updater/src/DownloadedUpdateHelper.ts"
+      }
+    ]
+  },
+  {
+    "rule_id": "appcache.update_xmind",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "xmind-updater",
+    "method": "readonly",
+    "conclusion": "更新下载内容仅供查看，可能包含待安装更新或重试所需安装包；不计入垃圾及可清理大小。",
+    "applicability": "xmind-updater / ",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/electron-updater/src/DownloadedUpdateHelper.ts"
+      }
+    ]
+  },
+  {
+    "rule_id": "appcache.update_apipost",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "apipost-updater",
+    "method": "readonly",
+    "conclusion": "更新下载内容仅供查看，可能包含待安装更新或重试所需安装包；不计入垃圾及可清理大小。",
+    "applicability": "apipost-updater / ",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/electron-updater/src/DownloadedUpdateHelper.ts"
+      }
+    ]
+  },
+  {
+    "rule_id": "appcache.update_apipost7",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "apipost7-updater",
+    "method": "readonly",
+    "conclusion": "更新下载内容仅供查看，可能包含待安装更新或重试所需安装包；不计入垃圾及可清理大小。",
+    "applicability": "apipost7-updater / ",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/electron-updater/src/DownloadedUpdateHelper.ts"
+      }
+    ]
+  },
+  {
+    "rule_id": "appcache.update_quark_netdisk",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "quark-cloud-drive-updater",
+    "method": "readonly",
+    "conclusion": "更新下载内容仅供查看，可能包含待安装更新或重试所需安装包；不计入垃圾及可清理大小。",
+    "applicability": "quark-cloud-drive-updater / ",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/electron-updater/src/DownloadedUpdateHelper.ts"
+      }
+    ]
+  },
+  {
+    "rule_id": "appcache.update_niimbot",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "niimbot-print-updater",
+    "method": "readonly",
+    "conclusion": "更新下载内容仅供查看，可能包含待安装更新或重试所需安装包；不计入垃圾及可清理大小。",
+    "applicability": "niimbot-print-updater / ",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/electron-updater/src/DownloadedUpdateHelper.ts"
+      }
+    ]
+  },
+  {
+    "rule_id": "appcache.update_rpa",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "rpa-process-manager-updater",
+    "method": "readonly",
+    "conclusion": "更新下载内容仅供查看，可能包含待安装更新或重试所需安装包；不计入垃圾及可清理大小。",
+    "applicability": "rpa-process-manager-updater / ",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/electron-updater/src/DownloadedUpdateHelper.ts"
+      }
+    ]
+  },
+  {
+    "rule_id": "appcache.update_hiprint",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "electron-hiprint-updater",
+    "method": "readonly",
+    "conclusion": "更新下载内容仅供查看，可能包含待安装更新或重试所需安装包；不计入垃圾及可清理大小。",
+    "applicability": "electron-hiprint-updater / ",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/electron-updater/src/DownloadedUpdateHelper.ts"
+      }
+    ]
+  },
+  {
+    "rule_id": "appcache.update_switchhosts",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "switchhosts-updater",
+    "method": "readonly",
+    "conclusion": "更新下载内容仅供查看，可能包含待安装更新或重试所需安装包；不计入垃圾及可清理大小。",
+    "applicability": "switchhosts-updater / ",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/electron-updater/src/DownloadedUpdateHelper.ts"
+      }
+    ]
+  },
+  {
+    "rule_id": "appcache.update_bob_vpn",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "bob_vpn-updater",
+    "method": "readonly",
+    "conclusion": "更新下载内容仅供查看，可能包含待安装更新或重试所需安装包；不计入垃圾及可清理大小。",
+    "applicability": "bob_vpn-updater / ",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/electron-updater/src/DownloadedUpdateHelper.ts"
+      }
+    ]
+  },
+  {
+    "rule_id": "appcache.update_xanadu",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "xanadu-updater",
+    "method": "readonly",
+    "conclusion": "更新下载内容仅供查看，可能包含待安装更新或重试所需安装包；不计入垃圾及可清理大小。",
+    "applicability": "xanadu-updater / ",
+    "reviewed": "2026-10-02",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/electron-updater/src/DownloadedUpdateHelper.ts"
+      }
+    ]
+  },
+  {
+    "rule_id": "appcache.cherry_gpu",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "CherryStudio",
+    "method": "files",
+    "layout_id": "documented_gpu:cherry",
+    "reviewed": "2026-10-02",
+    "applicability": "1.8.1；GPU blockfile v2 / index v3，仅 data_0 至 data_3 和 index；默认不选、修改满 7 天。",
+    "conclusion": "主动选择：清理最后修改满 7 天、格式已核验的图形缓存；下次显示界面可能重新编译着色器。保留账号、对话、网页存储和项目。",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/CherryHQ/cherry-studio/v1.8.1/src/main/ipc.ts",
+        "kind": "official_source",
+        "role": "vendor_cache_invalidation"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/chromium/chromium/144.0.7559.236/net/disk_cache/blockfile/disk_format.h",
+        "kind": "official_source",
+        "role": "format_only"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/chromium/chromium/144.0.7559.236/gpu/command_buffer/service/gr_shader_cache.cc",
+        "kind": "official_source",
+        "role": "shader_cache_miss_rebuild"
+      }
+    ]
+  },
+  {
+    "rule_id": "appcache.cherry_code",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "CherryStudio",
+    "method": "files",
+    "layout_id": "documented_code:cherry",
+    "reviewed": "2026-10-02",
+    "applicability": "1.8.1；仅固定目录中的独立响应文件或 Simple Cache v5 代码条目；默认不选、修改满 7 天。",
+    "conclusion": "主动选择：清理最后修改满 7 天、格式已核验的代码缓存；下次打开网页可能重新下载或编译。保留共享索引、账号、对话和项目。安装核验失败、应用未退出或格式无法确认时不清理。",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/CherryHQ/cherry-studio/v1.8.1/src/main/ipc.ts",
+        "kind": "official_source",
+        "role": "vendor_cache_invalidation"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/chromium/chromium/144.0.7559.236/net/disk_cache/simple/simple_entry_format.h",
+        "kind": "official_source",
+        "role": "format_only"
+      }
+    ]
+  },
+  {
+    "rule_id": "appcache.pycharm_gpu",
+    "rule_version": 2,
+    "root": "application_cache",
+    "relative": "JetBrains",
+    "method": "files",
+    "layout_id": "documented_gpu:pycharm",
+    "reviewed": "2026-10-02",
+    "applicability": "按 JetBrains 签名、产品/构建/JCEF 元数据一致性及当前产品资料目录核验，不以软件版本号限制；历史样本 2026.1 / PY-261.22158.340；GPU blockfile v2 / index v3，仅 data_0 至 data_3 和 index；默认不选、修改满 7 天。",
+    "conclusion": "主动选择：清理最后修改满 7 天、格式已核验的图形缓存；下次显示界面可能重新编译着色器。保留账号、对话、网页存储和项目。",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/JetBrains/intellij-community/pycharm/261.22158.340/platform/ui.jcef/jcef/JBCefAppCache.kt",
+        "kind": "official_source",
+        "role": "vendor_cache_invalidation"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/chromium/chromium/137.0.7151.104/net/disk_cache/blockfile/disk_format.h",
+        "kind": "official_source",
+        "role": "format_only"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/chromium/chromium/137.0.7151.104/gpu/command_buffer/service/gr_shader_cache.cc",
+        "kind": "official_source",
+        "role": "shader_cache_miss_rebuild"
+      }
+    ]
+  },
+  {
+    "rule_id": "appcache.pycharm_code",
+    "rule_version": 2,
+    "root": "application_cache",
+    "relative": "JetBrains",
+    "method": "files",
+    "layout_id": "documented_code:pycharm",
+    "reviewed": "2026-10-02",
+    "applicability": "按 JetBrains 签名、产品/构建/JCEF 元数据一致性及当前产品资料目录核验，不以软件版本号限制；历史样本 2026.1 / PY-261.22158.340；仅固定目录中的独立响应文件或 Simple Cache v5 代码条目；默认不选、修改满 7 天。",
+    "conclusion": "主动选择：清理最后修改满 7 天、格式已核验的代码缓存；下次打开网页可能重新下载或编译。保留共享索引、账号、对话和项目。安装核验失败、应用未退出或格式无法确认时不清理。",
+    "real_acceptance": "not_verified",
+    "sources": [
+      {
+        "url": "https://raw.githubusercontent.com/JetBrains/intellij-community/pycharm/261.22158.340/platform/ui.jcef/jcef/JBCefAppCache.kt",
+        "kind": "official_source",
+        "role": "vendor_cache_invalidation"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/chromium/chromium/137.0.7151.104/net/disk_cache/simple/simple_entry_format.h",
+        "kind": "official_source",
+        "role": "format_only"
+      }
+    ]
+  }
+]

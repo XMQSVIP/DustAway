@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-list-analysis-files"
+description = "Enables the list_analysis_files command without any pre-configured scope."
+commands.allow = ["list_analysis_files"]
+
+[[permission]]
+identifier = "deny-list-analysis-files"
+description = "Denies the list_analysis_files command without any pre-configured scope."
+commands.deny = ["list_analysis_files"]

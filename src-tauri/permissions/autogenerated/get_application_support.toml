@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-get-application-support"
+description = "Enables the get_application_support command without any pre-configured scope."
+commands.allow = ["get_application_support"]
+
+[[permission]]
+identifier = "deny-get-application-support"
+description = "Denies the get_application_support command without any pre-configured scope."
+commands.deny = ["get_application_support"]

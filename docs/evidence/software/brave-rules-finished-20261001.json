@@ -1,0 +1,18 @@
+﻿{
+    "Time":  "2026-10-01T09:26:15.2868903+08:00",
+    "NativeExit":  0,
+    "TasksRemoved":  3,
+    "UninstallVerified":  true,
+    "Processes":  0,
+    "TestListener":  false,
+    "UnselectedFileHashesVerified":  173,
+    "NewFilesPreserved":  6,
+    "SharedParentPreserved":  true,
+    "Rules":  11,
+    "DeletedFiles":  39,
+    "DeletedBytes":  3900481,
+    "DeletedEmptyDirectories":  6,
+    "ProductionApprovalAdded":  false,
+    "ForcedTermination":  false,
+    "SecuritySettingsChanged":  false
+}

@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-list-scan-observations"
+description = "Enables the list_scan_observations command without any pre-configured scope."
+commands.allow = ["list_scan_observations"]
+
+[[permission]]
+identifier = "deny-list-scan-observations"
+description = "Denies the list_scan_observations command without any pre-configured scope."
+commands.deny = ["list_scan_observations"]

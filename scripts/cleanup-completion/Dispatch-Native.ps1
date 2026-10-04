@@ -1,0 +1,1 @@
+& powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File (Join-Path $env:LOCALAPPDATA 'DustAwayAcceptance\20261001-cleanup-completion\scripts\cleanup-completion\Start-Remote.ps1') -Phase native -Run first

@@ -1,0 +1,18 @@
+[
+  {
+    "rule_id": "weixin.logs",
+    "app_id": "weixin",
+    "supported_version": "4.1.13.65",
+    "min_age_days": 7
+  },
+  {
+    "rule_id": "weixin.dumps",
+    "app_id": "weixin",
+    "supported_version": "4.1.13.65",
+    "min_age_days": 30
+  },
+  { "rule_id": "qq.http", "app_id": "qq", "supported_version": "9.7.23.29394", "min_age_days": 0 },
+  { "rule_id": "qq.code", "app_id": "qq", "supported_version": "9.7.23.29394", "min_age_days": 0 },
+  { "rule_id": "qq.gpu", "app_id": "qq", "supported_version": "9.7.23.29394", "min_age_days": 0 },
+  { "rule_id": "wps.logs", "app_id": "wps", "supported_version": "12.8.2.18205", "min_age_days": 7 }
+]

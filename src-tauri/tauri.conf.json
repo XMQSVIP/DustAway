@@ -1,0 +1,54 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "拂尘",
+  "version": "0.20.0",
+  "identifier": "io.dustaway.desktop",
+  "build": {
+    "beforeDevCommand": "pnpm dev",
+    "devUrl": "http://127.0.0.1:1420",
+    "beforeBuildCommand": "pnpm build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "拂尘 · Windows 清理",
+        "decorations": false,
+        "shadow": true,
+        "width": 1100,
+        "height": 780,
+        "center": true,
+        "minWidth": 760,
+        "minHeight": 580,
+        "backgroundColor": "#f5f7fb"
+      }
+    ],
+    "security": {
+      "capabilities": ["main"],
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' asset: http://asset.localhost data:; connect-src ipc: http://ipc.localhost; object-src 'none'; base-uri 'none'; frame-src 'none'",
+      "devCsp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src ipc: http://ipc.localhost http://127.0.0.1:1420 ws://127.0.0.1:1420; object-src 'none'; base-uri 'none'; frame-src 'none'"
+    }
+  },
+  "bundle": {
+    "active": false,
+    "category": "Utility",
+    "shortDescription": "可预览、可解释的 Windows 临时文件与浏览器缓存清理工具",
+    "copyright": "Copyright © 2026 DustAway contributors",
+    "license": "MIT",
+    "licenseFile": "../LICENSE",
+    "resources": {
+      "../licenses/THIRD-PARTY-NOTICES.txt": "THIRD-PARTY-NOTICES.txt",
+      "../licenses/inventory.json": "dependency-inventory.json"
+    },
+    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/icon.ico"],
+    "windows": {
+      "webviewInstallMode": { "type": "downloadBootstrapper", "silent": true },
+      "nsis": {
+        "installMode": "perMachine",
+        "languages": ["SimpChinese", "English"],
+        "displayLanguageSelector": true
+      }
+    }
+  }
+}

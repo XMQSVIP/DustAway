@@ -1,0 +1,26 @@
+[package]
+name = "dustaway-analysis-bench"
+version = "0.1.0"
+edition = "2024"
+[workspace]
+[[bin]]
+name = "dustaway-analysis-bench"
+path = "main.rs"
+[dependencies]
+dustaway-core = { path = "../../crates/core" }
+dustaway-windows = { path = "../../crates/windows" }
+serde_json = "1"
+rusqlite = { version = "0.40", features = ["bundled"] }
+uuid = { version = "1", features=["v4"] }
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true
+
+[profile.dev]
+debug = 1
+incremental = false
+
+[features]
+discovery = []
+query-timing = ["dustaway-core/analysis-query-timing"]

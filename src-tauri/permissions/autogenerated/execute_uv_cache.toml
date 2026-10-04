@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-execute-uv-cache"
+description = "Enables the execute_uv_cache command without any pre-configured scope."
+commands.allow = ["execute_uv_cache"]
+
+[[permission]]
+identifier = "deny-execute-uv-cache"
+description = "Denies the execute_uv_cache command without any pre-configured scope."
+commands.deny = ["execute_uv_cache"]

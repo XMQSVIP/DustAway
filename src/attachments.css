@@ -1,0 +1,229 @@
+.attachment-dialog {
+  position: fixed;
+  inset: 4vh 3vw;
+  z-index: 80;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 24px 90px #0004;
+  overflow: auto;
+}
+.attachment-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.attachment-header h2 {
+  margin: 0 0 8px;
+}
+.attachment-header p,
+.attachment-scope {
+  margin: 0;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.attachment-location,
+.attachment-filters {
+  display: flex;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.attachment-location label {
+  flex: 1;
+  min-width: 220px;
+}
+.attachment-dialog label {
+  display: flex;
+  gap: 6px;
+}
+.attachment-location label,
+.attachment-filters label {
+  flex-direction: column;
+}
+.attachment-dialog select,
+.attachment-dialog input:not([type='checkbox']) {
+  padding: 9px;
+  min-height: 40px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  max-width: 100%;
+}
+.attachment-content {
+  min-height: 160px;
+  flex: 1;
+  overflow: auto;
+}
+.attachment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 12px;
+}
+.attachment-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.attachment-card small {
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.attachment-card strong,
+.attachment-card p {
+  overflow-wrap: anywhere;
+  margin: 0;
+}
+.attachment-card.kind-file,
+.attachment-card.kind-audio,
+.attachment-card.kind-unknown {
+  grid-column: 1 / -1;
+}
+.attachment-choice {
+  align-items: start;
+}
+.attachment-choice input {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.attachment-preview button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 130px;
+  padding: 0;
+  background: var(--surface);
+  color: var(--text);
+  border: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.attachment-preview img {
+  width: 100%;
+  height: 130px;
+  object-fit: contain;
+}
+.attachment-preview span {
+  padding: 6px;
+}
+.attachment-preview button:disabled {
+  opacity: 1;
+}
+.attachment-file-icon,
+.attachment-pagination {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.attachment-pagination {
+  justify-content: center;
+}
+.attachment-footer {
+  position: sticky;
+  bottom: -24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+  padding: 16px 0;
+}
+.attachment-footer span {
+  color: var(--muted);
+  flex: 1;
+}
+.attachment-confirm {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.attachment-confirm p {
+  overflow-wrap: anywhere;
+}
+.attachment-confirm button {
+  margin: 8px 12px 0 0;
+}
+.attachment-error {
+  color: var(--text);
+  border-left: 3px solid #b85b37;
+  padding-left: 12px;
+}
+.attachment-image-dialog {
+  z-index: 100;
+  position: fixed;
+  inset: 8vh 8vw;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--surface);
+  color: var(--text);
+}
+.attachment-image-dialog img {
+  min-height: 0;
+  flex: 1;
+  object-fit: contain;
+}
+.attachment-result {
+  max-height: 40vh;
+  overflow: auto;
+}
+.attachment-entry {
+  margin: 16px 0;
+}
+.attachment-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  margin: 14px 0;
+}
+.attachment-category {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.attachment-category[aria-pressed='true'] {
+  outline: 2px solid currentColor;
+  outline-offset: -2px;
+}
+.attachment-category small {
+  line-height: 1.5;
+}
+.attachment-filter-summary {
+  line-height: 1.8;
+}
+@media (max-width: 800px) {
+  .attachment-dialog {
+    inset: 12px;
+    padding: 16px;
+  }
+  .attachment-footer {
+    bottom: -16px;
+  }
+  .attachment-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-refine-analysis-location"
+description = "Enables the refine_analysis_location command without any pre-configured scope."
+commands.allow = ["refine_analysis_location"]
+
+[[permission]]
+identifier = "deny-refine-analysis-location"
+description = "Denies the refine_analysis_location command without any pre-configured scope."
+commands.deny = ["refine_analysis_location"]

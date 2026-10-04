@@ -1,0 +1,484 @@
+{
+  "Date": "2026-10-03",
+  "Workspace": "G:\\my_ai\\DustAway",
+  "Status": "CacheCleanupCompleted_TestFixturesDeferred",
+  "DeletedPathsCount": 133,
+  "DeletedPaths": [
+    "G:\\my_ai\\DustAway\\dist",
+    "G:\\my_ai\\DustAway\\tsconfig.tsbuildinfo",
+    "G:\\my_ai\\DustAway\\src-tauri\\gen",
+    "G:\\my_ai\\DustAway\\src-tauri\\binaries\\dustaway-helper-x86_64-pc-windows-msvc.exe",
+    "G:\\my_ai\\DustAway\\scripts\\analysis-benchmark\\target",
+    "G:\\my_ai\\DustAway\\node_modules\\.vite",
+    "G:\\my_ai\\DustAway\\node_modules\\.vite-temp",
+    "G:\\my_ai\\DustAway\\artifacts\\msedgeedge_BITS_21012_1922341375",
+    "G:\\my_ai\\DustAway\\artifacts\\msedgeedge_BITS_2332_351079604",
+    "G:\\my_ai\\DustAway\\artifacts\\msedgeedge_BITS_30400_892771950",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir10496_1411472746",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir10580_174481825",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir10980_2141704584",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir10980_998332208",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir12960_997638228",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir13076_1817648728",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir13076_2093221097",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir13516_1373447300",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir13516_761587368",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir13988_543660691",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir15028_1331384478",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir15028_268092585",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir15824_699450220",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir15872_1559175092",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir15872_1631915349",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir16072_1050693841",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir16072_1075323831",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir16944_837358165",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir16944_890873956",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir17188_190123618",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir17188_649654102",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir1772_347016150",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir18576_1031029712",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir18576_1829751788",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir19244_692622922",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir1932_1409657587",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir1932_833594474",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir20176_294196461",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir20596_41393590",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir20596_575506982",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir21132_1436364720",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir21400_1874116093",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir21592_1229710862",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir21592_2121805710",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir21848_1525990990",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir21872_2147102974",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir2304_543106409",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir2304_680713952",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir23096_620002456",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir23604_1059105574",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir23748_2133951830",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir23748_829498123",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir24336_1172780988",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir24336_1463331762",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir24508_657418396",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir24836_290304250",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir24936_1482527378",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir24936_1787017206",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir25108_1396057049",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir25108_1416084558",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir26720_2119166427",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir2692_551541009",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir2692_893783502",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir26972_1799703055",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir26972_1811101064",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir27368_1887931152",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir27420_1183249458",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir27420_902373915",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir27440_1345738646",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir27440_1787502116",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir27768_1643369106",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir27768_856664047",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir28096_1571759847",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir28096_73391115",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir28536_1520659165",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir28536_73902817",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir28588_971369054",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir28760_201454268",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir28760_441482132",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir28780_1280768927",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir29212_1259649806",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir29212_313411090",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir29632_70262463",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir29812_1164098641",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir29812_119651308",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir29832_1938995451",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir3020_1573908380",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir3020_423624683",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir30248_245493047",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir30824_483243855",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir31316_1882381411",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir31316_532577835",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir31328_1745960634",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir31452_1712720966",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir316_1779650745",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir316_373011334",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir31968_1697622856",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir31968_793303984",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir32024_327591529",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir3204_1823832849",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir32164_729937277",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir33044_1298505856",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir33044_1683219998",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir33084_1344552977",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir34036_282501454",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir34036_880722413",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir34184_1174875837",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir34184_257800213",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir34244_744776605",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir34368_2121453880",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir34368_597173622",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir34420_259579437",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir34504_2012556930",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir34740_1020389031",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir35236_1342550812",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir35236_1513210141",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir36520_1418774994",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir36520_1909938879",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir37848_1076978571",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir37848_756343563",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir39328_1062995826",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir40992_471624870",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir5372_1169108491",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir6180_1854972034",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir6180_861532461",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir6376_1010010086",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir6376_176501260",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir7148_1144823333",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir7148_472043233",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir8504_559540743",
+    "G:\\my_ai\\DustAway\\artifacts\\scoped_dir9424_497747763",
+    "G:\\my_ai\\DustAway\\artifacts\\browser-validation-0.6\\vivaldi-packed",
+    "G:\\my_ai\\DustAway\\artifacts\\browser-validation-0.6\\downloads"
+  ],
+  "CleanupStageFreeSpaceIncreaseBytes": 2280112128,
+  "InitialGFreeBytes": 2716196864,
+  "ObservedFinalGFreeBytes": 4742135808,
+  "ObservedNetChangeBytes": 2025938944,
+  "SpaceNote": "Other processes continued writing to G during this task; final net free-space change differs from cleanup-stage observations.",
+  "CachePhase": {
+    "BeforeFreeBytes": 2716196864,
+    "AfterFreeBytes": 4055773184,
+    "FreedBytes": 1339576320,
+    "Finished": "2026-10-03T17:17:03.2689022+08:00",
+    "Status": "Completed",
+    "Log": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\dustaway-project-G-cleanup-20261003.log"
+  },
+  "BrowserArchivePhase": {
+    "BeforeFreeBytes": 4053127168,
+    "AfterFreeBytes": 4993662976,
+    "FreedBytes": 940535808,
+    "Finished": "2026-10-03T17:23:25.5892038+08:00",
+    "Status": "Completed",
+    "Log": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\dustaway-project-G-browser-archive-cleanup-20261003.log"
+  },
+  "TestFixturePhase": {
+    "BeforeFreeBytes": 4992917504,
+    "AfterFreeBytes": 4826578944,
+    "FreedBytes": -166338560,
+    "Finished": "2026-10-03T17:33:31.7093577+08:00",
+    "Status": "Stopped",
+    "Error": "Close project builds, tests and applications first: cargo.exe PID=35592, cargo.exe PID=33940, rustc.exe PID=31480",
+    "Log": "C:\\Users\\Administrator\\AppData\\Local\\Temp\\dustaway-project-G-test-fixture-cleanup-final-20261003.log"
+  },
+  "RemainingPathsCount": 73,
+  "RemainingFilesMeasured": 5416109,
+  "RemainingLogicalSizeGiBApprox": 0.034,
+  "RemainingPaths": [
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-analysis-bench-0.10",
+      "Category": "Optional synthetic benchmark dataset"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-1AAAPz",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-1chaTi",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-2CThTR",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-3AXYD4",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-5kuGXT",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-5SBoK1",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-5SCwhu",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-6NJXGJ",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-72DBTE",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-7se095",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-85GUuc",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-8yUQhF",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-9w7rYZ",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-aH1z9m",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-attachments-25jEAX",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-attachments-6N8PCh",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-attachments-m05eF1",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-attachments-rAjEzT",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-attachments-snnrIg",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-attachments-T8onnG",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-attachments-veBudS",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-AZnOMk",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-btTTLe",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-bube9t",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-By16ub",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-d5RaP6",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-dL4zLm",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-dWjL6J",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-eZEag5",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-FcH01q",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-GkB4MR",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-GWHwRD",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-gyAatZ",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-hpZnlq",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-IU8x1M",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-JA0qFy",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-jSbUdU",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-kfZOke",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-MfkUzx",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-O6SsAt",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-oiSL37",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-OtX1Ut",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-pgj8gM",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-PmUt7O",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-PPnmVu",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-PqZwBM",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-QzsU1P",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-r3wUhC",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-ROQTWX",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-RQeYke",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-software-crUyda",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-software-dueCfI",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-software-EsdR2V",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-software-GGsVQT",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-software-hfWr12",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-software-IlV4bp",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-software-oy0LXB",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-software-sLmTFL",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-software-t1pQUC",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-software-xRRKLW",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-software-ZWbgw6",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-T21HcJ",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-TwZYt7",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-Uyrvjr",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-VHoqzF",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-w0nuIV",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-w5Y56X",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-WXEI75",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-XODg0s",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-XsYZiG",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-yjlJ4L",
+      "Category": "Marked E2E fixture"
+    },
+    {
+      "Path": "G:\\my_ai\\DustAway\\artifacts\\dustaway-e2e-zvf5uv",
+      "Category": "Marked E2E fixture"
+    }
+  ],
+  "PreservedPaths": [
+    "src",
+    "crates",
+    "rules",
+    "Cargo.toml",
+    "Cargo.lock",
+    "package.json",
+    "pnpm-lock.yaml",
+    "node_modules",
+    "artifacts\\portable",
+    "artifacts\\browser-validation-0.6\\brave",
+    "artifacts\\browser-validation-0.6\\vivaldi",
+    "target"
+  ],
+  "PreservedTargetDestination": "F:\\DustAwayBuildCache\\20261003\\target",
+  "RetryCommand": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\clean-project.ps1 -Mode Clean -IncludeBenchmarkFixtures -IncludeBrowserArchives -Verbose"
+}

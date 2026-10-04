@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-prepare-tool-cache"
+description = "Enables the prepare_tool_cache command without any pre-configured scope."
+commands.allow = ["prepare_tool_cache"]
+
+[[permission]]
+identifier = "deny-prepare-tool-cache"
+description = "Denies the prepare_tool_cache command without any pre-configured scope."
+commands.deny = ["prepare_tool_cache"]
