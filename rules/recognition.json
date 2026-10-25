@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "revision": "2026-09-29.1",
+  "revision": "2026-10-23-coverage-022",
   "rules": [
     {
       "id": "windows.pagefile",
@@ -2974,6 +2974,39 @@
       "source": "https://bbs.xunlei.com/circles/12/posts/35258",
       "reviewed": "2026-09-29",
       "category": "applications"
+    },
+    {
+      "id": "app.shadowbot_resources",
+      "category": "applications",
+      "matcher": "directory_sequence",
+      "patterns": ["appdata/local/shadowbot/cache"],
+      "title": "可能的影刀资源与执行资料",
+      "description": "本机目录观察到活动包、图片和离线资源子目录；不能确认其中内容已闲置。",
+      "guidance": "保留此目录。通过影刀确认资源用途，不要把整个 cache 当作可删除垃圾；厂商资料介绍产品，具体路径来自本机观察。",
+      "source": "https://www.yingdao.com/qa",
+      "reviewed": "2026-10-23"
+    },
+    {
+      "id": "dev.node_gyp_headers",
+      "category": "development",
+      "matcher": "directory_sequence",
+      "patterns": ["appdata/local/node-gyp/cache"],
+      "title": "可能的 node-gyp 编译依赖",
+      "description": "可能包含原生模块编译使用的 Node.js 头文件与 SDK 下载资料。",
+      "guidance": "当前构建可能依赖这些版本，保留内容；不能只按文件年龄判断已闲置。",
+      "source": "https://github.com/nodejs/node-gyp",
+      "reviewed": "2026-10-23"
+    },
+    {
+      "id": "app.reqable_backups",
+      "category": "archives",
+      "matcher": "directory_sequence",
+      "patterns": ["appdata/roaming/reqable/backup", "appdata/roaming/reqable/tmp/backup"],
+      "title": "可能的 Reqable 备份资料",
+      "description": "本机观察到 Reqable 固定资料目录中的备份位置；即使位于 tmp 内也可能用于恢复。",
+      "guidance": "保留并通过 Reqable 核实备份。厂商资料用于说明应用背景，本机路径观察不证明内容已失效。",
+      "source": "https://reqable.com/en-US/docs/faq/windows/",
+      "reviewed": "2026-10-23"
     }
   ]
 }

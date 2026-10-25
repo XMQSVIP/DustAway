@@ -20,6 +20,7 @@ for (const [name, value] of [
     { catalog_id: compiled.catalog_id, rules: compiled.rules },
   ],
   ['src/preview-rules.json', compiled.preview_rules],
+  ['docs/current-capabilities.json', compiled.support_summary],
 ]) {
   const path = resolve(project, name);
   if (process.argv.includes('--check')) {

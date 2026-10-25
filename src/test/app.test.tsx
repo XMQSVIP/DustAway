@@ -742,7 +742,7 @@ it('allows partial verified candidates and carries backend coverage into confirm
   render(<App />);
   await startDefaultScan(user);
   await openAdjustments(user);
-  expect(screen.queryByText(/类检查未完成/)).not.toBeInTheDocument();
+  expect(screen.getByText(/1 类检查未完成或结果已失效/)).toBeVisible();
   expect(
     within(screen.getByLabelText('用户临时文件').closest('.rule-row') as HTMLElement).getByText(
       /扫描结果不完整；清理范围/,
@@ -1318,7 +1318,7 @@ it('preserves terminal results and separates unselected files from unfinished cl
   await user.click(screen.getByRole('button', { name: '查看临时文件清理结果' }));
   expect(
     within(screen.getByRole('region', { name: '各类别与未选择文件' })).getByText(
-      '扫描时发现 3 个文件 · 3.0 KB',
+      '扫描时占用 3.0 KB + 未知大小 · 已读 3 个文件',
     ),
   ).toBeVisible();
   await user.click(screen.getByRole('button', { name: '查看未纳入计划的 1 个文件' }));

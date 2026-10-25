@@ -13,7 +13,7 @@ export const toolActions = {
   'dev.yarn': '清空 Yarn Classic 下载缓存',
   'dev.ccache': '整理 ccache 旧编译缓存',
 } as const;
-export const isOfficialRule = (id: string) => id === 'dev.uv' || id in toolActions;
+export { isOfficialRule } from './scanAssessment';
 export interface ToolPlan extends UvPlan {
   rule_id: string;
   title: string;

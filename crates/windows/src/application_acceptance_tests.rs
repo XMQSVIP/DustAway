@@ -3,11 +3,23 @@ use super::*;
 use dustaway_core::{
     BlockReason, CandidateQuery, Engine, JobState, Selection, Settings,
     applications::{ApplicationFolder, ProfileLayout},
-    cleanup_acceptance::{CleanupAcceptance, PREPARATION_RULES, versions_in},
+    cleanup_acceptance::{CleanupAcceptance, versions_in},
 };
 use sha2::{Digest, Sha256};
 use std::sync::{Arc, Mutex, mpsc};
 use std::time::{Duration, Instant};
+
+// Test-only permits; never added to the production cleanup registry.
+const TEST_RULES: &[&str] = &[
+    "weixin.logs",
+    "dingtalk.http",
+    "dingtalk.code",
+    "baidu_netdisk.http",
+    "baidu_netdisk.code",
+    "baidu_netdisk.gpu",
+    "weixin.code",
+    "weixin.gpu",
+];
 
 const VERSION: &str = "0.0.0.1";
 const MARKER: &str = "synthetic-application-acceptance-only";
@@ -57,7 +69,7 @@ impl SyntheticAcceptance {
 
     pub(super) fn enabled(&self, platform: &WindowsPlatform, rule: &RuleDescriptor) -> bool {
         self.check_boundary(platform).is_ok()
-            && PREPARATION_RULES.contains(&rule.id.as_str())
+            && TEST_RULES.contains(&rule.id.as_str())
             && !versions_in(rule, &self.records).is_empty()
     }
 
@@ -101,7 +113,7 @@ fn descriptor(id: &str) -> RuleDescriptor {
 }
 
 fn fixture(id: &'static str) -> Fixture {
-    assert!(PREPARATION_RULES.contains(&id));
+    assert!(TEST_RULES.contains(&id));
     let directory = tempfile::Builder::new()
         .prefix("dustaway-acceptance-")
         .tempdir()
@@ -115,6 +127,7 @@ fn fixture(id: &'static str) -> Fixture {
         ApplicationFolder::Roaming => "roaming",
     };
     let profiles = match spec.profiles {
+        ProfileLayout::WeixinWeb => vec![base.join(folder).join(spec.base).join("webview")],
         ProfileLayout::DingTalkNumbered => vec![
             base.join(folder).join("DingTalk_123/Default"),
             base.join(folder).join("DingTalk_456/Default"),
@@ -130,13 +143,29 @@ fn fixture(id: &'static str) -> Fixture {
             protected.push(marker);
         }
         let root = profile.join(spec.relative);
-        for n in 0..3 {
-            let path = root.join(format!(
-                "candidate-{n}.{}",
-                spec.extension.unwrap_or("cache")
-            ));
-            write(&path, (i64::from(spec.age) + 1) * 86400);
-            files.push(path);
+        if id == "weixin.gpu" {
+            crate::app_cache::tests::gpu_fixture(&root);
+            files.extend(
+                ["index", "data_0", "data_1", "data_2", "data_3"].map(|name| root.join(name)),
+            );
+        } else if id == "weixin.code" {
+            let first = crate::app_cache::tests::simple_code_fixture(&root);
+            for n in 0..3 {
+                let path = root.join(format!("js/{n:016x}_0"));
+                std::fs::copy(&first, &path).unwrap();
+                files.push(path);
+            }
+            std::fs::remove_file(first).unwrap();
+            protected.push(root.join("js/index"));
+        } else {
+            for n in 0..3 {
+                let path = root.join(format!(
+                    "candidate-{n}.{}",
+                    spec.extension.unwrap_or("cache")
+                ));
+                write(&path, (i64::from(spec.age) + 1) * 86400);
+                files.push(path);
+            }
         }
         for name in [
             "Local Storage/data",
@@ -214,6 +243,9 @@ fn fixture(id: &'static str) -> Fixture {
 fn wait(engine: &Engine) {
     let deadline = Instant::now() + Duration::from_secs(30);
     while engine.is_busy() {
+        if std::env::var_os("DUSTAWAY_ACCEPTANCE_CANCEL").is_some_and(|p| Path::new(&p).is_file()) {
+            engine.cancel();
+        }
         assert!(Instant::now() < deadline, "synthetic task timed out");
         std::thread::sleep(Duration::from_millis(2));
     }
@@ -249,11 +281,22 @@ fn protection(paths: &[PathBuf]) -> Vec<(String, String)> {
 
 #[test]
 fn six_rule_cleanup_receipts() {
+    cleanup_receipts(dustaway_core::cleanup_acceptance::PREPARATION_RULES);
+}
+
+#[test]
+fn weixin_cache_cleanup_receipts() {
+    cleanup_receipts(&["weixin.code", "weixin.gpu"]);
+}
+
+fn cleanup_receipts(ids: &[&'static str]) {
     let mut receipts = vec![];
-    for &id in PREPARATION_RULES {
+    for &id in ids {
         let fixture = fixture(id);
-        let before = protection(&fixture.protected);
-        let engine = Engine::open(fixture.platform.clone(), Scope::User, &fixture.journal).unwrap();
+        let captured = Arc::new(crate::acceptance_snapshot::CapturedPlatform::new(
+            fixture.platform.clone(),
+        ));
+        let engine = Engine::open(captured.clone(), Scope::User, &fixture.journal).unwrap();
         let session = scan(&engine, id);
         assert!(fixture.files.iter().all(|p| p.exists()));
         assert!(
@@ -270,9 +313,47 @@ fn six_rule_cleanup_receipts() {
         let page = engine.candidates(&session, id, 0, 200).unwrap();
         assert_eq!(page.total as usize, fixture.files.len());
         let mut chosen = selection(id);
-        chosen.excluded_ids.push(page.items[0].id.clone());
+        let single_file = matches!(id, "weixin.code" | "weixin.gpu");
+        if single_file {
+            chosen.rule_ids.clear();
+            chosen.included_ids.push(page.items[0].id.clone());
+        } else {
+            chosen.excluded_ids.push(page.items[0].id.clone());
+        }
         let plan = engine.prepare(&session, chosen).unwrap();
-        assert_eq!(plan.files, page.total - 1);
+        assert_eq!(plan.files, if single_file { 1 } else { page.total - 1 });
+        let selected: Vec<_> = if single_file {
+            vec![page.items[0].clone()]
+        } else {
+            page.items[1..].to_vec()
+        };
+        let originals = captured.selected(&selected).unwrap();
+        for record in &originals {
+            captured
+                .validate_candidate(&descriptor(id), record)
+                .unwrap();
+        }
+        let selected_ids: Vec<_> = originals
+            .iter()
+            .map(|r| {
+                serde_json::from_str::<Snapshot>(&r.opaque)
+                    .unwrap()
+                    .stamp
+                    .identity
+            })
+            .collect();
+        let mut protected = fixture.protected.clone();
+        protected.extend(
+            fixture
+                .files
+                .iter()
+                .filter(|p| {
+                    !selected_ids
+                        .contains(&PinnedPath::open(p, false, false).unwrap().stamp.identity)
+                })
+                .cloned(),
+        );
+        let before = protection(&protected);
         assert!(engine.execute("forged-plan").is_err());
         engine.execute(&plan.id).unwrap();
         wait(&engine);
@@ -280,8 +361,11 @@ fn six_rule_cleanup_receipts() {
         let report = engine.report().unwrap();
         assert_eq!(report.deleted, plan.files);
         assert_eq!(report.failed + report.skipped + report.unknown, 0);
-        assert_eq!(fixture.files.iter().filter(|p| p.exists()).count(), 1);
-        assert_eq!(protection(&fixture.protected), before);
+        assert_eq!(
+            fixture.files.iter().filter(|p| p.exists()).count(),
+            (page.total - plan.files) as usize
+        );
+        assert_eq!(protection(&protected), before);
         assert_eq!(
             engine
                 .query_candidates(
@@ -304,10 +388,10 @@ fn six_rule_cleanup_receipts() {
             "layout_id": dustaway_core::applications::rule(id).unwrap().layout_id,
             "application_version": VERSION, "candidate_count": page.total,
             "selected_count": plan.files, "deleted_count": report.deleted,
-            "deleted_bytes": report.deleted_bytes, "retained_count": 1,
+            "deleted_bytes": report.deleted_bytes, "retained_count": page.total - plan.files,
             "failed_count": 0, "unknown_count": 0,
             "protected_count": before.len(),
-            "protection_before": before, "protection_after": protection(&fixture.protected),
+            "protection_before": before, "protection_after": protection(&protected),
             "single_use_plan": true, "result_status": report.status,
         }));
     }
@@ -318,8 +402,45 @@ fn six_rule_cleanup_receipts() {
 }
 
 #[test]
+fn weixin_frozen_selection_rejects_equal_count_replacements_and_identity_changes() {
+    for id in ["weixin.code", "weixin.gpu"] {
+        for same_path in [false, true] {
+            let fixture = fixture(id);
+            let captured = Arc::new(crate::acceptance_snapshot::CapturedPlatform::new(
+                fixture.platform.clone(),
+            ));
+            let engine = Engine::open(captured.clone(), Scope::User, &fixture.journal).unwrap();
+            let session = scan(&engine, id);
+            let page = engine.candidates(&session, id, 0, 200).unwrap();
+            let originals = captured.selected(&page.items).unwrap();
+            let original = &originals[0];
+            let path = PathBuf::from(&original.path_display);
+            let saved = fixture.state.directory.path().join("saved-original");
+            let bytes = std::fs::read(&path).unwrap();
+            let time =
+                filetime::FileTime::from_last_modification_time(&std::fs::metadata(&path).unwrap());
+            std::fs::rename(&path, &saved).unwrap();
+            let replacement = if same_path {
+                path.clone()
+            } else {
+                path.with_file_name("ffffffffffffffff_0")
+            };
+            std::fs::write(&replacement, bytes).unwrap();
+            filetime::set_file_mtime(&replacement, time).unwrap();
+            assert!(
+                captured
+                    .validate_candidate(&descriptor(id), original)
+                    .is_err()
+            );
+            assert!(engine.prepare(&session, selection(id)).is_err());
+            assert!(saved.is_file() && replacement.is_file());
+        }
+    }
+}
+
+#[test]
 fn rules_recheck_version_process_identity_marker_and_changed_files() {
-    for &id in PREPARATION_RULES {
+    for &id in TEST_RULES {
         for condition in [
             ReasonCode::ApplicationRunning,
             ReasonCode::ProcessUnknown,
@@ -416,7 +537,7 @@ impl Platform for Paused {
 
 #[test]
 fn each_rule_cancels_remaining_files_and_recovery_never_resumes_deletion() {
-    for &id in PREPARATION_RULES {
+    for &id in TEST_RULES {
         let fixture = fixture(id);
         let (sent, received) = mpsc::channel();
         let (resume, resumed) = mpsc::channel();
@@ -485,7 +606,7 @@ fn eligibility_never_spreads_and_long_term_exclusions_prevent_discovery() {
 
 #[test]
 fn each_rule_rechecks_changes_between_two_deletions() {
-    for &id in PREPARATION_RULES {
+    for &id in TEST_RULES {
         for restart in [false, true] {
             let fixture = fixture(id);
             let before = protection(&fixture.protected);
@@ -549,7 +670,7 @@ fn all_six_rules_reject_unsafe_files_and_same_version_identity_replacement() {
         FILE_ATTRIBUTE_NORMAL, FILE_ATTRIBUTE_OFFLINE, SetFileAttributesW,
     };
     use windows::core::PCWSTR;
-    for &id in PREPARATION_RULES {
+    for &id in TEST_RULES {
         let fixture = fixture(id);
         let engine = Engine::open(fixture.platform.clone(), Scope::User, &fixture.journal).unwrap();
         let session = scan(&engine, id);
@@ -588,7 +709,7 @@ fn all_six_rules_reject_unsafe_files_and_same_version_identity_replacement() {
 #[test]
 fn each_rule_preserves_excluded_new_and_busy_files_outside_the_frozen_plan() {
     use std::os::windows::fs::OpenOptionsExt;
-    for &id in PREPARATION_RULES {
+    for &id in TEST_RULES {
         let fixture = fixture(id);
         let before = protection(&fixture.protected);
         let engine = Engine::open(fixture.platform.clone(), Scope::User, &fixture.journal).unwrap();
@@ -629,11 +750,7 @@ fn each_rule_preserves_excluded_new_and_busy_files_outside_the_frozen_plan() {
 #[test]
 fn five_cache_rules_refuse_replaced_roots_and_junctions_after_confirmation() {
     use std::os::windows::process::CommandExt;
-    for id in PREPARATION_RULES
-        .iter()
-        .copied()
-        .filter(|id| *id != "weixin.logs")
-    {
+    for id in TEST_RULES.iter().copied().filter(|id| *id != "weixin.logs") {
         for junction in [false, true] {
             let fixture = fixture(id);
             let before = protection(&fixture.protected);
@@ -642,7 +759,8 @@ fn five_cache_rules_refuse_replaced_roots_and_junctions_after_confirmation() {
             let session = scan(&engine, id);
             let plan = engine.prepare(&session, selection(id)).unwrap();
             let roots = fixture.platform.roots(&descriptor(id)).unwrap();
-            let mut originals = vec![];
+            let mut moved_files = vec![];
+            let mut moved_protected = fixture.protected.clone();
             for (index, root) in roots.iter().enumerate() {
                 let saved = fixture
                     .state
@@ -654,7 +772,18 @@ fn five_cache_rules_refuse_replaced_roots_and_junctions_after_confirmation() {
                         || root.starts_with(&fixture.platform.roaming)
                 );
                 std::fs::rename(root, &saved).unwrap();
-                originals.push(saved.clone());
+                let source = PathBuf::from(display_path(root));
+                moved_files.extend(
+                    fixture
+                        .files
+                        .iter()
+                        .filter_map(|p| p.strip_prefix(&source).ok().map(|rel| saved.join(rel))),
+                );
+                for path in &mut moved_protected {
+                    if let Ok(relative) = path.strip_prefix(&source) {
+                        *path = saved.join(relative);
+                    }
+                }
                 if junction {
                     let output = std::process::Command::new("cmd.exe")
                         .args(["/d", "/c", "mklink", "/J"])
@@ -679,14 +808,9 @@ fn five_cache_rules_refuse_replaced_roots_and_junctions_after_confirmation() {
                 0,
                 "{id} junction={junction}"
             );
-            assert_eq!(
-                originals
-                    .iter()
-                    .map(|root| std::fs::read_dir(root).unwrap().count())
-                    .sum::<usize>(),
-                fixture.files.len()
-            );
-            assert_eq!(protection(&fixture.protected), before);
+            assert_eq!(moved_files.len(), fixture.files.len());
+            assert!(moved_files.iter().all(|path| path.is_file()));
+            assert_eq!(protection(&moved_protected), before);
             drop(engine);
             for root in roots {
                 // Empty directory or fixture junction only; never recursively remove its target.
@@ -699,7 +823,7 @@ fn five_cache_rules_refuse_replaced_roots_and_junctions_after_confirmation() {
 #[test]
 fn each_rule_reports_partial_reads_and_never_cleans_unreadable_subtrees() {
     use super::scan_tests::Denied;
-    for &id in PREPARATION_RULES {
+    for &id in TEST_RULES {
         let fixture = fixture(id);
         let protected = fixture.files[0]
             .parent()

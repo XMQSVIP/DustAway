@@ -1,5 +1,9 @@
 # IPC 接口说明
 
+## 0.21.0 附件结果增量
+
+`AttachmentCategory` 增加 `deleted_files` 和十进制字符串 `deleted_bytes`，只计入本会话收到明确删除成功结果的文件。`retained_files/retained_bytes` 不再包含这些成功删除项；失败、跳过或待核验记录不推断成功。`files/bytes`、`filtered_bytes` 仍是扫描时快照。旧响应缺少删除字段时前端展示“扫描记录不可选”，不推断当前剩余量或零删除；历史数据库无需迁移。
+
 ## 0.20.0 微信专项与附件统计增量
 
 `AttachmentPage` 增加 `filtered_bytes`、`selectable_files`、`selectable_bytes` 和 `categories`。字节数使用十进制字符串；当前筛选汇总跨越全部分页，分类汇总覆盖本次已读取的全部附件，不受时间、类型、关键词或已选筛选影响。每个分类含 `kind/files/bytes/retained_files/retained_bytes`，后两者在界面标为“不可选”，包含只读、扫描未完成和本次已处理记录。历史响应缺少字段时显示未知，不推断为零。

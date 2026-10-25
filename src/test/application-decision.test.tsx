@@ -69,6 +69,7 @@ function resultModel(
     selectRecommended: vi.fn(),
     openDetail: vi.fn(),
     refreshAvailability: vi.fn(),
+    scan: vi.fn(),
   } as unknown as AppController;
 }
 function resultRow(rule_id: string, patch: Partial<RuleSummary> = {}): RuleSummary {
@@ -186,7 +187,7 @@ it('counts uncleared categories separately from files and explains the next step
   await user.click(screen.getByText('本次未清理 · 3 类'));
   expect(screen.getByText(/这里统计的是清理类别，不是文件数量/)).toBeVisible();
   expect(screen.getByText(/需退出应用 1 类/)).toHaveTextContent('尚未开放清理 1 类');
-  expect(screen.getByText(/需退出应用 1 类/)).toHaveTextContent('需重新检查 1 类');
+  expect(screen.getByText(/需退出应用 1 类/)).toHaveTextContent('需重新扫描 1 类');
   await user.click(screen.getByRole('button', { name: '查看浏览器缓存未清理项' }));
   expect(screen.getByText(/后续处理：保存工作并正常退出/)).toBeVisible();
   await user.click(screen.getByRole('button', { name: '查看日志与错误报告未清理项' }));
@@ -324,7 +325,7 @@ it('shows actionable purpose choices directly and opens files without changing s
   rerender(<CleanupDecisionPanel model={{ ...model, sessionKey: 'next' }} onReview={vi.fn()} />);
   expect(screen.queryAllByRole('article')).toHaveLength(0);
 });
-it('keeps a zero-result read failure with its item without a global check-count notice', async () => {
+it('keeps zero-result failures visible in the summary and never hides a failed missing-location read', async () => {
   const model = resultModel([
     resultRow('weixin.logs', {
       phase: 'partial',
@@ -342,16 +343,23 @@ it('keeps a zero-result read failure with its item without a global check-count 
     resultRow('qq.http', { scan_issue: 'location_missing', phase: 'failed', scan_failed: true }),
   ]);
   render(<CleanupDecisionPanel model={model} onReview={vi.fn()} />);
-  expect(screen.queryByText(/类检查未完成/)).not.toBeInTheDocument();
+  expect(screen.getByText(/3 类检查未完成或结果已失效/)).toBeVisible();
   expect(screen.queryByRole('button', { name: '查看未完成的检查' })).not.toBeInTheDocument();
   const user = userEvent.setup();
   await openRetained(user, '日志与错误报告');
   const item = document.querySelector('[data-rule="weixin.logs"]') as HTMLElement;
   expect(item).toBeVisible();
-  expect(document.querySelector('[data-rule="qq.http"]')).toBeNull();
+  expect(document.querySelector('[data-rule="qq.http"]')).not.toBeNull();
   await user.click(within(item).getByText('技术详情'));
-  await user.click(within(item).getByText(/读取问题/));
+  await user.click(within(item).getByText(/^读取问题 ·/));
   expect(within(item).getByText('权限不足')).toBeVisible();
+  expect(within(item).getByText('尚未开放清理')).toBeVisible();
+  const retry = screen.getByRole('button', { name: '重新扫描' });
+  retry.focus();
+  await user.keyboard('{Enter}');
+  expect(model.scan).toHaveBeenCalledOnce();
+  expect(model.refreshAvailability).not.toHaveBeenCalled();
+  expect(model.selectRuleGroup).not.toHaveBeenCalled();
 });
 it('keeps technical conditions collapsed and cannot unlock readonly rules after refresh', async () => {
   const model = resultModel(
@@ -556,7 +564,7 @@ it.each([
       phase: 'partial' as const,
       coverage: { complete: false, issues: [{ code: 'access_denied' as const, count: 1 }] },
     },
-    '本次发现的内容暂不清理',
+    '扫描已结束，部分结果需重新检查',
   ],
   [{}, '这次没有发现可直接清理的垃圾'],
 ])('distinguishes zero-result coverage states: %s', (patch, title) => {

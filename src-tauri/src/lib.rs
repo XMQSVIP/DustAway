@@ -481,7 +481,7 @@ mod tests {
         if cfg!(feature = "system-cleanup") {
             return;
         }
-        assert_eq!(available_rules().unwrap().len(), 115);
+        assert_eq!(available_rules().unwrap().len(), 141);
         assert!(require_scope(Scope::System).is_err());
         for ids in [
             vec!["windows.system_temp".into()],

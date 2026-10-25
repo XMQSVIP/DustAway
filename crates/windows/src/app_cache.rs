@@ -505,12 +505,20 @@ pub(crate) fn file_reason(
 ) -> Result<Option<ReasonCode>> {
     check_cancel(cancel)?;
     if !spec.cleanable() {
+        // Fixed diagnostic directories are observations only, not Chromium files.
+        // No file name or extension in these directories grants deletion permission.
+        if spec.data_kind == dustaway_core::DataKind::Diagnostics {
+            return Ok(None);
+        }
         // Files routed to a separately licensed rule must not be counted twice.
         // Unsupported formats remain visible in the original read-only group.
         if documented::routed_from_readonly(spec, root, path, cancel)? {
             return Ok(Some(ReasonCode::Protected));
         }
-        if matches!(spec.kind.as_str(), "readonly" | "ziniao") {
+        if matches!(
+            spec.kind.as_str(),
+            "readonly" | "readonly_observed" | "ziniao"
+        ) {
             let relative = path.strip_prefix(root).context("cache root mismatch")?;
             let components: Vec<_> = relative.iter().map(|c| c.to_string_lossy()).collect();
             let parts: Vec<_> = components.iter().map(|c| c.as_ref()).collect();

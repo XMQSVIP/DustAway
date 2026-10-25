@@ -14,6 +14,7 @@ import { ManualCart } from './ManualCart';
 import { OfficialCacheTools } from './UvCache';
 import { ScanTotals } from './ScanTotals';
 import { WindowsMaintenancePanel } from './WindowsMaintenance';
+import { scanAccountingFor, scanAmount, retainedReasonText } from './scanAssessment';
 
 export function CleanupDecisionPanel({
   model,
@@ -46,6 +47,7 @@ export function CleanupDecisionPanel({
   }));
   const running = presentation.running.filter(elsewhere);
   const processUnknown = presentation.processUnknown.filter(elsewhere);
+  const retainedAccounting = scanAccountingFor(buckets[2].items, model.summaryRows);
   const resultsNode = useRef<HTMLDivElement | null>(null);
   const currentRule = decision.items.find((item) => item.rule.id === currentJob?.current_rule);
   const stage = home ? 'idle' : presentation.stage;
@@ -76,21 +78,23 @@ export function CleanupDecisionPanel({
                 : stage === 'review'
                   ? model.hasManual
                     ? '清理你选择的内容'
-                    : model.selectionEstimate.files > 0 || model.selectionEstimate.directories > 0
-                      ? '扫描完成，选择要清理的内容'
-                      : available.length
-                        ? '发现可清理内容，请选择'
-                        : official.length
-                          ? '发现可由官方工具整理的缓存'
-                          : processUnknown.length
-                            ? '部分清理项的运行状态尚未确认'
-                            : running.length
-                              ? '部分清理项需退出应用后检查'
-                              : found.length
-                                ? '本次发现的内容暂不清理'
-                                : incomplete.length
-                                  ? '部分位置尚未检查完成'
-                                  : '这次没有发现可直接清理的垃圾'
+                    : incomplete.length
+                      ? '扫描已结束，部分结果需重新检查'
+                      : model.selectionEstimate.files > 0 || model.selectionEstimate.directories > 0
+                        ? '扫描完成，选择要清理的内容'
+                        : available.length
+                          ? '发现可清理内容，请选择'
+                          : official.length
+                            ? '发现可由官方工具整理的缓存'
+                            : processUnknown.length
+                              ? '部分清理项的运行状态尚未确认'
+                              : running.length
+                                ? '部分清理项需退出应用后检查'
+                                : found.length
+                                  ? '本次发现的内容暂不清理'
+                                  : incomplete.length
+                                    ? '部分位置尚未检查完成'
+                                    : '这次没有发现可直接清理的垃圾'
                   : '清理垃圾，腾出空间';
   const idle = stage === 'idle' && !!primaryAction;
   const volumePicker = (
@@ -268,7 +272,10 @@ export function CleanupDecisionPanel({
           {docked && reviewAction}
         </div>
       )}
-      {!home && !terminal && model.scanned && <ScanTotals model={model} />}
+      {!home &&
+        !terminal &&
+        !['cleaning', 'stopping', 'uncertain'].includes(stage) &&
+        model.scanned && <ScanTotals model={model} />}
       {(terminal || idle) && (model.uv?.task || model.maintenance?.task) && (
         <OfficialCacheTools model={model} />
       )}
@@ -278,6 +285,7 @@ export function CleanupDecisionPanel({
         </>
       ) : (
         !home &&
+        !['cleaning', 'stopping', 'uncertain'].includes(stage) &&
         (model.scanned || model.hasManual || stage === 'scanning') && (
           <div className="review-workspace">
             <div
@@ -288,6 +296,37 @@ export function CleanupDecisionPanel({
               }}
               tabIndex={-1}
             >
+              {!!incomplete.length && !['cleaning', 'stopping', 'uncertain'].includes(stage) && (
+                <section className="incomplete-notice" aria-label="扫描异常摘要">
+                  <p role="status">
+                    {incomplete.length} 类检查未完成或结果已失效，容量仅统计已读取范围。
+                  </p>
+                  <details>
+                    <summary>查看检查问题</summary>
+                    <ul>
+                      {incomplete.map((item) => (
+                        <li key={item.rule.id}>
+                          {item.rule.title}：{item.scan?.label ?? '检查未完成'}
+                          {item.capability === 'readonly' ? '；尚未开放清理' : ''}
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                  <button
+                    className="result-link"
+                    disabled={busy || saving}
+                    onClick={async (event) => {
+                      const button = event.currentTarget;
+                      await model.scan();
+                      if (!button.isConnected && document.activeElement === document.body)
+                        resultsNode.current?.focus();
+                    }}
+                  >
+                    重新扫描
+                  </button>
+                  <p className="muted">可按原规则处理其他已核验项目；重新扫描不会开放只读清理。</p>
+                </section>
+              )}
               <section aria-label="建议清理" className="recommended-results">
                 <div className="results-heading">
                   <h3>建议清理</h3>
@@ -368,7 +407,12 @@ export function CleanupDecisionPanel({
               )}
               {!!buckets[2].items.length && (
                 <details className="result-section retained-results">
-                  <summary>本次未清理 · {buckets[2].items.length} 类</summary>
+                  <summary>
+                    <span>本次未清理 · {buckets[2].items.length} 类</span> · 已保留{' '}
+                    {scanAmount(retainedAccounting, 'retained')}
+                    {retainedAccounting.reasons.length > 0 &&
+                      ` · ${retainedReasonText(retainedAccounting.reasons)}`}
+                  </summary>
                   <p className="muted">
                     这里统计的是清理类别，不是文件数量。这些类别当前未纳入清理，不计入已选容量；展开可查看原因和后续处理方式。
                   </p>

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { ChevronDown, MessageCircle } from 'lucide-react';
 import { CleanupRuleList } from './CleanupRuleList';
-import { scanAccounting } from './ScanTotals';
-import { formatBytes, reasonLabels } from './i18n';
+import { scanAmount } from './scanAssessment';
+import { weixinStatus } from './weixinStatus';
 import { desktop } from './api';
 import type { AppController } from './useAppController';
 import './weixin.css';
@@ -15,37 +15,10 @@ export function WeixinCleanup({
   onAttachments: () => void;
 }) {
   const [open, setOpen] = useState(false);
-  const items = model.decision.items.filter((item) => item.rule.id.startsWith('weixin.'));
-  const rows = model.summaryRows.filter((row) => row.rule_id.startsWith('weixin.'));
-  const totals = scanAccounting({ decision: { ...model.decision, items }, summaryRows: rows });
-  const scanned = rows.length > 0;
-  const unread =
-    scanned &&
-    items.some(
-      (item) =>
-        !rows.some(
-          (row) =>
-            row.rule_id === item.rule.id &&
-            ['completed', 'partial', 'failed', 'interrupted'].includes(row.phase),
-        ),
-    );
-  const retainedReasons = [
-    ...new Set(
-      rows.flatMap((row) =>
-        (row.observation?.reasons ?? []).map((reason) => reasonLabels[reason.code]),
-      ),
-    ),
-  ];
+  const status = weixinStatus(model);
+  const { items, totals, scanned } = status;
   const pending = model.busy || model.saving;
-  const running = items.some(
-    (item) => item.capability === 'allowed' && ['running', 'process_unknown'].includes(item.status),
-  );
-  const amount = (bytes: bigint) =>
-    !scanned
-      ? '待扫描'
-      : totals.unknown || unread
-        ? `${formatBytes(bytes)} + 未知大小`
-        : formatBytes(bytes);
+  const historical = !!model.reports?.length || model.currentJob?.state === 'cleaning';
   return (
     <section className="weixin-cleanup" aria-label="微信专项清理">
       <div className="weixin-heading">
@@ -67,33 +40,55 @@ export function WeixinCleanup({
           整理微信聊天附件
         </button>
       </div>
-      <dl className="weixin-totals" aria-label="微信缓存与日志容量">
+      <dl className="weixin-status" aria-label="微信检查状态">
         <div>
-          <dt>缓存与日志已扫描</dt>
-          <dd>{amount(totals.observed)}</dd>
+          <dt>扫描</dt>
+          <dd>{status.progress}</dd>
         </div>
         <div>
-          <dt>可直接清理</dt>
-          <dd>{scanned ? formatBytes(totals.available) : '待扫描'}</dd>
+          <dt>清理能力</dt>
+          <dd>{status.permission}</dd>
         </div>
         <div>
-          <dt>已保留</dt>
-          <dd>{amount(totals.retained)}</dd>
+          <dt>运行状态</dt>
+          <dd>{status.runtime}</dd>
         </div>
       </dl>
-      <p className="muted">
-        缓存与日志已纳入常规扫描。聊天图片、视频和文件需选择账号后单独整理，不计入以上容量。
-      </p>
-      {!!retainedReasons.length && (
-        <p className="muted">保留原因：{retainedReasons.join('、')}。</p>
-      )}
+      {status.incomplete && <p role="status">部分微信位置尚未读完，容量仅统计已读取范围。</p>}
       <div id="weixin-cleanup-details" hidden={!open}>
+        <dl className="weixin-totals" aria-label="微信缓存与日志容量">
+          <div>
+            <dt>{historical ? '扫描时缓存与日志占用' : '缓存与日志已扫描'}</dt>
+            <dd>{scanAmount(totals, 'observed')}</dd>
+          </div>
+          {!historical && (
+            <>
+              <div>
+                <dt>可直接清理</dt>
+                <dd>{scanAmount(totals, 'available')}</dd>
+              </div>
+              <div>
+                <dt>已保留</dt>
+                <dd>{scanAmount(totals, 'retained')}</dd>
+              </div>
+            </>
+          )}
+        </dl>
+        {historical && <p className="muted">以上为扫描时占用，本次删除结果见清理回执。</p>}
+        <p className="muted">
+          缓存与日志已纳入常规扫描。聊天图片、视频和文件需选择账号后单独整理，不计入以上容量。
+        </p>
+        {!historical && !!status.reasons.length && (
+          <p className="muted">
+            主要保留原因：{status.reasons.slice(0, 3).join('、')}
+            {status.reasons.length > 3 ? '等，展开查看全部原因' : ''}。
+          </p>
+        )}
         <p>
           网页缓存用于加快内容加载。历史日志保留最近 7 天，崩溃转储保留最近 30
           天；各项是否开放清理见下方状态。
         </p>
         {!scanned && <p role="status">尚未扫描微信缓存与日志，不能据此判断微信没有占用空间。</p>}
-        {totals.incomplete && <p role="status">部分微信位置尚未读完，容量仅统计已读取范围。</p>}
         <CleanupRuleList model={model} rules={items.map((item) => item.rule)} />
         <div className="inline-actions">
           <button
@@ -103,16 +98,17 @@ export function WeixinCleanup({
           >
             {scanned ? '重新常规扫描' : '开始常规扫描'}
           </button>
-          {running && (
-            <button
-              className="result-link"
-              disabled={pending || !desktop}
-              onClick={() => void model.refreshAvailability()}
-            >
-              退出微信后重新检查
-            </button>
-          )}
+          <button
+            className="result-link"
+            disabled={pending || !desktop}
+            onClick={() => void model.refreshAvailability()}
+          >
+            重新检查微信运行状态
+          </button>
         </div>
+        <p className="muted">
+          运行状态复查保留原有候选和选择，不查找新增文件；查找新增文件请重新常规扫描。退出微信不会开放只读项目。
+        </p>
         <p className="muted">缓存按需勾选后，通过“清理已选”统一确认。尚未开放的项目只供查看。</p>
         <details className="weixin-boundaries">
           <summary>扫描范围与保留内容</summary>

@@ -1,3 +1,4 @@
+import { assessScan, type ScanAssessment } from './scanAssessment';
 import { cleanupEvidence } from './CleanupEvidence';
 import { selectedTotals } from './selection';
 import {
@@ -54,6 +55,7 @@ export interface RuleDecision {
   incomplete: boolean;
   capability: ApplicationCapability;
   condition: string;
+  scan?: ScanAssessment;
 }
 export const decisionLabels: Record<DecisionStatus, string> = {
   ready: '可清理',
@@ -94,10 +96,29 @@ export function cleanupDecision(input: {
   const applications = input.applications ?? [];
   const capabilities = new Map(rules.map((r) => [r.id, applicationCapability(r, applications)]));
   const runtimeBlocks = new Map(rules.map((r) => [r.id, applicationRuntimeBlock(r, applications)]));
+  const assessments = new Map(
+    rules.map((rule) => {
+      const scope = rule.requires_admin ? 'system' : 'user';
+      const job = input.reviewContext?.jobs[scope];
+      return [
+        rule.id,
+        assessScan(
+          rows.find((row) => row.rule_id === rule.id),
+          {
+            hasSession: sessions.length > 0,
+            scanning: job ? job.state === 'scanning' : input.active === 'scanning',
+            stale: input.needsRescan,
+            excluded: input.excludedRuleIds?.includes(rule.id),
+          },
+        ),
+      ];
+    }),
+  );
   const eligibleRows = rows.map((row) => ({
     ...row,
     blocked:
       row.blocked ||
+      !['completed', 'partial'].includes(assessments.get(row.rule_id)?.state ?? 'unscanned') ||
       !!input.excludedRuleIds?.includes(row.rule_id) ||
       !!row.availability ||
       !!runtimeBlocks.get(row.rule_id) ||
@@ -107,7 +128,8 @@ export function cleanupDecision(input: {
   const items: RuleDecision[] = rules.map((rule) => {
     const row = rows.find((r) => r.rule_id === rule.id);
     const amount = totals.byRule.get(rule.id);
-    const incomplete = !!row && (row.phase === 'partial' || row.coverage?.complete === false);
+    const scan = assessments.get(rule.id)!;
+    const incomplete = scan.incomplete;
     const capability = capabilities.get(rule.id)!;
     const support = applications.find((a) => a.app_id === rule.app_id);
     let status: DecisionStatus = 'unscanned';
@@ -115,7 +137,7 @@ export function cleanupDecision(input: {
     if (input.excludedRuleIds?.includes(rule.id)) {
       status = 'excluded';
       explanation = '已按长期排除设置保留，不参与本次扫描与清理。';
-    } else if (row?.scan_issue === 'location_missing' && !row.files) {
+    } else if (scan.absent) {
       status = 'absent';
       explanation = '未发现该标准位置，可能尚未安装或尚未生成文件。';
     } else if (capability === 'readonly') {
@@ -133,7 +155,7 @@ export function cleanupDecision(input: {
       if (code === 'validation_pending') {
         status = 'readonly';
         explanation = '此类内容尚未开放清理，已保留。';
-      } else if (code === 'location_missing') {
+      } else if (code === 'location_missing' && scan.absent) {
         status = 'absent';
         explanation = '未发现该标准位置，可能尚未安装或尚未生成文件；这与扫描后没有垃圾不同。';
       } else if (
@@ -187,6 +209,7 @@ export function cleanupDecision(input: {
     }
     return {
       rule,
+      scan,
       selected: selected.has(rule.id) || (amount?.files ?? 0) > 0,
       status,
       label:
@@ -263,6 +286,9 @@ export function cleanupDecision(input: {
       message = items.some((r) => r.status === 'process_unknown')
         ? '部分运行状态无法确认，请重新检查；这不代表已确认缓存被占用。'
         : '相关应用仍在运行，请保存工作并正常退出后重新检查；不会自动结束应用。';
+    } else if (items.some((item) => item.scan?.incomplete || item.scan?.state === 'stale')) {
+      action = 'scan';
+      message = '部分检查未完成，可查看原因后重新扫描；重新扫描不会开放只读项目。';
     } else {
       action = 'analysis';
       message = '本次没有可直接清理的已选文件。可查看各类别原因，或分析其他空间占用。';

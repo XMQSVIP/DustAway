@@ -71,22 +71,27 @@ async function measure() {
   return js(`
     const hero = document.querySelector('.task-hero');
     const bar = hero?.querySelector('[role="progressbar"]');
-    const button = hero?.querySelector('.idle-scan-action button');
+    const button = document.querySelector('.task-dock .primary');
     const main = document.querySelector('main');
     const rect = e => e?.getBoundingClientRect().toJSON();
     const inside = e => { const r = rect(e), m = rect(main); return !!r && r.top >= m.top && r.bottom <= m.bottom && r.left >= 0 && r.right <= innerWidth; };
     const r = rect(button);
     return {hero:rect(hero),bar:rect(bar),button:r,main:rect(main),scroll:main.scrollTop,
-      barVisible:inside(bar),buttonVisible:inside(button),
+      barVisible:inside(bar),buttonVisible:!!r && r.top >= main.getBoundingClientRect().bottom && r.bottom <= innerHeight && r.left >= 0 && r.right <= innerWidth,
+      heroPosition:hero && getComputedStyle(hero).position,
       hit:!!r && button.contains(document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)),
       overflow:document.documentElement.scrollWidth>innerWidth,
       percent:bar?.getAttribute('aria-valuenow'),indeterminate:bar?.dataset.indeterminate};
   `);
 }
-async function check(name) {
+async function check(name, barVisible = true) {
   const layout = await measure();
   assert(
-    layout.barVisible && layout.buttonVisible && layout.hit && !layout.overflow,
+    layout.barVisible === barVisible &&
+      layout.buttonVisible &&
+      layout.hit &&
+      !layout.overflow &&
+      !['sticky', 'fixed'].includes(layout.heroPosition),
     JSON.stringify(layout),
   );
   await capture(name);
@@ -126,9 +131,13 @@ try {
       await js(
         'document.querySelector(".review-workspace").style.minHeight="1500px";document.querySelector("main").scrollTop=550;',
       );
-      const scrolled = await check(`${name}-scrolled`);
+      const scrolled = await check(`${name}-scrolled`, false);
       assert(scrolled.scroll > 300);
-      await js('document.querySelector("main").focus({preventScroll:true});');
+      assert(
+        scrolled.hero.bottom <= scrolled.main.top,
+        'Task details must scroll out of the result area',
+      );
+      await js('document.querySelector(".footnote-links button").focus({preventScroll:true});');
       for (let step = 0; step < 10; step++) {
         await command('POST', `/session/${session}/actions`, {
           actions: [
@@ -136,24 +145,27 @@ try {
               type: 'key',
               id: 'keyboard',
               actions: [
+                { type: 'keyDown', value: '\uE008' },
                 { type: 'keyDown', value: '\uE004' },
                 { type: 'keyUp', value: '\uE004' },
+                { type: 'keyUp', value: '\uE008' },
               ],
             },
           ],
         });
         if (
-          await js('return document.activeElement===document.querySelector(".task-hero button");')
+          await js('return document.activeElement===document.querySelector(".task-dock .primary");')
         )
           break;
       }
       assert(
-        await js('return document.activeElement===document.querySelector(".task-hero button");'),
+        await js('return document.activeElement===document.querySelector(".task-dock .primary");'),
       );
       assert(await js('return document.activeElement.matches(":focus-visible");'));
-      await check(`${name}-keyboard`);
-      // The bar uses the same fixed layout when determinate. No deletion is submitted.
+      await check(`${name}-keyboard`, false);
+      // The determinate bar uses the same in-flow layout. No deletion is submitted.
       await js(`
+      document.querySelector('main').scrollTop=0;
       const bar=document.querySelector('.task-hero .live-progress');
       window.__progressOriginal=bar.outerHTML;
       bar.dataset.indeterminate='false';bar.setAttribute('aria-label','文件处理进度');
@@ -165,7 +177,7 @@ try {
       await js(
         'document.querySelector(".task-hero .live-progress").outerHTML=window.__progressOriginal;',
       );
-      await click('.task-hero button');
+      await click('.task-dock .primary');
       const end = await until(async () => {
         const value = await snapshot();
         return ['ready', 'cancelled', 'failed'].includes(value.status.state) ? value : null;

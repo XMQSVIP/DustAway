@@ -290,6 +290,8 @@ export default function App() {
       model.decision.action === 'scan');
   const presentation = cleanupPresentation(model);
   const cleanStage = idleHome ? 'idle' : presentation.stage;
+  const taskInDock =
+    !!currentJob && ['scanning', 'cleaning', 'stopping', 'uncertain'].includes(cleanStage);
   const emptyResult =
     cleanStage === 'review' &&
     model.windowsMaintenance.selected.size === 0 &&
@@ -624,12 +626,11 @@ export default function App() {
               </button>
             </div>
             {attachmentsOpen && <AttachmentPanel onClose={() => setAttachmentsOpen(false)} />}
-            <WeixinCleanup model={model} onAttachments={() => setAttachmentsOpen(true)} />
             <CleanupDecisionPanel
               model={model}
               weixinSeparate
               home={receiptDismissed}
-              docked={!wideLayout && cleanStage === 'review'}
+              docked={taskInDock || (!wideLayout && cleanStage === 'review')}
               resultsRef={resultsRef}
               onReview={reviewResult}
               primaryAction={primaryAction}
@@ -736,6 +737,7 @@ export default function App() {
                 </details>
               </details>
             )}
+            <WeixinCleanup model={model} onAttachments={() => setAttachmentsOpen(true)} />
             <details className="more-cleanup-help" hidden={idleHome && !helpOpen}>
               <summary>其他处理方式与保留范围</summary>
               <div className="inline-actions">
@@ -814,7 +816,11 @@ export default function App() {
                 : stopping
                   ? '停止中'
                   : busy
-                    ? ui.working
+                    ? currentJob?.state === 'scanning'
+                      ? '正在扫描'
+                      : currentJob?.state === 'cleaning'
+                        ? '正在清理'
+                        : ui.working
                     : reports.length && !model.hasManual && !analysisSelectionView
                       ? `本次已删除 ${formatResultCount(model.decision.result.deleted)} 个文件 · ${formatResultCount(model.decision.result.directories.deleted)} 个文件夹 · ${model.decision.result.bytes === null ? '统计不可用' : formatBytes(model.decision.result.bytes)}`
                       : scanned || model.hasManual || analysisSelectionView
@@ -921,7 +927,7 @@ export default function App() {
                       {t.rescan}
                     </button>
                   )}
-                {cleanStage === 'review' && !wideLayout && primaryAction}
+                {(taskInDock || (cleanStage === 'review' && !wideLayout)) && primaryAction}
               </>
             )}
           </div>

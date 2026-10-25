@@ -1,3 +1,4 @@
+import { selectableScan, ruleAssessment } from './scanAssessment';
 import { isOfficialRule } from './ToolCache';
 import type { AppController } from './useAppController';
 import type { DecisionStatus, RuleDecision } from './cleanupDecision';
@@ -7,7 +8,7 @@ export type DeskStage =
 export type CleanupBucket = 'recommended' | 'review' | 'blocked';
 
 export function isSelectableCleanup(item: RuleDecision) {
-  return item.capability === 'allowed' && ['ready', 'deselected'].includes(item.status);
+  return selectableScan(item);
 }
 
 export function cleanupFollowup(status: DecisionStatus) {
@@ -60,10 +61,21 @@ export function cleanupFollowup(status: DecisionStatus) {
   }
 }
 
+export function ruleFollowup(item: RuleDecision) {
+  if (item.scan?.pending) return { label: '等待扫描', next: '等待扫描完成；扫描不会删除文件。' };
+  if (item.scan?.incomplete || item.scan?.state === 'stale')
+    return {
+      label: '需重新扫描',
+      next: '查看读取问题，处理后重新扫描；重新扫描不会解除只读限制。',
+    };
+  if (item.scan && ['unscanned', 'not_scanned'].includes(item.scan.state))
+    return { label: '尚未扫描', next: '开始扫描后查看本次占用；是否允许清理单独核验。' };
+  return cleanupFollowup(item.status);
+}
 export function cleanupFollowupCounts(items: RuleDecision[]) {
   const counts = new Map<string, number>();
   for (const item of items) {
-    const { label } = cleanupFollowup(item.status);
+    const { label } = ruleFollowup(item);
     counts.set(label, (counts.get(label) ?? 0) + 1);
   }
   return [...counts].map(([label, count]) => `${label} ${count} 类`).join(' · ');
@@ -88,25 +100,12 @@ export function cleanupPresentation(model: AppController) {
             : model.scanned || model.hasManual
               ? 'review'
               : 'idle';
+  const incomplete = decision.items.filter((item) => {
+    const scan = ruleAssessment(item, model.summaryRows);
+    return !isOfficialRule(item.rule.id) && (scan.incomplete || scan.state === 'stale');
+  });
   const found = decision.items.filter(
-    (item) =>
-      (item.recognizedFiles ?? item.foundFiles) > 0 ||
-      model.summaryRows.some(
-        (row) =>
-          row.rule_id === item.rule.id &&
-          row.scan_issue !== 'location_missing' &&
-          (row.scan_failed || (row.coverage?.issues.length ?? 0) > 0),
-      ),
-  );
-  const incomplete = decision.items.filter((item) =>
-    model.summaryRows.some(
-      (row) =>
-        row.rule_id === item.rule.id &&
-        row.scan_issue !== 'location_missing' &&
-        (row.scan_failed ||
-          ['partial', 'failed', 'interrupted'].includes(row.phase) ||
-          row.coverage?.complete === false),
-    ),
+    (item) => (item.recognizedFiles ?? item.foundFiles) > 0 || incomplete.includes(item),
   );
   const buckets: { key: CleanupBucket; title: string; hint: string; items: RuleDecision[] }[] = [
     {

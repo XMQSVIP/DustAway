@@ -2010,7 +2010,9 @@ select {
   .desk-app[data-page='clean'][data-clean-stage='review'] .cleanup-heading {
     margin-bottom: 4px;
   }
-  .cleanup-decision[data-stage='review'] .desk-hero { padding-bottom: 4px; }
+  .cleanup-decision[data-stage='review'] .desk-hero {
+    padding-bottom: 4px;
+  }
   .cleanup-decision[data-stage='review'] .scan-accounting {
     margin: 4px 0 10px;
   }
@@ -2076,11 +2078,9 @@ select {
   font-size: 12px;
 }
 
-/* Keep the running task and its stop action in view while results grow below it. */
+/* Task details scroll with the results; the persistent dock keeps the stop action visible. */
 .cleanup-decision:not([data-idle='true']) > .task-hero {
-  position: sticky;
-  top: 0;
-  z-index: 5;
+  position: relative;
   margin-bottom: 20px;
   padding: 18px 22px;
   border: 1px solid var(--line);
@@ -2133,9 +2133,6 @@ select {
   width: 100%;
   height: 6px;
   margin: 4px 0 0;
-}
-.desk-app:has(.task-hero) .main-content {
-  scroll-padding-top: 260px;
 }
 @media (max-width: 959px) {
   .cleanup-decision:not([data-idle='true']) > .task-hero {

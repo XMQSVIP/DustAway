@@ -1,21 +1,24 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { api } from './api';
 import { formatBytes, reasonLabels } from './i18n';
 import type { ObservationPage, Scope } from './types';
 
-export function ScanObservations({
-  scope,
-  session,
-  rule,
-}: {
+interface ObservationProps {
   scope: Scope;
   session: string;
   rule: string;
-}) {
+}
+export function ScanObservations(props: ObservationProps) {
+  return <ObservationView key={`${props.scope}:${props.session}:${props.rule}`} {...props} />;
+}
+function ObservationView({ scope, session, rule }: ObservationProps) {
   const [page, setPage] = useState<ObservationPage | null>(null);
   const [offset, setOffset] = useState(0);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [retry, setRetry] = useState(0);
+  const region = useRef<HTMLDivElement>(null);
+  const restoreFocus = useRef(false);
   useEffect(() => {
     let current = true;
     setLoading(true);
@@ -35,12 +38,37 @@ export function ScanObservations({
     return () => {
       current = false;
     };
-  }, [scope, session, rule, offset]);
+  }, [scope, session, rule, offset, retry]);
+  useEffect(() => {
+    if (!loading && restoreFocus.current) {
+      if (document.activeElement === document.body) region.current?.focus();
+      restoreFocus.current = false;
+    }
+  }, [loading]);
   return (
-    <div className="scan-observations" aria-label="已保留文件明细" aria-busy={loading}>
+    <div
+      ref={region}
+      tabIndex={-1}
+      className="scan-observations"
+      aria-label="已保留文件明细"
+      aria-busy={loading}
+    >
       <p>只读明细 · 按文件大小从大到小排列 · 不加入清理清单</p>
       {loading && <p role="status">正在读取保留明细…</p>}
-      {error && <p role="alert">保留明细暂不可用：{error}</p>}
+      {error && (
+        <div>
+          <p role="alert">保留明细暂不可用：{error}</p>
+          <button
+            disabled={loading}
+            onClick={() => {
+              restoreFocus.current = true;
+              setRetry((value) => value + 1);
+            }}
+          >
+            重试本页
+          </button>
+        </div>
+      )}
       {page?.items.map((file) => (
         <article key={file.path}>
           <span className="observation-path">{file.path}</span>

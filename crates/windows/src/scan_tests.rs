@@ -1,6 +1,8 @@
 use super::*;
 #[path = "app_cache_scan_tests.rs"]
 mod application_cache;
+#[path = "coverage_scan_tests.rs"]
+mod coverage_observed;
 #[path = "developer_tests.rs"]
 mod developer_tests;
 #[path = "scan_tests_netdisk.rs"]

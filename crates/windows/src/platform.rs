@@ -389,6 +389,8 @@ impl Platform for WindowsPlatform {
                     && snapshot.application_identity.is_some(),
                 Refusal(ReasonCode::Changed)
             );
+            // Report changed identity/metadata before interpreting a changed file's bytes.
+            candidate_action_snapshot(&snapshot, dustaway_core::ExclusionKind::File, false)?;
             ensure!(
                 dustaway_core::applications::accepts_file(&rule.id, &from_native(&snapshot.path)),
                 Refusal(ReasonCode::Protected)
@@ -404,8 +406,6 @@ impl Platform for WindowsPlatform {
                     .any(|p| extended(p).is_ok_and(|p| p == root)),
                 Refusal(ReasonCode::Changed)
             );
-            // Recheck the file and parent chain when preparing a plan, not just at deletion.
-            candidate_action_snapshot(&snapshot, dustaway_core::ExclusionKind::File, false)?;
             ensure!(
                 snapshot.stamp.modified_unix() <= now() - i64::from(rule.min_age_days) * 86400,
                 Refusal(ReasonCode::Recent)
@@ -548,7 +548,8 @@ impl Platform for WindowsPlatform {
                 } else {
                     None
                 };
-                let missing = base.is_some_and(|p| p.try_exists().is_ok_and(|exists| !exists));
+                let missing = cache_spec.is_some_and(|s| s.kind == "readonly_observed")
+                    || base.is_some_and(|p| p.try_exists().is_ok_and(|exists| !exists));
                 emit(ScanEvent::NoticeCode(application_notice.unwrap_or(
                     if missing {
                         ReasonCode::LocationMissing
@@ -558,6 +559,7 @@ impl Platform for WindowsPlatform {
                 )));
             }
             let mut seen = HashSet::new();
+            let mut observed_seen = HashSet::new();
             let mut covered = roots.is_empty();
             let mut selected_roots = 0;
             let mut missing_roots = 0;
@@ -646,6 +648,16 @@ impl Platform for WindowsPlatform {
                         entry_read = true;
                         emit(ScanEvent::Checked);
                         let path = entry.path();
+                        // Count a read-only observed file once even when multiple fixed
+                        // roots or hard-link names reach it, including retained files.
+                        if cache_spec.is_some_and(|s| s.kind == "readonly_observed")
+                            && entry.file_type().is_ok_and(|t| t.is_file())
+                            && let Ok(pin) = PinnedPath::observe(&path, false, Some(cancel))
+                            && !observed_seen
+                                .insert((pin.stamp.identity.volume, pin.stamp.identity.index))
+                        {
+                            continue;
+                        }
                         if exclusions.contains(&path) {
                             retain_observed(emit, &path, ReasonCode::Excluded);
                             continue;
@@ -736,6 +748,8 @@ impl Platform for WindowsPlatform {
                                             reason,
                                             bytes: meta.len(),
                                         });
+                                    } else if spec.kind == "readonly_observed" {
+                                        retain_observed(emit, &path, reason);
                                     } else {
                                         emit(ScanEvent::Retained(reason));
                                     }

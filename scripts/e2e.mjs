@@ -156,9 +156,13 @@ async function tabTo(label, reverse = false) {
   throw new Error('Keyboard target not reached: ' + label);
 }
 async function openWorkbench() {
-  await until(() => command('POST', `/session/${session}/execute/sync`, {
-    script: 'return ["review","complete","attention"].includes(document.querySelector(".cleanup-decision")?.dataset.stage);', args: [],
-  }));
+  await until(() =>
+    command('POST', `/session/${session}/execute/sync`, {
+      script:
+        'return ["review","complete","attention"].includes(document.querySelector(".cleanup-decision")?.dataset.stage);',
+      args: [],
+    }),
+  );
   await command('POST', `/session/${session}/execute/sync`, {
     script: `for(const d of document.querySelectorAll('details.result-section:not([open]), details.remaining-results:not([open])')) d.querySelector('summary')?.click();`,
     args: [],
@@ -338,17 +342,19 @@ acceptance: try {
   await click('//button[contains(.,"浅色")]');
   await click('//nav/button[normalize-space(.)="清理"]');
   await command('POST', `/session/${session}/window/rect`, { width: 1100, height: 780 });
-  const analysisEvidence = cleanupOnly ? { separateSuite: true } : await checkAnalysis({
-    tabTo,
-    key,
-    command,
-    session,
-    click,
-    until,
-    source,
-    root,
-    fixture: analysisFixture,
-  });
+  const analysisEvidence = cleanupOnly
+    ? { separateSuite: true }
+    : await checkAnalysis({
+        tabTo,
+        key,
+        command,
+        session,
+        click,
+        until,
+        source,
+        root,
+        fixture: analysisFixture,
+      });
   // The analysis recovery check reloads the WebView. The synthetic disk is not C:,
   // so the new controller correctly starts with no selected disk.
   if (!cleanupOnly) await click('//label[contains(normalize-space(.),"全部磁盘")]/input');
@@ -687,16 +693,33 @@ acceptance: try {
   await access(unselected);
   // Closing a running analysis must stop the backend and allow the process to exit.
   if (cleanupOnly) {
-    await writeFile(`${output}/system-cleanup-0.19.0.json`, JSON.stringify({
-      passed: true, version: '0.19.0', fixture: root,
-      retainedReadOnly: retainedPage.items.length > 0,
-      purposeResultEvidence, resultLayout, minimumWindow: compact,
-      keyboardCandidateFlow: true, protectedFiles: true,
-      lostReplies: lostCounts, lateUnacceptedRequest: lateCode,
-      volumeSpaceChanges: finalSnapshot.report.volume_space_changes,
-      executableSha256: createHash('sha256').update(await readFile(resolve('target/debug/dustaway.exe'))).digest('hex'),
-    }, null, 2));
-    console.log('PASS: 0.19.0 cleanup desktop, retained records, minimum window, keyboard, confirmation, isolated deletion and recovery');
+    await writeFile(
+      `${output}/system-cleanup-0.19.0.json`,
+      JSON.stringify(
+        {
+          passed: true,
+          version: '0.19.0',
+          fixture: root,
+          retainedReadOnly: retainedPage.items.length > 0,
+          purposeResultEvidence,
+          resultLayout,
+          minimumWindow: compact,
+          keyboardCandidateFlow: true,
+          protectedFiles: true,
+          lostReplies: lostCounts,
+          lateUnacceptedRequest: lateCode,
+          volumeSpaceChanges: finalSnapshot.report.volume_space_changes,
+          executableSha256: createHash('sha256')
+            .update(await readFile(resolve('target/debug/dustaway.exe')))
+            .digest('hex'),
+        },
+        null,
+        2,
+      ),
+    );
+    console.log(
+      'PASS: 0.19.0 cleanup desktop, retained records, minimum window, keyboard, confirmation, isolated deletion and recovery',
+    );
     break acceptance;
   }
   // Eighteen application adapters use disposable fixture files; the real-application release gate stays closed.

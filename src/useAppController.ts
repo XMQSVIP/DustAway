@@ -1,3 +1,4 @@
+import { currentScanRows } from './scanAssessment';
 import { useToolTask } from './ToolCache';
 import { useWindowsMaintenance } from './WindowsMaintenance';
 import { uninstallActive } from './softwareTypes';
@@ -264,19 +265,7 @@ export function useAppController() {
     !busy &&
     handoffSession !== sessionKey &&
     sessions.some((s) => jobs[s.scope]?.state === 'ready');
-  const summaryRows = Object.entries(summaries).flatMap(([scope, summary]) =>
-    summary.rules.map((row) => ({
-      ...row,
-      blocked:
-        row.blocked ||
-        jobs[scope as Scope]?.state !== 'ready' ||
-        handoffSession === sessionKey ||
-        !sessions.some(
-          (s) =>
-            s.scope === scope && s.id === summary.session_id && s.id === jobs[scope as Scope]?.id,
-        ),
-    })),
-  );
+  const summaryRows = currentScanRows(sessions, summaries, jobs, handoffSession === sessionKey);
   const scanned = summaryRows.length > 0;
   const ruleRefresh = jobs.user?.rule_refresh;
   const refreshSubmission = useRef(false);

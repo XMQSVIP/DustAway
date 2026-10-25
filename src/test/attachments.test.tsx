@@ -96,6 +96,54 @@ beforeEach(() => {
   ]);
 });
 afterEach(cleanup);
+
+it('keeps cross-page choices explicit with ten thousand records and ignores late filtered responses', async () => {
+  const large = { ...snapshot, files: 10000, bytes: '1000000' };
+  vi.mocked(api.attachmentSnapshot).mockResolvedValue(large);
+  let late: ((value: Awaited<ReturnType<typeof api.attachments>>) => void) | undefined;
+  const page = (offset: number, search = '') => ({
+    snapshot: large,
+    total: search ? 1 : 10000,
+    entries: Array.from({ length: search ? 1 : 100 }, (_, i) => ({
+      ...entries[0],
+      id: `item-${offset + i}`,
+      name: search || `item-${offset + i}.png`,
+      bytes: '100',
+    })),
+  });
+  vi.mocked(api.attachments).mockImplementation(async (q) => {
+    if (q.search === 'late')
+      return new Promise((resolve) => {
+        late = resolve;
+      });
+    return page(q.offset, q.search);
+  });
+  render(<AttachmentPanel onClose={vi.fn()} />);
+  await screen.findByRole('option', { name: /测试账号/ });
+  fireEvent.change(screen.getByLabelText('账号资料位置'), { target: { value: 'location' } });
+  await waitFor(() => expect(screen.getByRole('button', { name: '开始扫描' })).toBeEnabled());
+  fireEvent.click(await screen.findByRole('button', { name: '开始扫描' }));
+  fireEvent.click(await screen.findByRole('checkbox', { name: '选择item-0.png' }));
+  fireEvent.click(screen.getByRole('button', { name: '下一页' }));
+  fireEvent.click(await screen.findByRole('checkbox', { name: '选择item-100.png' }));
+  expect(screen.getByText(/已选 2 个文件/)).toBeVisible();
+  fireEvent.change(screen.getByLabelText('文件名'), { target: { value: 'late' } });
+  await waitFor(() => expect(late).toBeDefined());
+  fireEvent.change(screen.getByLabelText('文件名'), { target: { value: 'current' } });
+  await screen.findByRole('checkbox', { name: '选择current' });
+  await act(async () => {
+    late!(page(500, 'stale'));
+  });
+  expect(screen.queryByRole('checkbox', { name: '选择stale' })).not.toBeInTheDocument();
+  expect(screen.getByText(/已选 2 个文件/)).toBeVisible();
+  fireEvent.click(screen.getByRole('button', { name: '清理所选附件' }));
+  await waitFor(() =>
+    expect(api.prepareAttachments).toHaveBeenCalledWith(
+      { session: 'session', selected_ids: ['item-0', 'item-100'] },
+      expect.any(String),
+    ),
+  );
+});
 it('shows classification totals outside the age filter without selecting retained attachments', async () => {
   vi.mocked(api.attachments).mockImplementation(async (q) => ({
     snapshot,
@@ -299,4 +347,38 @@ it('refreshes outcomes after the final report and clears only successful selecti
   await waitFor(() => expect(screen.getByText(/已选 1 个文件/)).toBeInTheDocument());
   expect(await screen.findByRole('checkbox', { name: '选择sample.png' })).not.toBeChecked();
   expect(await screen.findByRole('checkbox', { name: '选择private.dat' })).toBeChecked();
+  expect(screen.getByText(/本次清理结果，以上分类仍为扫描时记录/)).toBeVisible();
+});
+
+it('labels historical category capacity and shows deletion separately from retained files', async () => {
+  vi.mocked(api.attachments).mockResolvedValue({
+    snapshot,
+    total: 2,
+    entries: [{ ...entries[0], outcome: 'deleted', cleanup_block: '本次已处理' }, entries[1]],
+    categories: [
+      {
+        kind: 'image',
+        files: 1,
+        bytes: '200',
+        retained_files: 0,
+        retained_bytes: '0',
+        deleted_files: 1,
+        deleted_bytes: '200',
+      },
+      {
+        kind: 'unknown',
+        files: 1,
+        bytes: '100',
+        retained_files: 1,
+        retained_bytes: '100',
+        deleted_files: 0,
+        deleted_bytes: '0',
+      },
+    ],
+  });
+  await start();
+  expect(screen.getByText(/分类为扫描时占用/)).toBeVisible();
+  expect(screen.getByText('本次已删除 1 个 · 200 B')).toBeVisible();
+  expect(screen.getByText('已保留或待重新核验 1 个 · 100 B')).toBeVisible();
+  expect(screen.getByRole('checkbox', { name: '选择sample.png' })).toBeDisabled();
 });

@@ -3,6 +3,7 @@ use std::time::{Duration, Instant};
 struct Fake {
     blocked: bool,
     partial: bool,
+    count: u64,
 }
 impl AnalysisPlatform for Fake {
     fn locations(&self) -> Vec<(String, String)> {
@@ -52,7 +53,7 @@ impl AttachmentPlatform for Fake {
         cancel: &AtomicBool,
         emit: &mut dyn FnMut(Result<AttachmentRecord>) -> Result<()>,
     ) -> Result<()> {
-        for i in 0..205 {
+        for i in 0..self.count {
             ensure!(!cancel.load(Ordering::Acquire), "cancelled");
             let age = if i == 0 { now() } else { now() - 100 * 86400 };
             let kind = if i % 2 == 0 {
@@ -106,7 +107,14 @@ impl AttachmentPlatform for Fake {
     }
 }
 fn scanned(blocked: bool, partial: bool) -> (Arc<AttachmentEngine>, String) {
-    let engine = AttachmentEngine::new(Arc::new(Fake { blocked, partial }));
+    scanned_count(blocked, partial, 205)
+}
+fn scanned_count(blocked: bool, partial: bool, count: u64) -> (Arc<AttachmentEngine>, String) {
+    let engine = AttachmentEngine::new(Arc::new(Fake {
+        blocked,
+        partial,
+        count,
+    }));
     let location = engine
         .discover(AttachmentProvider::Weixin)
         .locations
@@ -251,6 +259,75 @@ fn pagination_filters_and_selection_are_explicit() {
     q.min_age_days = 0;
     assert_eq!(engine.page(q).unwrap().total, 2);
 }
+
+#[test]
+fn ten_thousand_records_keep_pagination_selection_and_deleted_accounting_separate() {
+    let (engine, session) = scanned_count(false, false, 10_001);
+    let mut seen = std::collections::HashSet::new();
+    let mut selected = Vec::new();
+    for offset in (0..10_000).step_by(100) {
+        let mut request = query(&session);
+        request.offset = offset;
+        let page = engine.page(request).unwrap();
+        assert_eq!(page.total, 10_000);
+        assert_eq!(page.entries.len(), 100);
+        assert_eq!(page.filtered_bytes, "50005000");
+        for entry in &page.entries {
+            assert!(seen.insert(entry.id.clone()));
+        }
+        if offset == 0 || offset == 9900 {
+            selected.push(page.entries[0].id.clone());
+        }
+    }
+    assert_eq!(seen.len(), 10_000);
+    let mut filtered = query(&session);
+    filtered.kind = Some(AttachmentKind::File);
+    filtered.search = "sample-1".into();
+    assert!(engine.page(filtered).unwrap().total > 0);
+    assert!(engine.snapshot().unwrap().deleted_ids.is_empty());
+    let choice = AttachmentSelection {
+        session: session.clone(),
+        selected_ids: selected.clone(),
+    };
+    let manifest = engine
+        .prepare(&choice, &[], &AtomicBool::new(false))
+        .unwrap();
+    assert_eq!(manifest.summary.files, 2);
+    let data: String = manifest
+        .db
+        .query_row("SELECT record FROM items LIMIT 1", [], |r| r.get(0))
+        .unwrap();
+    manifest
+        .platform
+        .delete_manual(&serde_json::from_str(&data).unwrap(), &[])
+        .unwrap();
+    let page = engine.page(query(&session)).unwrap();
+    assert_eq!(page.total, 10_000);
+    assert_eq!(
+        page.categories
+            .iter()
+            .map(|c| c.deleted_files)
+            .sum::<usize>(),
+        1
+    );
+    assert_eq!(
+        page.categories
+            .iter()
+            .map(|c| c.retained_files)
+            .sum::<usize>(),
+        0
+    );
+    let mut chosen = query(&session);
+    chosen.selected_ids = Some(selected);
+    assert_eq!(engine.page(chosen).unwrap().total, 2);
+    engine.close().unwrap();
+    assert!(engine.page(query(&session)).is_err());
+    assert!(
+        engine
+            .prepare(&choice, &[], &AtomicBool::new(false))
+            .is_err()
+    );
+}
 #[test]
 fn readonly_incomplete_stale_and_forged_selections_cannot_prepare() {
     for (blocked, partial) in [(true, false), (false, true)] {
@@ -348,7 +425,48 @@ fn processing_results_remove_only_successful_items() {
         .platform
         .delete_manual(&serde_json::from_str(&data).unwrap(), &[])
         .unwrap();
-    assert_eq!(engine.snapshot().unwrap().deleted_ids, vec![item.id]);
+    assert_eq!(
+        engine.snapshot().unwrap().deleted_ids,
+        vec![item.id.clone()]
+    );
+    let page = engine.page(query(&id)).unwrap();
+    assert_eq!(page.filtered_bytes, "20910"); // scan snapshot, not remaining occupancy
+    assert_eq!(page.selectable_files, 203);
+    let category = page
+        .categories
+        .iter()
+        .find(|c| c.kind == item.kind)
+        .unwrap();
+    assert_eq!(category.deleted_files, 1);
+    assert_eq!(category.deleted_bytes, item.bytes);
+    assert_eq!(category.retained_files, 0);
+    assert_eq!(category.retained_bytes, "0");
+    let other = engine
+        .session
+        .lock()
+        .unwrap()
+        .as_ref()
+        .unwrap()
+        .items
+        .iter()
+        .find(|entry| entry.entry.id != item.id && entry.entry.kind == item.kind)
+        .unwrap()
+        .record
+        .identity
+        .clone();
+    engine
+        .outcomes
+        .lock()
+        .unwrap()
+        .insert(other, "保留：文件已变化".into());
+    let page = engine.page(query(&id)).unwrap();
+    let category = page
+        .categories
+        .iter()
+        .find(|c| c.kind == item.kind)
+        .unwrap();
+    assert_eq!(category.deleted_files, 1);
+    assert_eq!(category.retained_files, 1);
     assert!(
         engine
             .prepare(&selection, &[], &AtomicBool::new(false))

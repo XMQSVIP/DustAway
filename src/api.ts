@@ -197,7 +197,7 @@ export const api = {
       ? call<Bootstrap>('bootstrap')
       : Promise.resolve<Bootstrap>({
           rules: previewRules.filter((r) => !r.requires_admin),
-          version: '0.20.0',
+          version: '0.22.0',
           preferences: { last_scan_rule_ids: null },
           capabilities: { system_cleanup: false },
           settings: { exclusions: [], excluded_rules: [], theme: 'system' as const },

@@ -132,6 +132,8 @@ pub struct AttachmentCategory {
     pub bytes: String,
     pub retained_files: usize,
     pub retained_bytes: String,
+    pub deleted_files: usize,
+    pub deleted_bytes: String,
 }
 
 pub trait AttachmentPlatform: AnalysisPlatform {
@@ -411,11 +413,16 @@ impl AttachmentEngine {
             bytes: "0".into(),
             retained_files: 0,
             retained_bytes: "0".into(),
+            deleted_files: 0,
+            deleted_bytes: "0".into(),
         })
         .collect();
         let mut entries = vec![];
         for item in &s.items {
             let processed = outcomes.contains_key(&item.record.identity);
+            let deleted = outcomes
+                .get(&item.record.identity)
+                .is_some_and(|v| v == "deleted");
             let blocked =
                 item.entry.cleanup_block.is_some() || s.snapshot.state != "complete" || processed;
             let category = categories
@@ -424,7 +431,11 @@ impl AttachmentEngine {
                 .unwrap();
             category.files += 1;
             category.bytes = (category.bytes.parse::<u64>()? + item.record.file.bytes).to_string();
-            if blocked {
+            if deleted {
+                category.deleted_files += 1;
+                category.deleted_bytes =
+                    (category.deleted_bytes.parse::<u64>()? + item.record.file.bytes).to_string();
+            } else if blocked {
                 category.retained_files += 1;
                 category.retained_bytes =
                     (category.retained_bytes.parse::<u64>()? + item.record.file.bytes).to_string();

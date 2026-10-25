@@ -69,6 +69,8 @@ export interface AttachmentPage {
     bytes: string;
     retained_files: number;
     retained_bytes: string;
+    deleted_files?: number;
+    deleted_bytes?: string;
   }[];
   snapshot: AttachmentSnapshot;
 }

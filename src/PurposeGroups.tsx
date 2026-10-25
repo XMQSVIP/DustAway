@@ -1,3 +1,4 @@
+import { scanAccountingFor, scanAmount, retainedReasonText } from './scanAssessment';
 import { formatRecordedTotal } from './cleanupResults';
 import { useEffect, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
@@ -5,7 +6,7 @@ import type { RuleDecision } from './cleanupDecision';
 import type { AppController } from './useAppController';
 import { applicationGroups, purposeGroups } from './cleanupPurposes';
 import { CleanupRuleList } from './CleanupRuleList';
-import { formatBytes, reasonLabels } from './i18n';
+import { formatBytes } from './i18n';
 import { isSelectableCleanup } from './cleanupPresentation';
 
 export function PurposeGroups({
@@ -35,6 +36,7 @@ export function PurposeGroups({
           return left === right ? 0 : left > right ? -1 : 1;
         })
         .map((group) => {
+          const accounting = scanAccountingFor(group.items, model.summaryRows);
           const eligible = group.items.filter(
             (item) =>
               isSelectableCleanup(item) &&
@@ -93,31 +95,16 @@ export function PurposeGroups({
                         )}`
                       : policy
                         ? `${files} 个文件 · 可选 ${formatBytes(availableBytes)} · 已选 ${selected} 个 / ${formatBytes(bytes)}`
-                        : `发现 ${group.items.reduce((sum, item) => sum + (item.recognizedFiles ?? item.foundFiles), 0)} 个文件 · ${formatBytes(group.items.reduce((sum, item) => sum + (item.recognizedBytes ?? item.foundBytes), 0n))}`}
+                        : `已读取 ${group.items.reduce((sum, item) => sum + (item.scan?.files ?? item.recognizedFiles ?? item.foundFiles), 0)} 个文件 · ${scanAmount(accounting, 'observed')}`}
                   </span>
                   {!result && (
                     <small className="group-retained">
-                      {(() => {
-                        const rows = model.summaryRows.filter((row) =>
-                          group.items.some((item) => item.rule.id === row.rule_id),
-                        );
-                        const retained = rows.reduce(
-                          (sum, row) => sum + BigInt(row.observation?.retained_bytes || '0'),
-                          0n,
-                        );
-                        const reasons = [
-                          ...new Set(
-                            rows.flatMap((row) =>
-                              row.reasons
-                                .filter((r) => r.count > 0)
-                                .map((r) => reasonLabels[r.code]),
-                            ),
-                          ),
-                        ];
-                        return retained > 0n
-                          ? `已保留 ${formatBytes(retained)}${reasons.length ? ` · ${reasons.slice(0, 2).join('、')}` : ''}`
-                          : '';
-                      })()}
+                      {(accounting.retained > 0n || accounting.unknown || accounting.unsettled) &&
+                        '已保留 ' +
+                          scanAmount(accounting, 'retained') +
+                          (accounting.reasons.length
+                            ? ' · ' + retainedReasonText(accounting.reasons)
+                            : '')}
                     </small>
                   )}
                   <ChevronDown size={17} className={expanded ? 'is-open' : ''} />

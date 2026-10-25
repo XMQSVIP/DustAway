@@ -394,6 +394,51 @@ mod tests {
         assert!(LIBRARY.rules.len() >= 150);
     }
     #[test]
+    fn observed_large_directories_preserve_dependencies_backups_and_resources() {
+        for (path, expected) in [
+            (
+                "C:/Users/test/AppData/Local/ShadowBot/cache/packages/item",
+                "app.shadowbot_resources",
+            ),
+            (
+                "C:/Users/test/AppData/Local/node-gyp/Cache/24.12.0/include/node.h",
+                "dev.node_gyp_headers",
+            ),
+            (
+                "C:/Users/test/AppData/Roaming/Reqable/tmp/backup/restore",
+                "app.reqable_backups",
+            ),
+            (
+                "C:/Users/test/AppData/Roaming/Reqable/backup/restore",
+                "app.reqable_backups",
+            ),
+            (
+                "C:/Users/test/AppData/Local/ms-playwright/chromium-1097/chrome.exe",
+                "dev.playwright",
+            ),
+            (
+                "C:/Users/test/AppData/Local/Docker/wsl/data/ext4.vhdx",
+                "vm.docker_wsl",
+            ),
+        ] {
+            assert_eq!(recognize(path, false).unwrap().rule_id, expected);
+            assert!(
+                !crate::rules::catalog()
+                    .unwrap()
+                    .iter()
+                    .any(|r| r.id == expected)
+            );
+        }
+        for path in [
+            "D:/project/cache",
+            "D:/project/tmp/backup",
+            "C:/Users/test/AppData/Local/ShadowBot/cache-personal/file",
+            "C:/Users/test/AppData/Roaming/Reqable-copy/backup/file",
+        ] {
+            assert!(recognize(path, false).is_none());
+        }
+    }
+    #[test]
     fn every_pattern_and_combined_condition_is_reachable() {
         for rule in &LIBRARY.rules {
             for pattern in &rule.patterns {

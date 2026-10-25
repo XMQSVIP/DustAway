@@ -247,3 +247,157 @@ fn real_weixin_received_files() -> Result<()> {
     )?;
     Ok(())
 }
+
+/// This entry point never bypasses the production release gate. It is also useful
+/// before release approval to prove that a forged request cannot delete files.
+#[test]
+#[ignore = "authorized test computer; production Engine, explicit run marker and intent"]
+fn production_weixin_engine_acceptance() -> Result<()> {
+    use crate::{
+        acceptance_snapshot::CapturedPlatform,
+        acceptance_wait::{WaitOutcome, wait},
+    };
+    use std::sync::Arc;
+    ensure!(
+        std::env::var("COMPUTERNAME")? == "DESKTOP-24NJTT6",
+        "Wrong host"
+    );
+    ensure!(!security::elevated()?, "Ordinary user required");
+    let run = std::env::var("DUSTAWAY_WEIXIN_RUN")?;
+    ensure!(
+        (8..=80).contains(&run.len())
+            && run.bytes().all(|c| c.is_ascii_alphanumeric() || c == b'-'),
+        "Invalid run ID"
+    );
+    let root = known_folder(&FOLDERID_LocalAppData)?
+        .join("DustAwayAcceptance/weixin-0211")
+        .join(&run);
+    let _root = PinnedPath::open(&root, true, false)?;
+    ensure!(
+        std::env::current_exe()?.parent() == Some(root.as_path()),
+        "Wrong executable location"
+    );
+    ensure!(
+        std::fs::read_to_string(root.join(".dustaway-test"))?
+            == format!("DustAway.Weixin.0.21.1:{run}"),
+        "Wrong marker"
+    );
+    let id = std::env::var("DUSTAWAY_WEIXIN_RULE")?;
+    ensure!(
+        matches!(id.as_str(), "weixin.code" | "weixin.gpu"),
+        "Outside test scope"
+    );
+    let output = root.join(format!("{id}.json"));
+    ensure!(!output.exists(), "Run evidence already exists");
+    let rule = rules::catalog()?
+        .into_iter()
+        .find(|r| r.id == id)
+        .context("Missing rule")?;
+    let platform = Arc::new(CapturedPlatform::new(Arc::new(WindowsPlatform::new(
+        Scope::User,
+    )?)));
+    let engine = Engine::open(
+        platform.clone(),
+        Scope::User,
+        &root.join(format!("{run}-{id}.sqlite")),
+    )?;
+    let await_engine = |engine: &Engine| -> Result<()> {
+        let outcome = wait(|| engine.is_busy(), || engine.cancel());
+        if outcome != WaitOutcome::Finished {
+            std::fs::write(
+                &output,
+                serde_json::to_vec_pretty(
+                    &serde_json::json!({"rule":id,"runId":run,"status":if outcome==WaitOutcome::Uncertain {"uncertain"} else {"cancelled"},"webpageRecoveryVerified":false}),
+                )?,
+            )?;
+            anyhow::bail!("Engine deadline exceeded; no automatic retry");
+        }
+        Ok(())
+    };
+    let session = engine.start_scan(vec![id.clone()])?;
+    await_engine(&engine)?;
+    ensure!(engine.status().state == JobState::Ready, "Scan failed");
+    let selection = Selection {
+        rule_ids: vec![id.clone()],
+        reviewed_rule_ids: vec![id.clone()],
+        ..Default::default()
+    };
+    if !platform.cleanup_validated(&rule) {
+        ensure!(
+            engine.prepare(&session, selection).is_err(),
+            "Readonly rule accepted a plan"
+        );
+        std::fs::write(
+            output,
+            serde_json::to_vec_pretty(
+                &serde_json::json!({"rule":id,"runId":run,"status":"blocked","reason":"validation_pending","productionGateRespected":true,"deletionAttempted":false,"webpageRecoveryVerified":false}),
+            )?,
+        )?;
+        return Ok(());
+    }
+    ensure!(
+        std::env::var("DUSTAWAY_WEIXIN_EXECUTE").as_deref() == Ok(id.as_str()),
+        "Explicit rule intent required"
+    );
+    ensure!(
+        platform.blocked(&rule)?.is_none(),
+        "Weixin must be fully closed"
+    );
+    let mut candidates = Vec::new();
+    loop {
+        let page = engine.candidates(&session, &id, candidates.len() as u64, 200)?;
+        candidates.extend(page.items);
+        if candidates.len() as u64 >= page.total {
+            break;
+        }
+    }
+    let originals = platform.selected(&candidates)?;
+    let selected = Selection {
+        included_ids: candidates.iter().map(|c| c.id.clone()).collect(),
+        reviewed_rule_ids: vec![id.clone()],
+        ..Default::default()
+    };
+    let plan = engine.prepare(&session, selected)?;
+    ensure!(
+        plan.files > 0 && plan.files as usize == originals.len(),
+        "Frozen selection differs"
+    );
+    let omitted = originals
+        .iter()
+        .map(|f| {
+            platform.validate_candidate(&rule, f)?;
+            let snapshot: Snapshot = serde_json::from_str(&f.opaque)?;
+            Ok(from_native(&snapshot.path))
+        })
+        .collect::<Result<Vec<_>>>()?;
+    let before = protection(&omitted)?;
+    ensure!(!before.is_empty(), "Protected files required");
+    use std::io::Write;
+    let mut intent = std::fs::OpenOptions::new()
+        .write(true)
+        .create_new(true)
+        .open(root.join(format!("{run}-{id}.started")))?;
+    intent.write_all(&serde_json::to_vec(&plan)?)?;
+    intent.sync_all()?;
+    engine.execute(&plan.id)?;
+    await_engine(&engine)?;
+    let report = engine.report().context("Missing report")?;
+    let after = protection(&omitted)?;
+    let same = before == after;
+    std::fs::write(
+        output,
+        serde_json::to_vec_pretty(
+            &serde_json::json!({"rule":id,"runId":run,"engine":"production","status":"cleanup_finished","plan":plan,"report":report,"protectedFiles":before.len(),"protectedUnchanged":same,"webpageRecoveryVerified":false}),
+        )?,
+    )?;
+    ensure!(
+        same && report.deleted == plan.files
+            && report.failed + report.skipped + report.unknown == 0,
+        "Cleanup did not fully pass"
+    );
+    ensure!(
+        engine.execute(&plan.id).is_err(),
+        "Old plan replay accepted"
+    );
+    Ok(())
+}

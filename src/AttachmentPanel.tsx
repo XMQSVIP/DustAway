@@ -392,10 +392,10 @@ export function AttachmentPanel({ onClose }: { onClose: () => void }) {
                 })
               }
             >
-              开始扫描
+              {snapshot ? '重新扫描附件' : '开始扫描'}
             </button>
           </div>
-          <p className="muted">切换位置会清除当前选择；每次仅整理一个应用的一个账号。</p>
+          <p className="muted">切换位置或重新扫描会清除当前选择；每次仅整理一个应用的一个账号。</p>
           {provider === 'qqnt' && (
             <p className="muted attachment-location-note">
               这里只扫描账号资料目录。QQNT
@@ -427,7 +427,7 @@ export function AttachmentPanel({ onClose }: { onClose: () => void }) {
               {snapshot.location.path} · {attachmentProviderLabels[snapshot.location.provider]}{' '}
               {snapshot.location.version}
               <br />
-              发现 {snapshot.files} 个文件 · {formatBytes(snapshot.bytes)}
+              扫描时发现 {snapshot.files} 个文件 · {formatBytes(snapshot.bytes)}
               {snapshot.state === 'scanning'
                 ? ' · 正在扫描'
                 : snapshot.state === 'complete'
@@ -449,28 +449,44 @@ export function AttachmentPanel({ onClose }: { onClose: () => void }) {
           {snapshot && snapshot.state !== 'scanning' && !plans && (
             <>
               {page?.categories && (
-                <div className="attachment-categories" aria-label="附件分类占用">
-                  {page.categories.map((category) => (
-                    <button
-                      key={category.kind}
-                      className="attachment-category"
-                      disabled={!!busy || onlySelected}
-                      aria-pressed={kind === category.kind}
-                      onClick={() => {
-                        setKind(kind === category.kind ? '' : category.kind);
-                        setOffset(0);
-                      }}
-                    >
-                      <strong>{attachmentKindLabels[category.kind]}</strong>
-                      <span>
-                        {formatBytes(category.bytes)} · {category.files} 个
-                      </span>
-                      <small>
-                        不可选 {category.retained_files} 个 · {formatBytes(category.retained_bytes)}
-                      </small>
-                    </button>
-                  ))}
-                </div>
+                <>
+                  <p className="muted">
+                    分类为扫描时占用；本次删除结果单独列出，当前剩余占用需重新扫描。
+                  </p>
+                  <div className="attachment-categories" aria-label="附件分类占用">
+                    {page.categories.map((category) => (
+                      <button
+                        key={category.kind}
+                        className="attachment-category"
+                        disabled={!!busy || onlySelected}
+                        aria-pressed={kind === category.kind}
+                        onClick={() => {
+                          setKind(kind === category.kind ? '' : category.kind);
+                          setOffset(0);
+                        }}
+                      >
+                        <strong>{attachmentKindLabels[category.kind]}</strong>
+                        <span>
+                          {formatBytes(category.bytes)} · {category.files} 个
+                        </span>
+                        <small>
+                          {category.deleted_files === undefined
+                            ? '扫描记录不可选'
+                            : '已保留或待重新核验'}{' '}
+                          {category.retained_files} 个 · {formatBytes(category.retained_bytes)}
+                        </small>
+                        {category.deleted_files !== undefined && category.deleted_files > 0 && (
+                          <small>
+                            本次已删除 {category.deleted_files} 个 ·{' '}
+                            {category.deleted_bytes === undefined
+                              ? '容量未知'
+                              : formatBytes(category.deleted_bytes)}
+                          </small>
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </>
               )}
               {provider === 'weixin' && (
                 <p className="muted">
@@ -538,7 +554,7 @@ export function AttachmentPanel({ onClose }: { onClose: () => void }) {
               </div>
               {page && !loading && (
                 <p role="status" className="attachment-filter-summary">
-                  当前筛选 {page.total} 个 ·{' '}
+                  当前筛选扫描记录 {page.total} 个 ·{' '}
                   {page.filtered_bytes === undefined
                     ? '容量未知'
                     : formatBytes(page.filtered_bytes)}
@@ -703,6 +719,7 @@ export function AttachmentPanel({ onClose }: { onClose: () => void }) {
           )}
           {report && (
             <div className="attachment-result">
+              <p>本次清理结果，以上分类仍为扫描时记录。重新扫描后更新当前占用。</p>
               <ReportRow report={report} rules={[]} />
             </div>
           )}

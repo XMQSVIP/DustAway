@@ -1,3 +1,4 @@
+import { ruleAssessment, scanAccountingFor, scanAmount, recordedBytes } from './scanAssessment';
 import { CleanupEvidence, cleanupEvidence } from './CleanupEvidence';
 import { formatRecordedBytes, formatResultCount } from './cleanupResults';
 import { applicationScope } from './applicationCapability';
@@ -11,7 +12,7 @@ import { useState } from 'react';
 import { ScanObservations } from './ScanObservations';
 import type { Rule } from './types';
 import type { AppController } from './useAppController';
-import { cleanupFollowup, isSelectableCleanup } from './cleanupPresentation';
+import { ruleFollowup, isSelectableCleanup } from './cleanupPresentation';
 
 export function CleanupRuleList({
   model,
@@ -29,6 +30,8 @@ export function CleanupRuleList({
       {rules.map((rule) => {
         const row = model.summaryRows.find((s) => s.rule_id === rule.id);
         const item = model.decision.items.find((r) => r.rule.id === rule.id);
+        const scan = item ? ruleAssessment(item, model.summaryRows) : undefined;
+        const accounting = item ? scanAccountingFor([item], model.summaryRows) : undefined;
         const outcome = model.reports
           .flatMap((r) => r.categories ?? [])
           .find((r) => r.rule_id === rule.id);
@@ -39,7 +42,8 @@ export function CleanupRuleList({
         const editable =
           !catalog &&
           !terminal &&
-          ['ready', 'deselected'].includes(item?.status ?? '') &&
+          !!item &&
+          isSelectableCleanup(item) &&
           item?.capability === 'allowed';
         const canDetail =
           !!row?.files &&
@@ -47,11 +51,7 @@ export function CleanupRuleList({
             (model.currentJob?.state === 'scanning' &&
               ['completed', 'partial'].includes(row.phase)));
         const outsidePlan = Math.max(0, (row?.files ?? 0) - (outcome?.total ?? 0));
-        const measured =
-          !!row &&
-          (row.files > 0 ||
-            (row.observation?.retained_files ?? 0) > 0 ||
-            (row.phase === 'completed' && row.coverage?.complete !== false && !row.scan_failed));
+        const measured = !!scan?.read && (scan.files > 0 || !scan.unknown);
         return (
           <article className="rule-row" key={rule.id} data-rule={rule.id}>
             {editable ? (
@@ -80,6 +80,12 @@ export function CleanupRuleList({
                   <span className="readonly-label">尚未开放清理</span>
                 )}
               </div>
+              {!catalog && !terminal && scan && (scan.state !== 'completed' || scan.absent) && (
+                <p className="rule-scan-status" data-scan-state={scan.state}>
+                  {scan.label}
+                  {scan.incomplete ? ' · 已读容量不代表完整占用' : ''}
+                </p>
+              )}
               <p>
                 {catalog
                   ? rule.description
@@ -88,11 +94,12 @@ export function CleanupRuleList({
                     : (item?.explanation ?? rule.description)}
               </p>
               {!catalog && !terminal && item && !isSelectableCleanup(item) && (
-                <p className="muted">后续处理：{cleanupFollowup(item.status).next}</p>
+                <p className="muted">后续处理：{ruleFollowup(item).next}</p>
               )}
-              {terminal && row && (
+              {terminal && row && scan && (
                 <small>
-                  扫描时发现 {row.files} 个文件 · {formatBytes(row.bytes)}
+                  扫描时占用 {accounting ? scanAmount(accounting, 'observed') : '未知大小'} · 已读{' '}
+                  {scan.files} 个文件
                 </small>
               )}
               {terminal && outcome && (
@@ -117,14 +124,17 @@ export function CleanupRuleList({
                     ? '安装已核验'
                     : row.observation.application.identity_status === 'registered'
                       ? '检测到安装登记；不代表已取得清理许可'
-                      : '发现应用数据，未核验安装，可能为残留'}
+                      : '发现相关数据，安装身份未确认'}
                   {!row.observation.application.inventory_complete && '；安装信息读取不完整'}
                 </p>
               )}
               {!!row?.observation?.retained_files && (
                 <p className="muted">
-                  已读保留内容 {formatBytes(row.observation.retained_bytes || '0')} ·{' '}
-                  {row.observation.retained_files} 个文件，不计入可清理大小。
+                  {terminal ? '扫描时保留内容' : '已读保留内容'}{' '}
+                  {recordedBytes(row.observation.retained_bytes) === null
+                    ? '未知大小'
+                    : formatBytes(row.observation.retained_bytes)}{' '}
+                  · {row.observation.retained_files} 个文件，不计入可清理大小。
                   {!!row.observation.recent_files &&
                     `其中 ${row.observation.recent_files} 个文件未满足最后修改时间条件。`}
                 </p>
@@ -204,7 +214,7 @@ export function CleanupRuleList({
                 {row ? (
                   <>
                     <p>
-                      {scanPhases[row.phase]} · {item?.label}{' '}
+                      {scan?.label ?? scanPhases[row.phase]} · {item?.label}{' '}
                       {item?.capability !== 'readonly' && row.note}
                     </p>
                     {row.files === 0 &&
@@ -224,15 +234,18 @@ export function CleanupRuleList({
                   <p>尚未检查；扫描不会删除文件。</p>
                 )}
               </details>
-              {!terminal && ['running', 'process_unknown'].includes(item?.status ?? '') && (
-                <button
-                  className="result-link"
-                  disabled={model.busy || model.saving}
-                  onClick={model.refreshAvailability}
-                >
-                  重新检查应用状态
-                </button>
-              )}
+              {!terminal &&
+                !scan?.incomplete &&
+                !scan?.unsettled &&
+                ['running', 'process_unknown'].includes(item?.status ?? '') && (
+                  <button
+                    className="result-link"
+                    disabled={model.busy || model.saving}
+                    onClick={model.refreshAvailability}
+                  >
+                    重新检查应用状态
+                  </button>
+                )}
             </div>
             <div className="rule-amount">
               <strong>
@@ -242,10 +255,12 @@ export function CleanupRuleList({
                     : '—'
                   : row && row.phase !== 'pending'
                     ? !measured
-                      ? '未取得'
+                      ? accounting
+                        ? scanAmount(accounting, 'observed')
+                        : '未取得'
                       : editable
                         ? `已选 ${formatBytes(amount?.bytes ?? 0n)}`
-                        : `已识别 ${formatBytes(BigInt(row.bytes) + BigInt(row.observation?.retained_bytes || '0'))}`
+                        : `已识别 ${accounting ? scanAmount(accounting, 'observed') : formatBytes(row.bytes)}`
                     : '—'}
               </strong>
               <small>

@@ -3,7 +3,8 @@ import type { AppController } from './useAppController';
 
 /** One source for header, desktop sidebar and compact task dock. */
 export function selectionSummary(
-  model: Pick<AppController, 'selectionEstimate' | 'manualPreview'> & Partial<Pick<AppController, 'windowsMaintenance'>>,
+  model: Pick<AppController, 'selectionEstimate' | 'manualPreview'> &
+    Partial<Pick<AppController, 'windowsMaintenance'>>,
 ) {
   const { selectionEstimate: estimate, manualPreview } = model;
   return {

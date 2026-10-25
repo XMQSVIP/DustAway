@@ -14,7 +14,7 @@ export function CleanupEvidence({ ruleId }: { ruleId: string }) {
       </p>
       <p>处理依据：{row.method === 'readonly' ? '当前仍保留限制' : '官方资料与固定范围保护规则'}</p>
       <p>
-        实机验收：
+        对应清理操作验收：
         {row.real_acceptance === 'passed' ? '已通过对应操作验证' : '未验证'}
       </p>
       {row.sources.length ? (
@@ -26,11 +26,11 @@ export function CleanupEvidence({ ruleId }: { ruleId: string }) {
             target="_blank"
             rel="noreferrer"
           >
-            查看官方依据
+            {'title' in source && source.title ? source.title : '查看依据资料'}
           </a>
         ))
       ) : (
-        <p>尚无足够的对应版本官方目录依据，保持只读。</p>
+        <p>尚无足够的清理依据，保持只读。</p>
       )}
     </details>
   );

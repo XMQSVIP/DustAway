@@ -114,8 +114,8 @@ it('distinguishes documented eligibility from real-machine acceptance and leaves
     </>,
   );
   expect(screen.getByText(/非声明所有 .dmp 都是垃圾/)).toBeInTheDocument();
-  expect(screen.getByText(/尚无足够的对应版本官方目录依据/)).toBeInTheDocument();
-  expect(screen.getAllByText(/实机验收：未验证/)).toHaveLength(2);
+  expect(screen.getByText('尚无足够的清理依据，保持只读。')).toBeInTheDocument();
+  expect(screen.getAllByText(/对应清理操作验收：未验证/)).toHaveLength(2);
 });
 
 it('does not invalidate a new scan when an older task is first observed after reconnect', async () => {

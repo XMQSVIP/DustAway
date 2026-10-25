@@ -1,3 +1,7 @@
+#[cfg(test)]
+mod acceptance_snapshot;
+#[cfg(test)]
+mod acceptance_wait;
 mod app_cache;
 pub mod application_evidence;
 mod application_layouts;

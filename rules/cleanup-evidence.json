@@ -1304,5 +1304,423 @@
         "role": "format_only"
       }
     ]
+  },
+  {
+    "rule_id": "appcache.shadowbot_web",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "ShadowBot",
+    "layout_id": "appcache.shadowbot_web-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-23",
+    "applicability": "当前用户标准 local AppData 下的编译期固定子目录；安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。仅统计固定缓存目录，保留全部文件；不包含相邻的账号、项目、数据库、备份和更新包。",
+    "sources": [
+      {
+        "title": "Chromium 缓存机制；不证明具体应用的清理许可",
+        "url": "https://chromium.googlesource.com/chromium/src/+/main/net/disk_cache/"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.shadowbot_browser",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "ShadowBotBrowser/User Data/Default",
+    "layout_id": "appcache.shadowbot_browser-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-23",
+    "applicability": "当前用户标准 local AppData 下的编译期固定子目录；安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。仅统计固定缓存目录，保留全部文件；不包含相邻的账号、项目、数据库、备份和更新包。",
+    "sources": [
+      {
+        "title": "Chromium 缓存机制；不证明具体应用的清理许可",
+        "url": "https://chromium.googlesource.com/chromium/src/+/main/net/disk_cache/"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.shadowbot_logs",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "ShadowBot",
+    "layout_id": "appcache.shadowbot_logs-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-23",
+    "applicability": "当前用户标准 local AppData 下的编译期固定子目录；安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。仅统计固定日志目录，保留全部文件；不包含相邻的账号、项目、数据库、备份和更新包。",
+    "sources": [
+      {
+        "title": "影刀产品资料；目录范围来自独立本机观察",
+        "url": "https://www.yingdao.com/qa"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.codex_web",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "Codex/web/Codex",
+    "layout_id": "appcache.codex_web-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-23",
+    "applicability": "当前用户标准 roaming AppData 下的编译期固定子目录；安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。仅统计固定缓存目录，保留全部文件；不包含相邻的账号、项目、数据库、备份和更新包。",
+    "sources": [
+      {
+        "title": "Chromium 缓存机制；不证明具体应用的清理许可",
+        "url": "https://chromium.googlesource.com/chromium/src/+/main/net/disk_cache/"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.claude_web",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "Claude",
+    "layout_id": "appcache.claude_web-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-23",
+    "applicability": "当前用户标准 roaming AppData 下的编译期固定子目录；安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。仅统计固定缓存目录，保留全部文件；不包含相邻的账号、项目、数据库、备份和更新包。",
+    "sources": [
+      {
+        "title": "Chromium 缓存机制；不证明具体应用的清理许可",
+        "url": "https://chromium.googlesource.com/chromium/src/+/main/net/disk_cache/"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.docker_web",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "Docker Desktop",
+    "layout_id": "appcache.docker_web-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-23",
+    "applicability": "当前用户标准 roaming AppData 下的编译期固定子目录；安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。仅统计固定缓存目录，保留全部文件；不包含相邻的账号、项目、数据库、备份和更新包。",
+    "sources": [
+      {
+        "title": "Docker 日志用途；固定子目录来自独立本机观察",
+        "url": "https://docs.docker.com/desktop/troubleshoot-and-support/faqs/general/"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.docker_logs",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "Docker/log",
+    "layout_id": "appcache.docker_logs-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-23",
+    "applicability": "当前用户标准 local AppData 下的编译期固定子目录；安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。仅统计固定日志目录，保留全部文件；不包含相邻的账号、项目、数据库、备份和更新包。",
+    "sources": [
+      {
+        "title": "Docker 日志用途；固定子目录来自独立本机观察",
+        "url": "https://docs.docker.com/desktop/troubleshoot-and-support/faqs/general/"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.reqable_logs",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "Reqable",
+    "layout_id": "appcache.reqable_logs-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-23",
+    "applicability": "当前用户标准 roaming AppData 下的编译期固定子目录；安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。仅统计固定日志目录，保留全部文件；不包含相邻的账号、项目、数据库、备份和更新包。",
+    "sources": [
+      {
+        "title": "Reqable 日志用途；固定子目录来自独立本机观察",
+        "url": "https://reqable.com/en-US/docs/faq/windows/"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.codex_logs",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "Codex",
+    "layout_id": "appcache.codex_logs-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-23",
+    "applicability": "当前用户标准 local AppData；固定目录来自本机观察，安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。固定目录来自本机观察，保留全部文件；不包含相邻账号、聊天、项目、扩展、备份、下载、更新包和运行时资料。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.trae_logs",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "Trae",
+    "layout_id": "appcache.trae_logs-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-23",
+    "applicability": "当前用户标准 roaming AppData；固定目录来自本机观察，安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。固定目录来自本机观察，保留全部文件；不包含相邻账号、聊天、项目、扩展、备份、下载、更新包和运行时资料。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.trae_cn_logs",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "Trae CN",
+    "layout_id": "appcache.trae_cn_logs-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-23",
+    "applicability": "当前用户标准 roaming AppData；固定目录来自本机观察，安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。固定目录来自本机观察，保留全部文件；不包含相邻账号、聊天、项目、扩展、备份、下载、更新包和运行时资料。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.kiro_logs",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "Kiro",
+    "layout_id": "appcache.kiro_logs-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-23",
+    "applicability": "当前用户标准 roaming AppData；固定目录来自本机观察，安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。固定目录来自本机观察，保留全部文件；不包含相邻账号、聊天、项目、扩展、备份、下载、更新包和运行时资料。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.workbuddy_logs",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "WorkBuddy",
+    "layout_id": "appcache.workbuddy_logs-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-23",
+    "applicability": "当前用户标准 roaming AppData；固定目录来自本机观察，安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。固定目录来自本机观察，保留全部文件；不包含相邻账号、聊天、项目、扩展、备份、下载、更新包和运行时资料。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.doubao_web",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "Doubao/User Data",
+    "layout_id": "appcache.doubao_web-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-23",
+    "applicability": "当前用户标准 local AppData；固定目录来自本机观察，安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。固定目录来自本机观察，保留全部文件；不包含相邻账号、聊天、项目、扩展、备份、下载、更新包和运行时资料。",
+    "sources": [
+      {
+        "title": "Chromium 缓存机制；固定目录来自本机观察，尚未验证清理",
+        "url": "https://chromium.googlesource.com/chromium/src/+/main/net/disk_cache/"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.gameviewer_web",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "GameViewer/webviewcache/EBWebView",
+    "layout_id": "appcache.gameviewer_web-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-23",
+    "applicability": "当前用户标准 local AppData；固定目录来自本机观察，安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。固定目录来自本机观察，保留全部文件；不包含相邻账号、聊天、项目、扩展、备份、下载、更新包和运行时资料。",
+    "sources": [
+      {
+        "title": "WebView2 用户目录说明；通用机制不证明本应用可删除",
+        "url": "https://learn.microsoft.com/en-us/microsoft-edge/webview2/concepts/user-data-folder"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.ccswitch_web",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "com.ccswitch.desktop/EBWebView",
+    "layout_id": "appcache.ccswitch_web-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-23",
+    "applicability": "当前用户标准 local AppData；固定目录来自本机观察，安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。固定目录来自本机观察，保留全部文件；不包含相邻账号、聊天、项目、扩展、备份、下载、更新包和运行时资料。",
+    "sources": [
+      {
+        "title": "WebView2 用户目录说明；通用机制不证明本应用可删除",
+        "url": "https://learn.microsoft.com/en-us/microsoft-edge/webview2/concepts/user-data-folder"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.ima_web",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "ima.copilot/User Data",
+    "layout_id": "appcache.ima_web-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-23",
+    "applicability": "当前用户标准 local AppData；固定目录来自本机观察，安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。固定目录来自本机观察，保留全部文件；不包含相邻账号、聊天、项目、扩展、备份、下载、更新包和运行时资料。",
+    "sources": [
+      {
+        "title": "Chromium 缓存机制；固定目录来自本机观察，尚未验证清理",
+        "url": "https://chromium.googlesource.com/chromium/src/+/main/net/disk_cache/"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.easyspider_web",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "EasySpider",
+    "layout_id": "appcache.easyspider_web-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-23",
+    "applicability": "当前用户标准 roaming AppData；固定目录来自本机观察，安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。固定目录来自本机观察，保留全部文件；不包含相邻账号、聊天、项目、扩展、备份、下载、更新包和运行时资料。",
+    "sources": [
+      {
+        "title": "Chromium 缓存机制；固定目录来自本机观察，尚未验证清理",
+        "url": "https://chromium.googlesource.com/chromium/src/+/main/net/disk_cache/"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.codebuddy_extension_logs",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "CodeBuddyExtension",
+    "layout_id": "appcache.codebuddy_extension_logs-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-24",
+    "applicability": "当前用户标准 local AppData；固定目录来自本机观察，安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。固定目录来自本机观察，保留全部文件；不包含相邻账号、聊天、项目、扩展、备份、附件、生成图片、下载、更新包和运行时资料。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.workbuddy_extension_logs",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "WorkBuddyExtension",
+    "layout_id": "appcache.workbuddy_extension_logs-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-24",
+    "applicability": "当前用户标准 local AppData；固定目录来自本机观察，安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。固定目录来自本机观察，保留全部文件；不包含相邻账号、聊天、项目、扩展、备份、附件、生成图片、下载、更新包和运行时资料。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.todesk_logs",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "ToDesk",
+    "layout_id": "appcache.todesk_logs-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-24",
+    "applicability": "当前用户标准 local AppData；固定目录来自本机观察，安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。固定目录来自本机观察，保留全部文件；不包含相邻账号、聊天、项目、扩展、备份、附件、生成图片、下载、更新包和运行时资料。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.todesk_web",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "ToDesk/EBWebView",
+    "layout_id": "appcache.todesk_web-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-24",
+    "applicability": "当前用户标准 local AppData；固定目录来自本机观察，安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。固定目录来自本机观察，保留全部文件；不包含相邻账号、聊天、项目、扩展、备份、附件、生成图片、下载、更新包和运行时资料。",
+    "sources": [
+      {
+        "title": "WebView2 用户目录说明；通用机制不证明本应用可删除",
+        "url": "https://learn.microsoft.com/en-us/microsoft-edge/webview2/concepts/user-data-folder"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.dingtalk_logs",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "DingTalk",
+    "layout_id": "appcache.dingtalk_logs-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-24",
+    "applicability": "当前用户标准 roaming AppData；固定目录来自本机观察，安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。固定目录来自本机观察，保留全部文件；不包含相邻账号、聊天、项目、扩展、备份、附件、生成图片、下载、更新包和运行时资料。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.webtoapi_web",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "WebToApi/chrome-profile",
+    "layout_id": "appcache.webtoapi_web-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-24",
+    "applicability": "当前用户标准 local AppData；固定目录来自本机观察，安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。固定目录来自本机观察，保留全部文件；不包含相邻账号、聊天、项目、扩展、备份、附件、生成图片、下载、更新包和运行时资料。",
+    "sources": [
+      {
+        "title": "Chromium 缓存机制；固定目录来自本机观察，尚未验证清理",
+        "url": "https://chromium.googlesource.com/chromium/src/+/main/net/disk_cache/"
+      }
+    ],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.webtoapi_logs",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "WebToApi",
+    "layout_id": "appcache.webtoapi_logs-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-24",
+    "applicability": "当前用户标准 local AppData；固定目录来自本机观察，安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。固定目录来自本机观察，保留全部文件；不包含相邻账号、聊天、项目、扩展、备份、附件、生成图片、下载、更新包和运行时资料。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.dbx_web",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "com.dbx.app/EBWebView",
+    "layout_id": "appcache.dbx_web-observed-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-24",
+    "applicability": "当前用户标准 local AppData；固定目录来自本机观察，安装登记仅为来源线索。",
+    "conclusion": "已识别占用，清理尚未验证。固定目录来自本机观察，保留全部文件；不包含相邻账号、聊天、项目、扩展、备份、附件、生成图片、下载、更新包和运行时资料。",
+    "sources": [
+      {
+        "title": "WebView2 用户目录说明；通用机制不证明本应用可删除",
+        "url": "https://learn.microsoft.com/en-us/microsoft-edge/webview2/concepts/user-data-folder"
+      }
+    ],
+    "real_acceptance": "not_verified"
   }
 ]

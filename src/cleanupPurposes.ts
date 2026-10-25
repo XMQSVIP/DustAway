@@ -38,6 +38,21 @@ export function applicationGroups(rules: Rule[]) {
     baidu_netdisk: '百度网盘',
     quark_netdisk: '夸克网盘',
     thunder: '迅雷',
+    shadowbot: '影刀',
+    codex: 'Codex',
+    claude: 'Claude',
+    docker: 'Docker Desktop',
+    reqable: 'Reqable',
+    doubao: '豆包',
+    gameviewer: 'UU 远程',
+    ccswitch: 'CC Switch',
+    ima: 'ima',
+    easyspider: 'EasySpider',
+    codebuddy_extension: 'CodeBuddy 扩展',
+    workbuddy_extension: 'WorkBuddy 扩展',
+    todesk: 'ToDesk',
+    webtoapi: 'WebToApi',
+    dbx: 'DBX',
   };
   const groups = new Map<string, { id: string; title: string; rules: Rule[] }>();
   for (const rule of rules) {
@@ -150,7 +165,13 @@ const developerApps = new Set([
   'hbuilder',
 ]);
 const cachePurpose = (spec: (typeof appCaches)[number]) =>
-  spec.kind === 'updates' ? 'updates' : developerApps.has(spec.app) ? 'developer' : 'application';
+  'data_kind' in spec && spec.data_kind === 'diagnostics'
+    ? 'diagnostics'
+    : spec.kind === 'updates'
+      ? 'updates'
+      : developerApps.has(spec.app)
+        ? 'developer'
+        : 'application';
 export const cleanupPurposes = [
   ...builtinPurposes,
   { id: 'updates', title: '应用更新下载内容（仅查看）', rules: [] },

@@ -71,7 +71,7 @@ it('counts observed and retained bytes independently of selection and marks unkn
       })}
     />,
   );
-  expect(screen.getAllByText('未知')).toHaveLength(2);
+  expect(screen.getAllByText('未知大小')).toHaveLength(2);
   expect(screen.getByText(/部分位置未读取/)).toBeInTheDocument();
 });
 it('pages read-only retained metadata without offering selection or reusing a stale session', async () => {
@@ -98,4 +98,54 @@ it('pages read-only retained metadata without offering selection or reusing a st
     expect(mock.observations).toHaveBeenLastCalledWith('user', 'two', 'windows.user_temp', 0),
   );
   expect(screen.queryByText('C:\\Temp\\one-50.zip')).not.toBeInTheDocument();
+});
+
+it('retries the failed page, resets on scope changes and ignores delayed responses without relying on caller keys', async () => {
+  let resolveOld: (value: unknown) => void = () => {};
+  let rejected = false;
+  mock.observations.mockImplementation((_scope, session, _rule, offset) => {
+    if (session === 'late')
+      return new Promise((resolve) => {
+        resolveOld = resolve;
+      });
+    if (offset === 50 && !rejected) {
+      rejected = true;
+      return Promise.reject(new Error('isolated read failure'));
+    }
+    return Promise.resolve({
+      total: 10000,
+      offset,
+      items: Array.from({ length: 50 }, (_, i) => ({
+        path: `fixture-${session}-${offset + i}`,
+        bytes: '1',
+        modified_unix: 1,
+        reason: 'recent',
+      })),
+    });
+  });
+  const user = userEvent.setup();
+  const view = render(<ScanObservations scope="user" session="first" rule="windows.user_temp" />);
+  await screen.findByText('fixture-first-0');
+  await user.click(screen.getByRole('button', { name: '下一页' }));
+  await screen.findByRole('alert');
+  const retry = screen.getByRole('button', { name: '重试本页' });
+  retry.focus();
+  await user.keyboard('{Enter}');
+  await screen.findByText('fixture-first-50');
+  expect(mock.observations).toHaveBeenLastCalledWith('user', 'first', 'windows.user_temp', 50);
+  await waitFor(() => expect(screen.getByLabelText('已保留文件明细')).toHaveFocus());
+  view.rerender(<ScanObservations scope="system" session="late" rule="windows.system_temp" />);
+  await waitFor(() =>
+    expect(mock.observations).toHaveBeenLastCalledWith('system', 'late', 'windows.system_temp', 0),
+  );
+  view.rerender(<ScanObservations scope="user" session="new" rule="windows.user_temp" />);
+  await screen.findByText('fixture-new-0');
+  resolveOld({
+    total: 1,
+    offset: 0,
+    items: [{ path: 'foreign-old-session', bytes: '5', modified_unix: 1, reason: 'recent' }],
+  });
+  await waitFor(() => expect(screen.getByText('fixture-new-0')).toBeVisible());
+  expect(screen.queryByText('foreign-old-session')).not.toBeInTheDocument();
+  expect(screen.queryByRole('checkbox')).not.toBeInTheDocument();
 });
