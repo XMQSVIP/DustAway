@@ -12,15 +12,6 @@ export const recognitionCategories: Record<RecognitionCategory, string> = {
   data: '数据库与数据集',
   archives: '归档与备份',
 };
-export const defaultDiscovery: AnalysisDiscoveryQuery = {
-  kind: 'file',
-  category: 'all',
-  min_bytes: '0',
-  search: '',
-  include_nested: false,
-  incomplete_only: false,
-  offset: 0,
-};
 export function AnalysisDiscoveryFilters({
   query,
   search,

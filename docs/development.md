@@ -96,11 +96,23 @@ cargo clippy --workspace --all-targets -- -D warnings
 | `crates/helper/src/main.rs`          | 辅助进程入口                            |
 | `src-tauri/src/commands.rs`          | 业务命令及用户/系统任务协调             |
 | `src-tauri/src/lib.rs`               | 应用初始化、服务状态、单实例与退出处理  |
-| `src/App.tsx`、`src/FilesDialog.tsx` | 主界面、状态展示、明细与确认            |
+| `src/App.tsx`                      | 页面装配、导航与清理页交互              |
+| `src/AppNotices.tsx`、`src/CleanupTaskDock.tsx` | 全局任务提示与底部操作栏       |
+| `src/AppDialogs.tsx`、`src/FilesDialog.tsx` | 弹窗装配、确认与文件明细          |
+| `src/useAppController.ts`          | 清理任务、选择与设置之间的协调          |
+| `src/useScanVolumes.ts`、`src/useCandidateDetails.ts` | 扫描磁盘选择、明细会话校验 |
+| `src/AnalysisPanel.tsx`            | 分析视图、虚拟列表与返回位置恢复        |
+| `src/useAnalysisQuery.ts`、`src/analysisQuery.ts` | 分析查询状态、分页、游标与取消 |
 | `src/api.ts`、`src/types.ts`         | 前端命令封装与数据类型                  |
 | `src/i18n.ts`、`src/styles.css`      | 中文界面文案与样式                      |
 
 核心不得依赖 Tauri 或 React。文件删除和根目录判断留在 Rust；前端只管理选择、展示和用户确认。
+
+前端按状态的生命周期划分职责：`useAnalysisQuery` 统一处理三种分析视图的搜索延迟、分页、后台计数、迟到响应与查询取消；`AnalysisPanel` 保留虚拟列表、详情来源和焦点恢复。修改查询方式时先检查 Hook，修改行布局和返回交互时检查面板。查询默认值放在纯数据模块 `analysisQuery.ts`，Hook 不依赖筛选控件。
+
+`AppDialogs` 在主界面中持续挂载，负责弹窗焦点与文件明细视图缓存；清理按钮的原始触发元素由 `App` 传入。页面切换继续保留清理、分析和卸载组件，避免重置未完成的任务、选择和滚动位置。新增功能应落在对应职责中，不再集中追加到主界面组件。
+
+这组边界的回归入口为 `pnpm test`：现有分析、导航、选择、请求协调和确认测试验证用户可观察行为。修改弹窗或任务栏后，另用 `pnpm test:cleanup-desktop` 检查专用夹具中的原生确认、取消和清理流程。
 
 ## 修改功能的顺序
 

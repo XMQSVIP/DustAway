@@ -1,56 +1,39 @@
-import { SoftwarePage } from './SoftwarePage';
-import { uninstallActive, uninstallLabels } from './softwareTypes';
-import { formatResultCount } from './cleanupResults';
-import * as AlertDialog from '@radix-ui/react-alert-dialog';
 import {
   AppWindow,
   ArrowRight,
   ChevronRight,
-  CircleAlert,
-  Download,
-  ExternalLink,
   FolderOpen,
   HardDrive,
   History,
-  LoaderCircle,
-  Monitor,
   Moon,
-  Plus,
   Search,
   Settings as SettingsIcon,
   ShieldCheck,
-  SlidersHorizontal,
   Sun,
-  Trash2,
-  Wind,
-  X,
 } from 'lucide-react';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { AnalysisPanel, analysisStates } from './AnalysisPanel';
+import { AnalysisPanel } from './AnalysisPanel';
+import { AppDialogs } from './AppDialogs';
+import { AppNotices } from './AppNotices';
+import { AttachmentPanel } from './AttachmentPanel';
 import { CleanupDecisionPanel, CleanupOutcomes } from './CleanupDecisionPanel';
-import { CoverageNotice } from './CoverageNotice';
-import { ExclusionsDialog } from './ExclusionsDialog';
-import { FilesDialog, type FileViewState } from './FilesDialog';
-import { selectionSummary } from './SelectionSummary';
-import { ReportRow } from './ReportReceipt';
-import { resultTitle } from './ResultCounts';
-import { SettingsPage } from './SettingsPage';
+import { CleanupSpaceResult } from './CleanupSpaceResult';
+import { CleanupTaskDock } from './CleanupTaskDock';
 import { HistoryPage } from './HistoryPage';
+import { HomeStorage } from './HomeStorage';
+import { PurposeGroups } from './PurposeGroups';
+import { ReportRow } from './ReportReceipt';
+import { ResultReviewPanel } from './ResultReviewPanel';
+import { SettingsPage } from './SettingsPage';
+import { SoftwarePage } from './SoftwarePage';
 import { TitleBar } from './TitleBar';
+import { WeixinCleanup } from './WeixinCleanup';
 import { api, desktop } from './api';
-import { useDialogFocus } from './dialogFocus';
-import { dynamic, formatBytes, formatTime, text as t, ui } from './i18n';
+import { cleanupPresentation } from './cleanupPresentation';
+import type { ResultStatus, ResultTarget } from './cleanupResults';
+import { text as t, ui } from './i18n';
 import { useSpatialPreferences } from './spatialPreferences';
 import { useAppController } from './useAppController';
-import { HomeStorage } from './HomeStorage';
-import { CleanupSpaceResult } from './CleanupSpaceResult';
-import { ManualCart } from './ManualCart';
-import { PurposeGroups } from './PurposeGroups';
-import { ResultReviewPanel } from './ResultReviewPanel';
-import type { ResultStatus, ResultTarget } from './cleanupResults';
-import { cleanupPresentation } from './cleanupPresentation';
-import { AttachmentPanel } from './AttachmentPanel';
-import { WeixinCleanup } from './WeixinCleanup';
 
 export default function App() {
   const [attachmentsOpen, setAttachmentsOpen] = useState(false);
@@ -74,10 +57,8 @@ export default function App() {
   const [settingsLeaf, setSettingsLeaf] = useState('appearance');
   const [inspectedRules, setInspectedRules] = useState<string[] | null>(null);
   const [fromAnalysis, setFromAnalysis] = useState(false);
-  const alertFocus = useDialogFocus();
   const cleanupTrigger = useRef<HTMLElement | null>(null);
   const cleanupStarting = useRef(false);
-  const cleanupFocus = useDialogFocus(cleanupTrigger);
   const reportRef = useRef<HTMLDetailsElement>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
   const [helpOpen, setHelpOpen] = useState(false);
@@ -87,10 +68,6 @@ export default function App() {
   const viewingKey = `${model.sessionKey}/${terminalKey}`;
   const reviewKey = `${terminalKey}/${model.sessionKey}`;
   const [dismissedReceipt, setDismissedReceipt] = useState('');
-  const fileViews = useRef(new Map<string, FileViewState>());
-  useEffect(() => {
-    fileViews.current.clear();
-  }, [model.sessionKey, terminalKey]);
   function finishViewing() {
     setDismissedReceipt(viewingKey);
     setReview(null);
@@ -210,18 +187,11 @@ export default function App() {
   }
   const {
     boot,
-    setInitEpoch,
     initializing,
     initError,
     checking,
-    setHistoryEpoch,
-    historyError,
-    historyLoading,
     tab,
     setTab,
-    selected,
-    history,
-    setHistory,
     error,
     setError,
     analysis,
@@ -231,46 +201,23 @@ export default function App() {
     stopping,
     retryStatus,
     reconcile,
-    notice,
     setNotice,
     setHandoffSession,
     pending,
     closing,
-    plans,
     setPlans,
-    detail,
-    setDetail,
-    detailQuery,
     openDetail,
-    excluded,
     setExpanded,
-    clearDialog,
-    setClearDialog,
     drafts,
-    setDrafts,
-    draftDialog,
     setDraftDialog,
-    rescanDialog,
-    setRescanDialog,
     sessionKey,
     busy,
-    ready,
-    summaryRows,
     scanned,
-    candidateBytes,
-    candidateCount,
     guard,
     stopTask,
-    selectFiles,
-    startScan,
     scan,
-    prepare,
-    execute,
     saving,
     save,
-    addExclusion,
-    addDraft,
-    saveDrafts,
     currentJob,
   } = model;
   const receiptDismissed =
@@ -304,15 +251,6 @@ export default function App() {
         item.foundFiles > 0,
     );
   const primaryKind = idleHome ? 'scan' : emptyResult ? 'finish' : model.decision.action;
-  const analysisSelectionView =
-    tab === 'analysis' &&
-    !!analysis &&
-    analysis.state !== 'scanning' &&
-    !currentJob &&
-    !uncertain &&
-    checking === 'ready';
-  const chosenSummary = selectionSummary(model);
-  const sidebarReview = wideLayout && tab === 'clean' && cleanStage === 'review';
   const darkTheme =
     boot?.settings.theme === 'dark' ||
     ((!boot || boot.settings.theme === 'system') &&
@@ -411,102 +349,7 @@ export default function App() {
             pageScroll.current[tab] = event.currentTarget.scrollTop;
           }}
         >
-          {model.uninstall && uninstallActive(model.uninstall.phase) && tab !== 'software' && (
-            <div className="message info" role="status">
-              <span>
-                {model.uninstall.software.name}：{uninstallLabels[model.uninstall.phase]}
-              </span>
-              <button className="button secondary small" onClick={() => setTab('software')}>
-                查看卸载任务
-              </button>
-            </div>
-          )}
-          {analysis?.state === 'scanning' && tab !== 'analysis' && (
-            <div className="message info" role="status">
-              <span>
-                {analysisStates[analysis.state]} · 已检查 {analysis.checked.toLocaleString()} 项
-              </span>
-              <button className="button secondary small" onClick={() => setTab('analysis')}>
-                查看空间分析
-              </button>
-              <button
-                className="button secondary small"
-                disabled={pending || stopping || uncertain || closing}
-                onClick={stopTask}
-              >
-                {stopping ? '停止中…' : '停止分析'}
-              </button>
-            </div>
-          )}
-
-          {error && tab !== 'settings' && (
-            <div className="message error" role="alert">
-              <CircleAlert size={19} />
-              <span>{error}</span>
-              <button
-                className="icon-button"
-                aria-label={ui.dismissError}
-                onClick={() => setError('')}
-              >
-                <X size={17} />
-              </button>
-            </div>
-          )}
-          {notice && (
-            <div className="message info" role="status">
-              <CircleAlert size={19} />
-              <span>{notice}</span>
-              <button
-                className="icon-button"
-                aria-label={ui.dismissNotice}
-                onClick={() => setNotice('')}
-              >
-                <X size={17} />
-              </button>
-            </div>
-          )}
-          {initializing && (
-            <div className="message info" role="status">
-              正在读取设置并核对后台状态…
-            </div>
-          )}
-          {initError && (
-            <div className="message error" role="alert">
-              <span>启动数据加载失败：{initError}</span>
-              <button className="button secondary small" onClick={() => setInitEpoch((v) => v + 1)}>
-                重新加载
-              </button>
-            </div>
-          )}
-          {checking !== 'ready' && !initializing && (
-            <div className="message info" role="status">
-              <span>
-                {checking === 'checking'
-                  ? '正在核对请求是否已受理，请勿重复操作…'
-                  : '暂时无法确认任务状态，请重新检查。'}
-              </span>
-              <button className="button secondary small" onClick={retryStatus}>
-                重新核对请求
-              </button>
-            </div>
-          )}
-          {uncertain && !initializing && !initError && (
-            <div className="message info" role="status">
-              <span>暂时无法确认任务状态</span>
-              <button className="button secondary small" onClick={retryStatus}>
-                重新检查状态
-              </button>
-              <button className="button secondary small" onClick={() => setInitEpoch((v) => v + 1)}>
-                重新加载
-              </button>
-            </div>
-          )}
-          {closing && (
-            <div role="status" className="message info">
-              <LoaderCircle className="spin" size={18} />
-              {t.closing}
-            </div>
-          )}
+          <AppNotices model={model} />
           <div hidden={tab !== 'software'}>
             <SoftwarePage model={model} active={tab === 'software'} />
           </div>
@@ -786,152 +629,16 @@ export default function App() {
             />
           )}
         </main>
-        <footer
-          className="action-bar task-dock"
-          aria-label="任务与本次选择"
-          hidden={
-            sidebarReview ||
-            (tab === 'clean' && presentation.terminal && !busy && !uncertain) ||
-            (tab === 'clean' && idleHome) ||
-            (tab !== 'clean' &&
-              !analysisSelectionView &&
-              !model.hasManual &&
-              !currentJob &&
-              !(scanned && !reports.length) &&
-              analysis?.state !== 'scanning' &&
-              !uncertain)
-          }
-        >
-          <div className="tray-marker" aria-hidden="true">
-            <i />
-            <i />
-            <i />
-          </div>
-          <div>
-            <span>
-              {model.preparing
-                ? model.stoppingPreparation
-                  ? '正在停止准备…'
-                  : '正在核验并准备清理清单…'
-                : stopping
-                  ? '停止中'
-                  : busy
-                    ? currentJob?.state === 'scanning'
-                      ? '正在扫描'
-                      : currentJob?.state === 'cleaning'
-                        ? '正在清理'
-                        : ui.working
-                    : reports.length && !model.hasManual && !analysisSelectionView
-                      ? `本次已删除 ${formatResultCount(model.decision.result.deleted)} 个文件 · ${formatResultCount(model.decision.result.directories.deleted)} 个文件夹 · ${model.decision.result.bytes === null ? '统计不可用' : formatBytes(model.decision.result.bytes)}`
-                      : scanned || model.hasManual || analysisSelectionView
-                        ? `已选 ${chosenSummary.amount} · ${chosenSummary.counts}`
-                        : '扫描垃圾，腾出空间'}
-            </span>
-            <small
-              data-important={analysisSelectionView && (candidateCount > 0 || model.preparing)}
-            >
-              {model.preparing
-                ? model.preparationElapsed > 0
-                  ? `已用 ${model.preparationElapsed} 秒`
-                  : '选择已保留'
-                : analysisSelectionView && candidateCount > 0
-                  ? '包含垃圾扫描中已选的项目'
-                  : reports.length && !model.hasManual && !analysisSelectionView
-                    ? `${model.decision.result.title}，详情和保留原因可按需查看。`
-                    : cleanStage === 'review'
-                      ? '扫描记录中的已选大小，确认前会重新核验。'
-                      : analysisSelectionView
-                        ? model.hasManual || candidateCount
-                          ? '确认前会核验清理范围'
-                          : '勾选不再需要的内容后清理'
-                        : currentJob?.state === 'cleaning'
-                          ? ui.cancelEffect
-                          : ui.confirmationExplanation}
-            </small>
-          </div>
-          <div className="action-buttons">
-            {analysisSelectionView ? (
-              <>
-                {model.preparing ? (
-                  <button
-                    className="button secondary"
-                    disabled={model.stoppingPreparation}
-                    onClick={() => void model.cancelPreparation()}
-                  >
-                    {model.stoppingPreparation ? '正在停止准备' : '停止准备'}
-                  </button>
-                ) : (
-                  <button
-                    className="result-link"
-                    disabled={busy || saving || (!model.hasManual && !candidateCount)}
-                    onClick={() => {
-                      setTab('clean');
-                      requestAnimationFrame(() => {
-                        const selected =
-                          document.querySelector<HTMLDetailsElement>('.manual-results');
-                        if (selected) selected.open = true;
-                      });
-                    }}
-                  >
-                    查看已选
-                  </button>
-                )}
-                <button
-                  className="button primary"
-                  hidden={model.preparing}
-                  onClick={beginCleanup}
-                  disabled={
-                    !desktop || busy || saving || (!model.hasManual && !model.decision.canPrepare)
-                  }
-                >
-                  清理已选
-                  <ArrowRight size={17} />
-                </button>
-              </>
-            ) : tab !== 'clean' ? (
-              <>
-                {(currentJob || analysis?.state === 'scanning') && (
-                  <button
-                    className="button secondary"
-                    disabled={pending || closing || stopping || uncertain}
-                    onClick={stopTask}
-                  >
-                    {stopping ? '停止中…' : '停止任务'}
-                  </button>
-                )}
-                <button
-                  className="button secondary"
-                  onClick={() => setTab(analysis?.state === 'scanning' ? 'analysis' : 'clean')}
-                >
-                  {analysis?.state === 'scanning'
-                    ? '查看当前分析'
-                    : currentJob
-                      ? '查看清理任务'
-                      : '查看已选'}
-                </button>
-              </>
-            ) : (
-              <>
-                {cleanStage !== 'review' &&
-                  !busy &&
-                  model.decision.action !== 'scan' &&
-                  sessions.length > 0 && (
-                    <button
-                      className="button secondary"
-                      disabled={
-                        !model.scanRuleIds.length || !model.canScanVolumes || !desktop || saving
-                      }
-                      onClick={scan}
-                    >
-                      <Search size={17} />
-                      {t.rescan}
-                    </button>
-                  )}
-                {(taskInDock || (cleanStage === 'review' && !wideLayout)) && primaryAction}
-              </>
-            )}
-          </div>
-        </footer>
+        <CleanupTaskDock
+          model={model}
+          cleanStage={cleanStage}
+          idleHome={idleHome}
+          terminal={presentation.terminal}
+          wideLayout={wideLayout}
+          taskInDock={taskInDock}
+          primaryAction={primaryAction}
+          onBeginCleanup={beginCleanup}
+        />
       </div>
       <footer className="app-footnote">
         <span>
@@ -958,235 +665,7 @@ export default function App() {
           <span>拂尘 {boot?.version ?? ''}</span>
         </span>
       </footer>
-      {detail && model.detailCurrent && (
-        <FilesDialog
-          key={`${detail.id}:${detailQuery.session}:${detailQuery.reportId}:${detailQuery.view}:${detailQuery.status}`}
-          viewCache={fileViews.current}
-          revision={summaryRows.find((r) => r.rule_id === detail.id)?.revision}
-          initialView={detailQuery.view}
-          initialStatus={detailQuery.status}
-          rule={detail}
-          scope={detail.requires_admin ? 'system' : 'user'}
-          session={detailQuery.session}
-          excluded={excluded}
-          included={model.included}
-          ruleSelected={selected.has(detail.id)}
-          editable={
-            ready &&
-            model.decision.items.find((r) => r.rule.id === detail.id)?.capability === 'allowed' &&
-            ['ready', 'deselected'].includes(
-              model.decision.items.find((r) => r.rule.id === detail.id)?.status ?? '',
-            ) &&
-            !summaryRows.find((r) => r.rule_id === detail.id)?.blocked
-          }
-          actionsEnabled={!busy && !saving && !detail.requires_admin}
-          drafts={drafts}
-          onDraft={addDraft}
-          onReviewDrafts={() => {
-            setDetail(null);
-            setDraftDialog(true);
-          }}
-          onSelect={selectFiles}
-          cleanup={reports.length > 0}
-          onClose={() => setDetail(null)}
-        />
-      )}
-      {draftDialog && (
-        <ExclusionsDialog
-          error={error}
-          drafts={drafts}
-          saving={saving || pending || uncertain}
-          onClose={() => setDraftDialog(false)}
-          onSave={saveDrafts}
-          onRemove={(index) => setDrafts((ds) => ds.filter((_, i) => i !== index))}
-        />
-      )}
-      <AlertDialog.Root open={rescanDialog} onOpenChange={setRescanDialog}>
-        <AlertDialog.Portal>
-          <AlertDialog.Overlay className="overlay" />
-          <AlertDialog.Content className="dialog unfolded-sheet" {...alertFocus}>
-            <AlertDialog.Title>还有未保存的排除草稿</AlertDialog.Title>
-            <AlertDialog.Description>
-              重新扫描会使当前候选及草稿失效，请先保存或明确放弃。
-            </AlertDialog.Description>
-            <div className="dialog-actions">
-              <AlertDialog.Cancel className="button secondary">返回</AlertDialog.Cancel>
-              <button
-                className="button secondary"
-                onClick={() => {
-                  setDrafts([]);
-                  setRescanDialog(false);
-                  void guard(() => startScan(model.scanRuleIds));
-                }}
-              >
-                放弃草稿并扫描
-              </button>
-              <button
-                className="button primary"
-                onClick={() => {
-                  setRescanDialog(false);
-                  setDraftDialog(true);
-                }}
-              >
-                核对并保存
-              </button>
-            </div>
-          </AlertDialog.Content>
-        </AlertDialog.Portal>
-      </AlertDialog.Root>
-      <AlertDialog.Root
-        open={plans.length > 0 || model.windowsMaintenance.plans.length > 0}
-        onOpenChange={(open) => {
-          if (!open) {
-            setPlans([]);
-            model.windowsMaintenance.setPlans([]);
-          }
-        }}
-      >
-        <AlertDialog.Portal>
-          <AlertDialog.Overlay className="overlay" />
-          <AlertDialog.Content className="dialog confirm-dialog unfolded-sheet" {...cleanupFocus}>
-            <div className="danger-icon">
-              <Trash2 size={24} />
-            </div>
-            <AlertDialog.Title>{t.confirmTitle}</AlertDialog.Title>
-            <AlertDialog.Description>{t.confirmDescription}</AlertDialog.Description>
-            {model.windowsMaintenance.plans.length > 0 && (
-              <section className="windows-confirmation">
-                <h3>已选 Windows 维护项目</h3>
-                <p>
-                  先完成已选文件清理，再由 Windows 按以下类别整理。文件范围由 Windows
-                  决定；官方估算单独计算。
-                </p>
-                {model.windowsMaintenance.plans
-                  .flatMap((p) => p.plan.actions)
-                  .map((action) => (
-                    <p key={action.id}>
-                      <strong>
-                        {action.title} ·{' '}
-                        {action.estimate_bytes === null
-                          ? '估算未知'
-                          : `约 ${formatBytes(action.estimate_bytes)}`}
-                      </strong>
-                      <br />
-                      {action.impact}
-                    </p>
-                  ))}
-              </section>
-            )}
-            {model.preparedSelection?.known &&
-              (() => {
-                const files = plans.reduce((n, item) => n + item.plan.files, 0);
-                const directories = plans.reduce(
-                  (n, item) => n + (item.plan.manual?.directories ?? 0),
-                  0,
-                );
-                const bytes = plans.reduce((n, item) => n + BigInt(item.plan.bytes), 0n);
-                const before = model.preparedSelection;
-                const retained =
-                  Math.max(0, before.files - files) + Math.max(0, before.directories - directories);
-                return retained > 0 || bytes < before.bytes ? (
-                  <p className="plan-adjustment" role="status">
-                    核验后{retained > 0 ? `有 ${retained} 项已保留，` : '清理范围已更新，'}
-                    仅删除下列清单中的内容。
-                  </p>
-                ) : null;
-              })()}
-            <div className="confirm-total">
-              <strong>{formatBytes(plans.reduce((n, p) => n + BigInt(p.plan.bytes), 0n))}</strong>
-              <span>
-                {plans.reduce((n, p) => n + p.plan.files, 0).toLocaleString()} {ui.fileUnit} ·{' '}
-                {plans.reduce((n, p) => n + (p.plan.manual?.directories ?? 0), 0)} 个文件夹
-              </span>
-            </div>
-            {plans.some(({ plan }) => plan.files > (plan.manual?.files ?? 0)) && (
-              <p className="confirm-rule-summary">
-                垃圾扫描已选：
-                {plans.reduce((n, { plan }) => n + plan.files - (plan.manual?.files ?? 0), 0)}{' '}
-                个文件 ·{' '}
-                {formatBytes(
-                  plans.reduce(
-                    (n, { plan }) => n + BigInt(plan.bytes) - BigInt(plan.manual?.bytes ?? '0'),
-                    0n,
-                  ),
-                )}
-              </p>
-            )}
-            {plans
-              .filter((p) => p.plan.manual)
-              .map(({ plan }) => (
-                <div key={plan.id} className="manual-confirm">
-                  <strong>你自选的内容</strong>
-                  <p>
-                    {plan.manual!.files} 个文件 · {plan.manual!.directories} 个文件夹 ·{' '}
-                    {formatBytes(plan.manual!.bytes)}
-                  </p>
-                  <ManualCart model={model} readonly />
-                  <p>
-                    清理其中的已选内容，文件夹可能保留。
-                    {plan.manual!.retained > 0 && `另有 ${plan.manual!.retained} 项已保留。`}
-                  </p>
-                </div>
-              ))}
-            {plans.some((p) => (p.plan.categories ?? []).length || p.plan.impacts.length) && (
-              <details>
-                <summary>查看类别与影响</summary>
-                <ul className="impact-list">
-                  {plans
-                    .flatMap((p) => p.plan.categories ?? [])
-                    .map((c) => (
-                      <li key={c.rule_id}>
-                        <strong>
-                          {boot?.rules.find((r) => r.id === c.rule_id)?.title ?? c.rule_id}
-                        </strong>{' '}
-                        · {dynamic.files(c.files)} · {formatBytes(c.bytes)}
-                        {boot?.rules.find((r) => r.id === c.rule_id)?.cleanup_policy !==
-                          'recommended' && (
-                          <span className="admin-label">你手动选择的需确认项目</span>
-                        )}
-                        <CoverageNotice coverage={c.coverage} />
-                      </li>
-                    ))}
-                  {[...new Set(plans.flatMap((p) => p.plan.impacts))].map((impact) => (
-                    <li key={impact}>{impact}</li>
-                  ))}
-                </ul>
-              </details>
-            )}
-            <div className="dialog-actions">
-              <AlertDialog.Cancel className="button secondary">取消</AlertDialog.Cancel>
-              <button className="button danger" disabled={busy || saving} onClick={confirmCleanup}>
-                {t.confirm}
-              </button>
-            </div>
-          </AlertDialog.Content>
-        </AlertDialog.Portal>
-      </AlertDialog.Root>
-      <AlertDialog.Root open={clearDialog} onOpenChange={setClearDialog}>
-        <AlertDialog.Portal>
-          <AlertDialog.Overlay className="overlay" />
-          <AlertDialog.Content className="dialog unfolded-sheet" {...alertFocus}>
-            <AlertDialog.Title>{ui.clearHistoryTitle}</AlertDialog.Title>
-            <AlertDialog.Description>{ui.clearHistoryDescription}</AlertDialog.Description>
-            <div className="dialog-actions">
-              <AlertDialog.Cancel className="button secondary">{ui.cancel}</AlertDialog.Cancel>
-              <button
-                className="button danger"
-                onClick={() => {
-                  setClearDialog(false);
-                  void guard(async () => {
-                    await api.clearHistory();
-                    setHistory([]);
-                    setHistoryEpoch((v) => v + 1);
-                  });
-                }}
-              >
-                {ui.clearHistory}
-              </button>
-            </div>
-          </AlertDialog.Content>
-        </AlertDialog.Portal>
-      </AlertDialog.Root>
+      <AppDialogs model={model} cleanupTrigger={cleanupTrigger} onConfirmCleanup={confirmCleanup} />
     </div>
   );
 }

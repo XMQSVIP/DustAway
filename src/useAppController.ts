@@ -1,34 +1,35 @@
-import { currentScanRows } from './scanAssessment';
-import { useToolTask } from './ToolCache';
-import { useWindowsMaintenance } from './WindowsMaintenance';
-import { uninstallActive } from './softwareTypes';
-import { useUvTask } from './UvCache';
-import { useElapsed } from './useElapsed';
 import { listen } from '@tauri-apps/api/event';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { api, desktop } from './api';
 import { useApplicationSupport } from './ApplicationSupport';
+import { cleanupDecision } from './cleanupDecision';
 import { ipcError, type CoordinationState } from './coordinator';
 import { exclusionPath } from './ExclusionsDialog';
 import { text as t, ui } from './i18n';
-import { cleanupDecision } from './cleanupDecision';
+import { manualRequest, toggleManualBatch, type ManualChoices } from './manualSelection';
+import { currentScanRows } from './scanAssessment';
+import { uninstallActive } from './softwareTypes';
+import { useToolTask } from './ToolCache';
 import type {
   Bootstrap,
   Candidate,
   ExcludedFile,
   ExclusionDraft,
   Report,
-  Rule,
   Scope,
   ScopedPlan,
   Settings,
 } from './types';
-import { useSettings } from './useSettings';
-import { active, useTasks } from './useTasks';
-import { useSpaceJourney } from './useSpaceJourney';
-import { useManualPreview } from './useManualPreview';
+import { useCandidateDetails } from './useCandidateDetails';
+import { useElapsed } from './useElapsed';
 import { useHomeSpace } from './useHomeSpace';
-import { manualRequest, toggleManualBatch, type ManualChoices } from './manualSelection';
+import { useManualPreview } from './useManualPreview';
+import { useScanVolumes } from './useScanVolumes';
+import { useSettings } from './useSettings';
+import { useSpaceJourney } from './useSpaceJourney';
+import { active, useTasks } from './useTasks';
+import { useUvTask } from './UvCache';
+import { useWindowsMaintenance } from './WindowsMaintenance';
 
 export function useAppController() {
   const [boot, setBoot] = useState<Bootstrap | null>(null);
@@ -47,12 +48,6 @@ export function useAppController() {
   );
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [manualChoices, setManualChoices] = useState<ManualChoices>(new Map());
-  const [scanVolumeSelection, setScanVolumeSelection] = useState<string[] | null>([]);
-  const scanVolumesInitialized = useRef(false);
-  const chooseScanVolumes = (tokens: string[] | null) => {
-    scanVolumesInitialized.current = true;
-    setScanVolumeSelection(tokens);
-  };
   const [preparing, setPreparing] = useState(false);
   const preparationCancelled = useRef(false);
   const preparationId = useRef<string | null>(null);
@@ -101,28 +96,8 @@ export function useAppController() {
     reports.map((r) => `${r.id}:${r.finished_at}:${r.status}`).join('|'),
     tab === 'analysis',
   );
-  useEffect(() => {
-    if (scanVolumesInitialized.current || !journey.locations.length) return;
-    const volumes = journey.locations.filter((location) => location.kind === 'volume');
-    if (!volumes.length) return;
-    scanVolumesInitialized.current = true;
-    const c = volumes.find(
-      (location) => /^c:\\$/i.test(location.path) && location.supported !== false,
-    );
-    setScanVolumeSelection(c ? [c.token] : []);
-  }, [journey.locations]);
-  const scanVolumeTokens = scanVolumeSelection?.filter((token) =>
-    journey.locations.some(
-      (location) =>
-        location.token === token && location.kind === 'volume' && location.supported !== false,
-    ),
-  );
-  const canScanVolumes =
-    journey.locationsLoaded &&
-    !journey.locationsLoading &&
-    !journey.locationError &&
-    journey.locations.some((l) => l.kind === 'volume' && l.supported !== false) &&
-    (scanVolumeSelection === null || !!scanVolumeTokens?.length);
+  const { scanVolumeSelection, chooseScanVolumes, scanVolumeTokens, canScanVolumes } =
+    useScanVolumes(journey);
   const homeSpace = useHomeSpace(
     journey.locations,
     scanVolumeSelection,
@@ -176,47 +151,14 @@ export function useAppController() {
     }));
     setTab('analysis');
   }
-  const [detail, setDetail] = useState<Rule | null>(null);
-  const [detailQuery, setDetailQuery] = useState<{
-    view: 'scan' | 'cleanup' | 'unplanned';
-    status: string | null;
-    session: string;
-    reportId: string | null;
-  }>({ view: 'scan', status: null, session: '', reportId: null });
-  function openDetail(
-    rule: Rule,
-    view: 'scan' | 'cleanup' | 'unplanned' = reports.length ? 'cleanup' : 'scan',
-    status: string | null = null,
-    reportId?: string,
-  ) {
-    const scope = rule.requires_admin ? 'system' : 'user';
-    const session = sessions.find((s) => s.scope === scope)?.id;
-    const report = reports.find((r) => r.scope === scope);
-    if (
-      !session ||
-      summaries[scope]?.session_id !== session ||
-      jobs[scope]?.id !== session ||
-      !summaries[scope]?.rules.some((r) => r.rule_id === rule.id) ||
-      (view !== 'scan' && (!report || (reportId !== undefined && reportId !== report.id)))
-    ) {
-      setNotice('本次文件明细已不可用，保留的统计仍可在报告中核对；不会借用其他扫描会话。');
-      return;
-    }
-    setDetailQuery({ view, status, session, reportId: view === 'scan' ? null : report!.id });
-    setDetail(rule);
-  }
-  const detailScope = detail?.requires_admin ? 'system' : 'user';
-  const detailCurrent =
-    !!detail &&
-    sessions.some((s) => s.scope === detailScope && s.id === detailQuery.session) &&
-    jobs[detailScope]?.id === detailQuery.session &&
-    summaries[detailScope]?.session_id === detailQuery.session &&
-    !!summaries[detailScope]?.rules.some((r) => r.rule_id === detail.id) &&
-    (detailQuery.reportId === null ||
-      reports.some((r) => r.scope === detailScope && r.id === detailQuery.reportId));
-  useEffect(() => {
-    if (detail && !detailCurrent) setDetail(null);
-  }, [detail, detailCurrent]);
+  const { detail, setDetail, detailQuery, setDetailQuery, detailCurrent, openDetail } =
+    useCandidateDetails({
+      sessions,
+      summaries,
+      jobs,
+      reports,
+      setNotice,
+    });
   const [excluded, setExcluded] = useState<Map<string, ExcludedFile>>(new Map());
   const [expanded, setExpanded] = useState<Set<string>>(
     new Set(['windows', 'edge', 'chrome', 'firefox']),
