@@ -1,0 +1,31 @@
+{
+  "model_id": "purpose-nb-v3-30c6dc541589",
+  "test_sha256": "6b3f94009d8cd3d3de13ef84c1d66123981d93afb54449fb44add9b7879bfbf2",
+  "predictions": [
+    "logs",
+    "logs",
+    "logs",
+    "logs",
+    "logs",
+    "logs",
+    "cache",
+    "temporary",
+    "logs",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    "logs",
+    "logs",
+    "logs",
+    "logs",
+    "logs",
+    "logs",
+    "cache",
+    "temporary",
+    "personal",
+    "application_data"
+  ]
+}

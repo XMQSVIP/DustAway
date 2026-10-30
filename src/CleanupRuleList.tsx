@@ -200,6 +200,7 @@ export function CleanupRuleList({
                   rule.root !== 'developer' && <p>尚未完成真实应用删除验收，仅支持扫描与查看。</p>}
                 {rule.app_id && model.applicationInfo && evidenceOpen.has(rule.id) && (
                   <ApplicationSupportNotice
+                    rules={model.boot?.rules ?? []}
                     support={model.applicationInfo.applications.find(
                       (app) => app.app_id === rule.app_id,
                     )}

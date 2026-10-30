@@ -1,10 +1,10 @@
 # 架构与安全边界
 
-当前默认构建开放用户清理 Engine 和独立 AnalysisEngine（扫描阶段只读）。下图的命名管道与辅助进程分支仅由显式实验 `system-cleanup` feature 启用。
+当前默认构建开放用户清理 Engine 和独立 AnalysisEngine（扫描阶段只读）。下图的命名管道与辅助进程分支由安装版的 `system-cleanup` feature 启用；免安装版不包含此能力。
 
-应用扫描由封闭注册表声明 Known Folder 根和固定配置目录选择器。Windows 层先验证签名及安装身份，再按元数据检查已知数据布局；版本作为观察信息。配置只枚举指定层级，`Preferences` / `LocalPrefs.json` 只验证文件元数据。候选仍沿用路径、文件和应用身份复核。当前八个应用的十八条规则全部只读；证据 v3 和前端预览来自编译后目录，旧 v1/v2 目录冻结。
+应用扫描由封闭注册表声明 Known Folder 根和固定配置目录选择器。Windows 层先验证签名及安装身份，再按元数据检查已知数据布局；版本作为观察信息。配置只枚举指定层级，`Preferences` / `LocalPrefs.json` 只验证文件元数据。候选仍沿用路径、文件和应用身份复核。当前逐规则能力见编译能力摘要；证据 v3 和前端预览来自编译后目录，旧 v1/v2 目录冻结。
 
-清理资格由 `cleanup_acceptance` 中的编译期记录与规则描述符共同决定，记录绑定规则 ID/版本、布局和准确应用版本。`Platform.cleanup_validated` 是后端接口，Engine 在准备和执行时调用；生产 Windows 平台只信任编译记录，在文件系统边界再次检查。仅 `cfg(test)` 平台可为内部创建的专用临时夹具模拟资格，任何 IPC、环境变量或配置均不能切换普通构建的权限。接口逐规则返回 `cleanup_versions` 与 `cleanup_block`，汇总字段只用于兼容说明。详见[本轮支持矩阵](support-matrix-cleanup-preparation.md)。
+清理资格由 `cleanup_acceptance` 中的编译期记录与规则描述符共同决定，记录绑定规则 ID/版本和布局，应用样本版本保留为历史证据；当前安装按身份、组件、布局与格式核验。`Platform.cleanup_validated` 是后端接口，Engine 在准备和执行时调用；生产 Windows 平台只信任编译记录，在文件系统边界再次检查。仅 `cfg(test)` 平台可为内部创建的专用临时夹具模拟资格，任何 IPC、环境变量或配置均不能切换普通构建的权限。接口逐规则返回 `cleanup_versions` 与 `cleanup_block`，汇总字段只用于兼容说明。详见[本轮支持矩阵](support-matrix-cleanup-preparation.md)。
 
 ## 前端展示与业务边界
 

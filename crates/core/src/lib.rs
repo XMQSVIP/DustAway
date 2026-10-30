@@ -10,6 +10,7 @@ pub mod browsers;
 pub mod cleanup_acceptance;
 pub mod developer;
 pub mod engine;
+pub mod file_purpose;
 pub mod recognition;
 pub use analysis::*;
 pub mod manual;

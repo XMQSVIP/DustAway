@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { EntryAdvice } from './AnalysisAdvice';
 import { AnalysisDiscoveryFilters } from './AnalysisDiscoveryFilters';
 import { defaultDiscovery } from './analysisQuery';
+import { analysisStates } from './analysisStates';
 import { AnalysisReviewDialog, type AnalysisReviewTarget } from './AnalysisReviewDialog';
 import { api, desktop } from './api';
 import { ipcError } from './coordinator';
@@ -36,13 +37,6 @@ interface ReviewOrigin {
   entryId: string;
 }
 
-export const analysisStates = {
-  scanning: '正在分析',
-  completed: '分析完成',
-  partial: '统计不完整',
-  cancelled: '已停止 · 统计不完整',
-  failed: '读取失败 · 统计不完整',
-};
 const issueLabel = (code: string) =>
   ({
     resource_limit: '已达到本次分析的资源限额，保留部分结果；请选择更小的目录',

@@ -41,6 +41,12 @@ mod application_acceptance_tests;
 #[path = "real_application_acceptance.rs"]
 mod real_application_acceptance;
 
+#[path = "historical_log_platform.rs"]
+mod historical_log_platform;
+#[cfg(test)]
+#[path = "historical_log_tests.rs"]
+mod historical_log_tests;
+
 pub fn known_folder(id: &GUID) -> Result<PathBuf> {
     unsafe {
         let value = SHGetKnownFolderPath(id, KF_FLAG_DEFAULT, None)?;
@@ -76,6 +82,10 @@ pub struct WindowsPlatform {
     app_test_acceptance: Option<std::sync::Arc<application_acceptance_tests::SyntheticAcceptance>>,
     #[cfg(test)]
     real_app_acceptance: Option<std::sync::Arc<real_application_acceptance::RealAcceptance>>,
+    #[cfg(test)]
+    log_test_acceptance: Option<std::sync::Arc<historical_log_tests::LogPermit>>,
+    #[cfg(test)]
+    discovery_drives: Vec<PathBuf>,
 }
 impl WindowsPlatform {
     fn cache_identity(
@@ -99,6 +109,10 @@ impl WindowsPlatform {
             app_test_acceptance: None,
             #[cfg(test)]
             real_app_acceptance: None,
+            #[cfg(test)]
+            log_test_acceptance: None,
+            #[cfg(test)]
+            discovery_drives: vec![],
             scope,
             local: extended(&known_folder(&FOLDERID_LocalAppData)?)?,
             roaming: extended(&known_folder(&FOLDERID_RoamingAppData)?)?,
@@ -114,13 +128,46 @@ impl WindowsPlatform {
         cancel: Option<&AtomicBool>,
         issue: &mut dyn FnMut(ReasonCode),
     ) -> Result<Vec<PathBuf>> {
+        self.discover_roots_in(rule, None, &[], cancel, issue)
+    }
+    fn discover_roots_in(
+        &self,
+        rule: &RuleDescriptor,
+        volumes: Option<&[dustaway_core::VolumeTarget]>,
+        exclusions: &[String],
+        cancel: Option<&AtomicBool>,
+        issue: &mut dyn FnMut(ReasonCode),
+    ) -> Result<Vec<PathBuf>> {
         check_cancel(cancel)?;
         ensure!(
             rule.requires_admin == (self.scope == Scope::System),
             "不允许跨权限域操作"
         );
         dustaway_core::rules::validate(rule)?;
+        if let Some(policy) = self.prepared_log_policy(rule)? {
+            return policy.roots(&self.local, &self.roaming);
+        }
         if let Some(spec) = dustaway_core::app_cache::rule(&rule.id) {
+            if spec.folder == "discovered" {
+                let mut inventory = self.inventory.lock().unwrap();
+                if inventory.is_none() {
+                    *inventory = Some(crate::app_cache::Inventory::read(cancel)?);
+                }
+                #[cfg(test)]
+                let drives = self.discovery_drives.clone();
+                #[cfg(not(test))]
+                let drives = crate::discovered_cache::fixed_drives(cancel)?;
+                return crate::discovered_cache::Discovery {
+                    drives: &drives,
+                    local: &self.local,
+                    roaming: &self.roaming,
+                    inventory: inventory.as_ref().unwrap(),
+                    volumes,
+                    exclusions: &CompiledExclusions::new(exclusions),
+                    cancel,
+                }
+                .roots(spec, issue);
+            }
             return crate::app_cache::roots(&self.local, &self.roaming, spec, cancel, issue);
         }
         if let Some(spec) = dustaway_core::developer::rule(&rule.id) {
@@ -288,6 +335,9 @@ impl Platform for WindowsPlatform {
     }
 
     fn cleanup_validated(&self, rule: &RuleDescriptor) -> bool {
+        if self.prepared_log_policy(rule).is_ok_and(|p| p.is_some()) {
+            return true;
+        }
         #[cfg(test)]
         if let Some(acceptance) = &self.real_app_acceptance {
             return acceptance.require(self, rule).is_ok();
@@ -300,6 +350,9 @@ impl Platform for WindowsPlatform {
     }
     fn validate_candidate(&self, rule: &RuleDescriptor, file: &FileRecord) -> Result<()> {
         dustaway_core::rules::validate(rule)?;
+        if let Some(policy) = self.prepared_log_policy(rule)? {
+            return self.validate_log(rule, policy, file).map(|_| ());
+        }
         if matches!(rule.root.as_str(), "user_temp" | "system_temp" | "iis_logs") {
             let snapshot: Snapshot = serde_json::from_str(&file.opaque)?;
             let root = from_native(&snapshot.root);
@@ -457,6 +510,9 @@ impl Platform for WindowsPlatform {
         emit: &mut dyn FnMut(ScanEvent),
     ) -> Result<()> {
         ensure!(volumes.is_none_or(|v| !v.is_empty()), "请选择至少一个磁盘");
+        if let Some(policy) = self.prepared_log_policy(rule)? {
+            return self.scan_logs(rule, policy, exclusions, volumes, cancel, emit);
+        }
         let cache_spec = dustaway_core::app_cache::rule(&rule.id);
         let code_identity = cache_spec
             .filter(|s| s.cleanable())
@@ -471,8 +527,14 @@ impl Platform for WindowsPlatform {
         let exclusions = CompiledExclusions::new(exclusions);
         let outcome = (|| -> Result<()> {
             let mut issues = 0;
+            let mut excluded_locations = 0;
             let mut application_notice = None;
             let mut coverage = |code| {
+                if code == ReasonCode::Excluded {
+                    excluded_locations += 1;
+                    emit(ScanEvent::Retained(code));
+                    return;
+                }
                 issues += 1;
                 emit(ScanEvent::CoverageIssue(code));
             };
@@ -491,7 +553,7 @@ impl Platform for WindowsPlatform {
                     found.roots
                 })
             } else {
-                self.discover_roots(rule, Some(cancel), &mut coverage)
+                self.discover_roots_in(rule, volumes, raw_exclusions, Some(cancel), &mut coverage)
             };
             let roots = match discovery {
                 Ok(roots) => roots,
@@ -540,7 +602,7 @@ impl Platform for WindowsPlatform {
                 !roots.is_empty() || issues == 0,
                 Refusal(ReasonCode::DirectoryInaccessible)
             );
-            if roots.is_empty() {
+            if roots.is_empty() && excluded_locations == 0 {
                 let base = if let Some(product) = dustaway_core::browsers::chromium(&rule.root) {
                     Some(self.local.join(product.user_data))
                 } else if rule.root == "firefox" {
@@ -548,7 +610,8 @@ impl Platform for WindowsPlatform {
                 } else {
                     None
                 };
-                let missing = cache_spec.is_some_and(|s| s.kind == "readonly_observed")
+                let missing = cache_spec
+                    .is_some_and(|s| s.kind == "readonly_observed" || s.folder == "discovered")
                     || base.is_some_and(|p| p.try_exists().is_ok_and(|exists| !exists));
                 emit(ScanEvent::NoticeCode(application_notice.unwrap_or(
                     if missing {
@@ -822,6 +885,9 @@ impl Platform for WindowsPlatform {
     }
     fn blocked(&self, rule: &RuleDescriptor) -> Result<Option<dustaway_core::BlockReason>> {
         dustaway_core::rules::validate(rule)?;
+        if let Some(policy) = self.prepared_log_policy(rule)? {
+            return self.logs_blocked(rule, policy);
+        }
         #[cfg(test)]
         if let Some(acceptance) = &self.real_app_acceptance {
             return match acceptance.require(self, rule) {
@@ -926,6 +992,9 @@ impl Platform for WindowsPlatform {
                 self.cleanup_validated(rule),
                 Refusal(ReasonCode::ValidationPending)
             );
+            if let Some(policy) = self.prepared_log_policy(rule)? {
+                return self.delete_log(rule, policy, file, exclusions);
+            }
             let _cache_identity = dustaway_core::app_cache::rule(&rule.id)
                 .map(|spec| self.cache_identity(spec))
                 .transpose()?;
@@ -1091,18 +1160,26 @@ fn prefilter(attributes: u32, modified: u64, age: u32, cutoff: i64) -> Option<Re
 }
 
 pub fn volume_target(path: &Path) -> Result<dustaway_core::VolumeTarget> {
+    volume_target_cancellable(path, None)
+}
+fn volume_target_cancellable(
+    path: &Path,
+    cancel: Option<&AtomicBool>,
+) -> Result<dustaway_core::VolumeTarget> {
     use windows::{Win32::Storage::FileSystem::GetVolumeNameForVolumeMountPointW, core::PCWSTR};
+    check_cancel(cancel)?;
     let path = extended(path)?;
     let drive = path
         .ancestors()
         .last()
         .ok_or(Refusal(ReasonCode::UnsupportedVolume))?;
-    is_fixed_ntfs(&path)?;
+    is_fixed_ntfs_cancellable(&path, cancel)?;
     let name = wide(drive);
     let mut guid = [0u16; 128];
     unsafe {
         GetVolumeNameForVolumeMountPointW(PCWSTR(name.as_ptr()), &mut guid)?;
     }
+    check_cancel(cancel)?;
     let len = guid
         .iter()
         .position(|c| *c == 0)
@@ -1271,6 +1348,8 @@ mod tests {
             tool_roots: Default::default(),
             tool_probe: std::sync::Arc::new(crate::tool_discovery::UnavailableProbe),
             real_app_acceptance: None,
+            log_test_acceptance: None,
+            discovery_drives: vec![],
             app_test_identity: None,
             app_test_acceptance: None,
             scope: Scope::User,

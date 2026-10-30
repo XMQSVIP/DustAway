@@ -650,7 +650,14 @@ impl Engine {
                 return Err(error);
             }
             self.insert_batch(&rule.id, &mut pending)?;
-            let (availability, availability_note) = match self.platform.blocked(&rule) {
+            // A cancelled scan must not start another installation/process observation.
+            // Preparation still performs its own fresh availability checks.
+            let availability_result = if self.cancelled.load(Ordering::Acquire) {
+                Ok(None)
+            } else {
+                self.platform.blocked(&rule)
+            };
+            let (availability, availability_note) = match availability_result {
                 Ok(Some(reason)) => (Some(reason.code), Some(reason.message)),
                 Ok(None) => (None, None),
                 Err(_) => (

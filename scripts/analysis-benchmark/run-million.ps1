@@ -1,4 +1,12 @@
-param([string]$Output = 'artifacts/analysis-million/formal-r3', [string]$IndexDirectory = 'D:\DustAway-tests\dustaway-analysis-cache-million-20261002')
+param(
+    [string]$Output = 'artifacts/analysis-million/formal-r3',
+    [string]$IndexDirectory = 'D:\DustAway-tests\dustaway-analysis-cache-million-20261002',
+    [string]$Baseline = 'target/bench-million-baseline/release/dustaway-analysis-bench.exe',
+    [string]$Current = 'target/bench-million/release/dustaway-analysis-bench.exe',
+    [string]$SmallFixture = 'artifacts/dustaway-analysis-bench-0.10',
+    [string]$LargeFixture = 'F:\DustAway-tests\dustaway-analysis-bench-million-v1',
+    [switch]$MatchedCurrentBaseline
+)
 $ErrorActionPreference = 'Stop'
 $workspace = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
 Set-Location -LiteralPath $workspace
@@ -6,12 +14,12 @@ $env:DUSTAWAY_BENCH_INDEX_ROOT = $IndexDirectory
 $destination = [IO.Path]::GetFullPath((Join-Path $workspace $Output))
 if (Test-Path -LiteralPath $destination) { throw 'Choose a new output folder; raw results must not be overwritten.' }
 New-Item -ItemType Directory -Path $destination | Out-Null
-$old = Join-Path $workspace 'target/bench-million-baseline/release/dustaway-analysis-bench.exe'
-$new = Join-Path $workspace 'target/bench-million/release/dustaway-analysis-bench.exe'
-$fixture = Join-Path $workspace 'artifacts/dustaway-analysis-bench-0.10'
-$large = 'F:\DustAway-tests\dustaway-analysis-bench-million-v1'
+$old = (Resolve-Path -LiteralPath $Baseline).Path
+$new = (Resolve-Path -LiteralPath $Current).Path
+$fixture = (Resolve-Path -LiteralPath $SmallFixture).Path
+$large = (Resolve-Path -LiteralPath $LargeFixture).Path
 $hashes = @{baseline=(Get-FileHash -LiteralPath $old).Hash; current=(Get-FileHash -LiteralPath $new).Hash}
-$environment = @{started_at=(Get-Date).ToString('o'); system=(Get-CimInstance Win32_OperatingSystem | Select-Object Caption,Version,BuildNumber,TotalVisibleMemorySize); cpu=(Get-CimInstance Win32_Processor | Select-Object Name); hashes=$hashes; cache_directory=$IndexDirectory; method='Same host, Release, sequential old/new runs; no cache flushing. Source fixtures remain on the original HDD; current index uses the separately recorded location (D is NVMe on this host), old index remains in memory. This task finishes builds and fixture generation before measurement. Ambient compiler counts are recorded per run; other projects are not controlled.'}
+$environment = @{started_at=(Get-Date).ToString('o'); system=(Get-CimInstance Win32_OperatingSystem | Select-Object Caption,Version,BuildNumber,TotalVisibleMemorySize); cpu=(Get-CimInstance Win32_Processor | Select-Object Name); hashes=$hashes; cache_directory=$IndexDirectory; matched_current_baseline=[bool]$MatchedCurrentBaseline; method='Same host, Release, sequential old/new runs; no cache flushing. Paths, binary hashes and compiler counts are recorded. With MatchedCurrentBaseline both programs use the same disk-index implementation and comparison limit; otherwise this is the historical memory-index baseline.'}
 $environment | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath (Join-Path $destination 'environment.json') -Encoding utf8
 function Measure-Case([string]$Name,[string]$Binary,[string]$Root,[string]$Count,[string[]]$Extra=@()) {
     $started=Get-Date
@@ -29,7 +37,11 @@ Measure-Case 'current-1000000-1' $new $large '1000000'
 Measure-Case 'current-3000000-1' $new $large '3000000'
 foreach ($count in @('100000','500000')) {
     foreach ($round in 1..5) {
-        Measure-Case "baseline-$count-$round" $old $fixture $count
+        if ($MatchedCurrentBaseline) {
+            Measure-Case "baseline-$count-$round" $old $fixture $count @('--comparison')
+        } else {
+            Measure-Case "baseline-$count-$round" $old $fixture $count
+        }
         Measure-Case "current-$count-$round" $new $fixture $count @('--comparison')
     }
 }

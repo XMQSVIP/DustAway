@@ -1,3 +1,4 @@
+import capabilityRules from '../previewRules';
 import { cleanup, render, screen } from '@testing-library/react';
 import { afterEach, expect, it } from 'vitest';
 import { applicationCapability, applicationRuntimeBlock } from '../applicationCapability';
@@ -72,6 +73,7 @@ it('shows cleanup versions separately from read-only scan samples', () => {
   app.supported_version = '99.0.0.1';
   render(
     <ApplicationSupportNotice
+      rules={capabilityRules}
       support={app}
       loading={false}
       error=""

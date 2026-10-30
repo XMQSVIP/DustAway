@@ -1,6 +1,7 @@
 //! Offline evidence metadata. It never authorizes an arbitrary path or command.
 use crate::RuleDescriptor;
 use serde::Deserialize;
+use std::sync::OnceLock;
 #[derive(Deserialize)]
 pub struct Evidence {
     pub rule_id: String,
@@ -10,9 +11,12 @@ pub struct Evidence {
     pub method: String,
     pub real_acceptance: String,
 }
-pub fn catalog() -> Vec<Evidence> {
-    serde_json::from_str(include_str!("../../../rules/cleanup-evidence.json"))
-        .expect("compiled evidence")
+pub fn catalog() -> &'static [Evidence] {
+    static CATALOG: OnceLock<Vec<Evidence>> = OnceLock::new();
+    CATALOG.get_or_init(|| {
+        serde_json::from_str(include_str!("../../../rules/cleanup-evidence.json"))
+            .expect("compiled evidence")
+    })
 }
 pub fn documented_files(rule: &RuleDescriptor) -> bool {
     rule.id == "windows.crash_dumps"
@@ -63,7 +67,7 @@ mod tests {
         let rules = crate::rules::catalog().unwrap();
         let evidence = catalog();
         let mut ids = std::collections::HashSet::new();
-        for e in &evidence {
+        for e in evidence {
             assert!(ids.insert(&e.rule_id));
             let r = rules.iter().find(|r| r.id == e.rule_id).unwrap();
             assert_eq!(

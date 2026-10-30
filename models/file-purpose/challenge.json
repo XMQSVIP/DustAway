@@ -1,0 +1,468 @@
+{
+  "schema_version": 1,
+  "provenance": "Authored synthetic v2 challenge regression, MIT. Names and paths are fictional. Used during development; not an independent real-machine test.",
+  "samples": [
+    {
+      "group": "v2-cn",
+      "split": "test",
+      "path": "F:/Portable/Peony/缓存",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "v2-cn",
+      "split": "test",
+      "path": "F:/Portable/Peony/缓存/条目.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "v2-cn",
+      "split": "test",
+      "path": "F:/Portable/Peony/网页缓存/响应.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "v2-cn",
+      "split": "test",
+      "path": "F:/Portable/Peony/图形缓存/着色器.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "v2-cn",
+      "split": "test",
+      "path": "F:/Portable/Peony/日志",
+      "directory": true,
+      "label": "logs"
+    },
+    {
+      "group": "v2-cn",
+      "split": "test",
+      "path": "F:/Portable/Peony/日志/运行.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "v2-cn",
+      "split": "test",
+      "path": "F:/Portable/Peony/诊断日志/错误.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "v2-cn",
+      "split": "test",
+      "path": "F:/Portable/Peony/日志/运行.log.3",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "v2-cn",
+      "split": "test",
+      "path": "F:/Portable/Peony/临时",
+      "directory": true,
+      "label": "temporary"
+    },
+    {
+      "group": "v2-cn",
+      "split": "test",
+      "path": "F:/Portable/Peony/临时文件/工作.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "v2-cn",
+      "split": "test",
+      "path": "F:/Portable/Peony/临时/会话.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "v2-cn",
+      "split": "test",
+      "path": "F:/Portable/Peony/文档",
+      "directory": true,
+      "label": "personal"
+    },
+    {
+      "group": "v2-cn",
+      "split": "test",
+      "path": "F:/Portable/Peony/文档/合同.docx",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "v2-cn",
+      "split": "test",
+      "path": "F:/Portable/Peony/备份/项目.bak",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "v2-cn",
+      "split": "test",
+      "path": "F:/Portable/Peony/配置",
+      "directory": true,
+      "label": "application_data"
+    },
+    {
+      "group": "v2-cn",
+      "split": "test",
+      "path": "F:/Portable/Peony/数据库/消息.db",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "v2-cn",
+      "split": "test",
+      "path": "F:/Portable/Peony/配置/设置.json",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "v2-rotation",
+      "split": "test",
+      "path": "E:/Tools/Sage/logs/server.log.1",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "v2-rotation",
+      "split": "test",
+      "path": "E:/Tools/Sage/logs/server.log.20261025",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "v2-rotation",
+      "split": "test",
+      "path": "E:/Tools/Sage/logs/server.20261025.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "v2-rotation",
+      "split": "test",
+      "path": "E:/Tools/Sage/logs/server.log.2",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "v2-rotation",
+      "split": "test",
+      "path": "E:/Tools/Sage/diagnostics/output.etl",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "v2-layout",
+      "split": "test",
+      "path": "E:/Tools/Sage/GPUCache/data_1",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "v2-layout",
+      "split": "test",
+      "path": "E:/Tools/Sage/Code Cache/js/compiled.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "v2-layout",
+      "split": "test",
+      "path": "E:/Tools/Sage/cache2/entries/object.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "v2-layout",
+      "split": "test",
+      "path": "E:/Tools/Sage/ShaderCache/shader.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "v2-layout",
+      "split": "test",
+      "path": "E:/Tools/Sage/Cache_Data/index",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "v2-layout",
+      "split": "test",
+      "path": "E:/Tools/Sage/config/app.toml",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "v2-layout",
+      "split": "test",
+      "path": "E:/Tools/Sage/settings/preferences.json",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "v2-layout",
+      "split": "test",
+      "path": "E:/Tools/Sage/temp/build.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "v2-layout",
+      "split": "test",
+      "path": "E:/Tools/Sage/tmp/session.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "v2-layout",
+      "split": "test",
+      "path": "E:/Tools/Sage/Projects/scene.blend",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "v2-layout",
+      "split": "test",
+      "path": "E:/Tools/Sage/Pictures/photo.png",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "v2-conflict",
+      "split": "test",
+      "path": "D:/Cache/Documents/entry.cache",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-conflict",
+      "split": "test",
+      "path": "D:/Cache/config/entry.cache",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-conflict",
+      "split": "test",
+      "path": "D:/logs/database/session.log",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-conflict",
+      "split": "test",
+      "path": "D:/temp/Backups/build.tmp",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-conflict",
+      "split": "test",
+      "path": "D:/Cache/Projects/entry.cache",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-conflict",
+      "split": "test",
+      "path": "D:/Cache/Pictures/entry.cache",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-conflict",
+      "split": "test",
+      "path": "D:/Backups/Cache/entry.cache",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-conflict",
+      "split": "test",
+      "path": "D:/Source/Cache/entry.cache",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-conflict",
+      "split": "test",
+      "path": "D:/.git/Cache/entry.cache",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-conflict",
+      "split": "test",
+      "path": "D:/Cache/Cookies/entry.cache",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-conflict",
+      "split": "test",
+      "path": "D:/Cache/IndexedDB/entry.cache",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-conflict",
+      "split": "test",
+      "path": "D:/Cache/settings.json",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-conflict",
+      "split": "test",
+      "path": "D:/temp/config.ini",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-conflict",
+      "split": "test",
+      "path": "D:/logs/data.sqlite-wal",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-conflict",
+      "split": "test",
+      "path": "D:/Cache/voice.flac",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-conflict",
+      "split": "test",
+      "path": "D:/Cache/scene.blend",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-conflict",
+      "split": "test",
+      "path": "D:/Cache/script.py",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-conflict",
+      "split": "test",
+      "path": "D:/Cache/engine.dll",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-conflict",
+      "split": "test",
+      "path": "D:/Cache/secret.pfx",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-conflict",
+      "split": "test",
+      "path": "D:/Cache/Documents",
+      "directory": true,
+      "label": null
+    },
+    {
+      "group": "v2-conflict",
+      "split": "test",
+      "path": "D:/Cache/config",
+      "directory": true,
+      "label": null
+    },
+    {
+      "group": "v2-unknown",
+      "split": "test",
+      "path": "D:/Unknown/cache-notes.md",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-unknown",
+      "split": "test",
+      "path": "D:/Unknown/cache.tmp",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-unknown",
+      "split": "test",
+      "path": "D:/Unknown/report.log.1",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-unknown",
+      "split": "test",
+      "path": "D:/Unknown/data.bin",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-unknown",
+      "split": "test",
+      "path": "D:/Unknown/session.tmp",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-unknown",
+      "split": "test",
+      "path": "D:/Unknown/random.qzx",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-unknown",
+      "split": "test",
+      "path": "D:/Unknown/新建文件夹",
+      "directory": true,
+      "label": null
+    },
+    {
+      "group": "v2-unknown",
+      "split": "test",
+      "path": "D:/Unknown/CacheReport.docx",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-unknown",
+      "split": "test",
+      "path": "D:/Cache/a/b/c/d/entry.cache",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-unknown",
+      "split": "test",
+      "path": "D:/Cache/../config/entry.cache",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-unknown",
+      "split": "test",
+      "path": "D:/Cache/entry.cache:secret",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v2-unknown",
+      "split": "test",
+      "path": "D:/Cache/not-cache-project",
+      "directory": true,
+      "label": null
+    }
+  ]
+}

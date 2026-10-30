@@ -10,7 +10,7 @@ import {
   unlink,
   stat,
 } from 'node:fs/promises';
-import { join, resolve } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
 import { spawn, execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import assert from 'node:assert/strict';
@@ -19,10 +19,12 @@ import { seedAnalysis, checkAnalysis } from './analysis-checks.mjs';
 import { checkManualCleanup } from './manual-cleanup-checks.mjs';
 import { checkPurposeResults } from './purpose-result-checks.mjs';
 
-const output = resolve(process.env.DUSTAWAY_E2E_OUTPUT ?? 'artifacts/cleanup-preparation-e2e');
+const version = JSON.parse(await readFile('package.json', 'utf8')).version;
+const output = resolve(process.env.DUSTAWAY_E2E_OUTPUT ?? `artifacts/desktop-e2e-${version}`);
 const cleanupOnly = process.argv.includes('--cleanup-only');
 if (cleanupOnly) process.env.DUSTAWAY_ANALYSIS_SMALL = '1';
-await mkdir(output, { recursive: true });
+await mkdir(dirname(output), { recursive: true });
+await mkdir(output); // A run must never overwrite an earlier evidence directory.
 
 // Keep the large fixture on the project volume, away from a space-starved system disk.
 const root = await mkdtemp(join(resolve('artifacts'), 'dustaway-e2e-'));
@@ -98,6 +100,14 @@ async function click(xpath) {
         (await command('GET', `/session/${session}/element/${candidate}/enabled`))
       )
         return candidate;
+      // A delayed scan reconciliation may collapse the result group after the
+      // previous poll. Reopen its visible heading, as a user would, then locate
+      // the control again. Never reveal controls from inactive pages.
+      await command('POST', `/session/${session}/execute/sync`, {
+        script: `const heading=arguments[0].closest('.purpose-group')?.querySelector('.purpose-toggle');
+          if(heading?.getClientRects().length && heading.getAttribute('aria-expanded')==='false') heading.click();`,
+        args: [{ 'element-6066-11e4-a52e-4f735466cecf': candidate }],
+      });
     }
     return false;
   });
@@ -167,10 +177,14 @@ async function openWorkbench() {
     script: `for(const d of document.querySelectorAll('details.result-section:not([open]), details.remaining-results:not([open])')) d.querySelector('summary')?.click();`,
     args: [],
   });
-  await command('POST', `/session/${session}/execute/sync`, {
-    script: `for(const b of document.querySelectorAll('.purpose-toggle[aria-expanded="false"]')) b.click();`,
-    args: [],
-  });
+  await until(() =>
+    command('POST', `/session/${session}/execute/sync`, {
+      script: `const collapsed=[...document.querySelectorAll('.purpose-toggle[aria-expanded="false"]')];
+        for(const button of collapsed) button.click();
+        return collapsed.length===0 && !!document.querySelector('.purpose-group .rule-row');`,
+      args: [],
+    }),
+  );
 }
 async function finishResult() {
   const finish =
@@ -213,6 +227,17 @@ const invoke = (name, args = {}) =>
   });
 async function openApp(name) {
   await openWorkbench();
+  if (name === '微信') {
+    const collapsed = await command('POST', `/session/${session}/execute/sync`, {
+      script:
+        'return document.querySelector(".weixin-heading .group-heading")?.getAttribute("aria-expanded")==="false";',
+      args: [],
+    });
+    if (collapsed)
+      await click(
+        '//section[@aria-label="微信专项清理"]//button[contains(@class,"group-heading")]',
+      );
+  }
   const id = {
     Windows: 'windows',
     'Microsoft Edge': 'edge',
@@ -230,7 +255,7 @@ async function openApp(name) {
     迅雷: 'thunder',
   }[name];
   const found = await command('POST', `/session/${session}/execute/sync`, {
-    script: `return !!document.querySelector('.purpose-group .rule-row[data-rule^="'+arguments[0]+'."]')?.getClientRects().length;`,
+    script: `return [...document.querySelectorAll('.rule-row[data-rule^="'+arguments[0]+'."]')].some(row=>row.getClientRects().length);`,
     args: [id],
   });
   assert(found, `Expected discovered results for ${name}`);
@@ -243,7 +268,7 @@ async function captureDecision(name) {
     args: ['button[aria-label="关闭提示"]'],
   });
   if (noticeVisible) await click('//button[@aria-label="关闭提示"]');
-  await mkdir(`${output}/discovery-0.18.0`, { recursive: true });
+  await mkdir(`${output}/discovery-${version}`, { recursive: true });
   for (const [width, height] of [
     [1100, 780],
     [760, 580],
@@ -269,7 +294,7 @@ async function captureDecision(name) {
     );
     decisionLayouts.push({ name, ...layout });
     await writeFile(
-      `${output}/discovery-0.18.0/${name}-${width}.png`,
+      `${output}/discovery-${version}/${name}-${width}.png`,
       Buffer.from(await command('GET', `/session/${session}/screenshot`), 'base64'),
     );
   }
@@ -299,7 +324,7 @@ acceptance: try {
   assert(!(await source()).includes('系统临时文件'));
   assert((await source()).includes('拂尘'));
   await writeFile(
-    `${output}/home-diagnostic-0.18.0.png`,
+    `${output}/home-diagnostic-${version}.png`,
     Buffer.from(await command('GET', `/session/${session}/screenshot`), 'base64'),
   );
   // This build exposes one isolated directory rather than real disks. Explicitly use
@@ -333,7 +358,7 @@ acceptance: try {
   );
 
   await writeFile(
-    `${output}/discovery-0.18.0/settings.png`,
+    `${output}/discovery-${version}/settings.png`,
     Buffer.from(await command('GET', '/session/' + session + '/screenshot'), 'base64'),
   );
   await click('//button[contains(.,"深色")]');
@@ -353,6 +378,7 @@ acceptance: try {
         until,
         source,
         root,
+        output,
         fixture: analysisFixture,
       });
   // The analysis recovery check reloads the WebView. The synthetic disk is not C:,
@@ -437,12 +463,15 @@ acceptance: try {
     JSON.stringify(compact),
   );
   await writeFile(
-    `${output}/desktop-minimum-0.18.0.png`,
+    `${output}/desktop-minimum-${version}.png`,
     Buffer.from(await command('GET', `/session/${session}/screenshot`), 'base64'),
   );
   await command('POST', `/session/${session}/window/rect`, { width: 1100, height: 780 });
   const lightPng = await command('GET', `/session/${session}/screenshot`);
-  await writeFile(`${output}/desktop-details-light-0.18.0.png`, Buffer.from(lightPng, 'base64'));
+  await writeFile(
+    `${output}/desktop-details-light-${version}.png`,
+    Buffer.from(lightPng, 'base64'),
+  );
   await click('//button[normalize-space(.)="取消本页选择"]');
   await click('//button[@aria-label="关闭文件明细"]');
   await until(async () => (await source()).includes('尚未选择可清理文件'));
@@ -467,7 +496,7 @@ acceptance: try {
   await click('//div[contains(@class,"files-dialog")]//summary[normalize-space(.)="完整路径"]');
   assert((await source()).includes(root));
   const detailPng = await command('GET', `/session/${session}/screenshot`);
-  await writeFile(`${output}/desktop-details-0.18.0.png`, Buffer.from(detailPng, 'base64'));
+  await writeFile(`${output}/desktop-details-${version}.png`, Buffer.from(detailPng, 'base64'));
   const layout = await command('POST', `/session/${session}/execute/sync`, {
     script: `const d=document.querySelector('.files-dialog');const p=d.querySelector('.pagination');return {dialog:d.getBoundingClientRect().bottom,pagination:p.getBoundingClientRect().bottom,height:innerHeight,overflow:document.documentElement.scrollWidth>innerWidth};`,
     args: [],
@@ -480,7 +509,7 @@ acceptance: try {
   await click('//button[contains(.,"清理已选")]');
   await until(async () => (await source()).includes('确认永久删除这些文件'));
   await writeFile(
-    `${output}/discovery-0.18.0/confirmation.png`,
+    `${output}/discovery-${version}/confirmation.png`,
     Buffer.from(await command('GET', '/session/' + session + '/screenshot'), 'base64'),
   );
   assert((await source()).includes('扫描结果不完整；清理范围仅包含已通过安全校验并确认的候选'));
@@ -500,7 +529,7 @@ acceptance: try {
   assert((await source()).includes('扫描结果不完整'));
   const png = await command('GET', `/session/${session}/screenshot`);
   await mkdir('artifacts', { recursive: true });
-  await writeFile(`${output}/desktop-e2e-0.18.0.png`, Buffer.from(png, 'base64'));
+  await writeFile(`${output}/desktop-e2e-${version}.png`, Buffer.from(png, 'base64'));
   const appPath = resolve('target/debug/dustaway.exe').replaceAll("'", "''");
   const resources = await promisify(execFile)(
     'powershell.exe',
@@ -511,7 +540,7 @@ acceptance: try {
     ],
     { windowsHide: true },
   );
-  await writeFile(`${output}/resource-snapshot-0.18.0.json`, resources.stdout);
+  await writeFile(`${output}/resource-snapshot-${version}.json`, resources.stdout);
   // New actions use the same guarded fixture provider; no real cache is ever deleted here.
   const keep = join(root, 'cache', '保留 空格.tmp');
   const disposable = join(root, 'cache', 'second.tmp');
@@ -630,7 +659,7 @@ acceptance: try {
     args: [],
   });
   assert.deepEqual(lostCounts, { start_scan: 1, execute_cleanup: 1 });
-  assert((await source()).includes('扫描时发现'));
+  assert((await source()).includes('扫描时占用'));
   await click('//details[contains(@class,"result-fold")]/summary');
   await tabTo('已删除 1 个文件');
   await key('\uE007');
@@ -658,7 +687,7 @@ acceptance: try {
   await tabTo('关闭文件明细');
   await key('\uE007');
   await writeFile(
-    `${output}/desktop-results-0.18.0.png`,
+    `${output}/desktop-results-${version}.png`,
     Buffer.from(await command('GET', `/session/${session}/screenshot`), 'base64'),
   );
   // Hold an invocation BEFORE the backend sees it. Recovery must fence it.
@@ -694,11 +723,11 @@ acceptance: try {
   // Closing a running analysis must stop the backend and allow the process to exit.
   if (cleanupOnly) {
     await writeFile(
-      `${output}/system-cleanup-0.19.0.json`,
+      `${output}/cleanup-desktop-${version}.json`,
       JSON.stringify(
         {
           passed: true,
-          version: '0.19.0',
+          version,
           fixture: root,
           retainedReadOnly: retainedPage.items.length > 0,
           purposeResultEvidence,
@@ -718,7 +747,7 @@ acceptance: try {
       ),
     );
     console.log(
-      'PASS: 0.19.0 cleanup desktop, retained records, minimum window, keyboard, confirmation, isolated deletion and recovery',
+      `PASS: ${version} cleanup desktop, retained records, minimum window, keyboard, confirmation, isolated deletion and recovery`,
     );
     break acceptance;
   }
@@ -787,16 +816,30 @@ acceptance: try {
       script: "return window.__TAURI_INTERNALS__.invoke('get_runtime_snapshot',{scope:'user'});",
       args: [],
     });
+  const scanBoot = await invoke('bootstrap');
+  const expectedScannedRuleIds = scanBoot.rules
+    .filter((rule) => !rule.requires_admin && !scanBoot.settings.excluded_rules.includes(rule.id))
+    .map((rule) => rule.id)
+    .sort();
   await until(async () => {
     const value = await readRuntime();
-    return value.status.state === 'ready' && value.summary?.rules.length === 72;
+    return (
+      value.status.state === 'ready' &&
+      value.summary?.rules.length === expectedScannedRuleIds.length
+    );
   });
-  await until(() =>
-    element('//details[contains(@class,"retained-results")]//*[@data-rule="weixin.logs"]'),
+  assert.deepEqual(
+    (await readRuntime()).summary.rules.map((rule) => rule.rule_id).sort(),
+    expectedScannedRuleIds,
   );
+  await until(() => element('//*[@data-rule="weixin.logs"]'));
   // The result groups reset their expansion when the new scan reaches the UI.
   // Select through the visible group control, as in the current homepage flow.
-  await click('//input[@aria-label="选择临时文件建议项"]');
+  const tempSelected = await command('POST', `/session/${session}/execute/sync`, {
+    script: 'return document.querySelector(\'input[aria-label="选择临时文件建议项"]\')?.checked;',
+    args: [],
+  });
+  if (!tempSelected) await click('//input[@aria-label="选择临时文件建议项"]');
   await openApp('微信');
   const runningApps = await readRuntime();
   assert(
@@ -808,12 +851,21 @@ acceptance: try {
     script: `const panel=document.querySelector('.cleanup-decision'); return {text:panel.textContent,quitAction:[...panel.querySelectorAll('button')].some(b=>/重新检查.*状态/.test(b.textContent)),primary:document.querySelector('.action-bar .primary')?.textContent};`,
     args: [],
   });
-  assert(applicationDecision.text.includes('当前版本暂不支持清理'));
+  assert(/尚未开放清理|当前不支持清理/.test(applicationDecision.text));
   const cleanupCapabilities = await command('POST', `/session/${session}/execute/sync`, {
     script: "return window.__TAURI_INTERNALS__.invoke('get_application_support');",
     args: [],
   });
-  assert.equal(cleanupCapabilities.flatMap((app) => app.rules).length, 18);
+  const compiledCatalogue = JSON.parse(
+    await readFile('scripts/application-catalog-v3.json', 'utf8'),
+  );
+  assert.deepEqual(
+    cleanupCapabilities
+      .flatMap((app) => app.rules)
+      .map((rule) => rule.rule_id)
+      .sort(),
+    compiledCatalogue.rules.map((rule) => rule.rule_id).sort(),
+  );
   for (const rule of cleanupCapabilities.flatMap((app) => app.rules)) {
     if (['dingtalk.http', 'dingtalk.code'].includes(rule.rule_id)) {
       assert.equal(rule.cleanup_validated, true);
@@ -846,15 +898,12 @@ acceptance: try {
       }[name] + '-readonly',
     );
     const state = await command('POST', `/session/${session}/execute/sync`, {
-      script: `const row=document.querySelector('.retained-results .rule-row[data-rule^="'+arguments[0]+'."]'); return {locked:!!row?.querySelector('.rule-lock'), selectable:!!row?.querySelector('input[type="checkbox"]'), retained:!!row, readonly:!!row?.querySelector('.readonly-label'), versionRestricted:!!row?.textContent.includes('当前应用版本或资料位置暂不支持清理')};`,
+      script: `const row=document.querySelector('.retained-results .rule-row[data-rule^="'+arguments[0]+'."]'); return {locked:!!row?.querySelector('.rule-lock'), selectable:!!row?.querySelector('input[type="checkbox"]'), retained:!!row, reasonVisible:/尚未开放清理|尚未通过核验|暂不开放删除|需退出应用/.test(row?.textContent??'')};`,
       args: [appId],
     });
     assert(
-      state.retained &&
-        state.locked &&
-        !state.selectable &&
-        (state.readonly || state.versionRestricted),
-      `${name} must remain blocked`,
+      state.retained && state.locked && !state.selectable && state.reasonVisible,
+      `${name} must remain blocked: ${JSON.stringify(state)}`,
     );
   }
   const forgedApplicationRequest = await command('POST', `/session/${session}/execute/sync`, {
@@ -866,14 +915,10 @@ acceptance: try {
   assert.match(forgedApplicationRequest.last_request?.error?.message ?? '', /真实应用验收尚未完成/);
   // Reattach the page to reconcile the control revision consumed by the deliberate rejection.
   await command('POST', `/session/${session}/refresh`, {});
-  await until(() =>
-    element('//details[contains(@class,"retained-results")]//*[@data-rule="weixin.logs"]'),
-  );
+  await until(() => element('//*[@data-rule="weixin.logs"]'));
   await openApp('微信');
   await unlink(join(root, '.application-running'));
-  await click(
-    '//details[contains(@class,"retained-results")]//*[@data-rule="weixin.logs"]//summary[normalize-space(.)="技术详情"]',
-  );
+  await click('//*[@data-rule="weixin.logs"]//summary[normalize-space(.)="技术详情"]');
   await click('//button[normalize-space(.)="重新核对应用信息"]');
   await until(async () => (await source()).includes('应用状态已重新检查'));
   const pendingApps = await readRuntime();
@@ -906,13 +951,13 @@ acceptance: try {
   const applicationLayout = await command('POST', `/session/${session}/execute/sync`, {
     script:
       'document.querySelector(arguments[0]).scrollIntoView({block:"start"}); return {overflow:document.documentElement.scrollWidth>innerWidth,barBottom:document.querySelector(".action-bar").getBoundingClientRect().bottom,height:innerHeight};',
-    args: ['.retained-results [data-rule="weixin.logs"]'],
+    args: ['.weixin-cleanup [data-rule="weixin.logs"]'],
   });
   assert(
     !applicationLayout.overflow && applicationLayout.barBottom <= applicationLayout.height + 0.01,
   );
   await writeFile(
-    `${output}/applications-gated-0.18.0.png`,
+    `${output}/applications-gated-${version}.png`,
     Buffer.from(await command('GET', `/session/${session}/screenshot`), 'base64'),
   );
   // Change only a disposable candidate after scanning to verify partial-success guidance.
@@ -946,7 +991,7 @@ acceptance: try {
   assert(!reviewDetail.editable);
   await command('POST', `/session/${session}/window/rect`, { width: 760, height: 580 });
   await writeFile(
-    `${output}/discovery-0.18.0/filtered-skipped-760.png`,
+    `${output}/discovery-${version}/filtered-skipped-760.png`,
     Buffer.from(await command('GET', `/session/${session}/screenshot`), 'base64'),
   );
   await click('//button[@aria-label="关闭文件明细"]');
@@ -962,7 +1007,7 @@ acceptance: try {
   await click('//nav/button[normalize-space(.)="清理"]');
   await captureDecision('partial-dark-reduced');
   await writeFile(
-    `${output}/discovery-0.18.0/layouts.json`,
+    `${output}/discovery-${version}/layouts.json`,
     JSON.stringify(decisionLayouts, null, 2),
   );
   const manualEvidence = await checkManualCleanup({ command, session, click, until, root, output });
@@ -996,18 +1041,18 @@ acceptance: try {
     { windowsHide: true },
   );
   await writeFile(
-    `${output}/desktop-e2e-0.18.0.json`,
+    `${output}/desktop-e2e-${version}.json`,
     JSON.stringify(
       {
-        version: '0.18.0',
+        version,
         developmentStage: 'manual-cleanup',
         manualEvidence,
         decisionLayouts,
         partialResultPrioritized: true,
         partialCoverageConfirmedAndPersisted: true,
-        ordinaryRulesScanned: 43,
+        ordinaryRulesScanned: finalSnapshot.summary.rules.length,
         readonlyRulesHaveNoSelectionControls: true,
-        domesticRulesScanned: 18,
+        domesticRulesScanned: cleanupCapabilities.flatMap((app) => app.rules).length,
         domesticReadonlyStatusRefresh: true,
         readonlyRunningDecision: applicationDecision,
         domesticReleaseGatePreserved: true,
@@ -1050,9 +1095,10 @@ acceptance: try {
   console.error(error);
   if (session) {
     const html = await source().catch(() => null);
-    if (html) await writeFile(`${output}/desktop-failure-0.18.0.html`, html).catch(() => {});
+    if (html) await writeFile(`${output}/desktop-failure-${version}.html`, html).catch(() => {});
     const png = await command('GET', `/session/${session}/screenshot`).catch(() => null);
-    if (png) await writeFile(`${output}/desktop-failure-0.18.0.png`, Buffer.from(png, 'base64'));
+    if (png)
+      await writeFile(`${output}/desktop-failure-${version}.png`, Buffer.from(png, 'base64'));
   }
   console.error(driverLog.slice(-6000));
   throw error;

@@ -1,3 +1,4 @@
+import capabilityRules from '../previewRules';
 import { cleanup, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, expect, it, vi } from 'vitest';
@@ -28,6 +29,7 @@ it('distinguishes a running application from pending real acceptance and exposes
   const refresh = vi.fn();
   render(
     <ApplicationSupportNotice
+      rules={capabilityRules}
       support={support}
       error=""
       loading={false}
@@ -46,6 +48,7 @@ it('distinguishes a running application from pending real acceptance and exposes
 it('describes cross-version layout recognition without implying cleanup or requiring an exit', async () => {
   render(
     <ApplicationSupportNotice
+      rules={capabilityRules}
       support={{
         ...support,
         app_id: 'feishu',

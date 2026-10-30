@@ -212,6 +212,9 @@ fn main() {
     let disk_bytes = index_bytes(&cache);
     peak_disk = peak_disk.max(disk_bytes);
     let mut read_queries = vec![];
+    let wait_counts = std::env::args().any(|a| a == "--wait-counts");
+    assert!(!wait_counts || cfg!(feature = "query-timing"));
+    let mut count_queries = vec![];
     let query_rounds = std::env::args()
         .find_map(|a| {
             a.strip_prefix("--query-rounds=")
@@ -223,7 +226,19 @@ fn main() {
         let q = read_query(&id, i % 18);
         let t = Instant::now();
         let result = engine.read_page(q.clone());
+        let needs_count = result.as_ref().is_ok_and(|page| page.total.is_none());
         read_queries.push(serde_json::json!({"case":i,"view":q.view,"metric":q.metric,"search":q.discovery.as_ref().map_or(q.search.as_str(), |d|d.search.as_str()),"elapsed_us":t.elapsed().as_micros(),"ok":result.is_ok(),"items":result.as_ref().ok().map(|r|r.items.len()),"error":result.err().map(|e|e.to_string())}));
+        if wait_counts && needs_count {
+            let started = Instant::now();
+            loop {
+                let count = engine.query_count(&q.request_id).unwrap();
+                if count.finished || started.elapsed().as_secs() >= 30 {
+                    count_queries.push(serde_json::json!({"case":i,"elapsed_us":started.elapsed().as_micros(),"finished":count.finished,"total":count.total,"error":count.error}));
+                    break;
+                }
+                std::thread::sleep(Duration::from_millis(2));
+            }
+        }
     }
     let cancel_request = uuid::Uuid::new_v4().to_string();
     let mut cancel_q = read_query(&id, 1);
@@ -249,7 +264,7 @@ fn main() {
     peak = peak.max(final_memory.peak_pagefile);
     println!(
         "{}",
-        serde_json::json!({"count":count,"scan_ms":s.scan_ms,"write_ms":s.write_ms,"index_ms":s.index_ms,"allocated_bytes":s.allocated_bytes,"allocation_unknown":s.allocation_unknown,"index_disk_bytes":disk_bytes,"peak_index_disk_bytes":peak_disk,"cancel_read_ms":cancel_read_ms,"cancel_read_interrupted":cancel_result.is_err(),"read_queries":read_queries,"cold_query":cold_query,"elapsed_ms":elapsed,"first_entries_ms":first,"cancel_ms":cancel_ms,"peak_private_bytes":peak,"state":s.state,"files":s.files,"entries":s.entries,"logical_bytes":s.logical_bytes,"unique_bytes":s.unique_bytes,"query_us":queries,"directory_query_us":directory_queries,"during_query":during_query,"discovery_queries":discovery_queries,"issues":s.issues,"directory_query_plans":directory_query_plans(&cache)})
+        serde_json::json!({"count":count,"scan_ms":s.scan_ms,"write_ms":s.write_ms,"index_ms":s.index_ms,"allocated_bytes":s.allocated_bytes,"allocation_unknown":s.allocation_unknown,"index_disk_bytes":disk_bytes,"peak_index_disk_bytes":peak_disk,"cancel_read_ms":cancel_read_ms,"cancel_read_interrupted":cancel_result.is_err(),"read_queries":read_queries,"count_queries":count_queries,"wait_counts":wait_counts,"cold_query":cold_query,"elapsed_ms":elapsed,"first_entries_ms":first,"cancel_ms":cancel_ms,"peak_private_bytes":peak,"state":s.state,"files":s.files,"entries":s.entries,"logical_bytes":s.logical_bytes,"unique_bytes":s.unique_bytes,"query_us":queries,"directory_query_us":directory_queries,"during_query":during_query,"discovery_queries":discovery_queries,"issues":s.issues,"directory_query_plans":directory_query_plans(&cache)})
     );
     engine.cancel_all();
     engine.close_session().unwrap();

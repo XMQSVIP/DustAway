@@ -50,16 +50,25 @@ export async function checkPurposeResults({ command, session, js, click, until, 
           return {singleAction:buttons.length===1,actionVisible:rect.top>=0&&rect.bottom<=innerHeight,rescanVisible:rescans.length===1&&rescan.top>=0&&rescan.bottom<=innerHeight,overflow:main.scrollWidth>main.clientWidth+1,firstChoiceVisible:document.querySelector('.recommended-results .purpose-heading').getBoundingClientRect().bottom<=main.getBoundingClientRect().bottom};`),
         );
         assert(
-          layout.singleAction &&
-            layout.actionVisible &&
-            layout.rescanVisible &&
-            !layout.overflow &&
-            layout.firstChoiceVisible,
+          layout.singleAction && layout.actionVisible && layout.rescanVisible && !layout.overflow,
           JSON.stringify(layout),
         );
-        layouts.push({ mode, width, height, ...layout });
         await writeFile(
           `${output}/purpose-${mode}-${width}.png`,
+          Buffer.from(await command('GET', `/session/${session}/screenshot`), 'base64'),
+        );
+        // A persistent partial-scan notice may push choices below the fold. Keep
+        // the notice and verify that the focused choice can be reached unobscured.
+        const choice = await js(`
+          const input=document.querySelector('.recommended-results .purpose-heading input');
+          input.focus(); input.scrollIntoView({block:'center',behavior:'instant'});
+          const rect=input.getBoundingClientRect(), main=document.querySelector('.main-content').getBoundingClientRect();
+          const hit=document.elementFromPoint(rect.x+rect.width/2,rect.y+rect.height/2);
+          return {focused:document.activeElement===input,visible:rect.top>=main.top&&rect.bottom<=main.bottom,unobscured:hit===input};`);
+        assert(choice.focused && choice.visible && choice.unobscured, JSON.stringify(choice));
+        layouts.push({ mode, width, height, ...layout, scrolledChoice: choice });
+        await writeFile(
+          `${output}/purpose-${mode}-${width}-choice.png`,
           Buffer.from(await command('GET', `/session/${session}/screenshot`), 'base64'),
         );
       }

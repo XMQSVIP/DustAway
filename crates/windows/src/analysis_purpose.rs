@@ -118,6 +118,7 @@ impl PurposeMap {
                 app_id: None,
                 basis: "verified_rule_location".into(),
                 recognition: None,
+                model_hint: None,
             };
         }
         let path = normalize(&entry.path);
@@ -130,6 +131,7 @@ impl PurposeMap {
                 app_id: Some(app.clone()),
                 basis: "standard_browser_data".into(),
                 recognition: None,
+                model_hint: None,
             };
         }
         if let Some((_, kind, basis)) = self.roots.iter().find(|(root, _, _)| contains(root, &path))
@@ -139,6 +141,7 @@ impl PurposeMap {
                 app_id: None,
                 basis: (*basis).into(),
                 recognition: None,
+                model_hint: None,
             };
         }
         AnalysisAdvice::default()

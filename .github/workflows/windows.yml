@@ -16,16 +16,9 @@ jobs:
           cache: pnpm
       - run: rustup show
       - run: pnpm install --frozen-lockfile
-      - run: cargo fmt --all --check
-      - run: pnpm notices
-      - run: pnpm build
-      - run: cargo clippy --workspace --all-targets -- -D warnings
-      - run: cargo test --workspace --locked
-      - run: pnpm test
-      - run: pnpm test:evidence
-      - run: pnpm test:acceptance
-      - run: pnpm test:desktop-driver
-      - run: pnpm check:applications
+      - run: pnpm check:quality
+      - run: git diff --exit-code
+      - run: pnpm prepare:helper
       - run: cargo check -p dustaway --features system-cleanup
       - run: pnpm portable
       - uses: actions/upload-artifact@v4

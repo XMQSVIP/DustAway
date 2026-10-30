@@ -11,8 +11,11 @@ pub struct CacheSpec {
     pub id: String,
     pub app: String,
     pub title: String,
+    /// Known Folder (local/roaming), or bounded volume/installation discovery.
     pub folder: String,
+    /// Profile-relative base, or a stable product/layout label for discovered scopes.
     pub base: String,
+    /// Cache leaves for Known Folders; volume-relative product seeds for discovery.
     pub paths: Vec<String>,
     pub kind: String,
     #[serde(default)]
@@ -91,7 +94,14 @@ mod tests {
         let mut ids = std::collections::HashSet::new();
         for s in catalog() {
             assert!(ids.insert(&s.id));
-            assert!(matches!(s.folder.as_str(), "local" | "roaming"));
+            assert!(matches!(
+                s.folder.as_str(),
+                "local" | "roaming" | "discovered"
+            ));
+            if s.folder == "discovered" {
+                assert!(!s.cleanable());
+                assert!(matches!(s.kind.as_str(), "updates" | "readonly_observed"));
+            }
             for p in std::iter::once(&s.base).chain(s.paths.iter()) {
                 assert!(
                     !p.starts_with('/')

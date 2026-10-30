@@ -92,9 +92,14 @@ impl Stamp {
 }
 
 pub fn stamp(handle: &Handle) -> Result<Stamp> {
+    stamp_cancellable(handle, None)
+}
+fn stamp_cancellable(handle: &Handle, cancel: Option<&AtomicBool>) -> Result<Stamp> {
+    check_cancel(cancel)?;
     unsafe {
         let mut info = BY_HANDLE_FILE_INFORMATION::default();
         GetFileInformationByHandle(handle.0, &mut info)?;
+        check_cancel(cancel)?;
         let mut basic = FILE_BASIC_INFO::default();
         GetFileInformationByHandleEx(
             handle.0,
@@ -102,6 +107,7 @@ pub fn stamp(handle: &Handle) -> Result<Stamp> {
             (&mut basic as *mut FILE_BASIC_INFO).cast(),
             size_of::<FILE_BASIC_INFO>() as u32,
         )?;
+        check_cancel(cancel)?;
         let join = |hi: u32, lo: u32| (u64::from(hi) << 32) | u64::from(lo);
         Ok(Stamp {
             identity: Identity {
@@ -154,6 +160,10 @@ pub fn extended(path: &Path) -> Result<PathBuf> {
 }
 
 pub fn is_fixed_ntfs(path: &Path) -> Result<()> {
+    is_fixed_ntfs_cancellable(path, None)
+}
+pub(crate) fn is_fixed_ntfs_cancellable(path: &Path, cancel: Option<&AtomicBool>) -> Result<()> {
+    check_cancel(cancel)?;
     let path = extended(path)?;
     let drive: PathBuf = path
         .ancestors()
@@ -166,6 +176,7 @@ pub fn is_fixed_ntfs(path: &Path) -> Result<()> {
             GetDriveTypeW(PCWSTR(root.as_ptr())) == DRIVE_FIXED,
             Refusal(ReasonCode::UnsupportedVolume)
         );
+        check_cancel(cancel)?;
         let mut name = [0u16; 32];
         GetVolumeInformationW(
             PCWSTR(root.as_ptr()),
@@ -175,6 +186,7 @@ pub fn is_fixed_ntfs(path: &Path) -> Result<()> {
             None,
             Some(&mut name),
         )?;
+        check_cancel(cancel)?;
         let len = name.iter().position(|c| *c == 0).unwrap_or(name.len());
         ensure!(
             String::from_utf16_lossy(&name[..len]) == "NTFS",
@@ -293,7 +305,7 @@ impl PinnedPath {
                 .map_err(|e| Refusal(win32_reason(e.code().0 as u32 & 0xffff)))?,
             );
             check_cancel(cancel)?;
-            let info = stamp(&handle)?;
+            let info = stamp_cancellable(&handle, cancel)?;
             if observe {
                 info.validate_for_read()?;
             } else {

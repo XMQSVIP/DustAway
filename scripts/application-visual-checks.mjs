@@ -20,9 +20,10 @@ export async function captureApplicationGroup(command, session, appId, output) {
   ]) {
     await command('POST', `/session/${session}/window/rect`, { width, height });
     const state = await command('POST', `/session/${session}/execute/sync`, {
-      script: `const row=document.querySelector('.retained-results .rule-row[data-rule^="'+arguments[0]+'."]'); const group=row?.closest('.purpose-group');
+      script: `const scope=arguments[0]==='weixin'?'.weixin-cleanup':'.retained-results';
+        const row=document.querySelector(scope+' .rule-row[data-rule^="'+arguments[0]+'."]'); const group=row?.closest('.purpose-group,.weixin-cleanup');
         if(!group) throw new Error('Missing application group');
-        const toggle=group.querySelector('.purpose-toggle');
+        const toggle=group.querySelector('.purpose-toggle,.weixin-heading .group-heading');
         if(toggle?.getAttribute('aria-expanded')==='false') toggle.click();
         return !!group;`,
       args: [appId],
@@ -30,9 +31,10 @@ export async function captureApplicationGroup(command, session, appId, output) {
     assert(state);
     await new Promise((r) => setTimeout(r, 150));
     const layout = await command('POST', `/session/${session}/execute/sync`, {
-      script: `const row=document.querySelector('.retained-results .rule-row[data-rule^="'+arguments[0]+'."]'); const group=row?.closest('.purpose-group');
+      script: `const scope=arguments[0]==='weixin'?'.weixin-cleanup':'.retained-results';
+        const row=document.querySelector(scope+' .rule-row[data-rule^="'+arguments[0]+'."]'); const group=row?.closest('.purpose-group,.weixin-cleanup');
         group.scrollIntoView({block:'start',behavior:'instant'});
-        const heading=group.querySelector('.purpose-heading').getBoundingClientRect();
+        const heading=group.querySelector('.purpose-heading,.weixin-heading').getBoundingClientRect();
         const main=document.querySelector('.main-content').getBoundingClientRect();
         const dockElement=document.querySelector('.task-dock'), dockTop=dockElement.getClientRects().length?dockElement.getBoundingClientRect().top:innerHeight;
         const headingVisible=heading.top>=main.top-1&&heading.bottom<dockTop;
@@ -45,7 +47,7 @@ export async function captureApplicationGroup(command, session, appId, output) {
           headingVisible, headingAndRowCheckedSeparately:true,
           rowVisible:rect.top>=main.top-1&&rect.bottom<=dockTop+1,
           readonly:!!row?.querySelector('.readonly-label'),locked:!!row?.querySelector('.rule-lock'),
-          versionRestricted:!!row?.textContent.includes('当前应用版本或资料位置暂不支持清理'),
+          reasonVisible:/尚未开放清理|尚未通过核验|暂不开放删除|需退出应用/.test(row?.textContent??''),
           selectable:!!group.querySelector('input[type="checkbox"]')};`,
       args: [appId],
     });
@@ -54,7 +56,7 @@ export async function captureApplicationGroup(command, session, appId, output) {
         layout.headingVisible &&
         layout.rowVisible &&
         layout.locked &&
-        (layout.readonly || layout.versionRestricted) &&
+        layout.reasonVisible &&
         !layout.selectable,
       JSON.stringify({ appId, ...layout }),
     );
@@ -81,14 +83,20 @@ async function main() {
     'thunder.code',
     'thunder.gpu',
   ];
-  const output = resolve(process.env.DUSTAWAY_E2E_OUTPUT ?? 'artifacts/cleanup-preparation-e2e');
+  const version = JSON.parse(await readFile('package.json', 'utf8')).version;
+  const output = resolve(process.env.DUSTAWAY_E2E_OUTPUT ?? `artifacts/desktop-e2e-${version}`);
   const currentBuild = process.argv.includes('--current-fixture-build');
   const captures = resolve(process.env.DUSTAWAY_APPLICATION_OUTPUT ?? output);
   if (currentBuild) {
     assert.notEqual(captures, output, 'Preserve the original E2E evidence');
     await mkdir(captures); // New read-only evidence must not overwrite an earlier run.
   }
-  const report = JSON.parse(await readFile(`${output}/desktop-e2e-0.18.0.json`, 'utf8'));
+  const report = JSON.parse(
+    await readFile(`${output}/desktop-e2e-${version}.json`, 'utf8').catch((error) => {
+      if (error.code !== 'ENOENT') throw error;
+      return readFile(`${output}/desktop-e2e-0.18.0.json`, 'utf8');
+    }),
+  );
   assert(
     report.passed && ['cleanup-preparation', 'manual-cleanup'].includes(report.developmentStage),
   );
@@ -160,7 +168,16 @@ async function main() {
         script: "return window.__TAURI_INTERNALS__.invoke('get_application_support');",
         args: [],
       });
-      assert.equal(capabilities.flatMap((app) => app.rules).length, 18);
+      const compiledCatalogue = JSON.parse(
+        await readFile('scripts/application-catalog-v3.json', 'utf8'),
+      );
+      assert.deepEqual(
+        capabilities
+          .flatMap((app) => app.rules)
+          .map((rule) => rule.rule_id)
+          .sort(),
+        compiledCatalogue.rules.map((rule) => rule.rule_id).sort(),
+      );
       for (const rule of capabilities.flatMap((app) => app.rules)) {
         const accepted = ['dingtalk.http', 'dingtalk.code'].includes(rule.rule_id);
         assert.equal(rule.cleanup_validated, accepted);
@@ -188,7 +205,8 @@ async function main() {
     );
     await until(() =>
       command('POST', `/session/${session}/execute/sync`, {
-        script: 'return !!document.querySelector(\'.cleanup-group[data-app-id="baidu_netdisk"]\');',
+        script:
+          'return !!document.querySelector(\'.retained-results .rule-row[data-rule="baidu_netdisk.http"]\');',
         args: [],
       }),
     );

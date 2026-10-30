@@ -501,7 +501,7 @@ mod tests {
         assert!(legacy.cleanup_versions.is_none());
         assert_eq!(legacy.cleanup_block, Some(crate::ReasonCode::Unverifiable));
         let user = crate::rules::for_scope(crate::Scope::User).unwrap();
-        assert_eq!(user.len(), 141);
+        assert_eq!(user.len(), 145);
         assert_eq!(
             user.iter()
                 .filter(|r| r.cleanup_validated && rule(&r.id).is_none_or(|s| s.validated()))

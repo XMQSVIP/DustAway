@@ -94,6 +94,8 @@ export function cleanupDecision(input: {
 }) {
   const { rules, rows, selected, excluded, sessions, reports } = input;
   const applications = input.applications ?? [];
+  const rowsById = new Map(rows.map((row) => [row.rule_id, row]));
+  const applicationsById = new Map(applications.map((app) => [app.app_id, app]));
   const capabilities = new Map(rules.map((r) => [r.id, applicationCapability(r, applications)]));
   const runtimeBlocks = new Map(rules.map((r) => [r.id, applicationRuntimeBlock(r, applications)]));
   const assessments = new Map(
@@ -102,15 +104,12 @@ export function cleanupDecision(input: {
       const job = input.reviewContext?.jobs[scope];
       return [
         rule.id,
-        assessScan(
-          rows.find((row) => row.rule_id === rule.id),
-          {
-            hasSession: sessions.length > 0,
-            scanning: job ? job.state === 'scanning' : input.active === 'scanning',
-            stale: input.needsRescan,
-            excluded: input.excludedRuleIds?.includes(rule.id),
-          },
-        ),
+        assessScan(rowsById.get(rule.id), {
+          hasSession: sessions.length > 0,
+          scanning: job ? job.state === 'scanning' : input.active === 'scanning',
+          stale: input.needsRescan,
+          excluded: input.excludedRuleIds?.includes(rule.id),
+        }),
       ];
     }),
   );
@@ -126,12 +125,12 @@ export function cleanupDecision(input: {
   }));
   const totals = selectedTotals(eligibleRows, selected, excluded, sessions, input.included);
   const items: RuleDecision[] = rules.map((rule) => {
-    const row = rows.find((r) => r.rule_id === rule.id);
+    const row = rowsById.get(rule.id);
     const amount = totals.byRule.get(rule.id);
     const scan = assessments.get(rule.id)!;
     const incomplete = scan.incomplete;
     const capability = capabilities.get(rule.id)!;
-    const support = applications.find((a) => a.app_id === rule.app_id);
+    const support = rule.app_id ? applicationsById.get(rule.app_id) : undefined;
     let status: DecisionStatus = 'unscanned';
     let explanation = '只检查，确认后才删除。';
     if (input.excludedRuleIds?.includes(rule.id)) {

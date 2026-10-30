@@ -1,5 +1,11 @@
 # Release 分析对比夹具
 
+## 0.25.0 工作区基线
+
+本轮与实施前源码快照比较，两边都使用磁盘索引。运行器使用 `-MatchedCurrentBaseline`，为两边的 10 万、50 万负载都传入 `--comparison`；扫描中位耗时不得退化超过 10%。`-Baseline`、`-Current`、`-SmallFixture`、`-LargeFixture` 与 `-IndexDirectory` 必须显式指定本轮已核验的二进制和标记目录，默认路径仅用于读取历史工作流，不能据此重放旧记录。
+
+本轮索引在 G 盘，与 F 盘扫描夹具位于同一机械硬盘；D 盘剩余容量不足以同时容纳三百万索引和 2 GiB 预留。测量不降低资源保护阈值，也不与历史 SSD 数据混合。本轮原始结果和未达标项见 `docs/verification-025.md`。下面的既有记录只解释历史方法，不表示 0.25.0 已通过。
+
 ## 当前百万级分析验收
 
 当前 harness 使用磁盘临时索引，默认上限 500 万条；`--comparison` 降到旧版的 50 万条。基线使用实施前备份中的 harness 和核心代码，新接口只在新版本附加测量，共同扫描起止、原有查询和内存取样口径保持一致。以下旧版段落中的“同一 harness”不适用于新增磁盘接口之后的源码。
@@ -24,6 +30,8 @@ python scripts/analysis-benchmark/summarize-million.py
 ## 查询耗时诊断
 
 查询延迟诊断使用 `--features query-timing` 构建 benchmark，将连接、SQL、结果组装及资源释放的分段耗时缓存在内存，结束后统一写到标准错误；记录上限为 4,096 条。桌面默认构建不开启这个 core feature。`--query-rounds=5` 在一次扫描后重复五组查询。输出交给 `summarize-query-profile.py` 汇总，诊断结果与正式验收分开保存。
+
+附加 `--wait-counts` 时，在每页需要异步计数的情况下等待计数完成（最多 30 秒）并单独记录；此选项仅允许诊断构建，正式交替序列不启用。它用于区分完整计数和被下一次查询取消的计数。0.25 同基线汇总同时检查冷首屏 250 ms，不能只凭预热页通过宣称普通分页全部达标。
 
 ```powershell
 cargo build --manifest-path scripts/analysis-benchmark/Cargo.toml --release --locked --features query-timing --target-dir target/bench-million-profile

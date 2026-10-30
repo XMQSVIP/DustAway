@@ -451,19 +451,38 @@ impl AnalysisEngine {
             let engine = self.clone();
             let request_id = query.request_id.clone();
             std::thread::spawn(move || {
+                #[cfg(feature = "analysis-query-timing")]
+                let mut timing = QueryTiming::new("count");
                 let _gate = engine.count_gate.lock().unwrap();
+                #[cfg(feature = "analysis-query-timing")]
+                timing.mark("gate");
                 if cancel.load(Ordering::Acquire) {
                     return;
                 }
                 let result = (|| -> Result<u64> {
                     let (inner, read_revision) = engine.read_index(&descriptor)?;
+                    #[cfg(feature = "analysis-query-timing")]
+                    timing.mark("reader");
                     ensure!(read_revision == revision, "扫描结果已变化，请刷新统计");
                     let _cancel = SqlCancellation::new(&inner.db, cancel.clone(), true)?;
                     let count = inner.db.query_row(
                         &format!("SELECT count(*) FROM {source} WHERE {count_predicate}"),
                         params_from_iter(&count_values),
                         |r| r.get::<_, i64>(0),
-                    )?;
+                    );
+                    #[cfg(feature = "analysis-query-timing")]
+                    timing.mark(if count.is_ok() {
+                        "sql_count_ok"
+                    } else {
+                        "sql_count_error"
+                    });
+                    let count = count?;
+                    #[cfg(feature = "analysis-query-timing")]
+                    {
+                        drop(_cancel);
+                        drop(inner);
+                        timing.mark("reader_close");
+                    }
                     Ok(count as u64)
                 })();
                 if cancel.load(Ordering::Acquire) {

@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { api, desktop } from './api';
 import { ipcError } from './coordinator';
-import type { ApplicationSupport } from './types';
+import type { ApplicationSupport, Rule } from './types';
 import { applicationCondition } from './applicationCapability';
 import { reasonLabels } from './i18n';
-import rules from './previewRules';
 
 export function useApplicationSupport(enabled: boolean, epoch: number) {
   const [result, setResult] = useState<{
@@ -38,12 +37,14 @@ export function useApplicationSupport(enabled: boolean, epoch: number) {
 }
 
 export function ApplicationSupportNotice({
+  rules,
   support,
   loading,
   error,
   busy,
   onRefresh,
 }: {
+  rules: readonly Pick<Rule, 'id' | 'title'>[];
   support?: ApplicationSupport;
   loading: boolean;
   error: string;

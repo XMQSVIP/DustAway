@@ -222,6 +222,20 @@ export function AnalysisReviewDialog({
             </details>
             <details className="review-evidence">
               <summary>依据与完整路径</summary>
+              {decision.modelHint && (
+                <p>
+                  本地模型推测，尚未经真实机器数据验证。依据：
+                  {decision.modelHint.evidence
+                    .map((feature) =>
+                      feature
+                        .replace(/^dir:/, '目录名含 ')
+                        .replace(/^name:/, '名称含 ')
+                        .replace(/^ext:/, '扩展名 .'),
+                    )
+                    .join('、')}
+                  。 仅作用途参考，不改变清理资格。
+                </p>
+              )}
               {decision.recognition && (
                 <>
                   <p>

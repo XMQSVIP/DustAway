@@ -1,146 +1,41 @@
-# 开发指南
+# 开发指南（0.25.0）
 
-所有命令在仓库根目录的普通用户 PowerShell 中执行。当前工程面向 Windows x64，不提供 Linux/macOS 桌面构建支持。
-
-## 环境
-
-| 工具       | 当前约定                                     | 依据                               |
-| ---------- | -------------------------------------------- | ---------------------------------- |
-| Rust       | 1.97.1，MSVC x64，rustfmt、Clippy            | `rust-toolchain.toml`              |
-| C++ 工具链 | Visual Studio C++ Build Tools 与 Windows SDK | Win32 / Tauri 编译需要             |
-| Node.js    | 24 系列                                      | 当前开发与 CI 配置                 |
-| pnpm       | 10.30.3                                      | `package.json` 的 `packageManager` |
-| WebView2   | 已安装的兼容运行时                           | Windows 桌面界面需要               |
-| 测试驱动   | tauri-driver 2.0.6，匹配运行时的 EdgeDriver  | 仅桌面端到端测试需要               |
-
-初次构建通常需要下载依赖；默认免安装构建无需 NSIS 工具。应用自身的离线运行不表示开发环境可以在未缓存依赖时离线构建。
-
-产品中文名为“拂尘”，Cargo/npm、应用 ID 和数据目录继续使用 DustAway。
-
-## 首次运行
+面向 Windows x64；使用普通用户 PowerShell、MSVC/Windows SDK、rust-toolchain.toml 指定的 Rust、Node.js 24、pnpm 10.30.3 和 WebView2。
 
 ```powershell
 pnpm install --frozen-lockfile
 pnpm notices
-pnpm desktop
+pnpm applications:catalog
+pnpm build
+pnpm check:quality
 ```
 
-`pnpm desktop` 直接启动默认用户版开发服务和桌面主程序，不准备辅助进程。它会使用真实的用户目录；调试界面的永久删除仍是真实操作。
+`check:quality` 是本地与 CI 共用入口，包含格式、Clippy、完整工程检查、模型与证据验证；若生成器修改受检查的源文件则失败。先明确运行生成器并审阅差异，再运行检查。需要真实应用、普通用户权限、桌面驱动或大规模夹具的测试单列，不将忽略项当作通过。
 
-需要验证删除时使用专用夹具流程，不以个人缓存目录代替测试数据。默认版本在前后端均关闭系统清理。实验构建通过 `pnpm bundle:installer` 启用；其辅助进程仍要求 Program Files，不属于当前交付。
+## 运行模式
 
-## 三种运行模式
+| 入口 | 用途 |
+|---|---|
+| `pnpm dev` | 网页预览，无真实扫描或删除 |
+| `pnpm desktop` | 普通桌面开发，操作真实目录 |
+| `pnpm test:e2e` | 带标记的隔离桌面夹具 |
+| `pnpm portable` | 无系统辅助组件的免安装包 |
+| `pnpm bundle:installer` | 启用受限 system-cleanup 的安装包 |
 
-| 模式         | 命令            | 行为                                          |
-| ------------ | --------------- | --------------------------------------------- |
-| 网页预览     | `pnpm dev`      | 本地页面，只展示规则和界面，禁止实际扫描/删除 |
-| 桌面开发     | `pnpm desktop`  | 真实 Tauri 命令与普通用户目录                 |
-| 桌面夹具测试 | `pnpm test:e2e` | 调试构建启用专用后端，仅操作带标记的测试目录  |
+只有调试构建和专用测试入口可使用夹具许可；环境变量不能解锁发行删除权限。真实应用验收与夹具测试分别记录，见[本轮验收](verification-025.md)。
 
-网页预览地址为 `http://127.0.0.1:1420`。`pnpm desktop` 会自行启动 Vite；同端口已经有独立服务时，先停止自己之前启动的服务，避免端口冲突。
+原生 E2E 默认写入 `artifacts/desktop-e2e-<版本>`，已存在的目录会被拒绝。重复运行前设置 `DUSTAWAY_E2E_OUTPUT` 为新的目录；分析、清理与应用布局证据均写入该运行目录，不复用历史输出位置。
 
-## 常用命令
+## 规则与证据
 
-| 命令                              | 用途                                                     |
-| --------------------------------- | -------------------------------------------------------- |
-| `pnpm format`                     | 格式化前端、脚本和指定配置文件，不包含全部 Markdown 文档 |
-| `cargo fmt --all`                 | 格式化 Rust                                              |
-| `pnpm build`                      | TypeScript 检查和前端生产构建，不生成桌面安装包          |
-| `pnpm test`                       | Vitest 与 React Testing Library                          |
-| `cargo test -p dustaway-core`     | 核心状态、计划、报告与属性测试                           |
-| `cargo test -p dustaway-windows`  | Windows 路径、文件夹具和协议边界测试                     |
-| `cargo test --workspace --locked` | 工作区 Rust 测试                                         |
-| `pnpm test:evidence`              | 只读证据白名单、完整性与附件哈希测试                    |
-| `pnpm check`                      | 许可清单、前端构建/测试、证据检查器及 Rust 工作区测试    |
-| `pnpm notices`                    | 从锁定依赖与本地源文件生成第三方声明                     |
-| `pnpm portable`                   | 生成声明、默认用户版 EXE 和免安装文件夹                  |
+Rust 注册表是能力来源。`pnpm applications:catalog` 更新前端预览、能力摘要、应用目录与证据台账；`pnpm check:applications` 只校验。`pnpm check:recognition` 检查用途库，`pnpm model:validate` 校验模型可复现性与边界。
 
-`pnpm check` 不包含下面两项，需要单独执行：
+台账中的隔离测试路径只表示验证入口。`passed` 操作记录不自动代表本次真实应用恢复；`not_indexed` 表示历史证据尚未结构化。实际结果写入独立运行目录，不覆盖旧记录。
 
-```powershell
-cargo fmt --all --check
-cargo clippy --workspace --all-targets -- -D warnings
-```
+## 构建缓存和测试驱动
 
-首次单独运行桌面 Cargo 命令前，先完成依赖安装、`pnpm notices` 和 `pnpm build`，确保资源已准备好。
+`pnpm cache:report` 仅报告。清理缓存前先停止本任务编译进程并使用 `pnpm cache:clean -WhatIf`；工具拒绝目录链接，不扩大范围到外部缓存。当前 target 如为目录联接，文件身份测试使用其已核验真实路径，不放宽产品路径保护。
 
-## 构建缓存与磁盘空间
+原生测试使用 scripts/desktop-driver.mjs 和匹配 WebView2 的 EdgeDriver；窗口调整使用共享驱动，不直接移动 WebView 子窗口。完整命令和历史环境限制见[测试指南](testing.md)。
 
-开发及测试构建默认使用 `debug = 1`、`incremental = false`：保留基本调试信息，减少完整类型信息和增量对象缓存。代价是修改代码后的再次编译可能变慢，调试器默认不包含完整局部变量信息。需要完整调试时，在当前 PowerShell 会话临时设置 `$env:CARGO_PROFILE_DEV_DEBUG='2'`；测试对应 `CARGO_PROFILE_TEST_DEBUG`。增量编译可临时设置 `$env:CARGO_INCREMENTAL='1'`，用完移除环境变量。Release 配置不变。设置语义见 [Cargo profiles](https://doc.rust-lang.org/cargo/reference/profiles.html)。
-
-`pnpm cache:report` 只读显示仓库 `target` 各子目录的逻辑大小。`pnpm cache:clean -WhatIf` 预览调试输出清理，`pnpm cache:clean` 才实际清理 `target/debug`。也可直接运行：
-
-```powershell
-& ./scripts/build-cache.ps1 -Mode Report
-& ./scripts/build-cache.ps1 -Mode Clean -Scope incremental -WhatIf
-& ./scripts/build-cache.ps1 -Mode Clean -Scope debug
-```
-
-`-Scope all` 会删除整个仓库 `target`，包括 Release 与基准输出，使用前将需要保留的程序打包到 `artifacts/portable`。脚本不扫描或删除源码、备份、测试证据、用户缓存或其他项目；遇到链接或运行中的编译进程会拒绝。它只处理仓库本地 `target`，不跟随 `CARGO_TARGET_DIR` 或其他外部构建目录。构建期间不要清理，也不要在脚本检查与删除期间启动新构建。默认不自动删除缓存，没有硬性磁盘配额；长期切换功能组合仍可能积累旧输出。
-
-重复实验尽量复用同一构建目录，保留小型日志及必要基线 EXE 即可，不必为每轮实验复制一套依赖。独立 benchmark 继续按其说明构建，历史记录中的目录是当时测量配置，不要求全部重建。
-
-停止编译与基准进程后可运行 `pnpm test:build-cache`，验证报告、预览不删除及目录链接拒绝。测试仅在临时目录建立小型标记夹具，不执行实际删除，最后输出夹具位置供核对。
-
-## 代码入口
-
-| 位置                                 | 职责                                    |
-| ------------------------------------ | --------------------------------------- |
-| `crates/core/src/model.rs`           | 规则、候选、计划、报告、状态与平台接口  |
-| `crates/core/src/engine.rs`          | 会话、SQLite 索引、计划生成、执行与恢复 |
-| `crates/core/src/rules.rs`           | 内置 TOML 解析与规则白名单              |
-| `crates/windows/src/platform.rs`     | 标准目录识别、扫描与平台执行入口        |
-| `crates/windows/src/fs.rs`           | 句柄、目录链、属性、身份与删除系统调用  |
-| `crates/windows/src/security.rs`     | 令牌、进程、会话和安全描述符            |
-| `crates/windows/src/ipc.rs`          | 提权启动、管道认证与辅助进程服务        |
-| `crates/helper/src/main.rs`          | 辅助进程入口                            |
-| `src-tauri/src/commands.rs`          | 业务命令及用户/系统任务协调             |
-| `src-tauri/src/lib.rs`               | 应用初始化、服务状态、单实例与退出处理  |
-| `src/App.tsx`                      | 页面装配、导航与清理页交互              |
-| `src/AppNotices.tsx`、`src/CleanupTaskDock.tsx` | 全局任务提示与底部操作栏       |
-| `src/AppDialogs.tsx`、`src/FilesDialog.tsx` | 弹窗装配、确认与文件明细          |
-| `src/useAppController.ts`          | 清理任务、选择与设置之间的协调          |
-| `src/useScanVolumes.ts`、`src/useCandidateDetails.ts` | 扫描磁盘选择、明细会话校验 |
-| `src/AnalysisPanel.tsx`            | 分析视图、虚拟列表与返回位置恢复        |
-| `src/useAnalysisQuery.ts`、`src/analysisQuery.ts` | 分析查询状态、分页、游标与取消 |
-| `src/api.ts`、`src/types.ts`         | 前端命令封装与数据类型                  |
-| `src/i18n.ts`、`src/styles.css`      | 中文界面文案与样式                      |
-
-核心不得依赖 Tauri 或 React。文件删除和根目录判断留在 Rust；前端只管理选择、展示和用户确认。
-
-前端按状态的生命周期划分职责：`useAnalysisQuery` 统一处理三种分析视图的搜索延迟、分页、后台计数、迟到响应与查询取消；`AnalysisPanel` 保留虚拟列表、详情来源和焦点恢复。修改查询方式时先检查 Hook，修改行布局和返回交互时检查面板。查询默认值放在纯数据模块 `analysisQuery.ts`，Hook 不依赖筛选控件。
-
-`AppDialogs` 在主界面中持续挂载，负责弹窗焦点与文件明细视图缓存；清理按钮的原始触发元素由 `App` 传入。页面切换继续保留清理、分析和卸载组件，避免重置未完成的任务、选择和滚动位置。新增功能应落在对应职责中，不再集中追加到主界面组件。
-
-这组边界的回归入口为 `pnpm test`：现有分析、导航、选择、请求协调和确认测试验证用户可观察行为。修改弹窗或任务栏后，另用 `pnpm test:cleanup-desktop` 检查专用夹具中的原生确认、取消和清理流程。
-
-## 修改功能的顺序
-
-1. 确定是否改变产品范围、权限域、规则或数据结构。
-2. 在所属模块实现逻辑，不通过扩大通用 IPC 或开放 Shell 省略业务边界。
-3. 对文件操作、会话失效和异常处理补充能揭示风险的夹具测试。
-4. 同步前后端类型、文案、规则预览与对应文档。
-5. 执行受影响测试；涉及桌面命令或确认流程时执行夹具 E2E。
-6. 需要交付时再构建程序文件夹，并记录实际通过的验收范围。
-
-## 常见开发问题
-
-- **MSVC 或 Windows SDK 缺失**：先补齐 C++ 工具链；不要通过删除 Win32 检查绕过编译问题。
-- **实验构建缺少辅助进程**：执行 `pnpm prepare:helper`；输出名称带 `x86_64-pc-windows-msvc`，由打包流程使用。
-- **找不到前端资源**：先执行 `pnpm build`，并检查 `frontendDist` 指向根目录 `dist/`。
-- **Cargo 正在等待构建目录锁**：等待正在进行的本仓库 Cargo 命令结束，不需要删除锁文件或依赖缓存。
-- **WebDriver 版本不兼容**：核对 WebView2 与 EdgeDriver 版本、驱动路径和 4444 端口占用。
-- **E2E 拒绝普通构建**：使用完整 `pnpm test:e2e` 重新构建，不移除后端模式检查。
-- **NSIS 下载失败**：检查访问官方发布地址的网络配置，保留工具校验，不替换为未验证的二进制。
-
-本仓库 CI 配置在 `.github/workflows/windows.yml`。它定义自动构建和测试流程，但配置文件存在不等于已在远程服务执行成功；本机结果与真实 Windows 验收仍需分别记录。
-
-## 应用只读验收准备（0.14）
-
-使用 `node scripts/application-evidence.mjs collect <新目录>` 生成本地脱敏证据包，`check <目录>` 校验哈希和逐规则结果，`node --test scripts/application-evidence.test.mjs` 验证检查器。完整命令与隔离实测操作单见 [支持矩阵](support-matrix-0.14.md)。收集不使用个人资料做删除实验，不会改变静态验收标记。
-
-## 自选统计性能与普通桌面检查
-
-`cargo test -p dustaway-core --locked manual_selection_performance -- --ignored --nocapture` 对 50 万条合成记录分别测索引、完整摘要、稀疏摘要和准备，三次输出；增加 `--release` 可单独测优化构建。`manual_preview_half_million_records` 检查分页与取消延迟。均不删除真实用户文件。
-
-先执行 `pnpm build` 和 `cargo build -p dustaway --locked --features custom-protocol`，再运行 `node scripts/stability-desktop-checks.mjs`。它串行执行磁盘选择、浅色/深色 × 760×580/1100×780 四次完整自选隔离流程及原生窗口边界检查；不启用 `e2e-fixture`。桌面删除范围仅为工具生成并验证的专用夹具。记录位于 `artifacts/stability-desktop`、`artifacts/manual-standard-desktop/<theme>-<width>`。结果与限制见 [验收记录](verification-stability-speed.md)。
+[发行流程](releasing.md) · [此前开发指南](history/pre-025/docs/development.md)

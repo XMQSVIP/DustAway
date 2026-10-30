@@ -8,6 +8,7 @@ import { ExclusionsDialog } from './ExclusionsDialog';
 import { FilesDialog, type FileViewState } from './FilesDialog';
 import { dynamic, formatBytes, text as t, ui } from './i18n';
 import { ManualCart } from './ManualCart';
+import { preparedSummary } from './SelectionSummary';
 import type { AppController } from './useAppController';
 
 export function AppDialogs({
@@ -54,6 +55,14 @@ export function AppDialogs({
   } = model;
   const alertFocus = useDialogFocus();
   const cleanupFocus = useDialogFocus(cleanupTrigger);
+  const prepared = preparedSummary(plans);
+  const scanDisks = [
+    ...new Set(
+      plans
+        .filter(({ plan }) => plan.categories.length > 0)
+        .flatMap(({ scope }) => model.jobs[scope]?.scan_volumes ?? []),
+    ),
+  ];
   const fileViews = useRef(new Map<string, FileViewState>());
   const terminalKey = reports.map((r) => `${r.id}:${r.finished_at}:${r.status}`).join('|');
   useEffect(() => {
@@ -179,12 +188,7 @@ export function AppDialogs({
             )}
             {model.preparedSelection?.known &&
               (() => {
-                const files = plans.reduce((n, item) => n + item.plan.files, 0);
-                const directories = plans.reduce(
-                  (n, item) => n + (item.plan.manual?.directories ?? 0),
-                  0,
-                );
-                const bytes = plans.reduce((n, item) => n + BigInt(item.plan.bytes), 0n);
+                const { files, directories, bytes } = prepared;
                 const before = model.preparedSelection;
                 const retained =
                   Math.max(0, before.files - files) + Math.max(0, before.directories - directories);
@@ -196,23 +200,20 @@ export function AppDialogs({
                 ) : null;
               })()}
             <div className="confirm-total">
-              <strong>{formatBytes(plans.reduce((n, p) => n + BigInt(p.plan.bytes), 0n))}</strong>
-              <span>
-                {plans.reduce((n, p) => n + p.plan.files, 0).toLocaleString()} {ui.fileUnit} ·{' '}
-                {plans.reduce((n, p) => n + (p.plan.manual?.directories ?? 0), 0)} 个文件夹
-              </span>
+              <strong>{prepared.amount}</strong>
+              <span>{prepared.counts}</span>
             </div>
-            {plans.some(({ plan }) => plan.files > (plan.manual?.files ?? 0)) && (
+            <p className="muted">
+              以上是所选文件大小，不是承诺释放的磁盘空间。文件不会进入回收站。
+            </p>
+            {prepared.ruleFiles > 0 && (
               <p className="confirm-rule-summary">
-                垃圾扫描已选：
-                {plans.reduce((n, { plan }) => n + plan.files - (plan.manual?.files ?? 0), 0)}{' '}
-                个文件 ·{' '}
-                {formatBytes(
-                  plans.reduce(
-                    (n, { plan }) => n + BigInt(plan.bytes) - BigInt(plan.manual?.bytes ?? '0'),
-                    0n,
-                  ),
-                )}
+                垃圾扫描已选：{prepared.ruleFiles.toLocaleString()} 个文件 ·{' '}
+                {formatBytes(prepared.ruleBytes)}
+                <br />
+                扫描范围：
+                {scanDisks.length ? scanDisks.join('、') : '未记录磁盘范围，请核对文件明细'}
+                {scanDisks.length > 1 && '（不表示每个磁盘都有所选文件）'}
               </p>
             )}
             {plans

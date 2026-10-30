@@ -11,11 +11,10 @@ import {
   ShieldCheck,
   Sun,
 } from 'lucide-react';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { AnalysisPanel } from './AnalysisPanel';
+import { lazy, Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { DeferredPage } from './DeferredPage';
 import { AppDialogs } from './AppDialogs';
 import { AppNotices } from './AppNotices';
-import { AttachmentPanel } from './AttachmentPanel';
 import { CleanupDecisionPanel, CleanupOutcomes } from './CleanupDecisionPanel';
 import { CleanupSpaceResult } from './CleanupSpaceResult';
 import { CleanupTaskDock } from './CleanupTaskDock';
@@ -25,7 +24,6 @@ import { PurposeGroups } from './PurposeGroups';
 import { ReportRow } from './ReportReceipt';
 import { ResultReviewPanel } from './ResultReviewPanel';
 import { SettingsPage } from './SettingsPage';
-import { SoftwarePage } from './SoftwarePage';
 import { TitleBar } from './TitleBar';
 import { WeixinCleanup } from './WeixinCleanup';
 import { api, desktop } from './api';
@@ -34,6 +32,16 @@ import type { ResultStatus, ResultTarget } from './cleanupResults';
 import { text as t, ui } from './i18n';
 import { useSpatialPreferences } from './spatialPreferences';
 import { useAppController } from './useAppController';
+
+const AnalysisPanel = lazy(() =>
+  import('./AnalysisPanel').then((m) => ({ default: m.AnalysisPanel })),
+);
+const SoftwarePage = lazy(() =>
+  import('./SoftwarePage').then((m) => ({ default: m.SoftwarePage })),
+);
+const AttachmentPanel = lazy(() =>
+  import('./AttachmentPanel').then((m) => ({ default: m.AttachmentPanel })),
+);
 
 export default function App() {
   const [attachmentsOpen, setAttachmentsOpen] = useState(false);
@@ -351,42 +359,46 @@ export default function App() {
         >
           <AppNotices model={model} />
           <div hidden={tab !== 'software'}>
-            <SoftwarePage model={model} active={tab === 'software'} />
+            <DeferredPage active={tab === 'software'}>
+              <SoftwarePage model={model} active={tab === 'software'} />
+            </DeferredPage>
           </div>
           <div className="page-stage analysis-page" hidden={tab !== 'analysis'}>
-            <AnalysisPanel
-              manualChoices={model.manualChoices}
-              onSelectManual={model.selectManual}
-              onSelectManualBatch={model.selectManualBatch}
-              selectionTarget={model.analysisTarget}
-              onExcludeManual={model.excludeManual}
-              journey={model.journey}
-              taskNotice={
-                uncertain || checking !== 'ready'
-                  ? '暂时无法确认任务受理状态，请先核对，不要重复启动。'
-                  : error
-              }
-              onCheckTask={uncertain || checking !== 'ready' ? retryStatus : undefined}
-              active={tab === 'analysis' && !!boot && !initError}
-              snapshot={analysis}
-              excludedRules={boot?.settings.excluded_rules ?? []}
-              busy={busy}
-              stopping={stopping || pending || uncertain || closing}
-              onStop={stopTask}
-              onStart={(token) =>
-                guard(async () => {
-                  await api.startAnalysis(token);
-                  await reconcile();
-                })
-              }
-              onCleanup={(ids) => {
-                inspectRules(ids);
-                setExpanded(new Set(ids.map((id) => id.split('.')[0])));
-                setFromAnalysis(true);
-                setTab('clean');
-                setNotice('正在查看对应类别，已有勾选保持不变。查看不会改变选择。');
-              }}
-            />
+            <DeferredPage active={tab === 'analysis'}>
+              <AnalysisPanel
+                manualChoices={model.manualChoices}
+                onSelectManual={model.selectManual}
+                onSelectManualBatch={model.selectManualBatch}
+                selectionTarget={model.analysisTarget}
+                onExcludeManual={model.excludeManual}
+                journey={model.journey}
+                taskNotice={
+                  uncertain || checking !== 'ready'
+                    ? '暂时无法确认任务受理状态，请先核对，不要重复启动。'
+                    : error
+                }
+                onCheckTask={uncertain || checking !== 'ready' ? retryStatus : undefined}
+                active={tab === 'analysis' && !!boot && !initError}
+                snapshot={analysis}
+                excludedRules={boot?.settings.excluded_rules ?? []}
+                busy={busy}
+                stopping={stopping || pending || uncertain || closing}
+                onStop={stopTask}
+                onStart={(token) =>
+                  guard(async () => {
+                    await api.startAnalysis(token);
+                    await reconcile();
+                  })
+                }
+                onCleanup={(ids) => {
+                  inspectRules(ids);
+                  setExpanded(new Set(ids.map((id) => id.split('.')[0])));
+                  setFromAnalysis(true);
+                  setTab('clean');
+                  setNotice('正在查看对应类别，已有勾选保持不变。查看不会改变选择。');
+                }}
+              />
+            </DeferredPage>
           </div>
           <section className="page-stage cleanup-page" hidden={tab !== 'clean'}>
             <header className="page-heading cleanup-heading" hidden={idleHome}>
@@ -468,7 +480,11 @@ export default function App() {
                 聊天附件整理
               </button>
             </div>
-            {attachmentsOpen && <AttachmentPanel onClose={() => setAttachmentsOpen(false)} />}
+            {attachmentsOpen && (
+              <Suspense fallback={<p role="status">正在打开附件整理…</p>}>
+                <AttachmentPanel onClose={() => setAttachmentsOpen(false)} />
+              </Suspense>
+            )}
             <CleanupDecisionPanel
               model={model}
               weixinSeparate

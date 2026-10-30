@@ -1722,5 +1722,57 @@
       }
     ],
     "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.dingtalk_updates",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "DingTalkUpdate",
+    "layout_id": "appcache.dingtalk_updates-discovered-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-25",
+    "applicability": "所选本地 NTFS 磁盘已知目录与应用安装登记位置；元数据布局识别，不读取日志正文。",
+    "conclusion": "识别所选磁盘、标准应用数据及安装位置中的版本化升级目录，并核对升级清单；不包含账号、聊天、插件和配置。占用可查看，是否为过期残留仍需确认。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.dingtalk_custom_logs",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "DingTalk",
+    "layout_id": "appcache.dingtalk_custom_logs-discovered-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-25",
+    "applicability": "所选本地 NTFS 磁盘已知目录与应用安装登记位置；元数据布局识别，不读取日志正文。",
+    "conclusion": "识别所选磁盘及安装位置中有钉钉布局线索的日志目录；与标准 AppData 日志分开计数，仅统计占用。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.gameviewer_logs",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "GameViewer",
+    "layout_id": "appcache.gameviewer_logs-discovered-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-25",
+    "applicability": "所选本地 NTFS 磁盘已知目录与应用安装登记位置；元数据布局识别，不读取日志正文。",
+    "conclusion": "从所选磁盘和安装位置核对 GameViewer 程序文件，只统计 log 目录，不包含下载、配置、插件和程序本体。",
+    "sources": [],
+    "real_acceptance": "not_verified"
+  },
+  {
+    "rule_id": "appcache.hbuilder_backup",
+    "rule_version": 1,
+    "root": "application_cache",
+    "relative": "HBuilderX",
+    "layout_id": "appcache.hbuilder_backup-discovered-v1",
+    "method": "readonly",
+    "reviewed": "2026-10-25",
+    "applicability": "所选本地 NTFS 磁盘已知目录与应用安装登记位置；元数据布局识别，不读取日志正文。",
+    "conclusion": "从所选磁盘和安装位置核对 HBuilderX 程序文件，仅统计 update/backup。升级备份可能用于回退，不包含工程和当前程序。",
+    "sources": [],
+    "real_acceptance": "not_verified"
   }
 ]

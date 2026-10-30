@@ -1,5 +1,11 @@
 # IPC 接口说明
 
+## CPU 用途模型增量
+
+空间分析的 `AnalysisAdvice` 新增可选 `model_hint`：包含 `purpose`（`cache/logs/temporary/personal/application_data`）、`model_id`、`score_margin` 与最多三个 `evidence` 特征。`score_margin` 是两个最高对数分数之差，不是概率，也不显示为准确率。旧响应可以省略该字段。
+
+仅在分页结果装饰阶段对完整、未排除、未被现有用途库或清理规则识别的 `unknown/app_data` 项补充推测。模型不修改 `kind`、`recognition`、`rule_ids`、`manual`、分类索引或清理计划，没有新增命令或权限。低分、缺少上下文、受保护布局、模型无效时省略提示。训练与限制见 [CPU 小模型说明](file-purpose-model.md)。
+
 ## 0.21.0 附件结果增量
 
 `AttachmentCategory` 增加 `deleted_files` 和十进制字符串 `deleted_bytes`，只计入本会话收到明确删除成功结果的文件。`retained_files/retained_bytes` 不再包含这些成功删除项；失败、跳过或待核验记录不推断成功。`files/bytes`、`filtered_bytes` 仍是扫描时快照。旧响应缺少删除字段时前端展示“扫描记录不可选”，不推断当前剩余量或零删除；历史数据库无需迁移。

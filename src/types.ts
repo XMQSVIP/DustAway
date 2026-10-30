@@ -361,6 +361,12 @@ export interface ManualSelection {
   excluded_ids: string[];
 }
 export interface AnalysisAdvice {
+  model_hint?: {
+    purpose: 'cache' | 'logs' | 'temporary' | 'personal' | 'application_data';
+    model_id: string;
+    score_margin: number;
+    evidence: string[];
+  } | null;
   recognition?: {
     rule_id: string;
     category?: RecognitionCategory | null;

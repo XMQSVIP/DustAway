@@ -78,6 +78,10 @@ pub(crate) fn roots(
     issue: &mut dyn FnMut(ReasonCode),
 ) -> Result<Vec<PathBuf>> {
     check_cancel(cancel)?;
+    ensure!(
+        matches!(spec.folder.as_str(), "local" | "roaming"),
+        "此规则需要独立的目录发现器"
+    );
     let base = if spec.folder == "local" {
         local
     } else {

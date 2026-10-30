@@ -5,6 +5,8 @@ mod application_cache;
 mod coverage_observed;
 #[path = "developer_tests.rs"]
 mod developer_tests;
+#[path = "discovered_cache_tests.rs"]
+mod discovered_cache_tests;
 #[path = "scan_tests_netdisk.rs"]
 mod netdisk;
 use dustaway_core::{Engine, ScanPhase, Selection};
@@ -24,6 +26,8 @@ fn fixture() -> (tempfile::TempDir, WindowsPlatform) {
         tool_roots: Default::default(),
         tool_probe: std::sync::Arc::new(crate::tool_discovery::UnavailableProbe),
         real_app_acceptance: None,
+        log_test_acceptance: None,
+        discovery_drives: vec![],
         app_test_identity: None,
         app_test_acceptance: None,
         scope: Scope::User,

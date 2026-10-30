@@ -131,6 +131,55 @@ fn offline_recognition_reaches_both_query_views_without_cleanup_rules() {
     // The navigation node is intentionally undecorated; only result rows have advice.
     assert!(children.node.advice.is_none());
 }
+
+struct PurposeModelSource;
+impl AnalysisPlatform for PurposeModelSource {
+    fn locations(&self) -> Vec<(String, String)> {
+        RecognitionSource.locations()
+    }
+    fn validate_root(&self, path: &str) -> Result<AnalysisRoot> {
+        RecognitionSource.validate_root(path)
+    }
+    fn reveal(&self, _: &AnalysisRoot, _: &[Vec<u8>]) -> Result<()> {
+        Ok(())
+    }
+    fn scan(
+        &self,
+        _: &AnalysisRoot,
+        _: &AtomicBool,
+        emit: &mut dyn FnMut(AnalysisEvent) -> Result<bool>,
+    ) -> Result<()> {
+        emit(AnalysisEvent::Entry(Box::new(entry(
+            "0", None, true, 0, "",
+        ))))?;
+        let mut sample = entry("model-file", Some("0"), false, 123, "model-file");
+        sample.entry.name = "entry.cache".into();
+        sample.entry.path = r"D:\Unlisted\Cache\entry.cache".into();
+        emit(AnalysisEvent::Entry(Box::new(sample)))?;
+        emit(AnalysisEvent::DirectoryFinished { node: "0".into() })?;
+        Ok(())
+    }
+}
+
+#[test]
+fn cpu_model_reaches_analysis_results_without_granting_cleanup_permissions() {
+    let engine = AnalysisEngine::new(Arc::new(PurposeModelSource)).unwrap();
+    let session = start(&engine);
+    assert_eq!(wait(&engine).state, "completed");
+    let children = engine.children(&session, "0", "", 0, true).unwrap();
+    let files = engine.files(&session, "", 0).unwrap();
+    for item in children.items.iter().chain(&files.items) {
+        let advice = item.advice.as_ref().unwrap();
+        assert!(advice.recognition.is_none());
+        assert_eq!(
+            advice.model_hint.as_ref().unwrap().purpose,
+            file_purpose::Purpose::Cache
+        );
+        assert_eq!(advice.kind, AnalysisPurpose::Unknown);
+        assert!(item.rule_ids.is_empty());
+        assert!(!item.manual.allowed);
+    }
+}
 fn entry(id: &str, parent: Option<&str>, directory: bool, bytes: u64, key: &str) -> AnalysisRecord {
     AnalysisRecord {
         entry: AnalysisEntry {
@@ -573,6 +622,7 @@ impl AnalysisPlatform for DenseSource {
             app_id: None,
             basis: "known_windows".into(),
             recognition: None,
+            model_hint: None,
         }
     }
     fn scan(

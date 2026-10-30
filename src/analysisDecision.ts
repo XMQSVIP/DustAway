@@ -51,10 +51,32 @@ const recognizedApps: Record<string, string> = {
   'app.dingtalk_web_cache': 'dingtalk',
 };
 
+const modelPurposes = {
+  cache: ['可能是缓存', '可先在所属应用中核对用途及清理方式。'],
+  logs: ['可能是日志或诊断资料', '可能用于排查问题，请先确认是否需要保留。'],
+  temporary: ['可能是临时文件', '可能仍被应用使用，请先核对来源与使用状态。'],
+  personal: ['可能是个人资料', '请核对文件内容和备份，是否保留由你决定。'],
+  application_data: ['可能是应用设置或数据', '可能包含设置与工作内容，建议先在所属应用中核对。'],
+} as const;
+
 /** Descriptive routing only; cleanup eligibility belongs to the cleanup model/backend. */
 export function analysisDecision(entry: AnalysisEntry) {
   const kind = entry.advice?.kind ?? 'unknown';
   const recognition = entry.advice?.recognition;
+  const candidateHint = entry.advice?.model_hint;
+  const modelHint =
+    candidateHint &&
+    Object.hasOwn(modelPurposes, candidateHint.purpose) &&
+    !recognition &&
+    !entry.rule_ids.length &&
+    !entry.pending &&
+    !entry.incomplete &&
+    !entry.issue &&
+    !entry.excluded &&
+    (kind === 'unknown' || kind === 'app_data')
+      ? candidateHint
+      : null;
+  const modelPurpose = modelHint ? modelPurposes[modelHint.purpose] : null;
   const [label, explanation] = descriptions[kind] ?? descriptions.unknown;
   const declared = entry.advice?.app_id;
   const inferred = recognition && recognizedApps[recognition.rule_id];
@@ -77,19 +99,26 @@ export function analysisDecision(entry: AnalysisEntry) {
     conflict,
     title: recognition
       ? `可能是${recognition.title}`
-      : appId
-        ? `${applicationNames[appId]} · ${label}`
-        : label,
-    description: recognition?.description ?? explanation,
+      : modelPurpose
+        ? `${modelPurpose[0]} · 模型推测`
+        : appId
+          ? `${applicationNames[appId]} · ${label}`
+          : label,
+    description:
+      recognition?.description ??
+      (modelPurpose
+        ? '根据目录和文件名称推测用途，未读取文件内容；这一判断不代表可以删除。'
+        : explanation),
     guidance: refine
       ? entry.issue === 'directory_inaccessible' || entry.issue === 'access_denied'
         ? '此目录未能读取，请先核对访问权限与路径；条件恢复后再选择此目录补充分析。'
         : '此目录尚未完整统计，先选择此目录补充分析，再判断处理方式。'
       : conflict
         ? '应用身份线索不一致，暂时保留。'
-        : (recognition?.guidance ?? explanation),
+        : (recognition?.guidance ?? modelPurpose?.[1] ?? explanation),
     explanation,
     recognition,
+    modelHint,
     basis: analysisBases[entry.advice?.basis ?? ''] ?? '缺少可确认的位置信息',
     canReveal: !entry.issue,
     canManageWindows: !recognition && kind === 'system_data',

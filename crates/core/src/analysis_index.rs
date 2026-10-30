@@ -315,6 +315,12 @@ impl AnalysisEngine {
                     }
                     break;
                 }
+                // Publish only committed totals. Status readers must not wait
+                // behind the next SQLite write or a blocking volume-space call.
+                *self.progress_snapshot.lock().unwrap() = inner
+                    .snapshot
+                    .clone()
+                    .map(|snapshot| (snapshot, inner.started.unwrap()));
                 if stop {
                     break;
                 }

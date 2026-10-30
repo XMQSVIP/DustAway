@@ -16,7 +16,7 @@ import type {
   CandidateQuery,
   SaveResult,
 } from './types';
-import previewRules from './previewRules';
+import buildCapabilities from '../docs/current-capabilities.json';
 export const desktop = isTauri();
 const coordinator = new CommandCoordinator((command, args) => {
   if (!desktop) return Promise.reject(new Error(ui.desktopRequired));
@@ -195,13 +195,13 @@ export const api = {
   bootstrap: () =>
     desktop
       ? call<Bootstrap>('bootstrap')
-      : Promise.resolve<Bootstrap>({
+      : import('./previewRules').then<Bootstrap>(({ default: previewRules }) => ({
           rules: previewRules.filter((r) => !r.requires_admin),
-          version: '0.22.0',
+          version: buildCapabilities.version,
           preferences: { last_scan_rule_ids: null },
           capabilities: { system_cleanup: false },
           settings: { exclusions: [], excluded_rules: [], theme: 'system' as const },
-        }),
+        })),
   scan: (ruleIds: string[], volumeTokens?: string[]) =>
     submit<{ sessions: Session[]; warning: string | null }>('start_scan', {
       ruleIds,

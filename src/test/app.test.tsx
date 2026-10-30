@@ -1417,7 +1417,8 @@ it('viewing an analysis category preserves the range; only explicit add unions i
   const user = userEvent.setup();
   render(<App />);
   await user.click(await screen.findByRole('button', { name: /查找大文件/ }));
-  await user.click(await screen.findByRole('button', { name: /查看详情：/ }));
+  // The first analysis visit now loads its module and then queries the index.
+  await user.click(await screen.findByRole('button', { name: /查看详情：/ }, { timeout: 5000 }));
   await user.click(screen.getByRole('button', { name: '查看对应清理类别' }));
   expect(screen.queryByRole('checkbox', { name: /Chrome 网页缓存/ })).not.toBeInTheDocument();
   expect(mock.scan).not.toHaveBeenCalled();

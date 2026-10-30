@@ -1,0 +1,944 @@
+{
+  "scope": "Synthetic development regressions and leave-one-training-group-out. No real-machine or deletion accuracy claim.",
+  "baseline_model_id": "purpose-nb-v1-276ec3a0d2a4",
+  "model_id": "purpose-nb-v4-e8149b38a69a",
+  "comparisons": {
+    "seed": {
+      "baseline": {
+        "samples": 56,
+        "predicted": 33,
+        "correct_predictions": 33,
+        "correct_unknown_abstentions": 16,
+        "incorrect_cache_log_temp_predictions": 0
+      },
+      "current": {
+        "samples": 56,
+        "predicted": 39,
+        "correct_predictions": 39,
+        "correct_unknown_abstentions": 16,
+        "incorrect_cache_log_temp_predictions": 0
+      }
+    },
+    "challenge": {
+      "baseline": {
+        "samples": 66,
+        "predicted": 31,
+        "correct_predictions": 21,
+        "correct_unknown_abstentions": 23,
+        "incorrect_cache_log_temp_predictions": 10
+      },
+      "current": {
+        "samples": 66,
+        "predicted": 30,
+        "correct_predictions": 30,
+        "correct_unknown_abstentions": 33,
+        "incorrect_cache_log_temp_predictions": 0
+      }
+    }
+  },
+  "challenge": {
+    "abstained": 36,
+    "abstention_reasons": {
+      "close_scores": 5,
+      "conflicting_context": 7,
+      "insufficient_features": 12,
+      "invalid_path": 2,
+      "missing_context": 6,
+      "sensitive_location": 4
+    },
+    "classes": [
+      {
+        "class": "cache",
+        "precision": 1,
+        "recall": 0.7777777777777778,
+        "support": 9
+      },
+      {
+        "class": "logs",
+        "precision": 1,
+        "recall": 1,
+        "support": 9
+      },
+      {
+        "class": "temporary",
+        "precision": 1,
+        "recall": 1,
+        "support": 5
+      },
+      {
+        "class": "personal",
+        "precision": 1,
+        "recall": 0.8,
+        "support": 5
+      },
+      {
+        "class": "application_data",
+        "precision": 1,
+        "recall": 1,
+        "support": 5
+      }
+    ],
+    "confusion": {
+      "application_data": {
+        "application_data": 5
+      },
+      "cache": {
+        "cache": 7,
+        "unknown": 2
+      },
+      "logs": {
+        "logs": 9
+      },
+      "personal": {
+        "personal": 4,
+        "unknown": 1
+      },
+      "temporary": {
+        "temporary": 5
+      },
+      "unknown": {
+        "unknown": 33
+      }
+    },
+    "correct_predictions": 30,
+    "correct_unknown_abstentions": 33,
+    "coverage": 0.45454545454545453,
+    "evaluation_scope": "Agreement with supplied evaluation labels; consult provenance for review method and independence. This evaluator does not verify ground truth or deletion safety.",
+    "failures": [
+      {
+        "abstention": "insufficient_features",
+        "expected": "cache",
+        "group": "v2-layout",
+        "predicted": null,
+        "sample_index": 24
+      },
+      {
+        "abstention": "insufficient_features",
+        "expected": "cache",
+        "group": "v2-layout",
+        "predicted": null,
+        "sample_index": 26
+      },
+      {
+        "abstention": "insufficient_features",
+        "expected": "personal",
+        "group": "v2-layout",
+        "predicted": null,
+        "sample_index": 32
+      }
+    ],
+    "incorrect_cache_log_temp_predictions": 0,
+    "model_id": "purpose-nb-v4-e8149b38a69a",
+    "outcomes": [
+      {
+        "abstention": null,
+        "expected": "cache",
+        "group": "v2-cn",
+        "predicted": "cache",
+        "sample_index": 0
+      },
+      {
+        "abstention": null,
+        "expected": "cache",
+        "group": "v2-cn",
+        "predicted": "cache",
+        "sample_index": 1
+      },
+      {
+        "abstention": null,
+        "expected": "cache",
+        "group": "v2-cn",
+        "predicted": "cache",
+        "sample_index": 2
+      },
+      {
+        "abstention": null,
+        "expected": "cache",
+        "group": "v2-cn",
+        "predicted": "cache",
+        "sample_index": 3
+      },
+      {
+        "abstention": null,
+        "expected": "logs",
+        "group": "v2-cn",
+        "predicted": "logs",
+        "sample_index": 4
+      },
+      {
+        "abstention": null,
+        "expected": "logs",
+        "group": "v2-cn",
+        "predicted": "logs",
+        "sample_index": 5
+      },
+      {
+        "abstention": null,
+        "expected": "logs",
+        "group": "v2-cn",
+        "predicted": "logs",
+        "sample_index": 6
+      },
+      {
+        "abstention": null,
+        "expected": "logs",
+        "group": "v2-cn",
+        "predicted": "logs",
+        "sample_index": 7
+      },
+      {
+        "abstention": null,
+        "expected": "temporary",
+        "group": "v2-cn",
+        "predicted": "temporary",
+        "sample_index": 8
+      },
+      {
+        "abstention": null,
+        "expected": "temporary",
+        "group": "v2-cn",
+        "predicted": "temporary",
+        "sample_index": 9
+      },
+      {
+        "abstention": null,
+        "expected": "temporary",
+        "group": "v2-cn",
+        "predicted": "temporary",
+        "sample_index": 10
+      },
+      {
+        "abstention": null,
+        "expected": "personal",
+        "group": "v2-cn",
+        "predicted": "personal",
+        "sample_index": 11
+      },
+      {
+        "abstention": null,
+        "expected": "personal",
+        "group": "v2-cn",
+        "predicted": "personal",
+        "sample_index": 12
+      },
+      {
+        "abstention": null,
+        "expected": "personal",
+        "group": "v2-cn",
+        "predicted": "personal",
+        "sample_index": 13
+      },
+      {
+        "abstention": null,
+        "expected": "application_data",
+        "group": "v2-cn",
+        "predicted": "application_data",
+        "sample_index": 14
+      },
+      {
+        "abstention": null,
+        "expected": "application_data",
+        "group": "v2-cn",
+        "predicted": "application_data",
+        "sample_index": 15
+      },
+      {
+        "abstention": null,
+        "expected": "application_data",
+        "group": "v2-cn",
+        "predicted": "application_data",
+        "sample_index": 16
+      },
+      {
+        "abstention": null,
+        "expected": "logs",
+        "group": "v2-rotation",
+        "predicted": "logs",
+        "sample_index": 17
+      },
+      {
+        "abstention": null,
+        "expected": "logs",
+        "group": "v2-rotation",
+        "predicted": "logs",
+        "sample_index": 18
+      },
+      {
+        "abstention": null,
+        "expected": "logs",
+        "group": "v2-rotation",
+        "predicted": "logs",
+        "sample_index": 19
+      },
+      {
+        "abstention": null,
+        "expected": "logs",
+        "group": "v2-rotation",
+        "predicted": "logs",
+        "sample_index": 20
+      },
+      {
+        "abstention": null,
+        "expected": "logs",
+        "group": "v2-rotation",
+        "predicted": "logs",
+        "sample_index": 21
+      },
+      {
+        "abstention": null,
+        "expected": "cache",
+        "group": "v2-layout",
+        "predicted": "cache",
+        "sample_index": 22
+      },
+      {
+        "abstention": null,
+        "expected": "cache",
+        "group": "v2-layout",
+        "predicted": "cache",
+        "sample_index": 23
+      },
+      {
+        "abstention": "insufficient_features",
+        "expected": "cache",
+        "group": "v2-layout",
+        "predicted": null,
+        "sample_index": 24
+      },
+      {
+        "abstention": null,
+        "expected": "cache",
+        "group": "v2-layout",
+        "predicted": "cache",
+        "sample_index": 25
+      },
+      {
+        "abstention": "insufficient_features",
+        "expected": "cache",
+        "group": "v2-layout",
+        "predicted": null,
+        "sample_index": 26
+      },
+      {
+        "abstention": null,
+        "expected": "application_data",
+        "group": "v2-layout",
+        "predicted": "application_data",
+        "sample_index": 27
+      },
+      {
+        "abstention": null,
+        "expected": "application_data",
+        "group": "v2-layout",
+        "predicted": "application_data",
+        "sample_index": 28
+      },
+      {
+        "abstention": null,
+        "expected": "temporary",
+        "group": "v2-layout",
+        "predicted": "temporary",
+        "sample_index": 29
+      },
+      {
+        "abstention": null,
+        "expected": "temporary",
+        "group": "v2-layout",
+        "predicted": "temporary",
+        "sample_index": 30
+      },
+      {
+        "abstention": null,
+        "expected": "personal",
+        "group": "v2-layout",
+        "predicted": "personal",
+        "sample_index": 31
+      },
+      {
+        "abstention": "insufficient_features",
+        "expected": "personal",
+        "group": "v2-layout",
+        "predicted": null,
+        "sample_index": 32
+      },
+      {
+        "abstention": "conflicting_context",
+        "expected": null,
+        "group": "v2-conflict",
+        "predicted": null,
+        "sample_index": 33
+      },
+      {
+        "abstention": "conflicting_context",
+        "expected": null,
+        "group": "v2-conflict",
+        "predicted": null,
+        "sample_index": 34
+      },
+      {
+        "abstention": "conflicting_context",
+        "expected": null,
+        "group": "v2-conflict",
+        "predicted": null,
+        "sample_index": 35
+      },
+      {
+        "abstention": "conflicting_context",
+        "expected": null,
+        "group": "v2-conflict",
+        "predicted": null,
+        "sample_index": 36
+      },
+      {
+        "abstention": "conflicting_context",
+        "expected": null,
+        "group": "v2-conflict",
+        "predicted": null,
+        "sample_index": 37
+      },
+      {
+        "abstention": "conflicting_context",
+        "expected": null,
+        "group": "v2-conflict",
+        "predicted": null,
+        "sample_index": 38
+      },
+      {
+        "abstention": "conflicting_context",
+        "expected": null,
+        "group": "v2-conflict",
+        "predicted": null,
+        "sample_index": 39
+      },
+      {
+        "abstention": "sensitive_location",
+        "expected": null,
+        "group": "v2-conflict",
+        "predicted": null,
+        "sample_index": 40
+      },
+      {
+        "abstention": "sensitive_location",
+        "expected": null,
+        "group": "v2-conflict",
+        "predicted": null,
+        "sample_index": 41
+      },
+      {
+        "abstention": "sensitive_location",
+        "expected": null,
+        "group": "v2-conflict",
+        "predicted": null,
+        "sample_index": 42
+      },
+      {
+        "abstention": "sensitive_location",
+        "expected": null,
+        "group": "v2-conflict",
+        "predicted": null,
+        "sample_index": 43
+      },
+      {
+        "abstention": "missing_context",
+        "expected": null,
+        "group": "v2-conflict",
+        "predicted": null,
+        "sample_index": 44
+      },
+      {
+        "abstention": "close_scores",
+        "expected": null,
+        "group": "v2-conflict",
+        "predicted": null,
+        "sample_index": 45
+      },
+      {
+        "abstention": "close_scores",
+        "expected": null,
+        "group": "v2-conflict",
+        "predicted": null,
+        "sample_index": 46
+      },
+      {
+        "abstention": "insufficient_features",
+        "expected": null,
+        "group": "v2-conflict",
+        "predicted": null,
+        "sample_index": 47
+      },
+      {
+        "abstention": "close_scores",
+        "expected": null,
+        "group": "v2-conflict",
+        "predicted": null,
+        "sample_index": 48
+      },
+      {
+        "abstention": "insufficient_features",
+        "expected": null,
+        "group": "v2-conflict",
+        "predicted": null,
+        "sample_index": 49
+      },
+      {
+        "abstention": "insufficient_features",
+        "expected": null,
+        "group": "v2-conflict",
+        "predicted": null,
+        "sample_index": 50
+      },
+      {
+        "abstention": "insufficient_features",
+        "expected": null,
+        "group": "v2-conflict",
+        "predicted": null,
+        "sample_index": 51
+      },
+      {
+        "abstention": "close_scores",
+        "expected": null,
+        "group": "v2-conflict",
+        "predicted": null,
+        "sample_index": 52
+      },
+      {
+        "abstention": "close_scores",
+        "expected": null,
+        "group": "v2-conflict",
+        "predicted": null,
+        "sample_index": 53
+      },
+      {
+        "abstention": "insufficient_features",
+        "expected": null,
+        "group": "v2-unknown",
+        "predicted": null,
+        "sample_index": 54
+      },
+      {
+        "abstention": "insufficient_features",
+        "expected": null,
+        "group": "v2-unknown",
+        "predicted": null,
+        "sample_index": 55
+      },
+      {
+        "abstention": "missing_context",
+        "expected": null,
+        "group": "v2-unknown",
+        "predicted": null,
+        "sample_index": 56
+      },
+      {
+        "abstention": "missing_context",
+        "expected": null,
+        "group": "v2-unknown",
+        "predicted": null,
+        "sample_index": 57
+      },
+      {
+        "abstention": "missing_context",
+        "expected": null,
+        "group": "v2-unknown",
+        "predicted": null,
+        "sample_index": 58
+      },
+      {
+        "abstention": "insufficient_features",
+        "expected": null,
+        "group": "v2-unknown",
+        "predicted": null,
+        "sample_index": 59
+      },
+      {
+        "abstention": "insufficient_features",
+        "expected": null,
+        "group": "v2-unknown",
+        "predicted": null,
+        "sample_index": 60
+      },
+      {
+        "abstention": "insufficient_features",
+        "expected": null,
+        "group": "v2-unknown",
+        "predicted": null,
+        "sample_index": 61
+      },
+      {
+        "abstention": "missing_context",
+        "expected": null,
+        "group": "v2-unknown",
+        "predicted": null,
+        "sample_index": 62
+      },
+      {
+        "abstention": "invalid_path",
+        "expected": null,
+        "group": "v2-unknown",
+        "predicted": null,
+        "sample_index": 63
+      },
+      {
+        "abstention": "invalid_path",
+        "expected": null,
+        "group": "v2-unknown",
+        "predicted": null,
+        "sample_index": 64
+      },
+      {
+        "abstention": "missing_context",
+        "expected": null,
+        "group": "v2-unknown",
+        "predicted": null,
+        "sample_index": 65
+      }
+    ],
+    "precision_when_predicted": 1,
+    "predicted": 30,
+    "provenance": "Authored synthetic v2 challenge regression, MIT. Names and paths are fictional. Used during development; not an independent real-machine test.",
+    "test_groups": 5,
+    "test_samples": 66
+  },
+  "database_boundary": {
+    "baseline_model_id": "purpose-nb-v3-30c6dc541589",
+    "baseline": {
+      "samples": 25,
+      "predicted": 19,
+      "correct_predictions": 10,
+      "correct_unknown_abstentions": 6,
+      "incorrect_cache_log_temp_predictions": 9
+    },
+    "current": {
+      "samples": 25,
+      "predicted": 10,
+      "correct_predictions": 10,
+      "correct_unknown_abstentions": 15,
+      "incorrect_cache_log_temp_predictions": 0
+    },
+    "evaluation": {
+      "abstained": 15,
+      "abstention_reasons": {
+        "insufficient_features": 6,
+        "protected_database_file": 5,
+        "sensitive_location": 4
+      },
+      "classes": [
+        {
+          "class": "cache",
+          "precision": 1,
+          "recall": 1,
+          "support": 1
+        },
+        {
+          "class": "logs",
+          "precision": 1,
+          "recall": 1,
+          "support": 6
+        },
+        {
+          "class": "temporary",
+          "precision": 1,
+          "recall": 1,
+          "support": 1
+        },
+        {
+          "class": "personal",
+          "precision": 1,
+          "recall": 1,
+          "support": 1
+        },
+        {
+          "class": "application_data",
+          "precision": 1,
+          "recall": 1,
+          "support": 1
+        }
+      ],
+      "confusion": {
+        "application_data": {
+          "application_data": 1
+        },
+        "cache": {
+          "cache": 1
+        },
+        "logs": {
+          "logs": 6
+        },
+        "personal": {
+          "personal": 1
+        },
+        "temporary": {
+          "temporary": 1
+        },
+        "unknown": {
+          "unknown": 15
+        }
+      },
+      "correct_predictions": 10,
+      "correct_unknown_abstentions": 15,
+      "coverage": 0.4,
+      "evaluation_scope": "Agreement with supplied evaluation labels; consult provenance for review method and independence. This evaluator does not verify ground truth or deletion safety.",
+      "failures": [],
+      "incorrect_cache_log_temp_predictions": 0,
+      "model_id": "purpose-nb-v4-e8149b38a69a",
+      "outcomes": [
+        {
+          "abstention": "protected_database_file",
+          "expected": null,
+          "group": "v4-protected",
+          "predicted": null,
+          "sample_index": 0
+        },
+        {
+          "abstention": "protected_database_file",
+          "expected": null,
+          "group": "v4-protected",
+          "predicted": null,
+          "sample_index": 1
+        },
+        {
+          "abstention": "protected_database_file",
+          "expected": null,
+          "group": "v4-protected",
+          "predicted": null,
+          "sample_index": 2
+        },
+        {
+          "abstention": "protected_database_file",
+          "expected": null,
+          "group": "v4-protected",
+          "predicted": null,
+          "sample_index": 3
+        },
+        {
+          "abstention": "protected_database_file",
+          "expected": null,
+          "group": "v4-protected",
+          "predicted": null,
+          "sample_index": 4
+        },
+        {
+          "abstention": "sensitive_location",
+          "expected": null,
+          "group": "v4-protected",
+          "predicted": null,
+          "sample_index": 5
+        },
+        {
+          "abstention": "sensitive_location",
+          "expected": null,
+          "group": "v4-protected",
+          "predicted": null,
+          "sample_index": 6
+        },
+        {
+          "abstention": "sensitive_location",
+          "expected": null,
+          "group": "v4-protected",
+          "predicted": null,
+          "sample_index": 7
+        },
+        {
+          "abstention": "sensitive_location",
+          "expected": null,
+          "group": "v4-protected",
+          "predicted": null,
+          "sample_index": 8
+        },
+        {
+          "abstention": "insufficient_features",
+          "expected": null,
+          "group": "v4-protected",
+          "predicted": null,
+          "sample_index": 9
+        },
+        {
+          "abstention": "insufficient_features",
+          "expected": null,
+          "group": "v4-protected",
+          "predicted": null,
+          "sample_index": 10
+        },
+        {
+          "abstention": "insufficient_features",
+          "expected": null,
+          "group": "v4-protected",
+          "predicted": null,
+          "sample_index": 11
+        },
+        {
+          "abstention": "insufficient_features",
+          "expected": null,
+          "group": "v4-protected",
+          "predicted": null,
+          "sample_index": 12
+        },
+        {
+          "abstention": "insufficient_features",
+          "expected": null,
+          "group": "v4-protected",
+          "predicted": null,
+          "sample_index": 13
+        },
+        {
+          "abstention": "insufficient_features",
+          "expected": null,
+          "group": "v4-protected",
+          "predicted": null,
+          "sample_index": 14
+        },
+        {
+          "abstention": null,
+          "expected": "logs",
+          "group": "v4-controls",
+          "predicted": "logs",
+          "sample_index": 15
+        },
+        {
+          "abstention": null,
+          "expected": "logs",
+          "group": "v4-controls",
+          "predicted": "logs",
+          "sample_index": 16
+        },
+        {
+          "abstention": null,
+          "expected": "logs",
+          "group": "v4-controls",
+          "predicted": "logs",
+          "sample_index": 17
+        },
+        {
+          "abstention": null,
+          "expected": "logs",
+          "group": "v4-controls",
+          "predicted": "logs",
+          "sample_index": 18
+        },
+        {
+          "abstention": null,
+          "expected": "logs",
+          "group": "v4-controls",
+          "predicted": "logs",
+          "sample_index": 19
+        },
+        {
+          "abstention": null,
+          "expected": "logs",
+          "group": "v4-controls",
+          "predicted": "logs",
+          "sample_index": 20
+        },
+        {
+          "abstention": null,
+          "expected": "cache",
+          "group": "v4-controls",
+          "predicted": "cache",
+          "sample_index": 21
+        },
+        {
+          "abstention": null,
+          "expected": "temporary",
+          "group": "v4-controls",
+          "predicted": "temporary",
+          "sample_index": 22
+        },
+        {
+          "abstention": null,
+          "expected": "personal",
+          "group": "v4-controls",
+          "predicted": "personal",
+          "sample_index": 23
+        },
+        {
+          "abstention": null,
+          "expected": "application_data",
+          "group": "v4-controls",
+          "predicted": "application_data",
+          "sample_index": 24
+        }
+      ],
+      "precision_when_predicted": 1,
+      "predicted": 10,
+      "provenance": "Authored synthetic v4 database boundary regression, MIT. Fictional paths; null means expected protective abstention, not semantic ground truth. Motivated by source-assisted development metadata review. Not an independent test.",
+      "test_groups": 2,
+      "test_samples": 25
+    }
+  },
+  "grouped_validation": {
+    "abstained": 52,
+    "correct_predictions": 173,
+    "coverage": 0.7688888888888888,
+    "fold_count": 9,
+    "incorrect_cache_log_temp_predictions": 0,
+    "precision_when_predicted": 1,
+    "predicted": 173,
+    "samples": 225,
+    "scope": "Leave-one-software-group-out on synthetic training groups; the original test split is excluded. Development metric, not real-machine accuracy.",
+    "folds": [
+      {
+        "group": "birch",
+        "samples": 27,
+        "predicted": 27,
+        "correct_predictions": 27,
+        "incorrect_cache_log_temp_predictions": 0
+      },
+      {
+        "group": "cedar",
+        "samples": 25,
+        "predicted": 12,
+        "correct_predictions": 12,
+        "incorrect_cache_log_temp_predictions": 0
+      },
+      {
+        "group": "elm",
+        "samples": 23,
+        "predicted": 15,
+        "correct_predictions": 15,
+        "incorrect_cache_log_temp_predictions": 0
+      },
+      {
+        "group": "iris",
+        "samples": 25,
+        "predicted": 13,
+        "correct_predictions": 13,
+        "incorrect_cache_log_temp_predictions": 0
+      },
+      {
+        "group": "maple",
+        "samples": 25,
+        "predicted": 13,
+        "correct_predictions": 13,
+        "incorrect_cache_log_temp_predictions": 0
+      },
+      {
+        "group": "orchid",
+        "samples": 26,
+        "predicted": 21,
+        "correct_predictions": 21,
+        "incorrect_cache_log_temp_predictions": 0
+      },
+      {
+        "group": "plum",
+        "samples": 27,
+        "predicted": 27,
+        "correct_predictions": 27,
+        "incorrect_cache_log_temp_predictions": 0
+      },
+      {
+        "group": "reed",
+        "samples": 27,
+        "predicted": 27,
+        "correct_predictions": 27,
+        "incorrect_cache_log_temp_predictions": 0
+      },
+      {
+        "group": "willow",
+        "samples": 20,
+        "predicted": 18,
+        "correct_predictions": 18,
+        "incorrect_cache_log_temp_predictions": 0
+      }
+    ]
+  }
+}

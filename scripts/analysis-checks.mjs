@@ -37,10 +37,14 @@ export async function checkAnalysis({
   until,
   source,
   root,
+  output,
   fixture,
   tabTo,
   key,
 }) {
+  const version = JSON.parse(await readFile('package.json', 'utf8')).version;
+  await mkdir(`${output}/analysis`);
+  await mkdir(`${output}/analysis/discovery`);
   const ipc = (name, args = {}) =>
     command('POST', `/session/${session}/execute/sync`, {
       script: 'return window.__TAURI_INTERNALS__.invoke(arguments[0], arguments[1]);',
@@ -73,6 +77,7 @@ export async function checkAnalysis({
     return s?.state !== 'scanning' && s;
   }, 240000);
   const scanWallMs = Date.now() - began;
+  await writeFile(join(root, 'analysis-completed.json'), JSON.stringify(complete, null, 2));
   assert.equal(complete.state, 'completed');
   assert.equal(complete.files, fixture.count + 2);
   assert.equal(complete.unique_bytes, String(fixture.count + 32768));
@@ -127,9 +132,9 @@ export async function checkAnalysis({
     }
   }
   await writeFile(
-    'artifacts/netdisk-extension-e2e/analysis-ipc-queries-0.18.0.json',
+    `${output}/analysis/ipc-queries-${version}.json`,
     JSON.stringify(
-      { version: '0.18.0', build: 'debug-e2e', files: fixture.count + 2, queries: querySamples },
+      { version, build: 'debug-e2e', files: fixture.count + 2, queries: querySamples },
       null,
       2,
     ),
@@ -263,7 +268,7 @@ export async function checkAnalysis({
       );
       discoveryLayouts.push({ theme, width, height, ...layout });
       await writeFile(
-        `artifacts/netdisk-extension-e2e/discovery-0.18.0/discovery-${theme}-${width}.png`,
+        `${output}/analysis/discovery/discovery-${theme}-${width}.png`,
         Buffer.from(await command('GET', `/session/${session}/screenshot`), 'base64'),
       );
     }
@@ -292,7 +297,7 @@ export async function checkAnalysis({
     }),
   );
   await writeFile(
-    'artifacts/netdisk-extension-e2e/discovery-0.18.0/discovery-desktop.json',
+    `${output}/analysis/discovery/discovery-desktop.json`,
     JSON.stringify(
       {
         layouts: discoveryLayouts,
@@ -326,7 +331,7 @@ export async function checkAnalysis({
   await until(async () => (await source()).includes('可能是GGUF 模型文件'));
   await click('//summary[normalize-space(.)="依据与完整路径"]');
   await writeFile(
-    'artifacts/netdisk-extension-e2e/largest-files-0.18.0.png',
+    `${output}/analysis/largest-files-${version}.png`,
     Buffer.from(await command('GET', `/session/${session}/screenshot`), 'base64'),
   );
   await click('//button[@aria-label="关闭文件详情"]');
@@ -372,7 +377,7 @@ export async function checkAnalysis({
       if (width === 760) assert(reviewLayout.bodyScrollable);
       reviewLayouts.push({ theme, width, height, ...reviewLayout });
       await writeFile(
-        `artifacts/netdisk-extension-e2e/discovery-0.18.0/review-${theme}-${width}.png`,
+        `${output}/analysis/discovery/review-${theme}-${width}.png`,
         Buffer.from(await command('GET', `/session/${session}/screenshot`), 'base64'),
       );
     }
@@ -404,7 +409,7 @@ export async function checkAnalysis({
     }),
   );
   await writeFile(
-    'artifacts/netdisk-extension-e2e/analysis-light-0.18.0.png',
+    `${output}/analysis/light-${version}.png`,
     Buffer.from(await command('GET', `/session/${session}/screenshot`), 'base64'),
   );
   await command('POST', `/session/${session}/window/rect`, { width: 760, height: 580 });
@@ -414,7 +419,7 @@ export async function checkAnalysis({
   });
   assert(!layout.overflow && layout.listHeight >= 180);
   await writeFile(
-    'artifacts/netdisk-extension-e2e/analysis-minimum-0.18.0.png',
+    `${output}/analysis/minimum-${version}.png`,
     Buffer.from(await command('GET', `/session/${session}/screenshot`), 'base64'),
   );
   await command('POST', `/session/${session}/window/rect`, { width: 1100, height: 780 });
@@ -503,7 +508,7 @@ export async function checkAnalysis({
   await click('//button[contains(.,"深色")]');
   await click('//nav/button[normalize-space(.)="空间分析"]');
   await writeFile(
-    'artifacts/netdisk-extension-e2e/analysis-dark-0.18.0.png',
+    `${output}/analysis/dark-${version}.png`,
     Buffer.from(await command('GET', `/session/${session}/screenshot`), 'base64'),
   );
   await click('//nav/button[contains(.,"设置")]');
@@ -512,6 +517,7 @@ export async function checkAnalysis({
   assert.equal((await stat(fixture.protectedFile)).mtimeMs, fixture.modified);
   assert.equal((await readFile(fixture.protectedFile)).compare(Buffer.alloc(32768, 65)), 0);
   const result = {
+    version,
     files: fixture.count + 2,
     scanWallMs,
     engineElapsedMs: complete.elapsed_ms,
@@ -534,7 +540,7 @@ export async function checkAnalysis({
     resources: JSON.parse(resources.stdout),
   };
   await writeFile(
-    'artifacts/netdisk-extension-e2e/analysis-performance-0.18.0.json',
+    `${output}/analysis/performance-${version}.json`,
     JSON.stringify(result, null, 2),
   );
   console.log(

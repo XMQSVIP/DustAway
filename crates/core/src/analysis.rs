@@ -67,6 +67,8 @@ pub struct AnalysisAdvice {
     pub basis: String,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub recognition: Option<crate::recognition::Recognition>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub model_hint: Option<crate::file_purpose::Hint>,
 }
 impl Default for AnalysisAdvice {
     fn default() -> Self {
@@ -75,6 +77,7 @@ impl Default for AnalysisAdvice {
             app_id: None,
             basis: "unrecognized_location".into(),
             recognition: None,
+            model_hint: None,
         }
     }
 }
@@ -296,7 +299,7 @@ pub struct AnalysisEngine {
     inner: Mutex<Inner>,
     cancelled: Arc<AtomicBool>,
     index_bytes: u64,
-    indexing_snapshot: Mutex<Option<AnalysisSnapshot>>,
+    progress_snapshot: Mutex<Option<(AnalysisSnapshot, Instant)>>,
     limit: u64,
     current_session: Mutex<Option<String>>,
     preview_cancelled: Mutex<Option<(String, Arc<AtomicBool>)>>,
@@ -460,7 +463,7 @@ impl AnalysisEngine {
             }),
             cancelled: Arc::new(AtomicBool::new(false)),
             index_bytes,
-            indexing_snapshot: Mutex::new(None),
+            progress_snapshot: Mutex::new(None),
             limit,
             current_session: Mutex::new(None),
             preview_cancelled: Mutex::new(None),
@@ -607,13 +610,12 @@ impl AnalysisEngine {
     }
     pub fn snapshot(&self) -> Option<AnalysisSnapshot> {
         loop {
-            if let Some(mut s) = self.indexing_snapshot.lock().unwrap().clone() {
-                s.elapsed_ms = ((now() - s.started_at).max(0) as u64) * 1000;
+            if let Some((mut s, started)) = self.progress_snapshot.lock().unwrap().clone() {
+                s.elapsed_ms = started.elapsed().as_millis() as u64;
                 return Some(s);
             }
-            // Indexing can begin after the check above. Do not block on the DB
-            // mutex until it finishes: keep checking its independently readable
-            // snapshot so progress and cancellation stay available.
+            // A scan can publish after the check above. Never wait for a writer
+            // or index builder while reporting progress to the control channel.
             match self.inner.try_lock() {
                 Ok(inner) => {
                     let mut s = inner.snapshot.clone()?;
@@ -710,6 +712,10 @@ impl AnalysisEngine {
             *current = Some(id.clone());
             self.cancelled.store(false, Ordering::Release);
         }
+        *self.progress_snapshot.lock().unwrap() = inner
+            .snapshot
+            .clone()
+            .map(|snapshot| (snapshot, inner.started.unwrap()));
         drop(inner);
         let engine = self.clone();
         std::thread::spawn(move || {
@@ -724,7 +730,10 @@ impl AnalysisEngine {
             if let Some(s) = &mut inner.snapshot {
                 s.phase = "indexing".into();
             }
-            *engine.indexing_snapshot.lock().unwrap() = inner.snapshot.clone();
+            *engine.progress_snapshot.lock().unwrap() = inner
+                .snapshot
+                .clone()
+                .map(|snapshot| (snapshot, inner.started.unwrap()));
             drop(inner);
             let mut inner = engine.inner.lock().unwrap_or_else(|e| e.into_inner());
             let index_begin = Instant::now();
@@ -826,7 +835,7 @@ impl AnalysisEngine {
             }
             let _ = flush(&mut inner);
             let _ = persist_snapshot(&inner);
-            *engine.indexing_snapshot.lock().unwrap() = None;
+            *engine.progress_snapshot.lock().unwrap() = None;
         });
         Ok(id)
     }
@@ -1101,6 +1110,7 @@ impl AnalysisEngine {
         }
         let mut advice = self.platform.advice(&entry);
         advice.recognition = crate::recognition::recognize(&entry.path, entry.directory);
+        advice.model_hint = crate::file_purpose::hint_for(&entry, &advice);
         entry.advice = Some(Box::new(advice));
         Ok(entry)
     }
@@ -1423,6 +1433,74 @@ mod sql_cancellation_tests {
         }
     }
     #[test]
+    fn scanning_progress_and_cancel_remain_available_while_writer_holds_database() {
+        use std::time::Duration;
+        struct PausedScan {
+            entered: std::sync::mpsc::Sender<()>,
+            resume: Mutex<std::sync::mpsc::Receiver<()>>,
+        }
+        impl AnalysisPlatform for PausedScan {
+            fn locations(&self) -> Vec<(String, String)> {
+                vec![("fixture".into(), "fixture".into())]
+            }
+            fn validate_root(&self, path: &str) -> Result<AnalysisRoot> {
+                Ok(AnalysisRoot {
+                    path: path.into(),
+                    opaque: String::new(),
+                })
+            }
+            fn scan(
+                &self,
+                _: &AnalysisRoot,
+                _: &AtomicBool,
+                _: &mut dyn FnMut(AnalysisEvent) -> Result<bool>,
+            ) -> Result<()> {
+                self.entered.send(())?;
+                self.resume
+                    .lock()
+                    .unwrap()
+                    .recv_timeout(Duration::from_secs(10))?;
+                Ok(())
+            }
+            fn reveal(&self, _: &AnalysisRoot, _: &[Vec<u8>]) -> Result<()> {
+                unreachable!()
+            }
+        }
+        let (entered, ready) = std::sync::mpsc::channel();
+        let (resume, release) = std::sync::mpsc::channel();
+        let engine = AnalysisEngine::new(Arc::new(PausedScan {
+            entered,
+            resume: Mutex::new(release),
+        }))
+        .unwrap();
+        let id = engine.start(&engine.locations()[0].token, vec![]).unwrap();
+        ready.recv_timeout(Duration::from_secs(2)).unwrap();
+        let mut writer = engine.inner.lock().unwrap();
+        writer.snapshot.as_mut().unwrap().entries = 123; // Uncommitted writer state.
+        let (sent, received) = std::sync::mpsc::channel();
+        let other = engine.clone();
+        let reader = std::thread::spawn(move || {
+            assert!(other.is_busy());
+            sent.send(other.snapshot().unwrap()).unwrap();
+        });
+        let result = received.recv_timeout(Duration::from_secs(2));
+        engine.cancel(&id).unwrap();
+        writer.snapshot.as_mut().unwrap().entries = 0;
+        drop(writer);
+        resume.send(()).unwrap();
+        reader.join().unwrap();
+        let snapshot = result.expect("progress must not wait for the writer");
+        assert_eq!(snapshot.id, id);
+        assert_eq!(snapshot.state, "scanning");
+        assert_eq!(snapshot.entries, 0, "uncommitted totals must not leak");
+        let deadline = Instant::now() + Duration::from_secs(2);
+        while engine.is_busy() {
+            assert!(Instant::now() < deadline);
+            std::thread::sleep(Duration::from_millis(1));
+        }
+        assert_eq!(engine.snapshot().unwrap().state, "cancelled");
+    }
+    #[test]
     fn progress_can_switch_to_indexing_while_database_is_locked() {
         let engine = AnalysisEngine::new(Arc::new(UnusedPlatform)).unwrap();
         let guard = engine.inner.lock().unwrap();
@@ -1443,34 +1521,37 @@ mod sql_cancellation_tests {
             tx.send(snapshot).unwrap();
         });
         std::thread::sleep(std::time::Duration::from_millis(20));
-        *engine.indexing_snapshot.lock().unwrap() = Some(AnalysisSnapshot {
-            id: "indexing".into(),
-            query_api_version: 1,
-            scan_ms: 0,
-            write_ms: 0,
-            index_ms: 0,
-            location: AnalysisLocation {
-                token: "fixture".into(),
-                title: "fixture".into(),
-                path: "fixture".into(),
-                info: AnalysisLocationInfo::default(),
+        *engine.progress_snapshot.lock().unwrap() = Some((
+            AnalysisSnapshot {
+                id: "indexing".into(),
+                query_api_version: 1,
+                scan_ms: 0,
+                write_ms: 0,
+                index_ms: 0,
+                location: AnalysisLocation {
+                    token: "fixture".into(),
+                    title: "fixture".into(),
+                    path: "fixture".into(),
+                    info: AnalysisLocationInfo::default(),
+                },
+                state: "scanning".into(),
+                phase: "indexing".into(),
+                started_at: now(),
+                elapsed_ms: 0,
+                checked: 0,
+                entries: 0,
+                files: 0,
+                logical_bytes: "0".into(),
+                unique_bytes: "0".into(),
+                allocated_bytes: "0".into(),
+                allocation_unknown: 0,
+                issues: vec![],
+                stale: false,
+                error: None,
+                current_directory: None,
             },
-            state: "scanning".into(),
-            phase: "indexing".into(),
-            started_at: now(),
-            elapsed_ms: 0,
-            checked: 0,
-            entries: 0,
-            files: 0,
-            logical_bytes: "0".into(),
-            unique_bytes: "0".into(),
-            allocated_bytes: "0".into(),
-            allocation_unknown: 0,
-            issues: vec![],
-            stale: false,
-            error: None,
-            current_directory: None,
-        });
+            Instant::now(),
+        ));
         // This must return before the DB lock is released; otherwise progress
         // can remain blocked through the entire indexing operation.
         let result = rx.recv_timeout(std::time::Duration::from_secs(2));

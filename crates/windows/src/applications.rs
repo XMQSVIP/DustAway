@@ -64,13 +64,40 @@ fn registry_string(hive: HKEY, key: &str, name: &str) -> Option<String> {
     String::from_utf16(&buffer[..length]).ok()
 }
 fn registry_children(hive: HKEY, key: &str) -> Vec<String> {
+    registry_children_cancellable(hive, key, None).unwrap_or_default()
+}
+fn registry_string_cancellable(
+    hive: HKEY,
+    key: &str,
+    name: &str,
+    cancel: Option<&std::sync::atomic::AtomicBool>,
+) -> Result<Option<String>> {
+    check_cancel(cancel)?;
+    let value = registry_string(hive, key, name);
+    check_cancel(cancel)?;
+    Ok(value)
+}
+fn registry_children_cancellable(
+    hive: HKEY,
+    key: &str,
+    cancel: Option<&std::sync::atomic::AtomicBool>,
+) -> Result<Vec<String>> {
+    check_cancel(cancel)?;
     let key = text_wide(key);
     let mut handle = HKEY::default();
     if unsafe { RegOpenKeyExW(hive, PCWSTR(key.as_ptr()), None, KEY_READ, &mut handle) }.is_err() {
-        return vec![];
+        check_cancel(cancel)?;
+        return Ok(vec![]);
     }
     let mut result = vec![];
     for index in 0..4096 {
+        // Close the handle before propagating cancellation.
+        if let Err(e) = check_cancel(cancel) {
+            unsafe {
+                let _ = RegCloseKey(handle);
+            }
+            return Err(e);
+        }
         let mut name = [0u16; 256];
         let mut len = name.len() as u32;
         let status = unsafe {
@@ -85,6 +112,12 @@ fn registry_children(hive: HKEY, key: &str) -> Vec<String> {
                 None,
             )
         };
+        if let Err(e) = check_cancel(cancel) {
+            unsafe {
+                let _ = RegCloseKey(handle);
+            }
+            return Err(e);
+        }
         if status == ERROR_NO_MORE_ITEMS {
             break;
         }
@@ -95,7 +128,7 @@ fn registry_children(hive: HKEY, key: &str) -> Vec<String> {
     unsafe {
         let _ = RegCloseKey(handle);
     }
-    result
+    Ok(result)
 }
 /// Registry locations only add protection; they never grant deletion authority.
 pub(crate) fn installed_directories() -> Vec<PathBuf> {
@@ -124,7 +157,7 @@ pub(crate) fn installed_directories() -> Vec<PathBuf> {
     }
     paths.into_iter().collect()
 }
-fn resource_path(value: &str) -> Option<PathBuf> {
+pub(crate) fn resource_path(value: &str) -> Option<PathBuf> {
     let value = value.trim();
     let path = if let Some(rest) = value.strip_prefix('"') {
         rest.split_once('"')?.0
@@ -145,6 +178,13 @@ fn icon_path(value: &str) -> Option<PathBuf> {
     resource_path(value).filter(|p| p.extension().is_some_and(|e| e.eq_ignore_ascii_case("exe")))
 }
 fn candidates(app: &Application) -> Vec<PathBuf> {
+    candidates_cancellable(app, None).unwrap_or_default()
+}
+pub(crate) fn candidates_cancellable(
+    app: &Application,
+    cancel: Option<&std::sync::atomic::AtomicBool>,
+) -> Result<Vec<PathBuf>> {
+    check_cancel(cancel)?;
     let mut found = BTreeSet::new();
     for hive in [HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE] {
         for key in [
@@ -157,17 +197,21 @@ fn candidates(app: &Application) -> Vec<PathBuf> {
                 app.executable
             ),
         ] {
-            if let Some(path) = registry_string(hive, &key, "").and_then(|s| icon_path(&s)) {
+            check_cancel(cancel)?;
+            if let Some(path) =
+                registry_string_cancellable(hive, &key, "", cancel)?.and_then(|s| icon_path(&s))
+            {
                 found.insert(path);
             }
         }
         for key in app.registry_keys {
+            check_cancel(cancel)?;
             for key in [
                 key.to_string(),
                 key.replacen("Software\\", "Software\\WOW6432Node\\", 1),
             ] {
                 for name in ["InstallPath", "Install"] {
-                    if let Some(path) = registry_string(hive, &key, name) {
+                    if let Some(path) = registry_string_cancellable(hive, &key, name, cancel)? {
                         let root = PathBuf::from(path);
                         if root.is_absolute() {
                             found.insert(root.join(app.executable_relative));
@@ -180,9 +224,11 @@ fn candidates(app: &Application) -> Vec<PathBuf> {
             "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall",
             "Software\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall",
         ] {
-            for sub in registry_children(hive, root) {
+            for sub in registry_children_cancellable(hive, root, cancel)? {
                 let key = format!("{root}\\{sub}");
-                let name = registry_string(hive, &key, "DisplayName").unwrap_or_default();
+                check_cancel(cancel)?;
+                let name = registry_string_cancellable(hive, &key, "DisplayName", cancel)?
+                    .unwrap_or_default();
                 let relevant = match app.id {
                     "weixin" => name == "微信" || name == "Weixin" || name == "WeChat",
                     "qq" | "qqnt" => name == "腾讯QQ" || name == "QQ",
@@ -197,14 +243,16 @@ fn candidates(app: &Application) -> Vec<PathBuf> {
                 if !relevant {
                     continue;
                 }
-                if let Some(path) = registry_string(hive, &key, "InstallLocation") {
+                if let Some(path) =
+                    registry_string_cancellable(hive, &key, "InstallLocation", cancel)?
+                {
                     let root = PathBuf::from(path);
                     if root.is_absolute() {
                         found.insert(root.join(app.executable_relative));
                     }
                 }
-                if let Some(icon) =
-                    registry_string(hive, &key, "DisplayIcon").and_then(|s| resource_path(&s))
+                if let Some(icon) = registry_string_cancellable(hive, &key, "DisplayIcon", cancel)?
+                    .and_then(|s| resource_path(&s))
                 {
                     if icon
                         .file_name()
@@ -235,17 +283,34 @@ fn candidates(app: &Application) -> Vec<PathBuf> {
             .collect();
         found.extend(companions);
     }
-    found.into_iter().filter(|p| p.is_file()).collect()
+    let mut existing = Vec::new();
+    for path in found {
+        check_cancel(cancel)?;
+        if path.is_file() {
+            existing.push(path);
+        }
+    }
+    check_cancel(cancel)?;
+    Ok(existing)
 }
 
 pub fn executable_version(path: &Path) -> Result<String> {
+    executable_version_cancellable(path, None)
+}
+pub(crate) fn executable_version_cancellable(
+    path: &Path,
+    cancel: Option<&std::sync::atomic::AtomicBool>,
+) -> Result<String> {
+    check_cancel(cancel)?;
     let name = wide(path);
     let len = unsafe { GetFileVersionInfoSizeW(PCWSTR(name.as_ptr()), None) };
+    check_cancel(cancel)?;
     ensure!(len > 0 && len <= 4 * 1024 * 1024, "程序版本资源无法读取");
     let mut data = vec![0u64; (len as usize).div_ceil(8)];
     unsafe {
         GetFileVersionInfoW(PCWSTR(name.as_ptr()), None, len, data.as_mut_ptr().cast())?;
     }
+    check_cancel(cancel)?;
     let mut ptr = std::ptr::null_mut();
     let mut size = 0;
     ensure!(
@@ -254,6 +319,7 @@ pub fn executable_version(path: &Path) -> Result<String> {
             && size as usize >= size_of::<VS_FIXEDFILEINFO>(),
         "版本资源无效"
     );
+    check_cancel(cancel)?;
     let info = unsafe { std::ptr::read_unaligned(ptr.cast::<VS_FIXEDFILEINFO>()) };
     ensure!(info.dwSignature == 0xfeef04bd, "版本签名无效");
     Ok(format!(
@@ -265,7 +331,84 @@ pub fn executable_version(path: &Path) -> Result<String> {
     ))
 }
 
+/// Read ProductName from every declared version-resource translation; ambiguity fails closed.
+pub(crate) fn executable_product_name(
+    path: &Path,
+    cancel: Option<&std::sync::atomic::AtomicBool>,
+) -> Result<String> {
+    check_cancel(cancel)?;
+    let name = wide(path);
+    let len = unsafe { GetFileVersionInfoSizeW(PCWSTR(name.as_ptr()), None) };
+    check_cancel(cancel)?;
+    ensure!(len > 0 && len <= 4 * 1024 * 1024, "程序产品资源无法读取");
+    let mut data = vec![0u64; (len as usize).div_ceil(8)];
+    unsafe {
+        GetFileVersionInfoW(PCWSTR(name.as_ptr()), None, len, data.as_mut_ptr().cast())?;
+    }
+    check_cancel(cancel)?;
+    let mut ptr = std::ptr::null_mut();
+    let mut size = 0;
+    ensure!(
+        unsafe {
+            VerQueryValueW(
+                data.as_ptr().cast(),
+                w!("\\VarFileInfo\\Translation"),
+                &mut ptr,
+                &mut size,
+            )
+        }
+        .as_bool()
+            && !ptr.is_null()
+            && size >= 4
+            && size <= len
+            && size % 4 == 0,
+        "产品资源翻译无效"
+    );
+    check_cancel(cancel)?;
+    let translations =
+        unsafe { std::slice::from_raw_parts(ptr.cast::<u16>(), size as usize / 2) }.to_vec();
+    let mut products = BTreeSet::new();
+    for pair in translations.chunks_exact(2) {
+        check_cancel(cancel)?;
+        let key = text_wide(&format!(
+            "\\StringFileInfo\\{:04x}{:04x}\\ProductName",
+            pair[0], pair[1]
+        ));
+        let mut value = std::ptr::null_mut();
+        let mut count = 0;
+        ensure!(
+            unsafe {
+                VerQueryValueW(
+                    data.as_ptr().cast(),
+                    PCWSTR(key.as_ptr()),
+                    &mut value,
+                    &mut count,
+                )
+            }
+            .as_bool()
+                && !value.is_null()
+                && count > 1
+                && count <= len / 2,
+            "程序产品名称缺失"
+        );
+        check_cancel(cancel)?;
+        let text = unsafe { std::slice::from_raw_parts(value.cast::<u16>(), count as usize) };
+        ensure!(text.last() == Some(&0), "程序产品名称无效");
+        products.insert(String::from_utf16(&text[..text.len() - 1])?);
+    }
+    ensure!(products.len() == 1, "程序产品名称不一致");
+    Ok(products.into_iter().next().unwrap())
+}
+
 pub(crate) fn signed_by(pin: &PinnedPath, publisher: &str) -> bool {
+    signed_by_cancellable(pin, publisher, None).unwrap_or(false)
+}
+pub(crate) fn signed_by_cancellable(
+    pin: &PinnedPath,
+    publisher: &str,
+    cancel: Option<&std::sync::atomic::AtomicBool>,
+) -> Result<bool> {
+    check_cancel(cancel)?;
     // The file and its ancestor directories remain pinned throughout verification/use.
     // Cache only successful checks for an unchanged file identity+stamp in this process.
     static VERIFIED: OnceLock<Mutex<BTreeSet<String>>> = OnceLock::new();
@@ -273,7 +416,7 @@ pub(crate) fn signed_by(pin: &PinnedPath, publisher: &str) -> bool {
         serde_json::to_string(&(native(&pin.path), &pin.stamp, publisher)).unwrap_or_default();
     let cache = VERIFIED.get_or_init(Default::default);
     if cache.lock().unwrap().contains(&key) {
-        return true;
+        return Ok(true);
     }
     let path = wide(&pin.path);
     let mut file = WINTRUST_FILE_INFO {
@@ -292,36 +435,46 @@ pub(crate) fn signed_by(pin: &PinnedPath, publisher: &str) -> bool {
         ..Default::default()
     };
     let mut action = WINTRUST_ACTION_GENERIC_VERIFY_V2;
-    let mut valid = false;
-    unsafe {
-        if WinVerifyTrust(
-            HWND(-1isize as *mut _),
-            &mut action,
-            (&mut data as *mut WINTRUST_DATA).cast(),
-        ) == 0
-        {
-            let provider = WTHelperProvDataFromStateData(data.hWVTStateData);
-            if !provider.is_null() {
-                let signer = WTHelperGetProvSignerFromChain(provider, 0, false, 0);
-                if !signer.is_null()
-                    && (*signer).csCertChain > 0
-                    && !(*signer).pasCertChain.is_null()
-                {
-                    let cert = (*(*signer).pasCertChain).pCert;
-                    let mut name = [0u16; 1024];
-                    let len = CertGetNameStringW(
-                        cert,
-                        CERT_NAME_SIMPLE_DISPLAY_TYPE,
-                        0,
-                        None,
-                        Some(&mut name),
-                    );
-                    valid = len > 1
-                        && len as usize <= name.len()
-                        && String::from_utf16_lossy(&name[..len as usize - 1]) == publisher;
+    let verified = (|| -> Result<bool> {
+        unsafe {
+            let status = WinVerifyTrust(
+                HWND(-1isize as *mut _),
+                &mut action,
+                (&mut data as *mut WINTRUST_DATA).cast(),
+            );
+            check_cancel(cancel)?;
+            let mut valid = false;
+            if status == 0 {
+                let provider = WTHelperProvDataFromStateData(data.hWVTStateData);
+                check_cancel(cancel)?;
+                if !provider.is_null() {
+                    let signer = WTHelperGetProvSignerFromChain(provider, 0, false, 0);
+                    check_cancel(cancel)?;
+                    if !signer.is_null()
+                        && (*signer).csCertChain > 0
+                        && !(*signer).pasCertChain.is_null()
+                    {
+                        let cert = (*(*signer).pasCertChain).pCert;
+                        let mut name = [0u16; 1024];
+                        let len = CertGetNameStringW(
+                            cert,
+                            CERT_NAME_SIMPLE_DISPLAY_TYPE,
+                            0,
+                            None,
+                            Some(&mut name),
+                        );
+                        check_cancel(cancel)?;
+                        valid = len > 1
+                            && len as usize <= name.len()
+                            && String::from_utf16_lossy(&name[..len as usize - 1]) == publisher;
+                    }
                 }
             }
+            Ok(valid)
         }
+    })();
+    // Releasing WinTrust state is mandatory even after cancellation.
+    unsafe {
         data.dwStateAction = WTD_STATEACTION_CLOSE;
         let _ = WinVerifyTrust(
             HWND(-1isize as *mut _),
@@ -329,6 +482,8 @@ pub(crate) fn signed_by(pin: &PinnedPath, publisher: &str) -> bool {
             (&mut data as *mut WINTRUST_DATA).cast(),
         );
     }
+    check_cancel(cancel)?;
+    let valid = verified?;
     if valid {
         let mut cache = cache.lock().unwrap();
         if cache.len() >= 32 {
@@ -336,7 +491,7 @@ pub(crate) fn signed_by(pin: &PinnedPath, publisher: &str) -> bool {
         }
         cache.insert(key);
     }
-    valid
+    Ok(valid)
 }
 
 fn installation_root(app: &Application, executable: &Path) -> Result<PathBuf> {
@@ -435,21 +590,43 @@ fn qqnt_components(
 }
 
 pub(crate) fn identify(app: &Application) -> Result<VerifiedApplication> {
+    identify_candidates(
+        app,
+        candidates(app),
+        |pin, publisher| Ok(signed_by(pin, publisher)),
+        |pin| executable_version(&pin.path),
+        None,
+    )
+}
+pub(crate) fn identify_candidates(
+    app: &Application,
+    candidates: Vec<PathBuf>,
+    signed: impl Fn(&PinnedPath, &str) -> Result<bool>,
+    version: impl Fn(&PinnedPath) -> Result<String>,
+    cancel: Option<&std::sync::atomic::AtomicBool>,
+) -> Result<VerifiedApplication> {
     let mut verified = vec![];
     let mut unsupported_layout = false;
-    for candidate in candidates(app) {
-        let Ok(pin) = PinnedPath::open(&candidate, false, false) else {
+    for candidate in candidates {
+        check_cancel(cancel)?;
+        let pin_result = PinnedPath::open_cancellable(&candidate, false, false, cancel);
+        check_cancel(cancel)?;
+        let Ok(pin) = pin_result else {
             continue;
         };
         // The official 8.2.0 installer uses this exact punctuation variant (verified
         // on the isolated computer). Do not normalize arbitrary publisher names.
         let known_dingtalk_signer =
-            app.id == "dingtalk" && signed_by(&pin, "DingTalk Technology Co.,Ltd.");
-        if !known_dingtalk_signer && !signed_by(&pin, app.publisher) {
+            app.id == "dingtalk" && signed(&pin, "DingTalk Technology Co.,Ltd.")?;
+        if !known_dingtalk_signer && !signed(&pin, app.publisher)? {
             continue;
         }
-        let Ok(version) = executable_version(&pin.path) else {
-            continue;
+        let version_result = version(&pin);
+        check_cancel(cancel)?;
+        let version = match version_result {
+            Ok(version) => version,
+            Err(e) if e.is::<ScanCancelled>() => return Err(e),
+            Err(_) => continue,
         };
         let install = match installation_root(app, &pin.path) {
             Ok(install) => install,
@@ -476,6 +653,7 @@ pub(crate) fn identify(app: &Application) -> Result<VerifiedApplication> {
             components,
         });
     }
+    check_cancel(cancel)?;
     if verified.is_empty() && unsupported_layout {
         return Err(Refusal(ReasonCode::UnsupportedLayout).into());
     }

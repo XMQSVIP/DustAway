@@ -8,7 +8,7 @@ import sys
 path = pathlib.Path(sys.argv[1])
 events = [json.loads(line) for line in path.read_text(encoding="utf-8-sig").splitlines() if line.strip()]
 summary = {}
-for kind in ["reader", "page"]:
+for kind in ["reader", "page", "count"]:
     rows = [event for event in events if event.get("query_timing") == kind]
     phases = {}
     for row in rows:

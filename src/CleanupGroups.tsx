@@ -133,6 +133,7 @@ export function CleanupGroups({
                     <details className="application-identity">
                       <summary>应用版本与检查位置</summary>
                       <ApplicationSupportNotice
+                        rules={model.boot?.rules ?? []}
                         support={model.applicationInfo.applications.find(
                           (a) => a.app_id === group.id,
                         )}

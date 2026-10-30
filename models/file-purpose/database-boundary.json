@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "provenance": "Authored synthetic v4 database boundary regression, MIT. Fictional paths; null means expected protective abstention, not semantic ground truth. Motivated by source-assisted development metadata review. Not an independent test.",
+  "samples": [
+    {
+      "group": "v4-protected",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/logs/000003.log",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v4-protected",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/logs/000003.log.1",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v4-protected",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/logs/20261029.log",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v4-protected",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/logs/date/window/exthost/000003.log",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v4-protected",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/日志/000003.LOG",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v4-protected",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/leveldb/logs/service.log",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v4-protected",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/LEVELDB/Cache/entry.cache",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v4-protected",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/leveldb/temp/session.tmp",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v4-protected",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/leveldb/a/b/c/d/logs/service.log",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v4-protected",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/Cache/cache.ldb",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v4-protected",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/logs/log.sst",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v4-protected",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/temp/temp.dbtmp",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v4-protected",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/Cache/CURRENT",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v4-protected",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/Cache/MANIFEST-000001",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v4-protected",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/temp/LOCK",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "v4-controls",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/logs/service.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "v4-controls",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/logs/service.log.17",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "v4-controls",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/logs/service123.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "v4-controls",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/logs/20261029-startup.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "v4-controls",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/logs/date/window/exthost/output/renderer.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "v4-controls",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/leveldb-notes/logs/service.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "v4-controls",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/Cache/entry.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "v4-controls",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/temp/session.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "v4-controls",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/Documents/contract.docx",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "v4-controls",
+      "split": "test",
+      "path": "F:/Fictional/Orchid/database/accounts.db",
+      "directory": false,
+      "label": "application_data"
+    }
+  ]
+}

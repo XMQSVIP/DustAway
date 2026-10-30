@@ -79,11 +79,11 @@ it('keeps the eight new observations readonly beside a selected temporary-file c
   const partial = decide(new Set(['windows.user_temp']));
   expect(scanAccounting({ decision: partial, summaryRows: rows }).unknown).toBe(true);
 });
-it('keeps all twenty-six observed scopes out of selection and counts their occupied bytes as retained', () => {
+it('keeps all observed scopes out of selection and counts their occupied bytes as retained', () => {
   const added = rules.filter((r) =>
     appCaches.some((s) => s.id === r.id && s.kind === 'readonly_observed'),
   );
-  expect(added).toHaveLength(26);
+  expect(added).toHaveLength(28);
   const rows: RuleSummary[] = added.map((rule) => ({
     rule_id: rule.id,
     files: 2,
@@ -129,8 +129,8 @@ it('keeps all twenty-six observed scopes out of selection and counts their occup
     scanAccounting({ decision: selected, summaryRows: rows }),
   );
   expect(scanAccounting({ decision: selected, summaryRows: rows })).toMatchObject({
-    observed: 31200n,
-    retained: 31200n,
+    observed: 33600n,
+    retained: 33600n,
     available: 0n,
     unknown: false,
   });

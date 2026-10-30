@@ -1,6 +1,7 @@
 import evidence from '../rules/cleanup-evidence.json';
+const evidenceByRule = new Map(evidence.map((row) => [row.rule_id, row]));
 export function cleanupEvidence(ruleId: string) {
-  return evidence.find((row) => row.rule_id === ruleId);
+  return evidenceByRule.get(ruleId);
 }
 export function CleanupEvidence({ ruleId }: { ruleId: string }) {
   const row = cleanupEvidence(ruleId);

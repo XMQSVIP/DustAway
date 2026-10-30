@@ -1,5 +1,7 @@
 # 清理规则维护指南
 
+2026-10-25 识别扩展：`application-cache.json` 增加 `folder=discovered`，`paths` 为磁盘根下的产品数据目录种子，`base` 为稳定布局标识。Windows 的 `discovered_cache` 根据所选卷身份筛选位置，再结合安装登记、产品文件或升级清单生成封闭扫描根。当前仅支持钉钉升级包、自定义日志、GameViewer 日志、HBuilderX 升级备份；所有新规则只读。不得将此类型交给普通 Known Folder 路径拼接。详见[识别验收](verification-discovery-20261025.md)。
+
 0.19.0：`windows.user_temp` / `windows.system_temp` 均为规则版本 2、`min_age_days=1`，按连续 86,400 秒计算，扫描、准备、删除一致复核；安装版提供系统清理。新增 `windows.iis_logs` 标准目录历史日志，保留最近 30 天且默认不选。保留观察记录与删除候选分离，详情见 [本轮验收](system-cleanup-acceptance.md)。下面 0.9 基线及早期开发说明为历史范围。
 
 当前开发源码提供 72 条用户扫描规则：34 条按条件逐文件清理、1 条 uv 官方整理、37 条只读。18 条应用规则中，仅 `dingtalk.http`、`dingtalk.code` 对固定文件版本 `8.2.0.119` 各有独立真实验收许可；默认不选，普通首页真实闭环仍待完成。其余应用规则和版本继续受限，证据见[当前验收](verification-home-cleanup.md)。主动全面扫描与清理默认选择是两个概念。系统规则只供实验构建。

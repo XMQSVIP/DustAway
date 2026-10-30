@@ -4,6 +4,7 @@ target/
 src-tauri/gen/
 src-tauri/binaries/
 artifacts/
+*.private.json
 test-results/
 *.log
 *.tsbuildinfo

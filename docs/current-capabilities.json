@@ -1,7 +1,7 @@
 {
   "file_cleanup_rules": 42,
   "official_tool_rules": 4,
-  "readonly_rules": 95,
-  "user_rules": 141,
-  "version": "0.24.0"
+  "readonly_rules": 99,
+  "user_rules": 145,
+  "version": "0.25.0"
 }

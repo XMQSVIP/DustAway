@@ -13,6 +13,7 @@ import {
   X,
 } from 'lucide-react';
 import { LayerScene } from './LayerScene';
+import { ProductCapabilities } from './ProductCapabilities';
 import { api, desktop } from './api';
 import { dynamic, text as t, ui } from './i18n';
 import type { AppController } from './useAppController';
@@ -255,11 +256,7 @@ export function SettingsPage({
             <strong>拂尘 {boot.version}</strong>
             <p>{ui.about}</p>
             <small>{ui.previewBuild}</small>
-            <p>
-              检查本版本支持的常见位置。微信、经典
-              QQ、WPS、飞书、钉钉、百度网盘、夸克网盘、迅雷与三条 Windows
-              残留规则当前仅只读扫描。QQNT 尚不适用。
-            </p>
+            <ProductCapabilities boot={boot} />
           </div>
         </div>
       </div>

@@ -1,0 +1,1973 @@
+{
+  "schema_version": 1,
+  "provenance": "Authored synthetic metadata examples, MIT. Fictional product paths; no user files collected. Nine training software groups; original test rows retained unchanged. Development regression only, not real-machine accuracy.",
+  "samples": [
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/Cache",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/Cache/entry.bin",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/Cache_Data",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/Cache_Data/block.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/Code Cache",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/Code Cache/js/compiled.bin",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/GPUCache",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/GPUCache/data_0",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/ShaderCache",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/ShaderCache/shader.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/DawnCache",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/DawnCache/compiled.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/cache",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/cache/payload.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/caches",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/caches/object.bin",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/thumbnail_cache",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/thumbnail_cache/thumb.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/HTTP Cache",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/HTTP Cache/response.bin",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/Code Cache/js",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/Code Cache/js/compiled.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/cache2/entries",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/cache2/entries/abcdef",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "willow",
+      "split": "train",
+      "path": "C:/Users/sample/AppData/Local/Willow/缓存",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "willow",
+      "split": "train",
+      "path": "C:/Users/sample/AppData/Local/Willow/缓存/数据.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "willow",
+      "split": "train",
+      "path": "C:/Users/sample/AppData/Local/Willow/cache/images",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "willow",
+      "split": "train",
+      "path": "C:/Users/sample/AppData/Local/Willow/cache/images/entry.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "elm",
+      "split": "train",
+      "path": "D:/Apps/Elm/cache/storage",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "elm",
+      "split": "train",
+      "path": "D:/Apps/Elm/cache/storage/block.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "elm",
+      "split": "train",
+      "path": "D:/Apps/Elm/GPUCache/entry.bin",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "elm",
+      "split": "train",
+      "path": "D:/Apps/Elm/Cache_Data/index",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "elm",
+      "split": "train",
+      "path": "D:/Apps/Elm/ShaderCache/index",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/logs",
+      "directory": true,
+      "label": "logs"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/logs/runtime.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/logs/error.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/diagnostics/trace.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/diagnostics",
+      "directory": true,
+      "label": "logs"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/log",
+      "directory": true,
+      "label": "logs"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/log/debug.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/log/error.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/crash/reports/crash.dmp",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/crash/reports",
+      "directory": true,
+      "label": "logs"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/logs/trace.etl",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/diagnostics/trace.etl",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/diagnostics/report.dmp",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/diagnostics/error.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/logs",
+      "directory": true,
+      "label": "logs"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/Logs",
+      "directory": true,
+      "label": "logs"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/Logs/session.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/Logs/renderer.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/log/trace.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/log",
+      "directory": true,
+      "label": "logs"
+    },
+    {
+      "group": "willow",
+      "split": "train",
+      "path": "C:/Users/sample/AppData/Local/Willow/日志",
+      "directory": true,
+      "label": "logs"
+    },
+    {
+      "group": "willow",
+      "split": "train",
+      "path": "C:/Users/sample/AppData/Local/Willow/日志/运行.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "willow",
+      "split": "train",
+      "path": "C:/Users/sample/AppData/Local/Willow/logs/old.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "willow",
+      "split": "train",
+      "path": "C:/Users/sample/AppData/Local/Willow/logs/old.xlog",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "elm",
+      "split": "train",
+      "path": "D:/Apps/Elm/logs",
+      "directory": true,
+      "label": "logs"
+    },
+    {
+      "group": "elm",
+      "split": "train",
+      "path": "D:/Apps/Elm/logs/startup.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "elm",
+      "split": "train",
+      "path": "D:/Apps/Elm/logs/trace.xlog",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "elm",
+      "split": "train",
+      "path": "D:/Apps/Elm/diagnostics/crash.dmp",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/temp",
+      "directory": true,
+      "label": "temporary"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/temp/session.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/temp/staging.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/tmp",
+      "directory": true,
+      "label": "temporary"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/tmp/work.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/tmp",
+      "directory": true,
+      "label": "temporary"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/tmp/render.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/temp/work.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/temp",
+      "directory": true,
+      "label": "temporary"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/TempState",
+      "directory": true,
+      "label": "temporary"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/TempState/session.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/temporary",
+      "directory": true,
+      "label": "temporary"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/temporary/export.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/temp",
+      "directory": true,
+      "label": "temporary"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/temp/payload.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/tmp/staging.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/tmp",
+      "directory": true,
+      "label": "temporary"
+    },
+    {
+      "group": "willow",
+      "split": "train",
+      "path": "C:/Users/sample/AppData/Local/Willow/临时",
+      "directory": true,
+      "label": "temporary"
+    },
+    {
+      "group": "willow",
+      "split": "train",
+      "path": "C:/Users/sample/AppData/Local/Willow/临时/工作.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "willow",
+      "split": "train",
+      "path": "C:/Users/sample/AppData/Local/Willow/Temp/session.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "willow",
+      "split": "train",
+      "path": "C:/Users/sample/AppData/Local/Willow/Temp",
+      "directory": true,
+      "label": "temporary"
+    },
+    {
+      "group": "elm",
+      "split": "train",
+      "path": "D:/Apps/Elm/TempState",
+      "directory": true,
+      "label": "temporary"
+    },
+    {
+      "group": "elm",
+      "split": "train",
+      "path": "D:/Apps/Elm/TempState/render.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "elm",
+      "split": "train",
+      "path": "D:/Apps/Elm/temporary",
+      "directory": true,
+      "label": "temporary"
+    },
+    {
+      "group": "elm",
+      "split": "train",
+      "path": "D:/Apps/Elm/temporary/process.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/Documents",
+      "directory": true,
+      "label": "personal"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/Documents/report.docx",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/Documents/budget.xlsx",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/Backups",
+      "directory": true,
+      "label": "personal"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/Backups/work.bak",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/Projects",
+      "directory": true,
+      "label": "personal"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/Projects/scene.blend",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/Pictures",
+      "directory": true,
+      "label": "personal"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/Pictures/family.jpg",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/Downloads/book.pdf",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/Documents/contract.pdf",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/Documents/table.xlsx",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/Videos/holiday.mp4",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/Backups/session.bak",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/Backups",
+      "directory": true,
+      "label": "personal"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/Projects/design.psd",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/Documents/notes.docx",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/Downloads/archive.zip",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/Pictures/image.png",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/Projects",
+      "directory": true,
+      "label": "personal"
+    },
+    {
+      "group": "willow",
+      "split": "train",
+      "path": "C:/Users/sample/AppData/Local/Willow/文档",
+      "directory": true,
+      "label": "personal"
+    },
+    {
+      "group": "willow",
+      "split": "train",
+      "path": "C:/Users/sample/AppData/Local/Willow/文档/合同.docx",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "willow",
+      "split": "train",
+      "path": "C:/Users/sample/AppData/Local/Willow/备份",
+      "directory": true,
+      "label": "personal"
+    },
+    {
+      "group": "willow",
+      "split": "train",
+      "path": "C:/Users/sample/AppData/Local/Willow/备份/项目.bak",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "elm",
+      "split": "train",
+      "path": "D:/Apps/Elm/Documents/report.pdf",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "elm",
+      "split": "train",
+      "path": "D:/Apps/Elm/Projects/scene.blend",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "elm",
+      "split": "train",
+      "path": "D:/Apps/Elm/Backups/work.bak",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "elm",
+      "split": "train",
+      "path": "D:/Apps/Elm/Documents",
+      "directory": true,
+      "label": "personal"
+    },
+    {
+      "group": "elm",
+      "split": "train",
+      "path": "D:/Apps/Elm/Pictures",
+      "directory": true,
+      "label": "personal"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/settings",
+      "directory": true,
+      "label": "application_data"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/settings/preferences.json",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/config",
+      "directory": true,
+      "label": "application_data"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/config/settings.ini",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "orchid",
+      "split": "train",
+      "path": "C:/Apps/Orchid/database/accounts.db",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/config",
+      "directory": true,
+      "label": "application_data"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/config/app.toml",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/database/state.sqlite",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/database",
+      "directory": true,
+      "label": "application_data"
+    },
+    {
+      "group": "cedar",
+      "split": "train",
+      "path": "D:/Apps/Cedar/settings/preferences.json",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/settings",
+      "directory": true,
+      "label": "application_data"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/settings/config.json",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/database/messages.db",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/database",
+      "directory": true,
+      "label": "application_data"
+    },
+    {
+      "group": "maple",
+      "split": "train",
+      "path": "C:/Data/Maple/config/app.ini",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/config",
+      "directory": true,
+      "label": "application_data"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/config/settings.toml",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/database/state.sqlite",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/settings/preferences.json",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "iris",
+      "split": "train",
+      "path": "D:/Portable/Iris/settings",
+      "directory": true,
+      "label": "application_data"
+    },
+    {
+      "group": "willow",
+      "split": "train",
+      "path": "C:/Users/sample/AppData/Local/Willow/配置",
+      "directory": true,
+      "label": "application_data"
+    },
+    {
+      "group": "willow",
+      "split": "train",
+      "path": "C:/Users/sample/AppData/Local/Willow/配置/设置.json",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "willow",
+      "split": "train",
+      "path": "C:/Users/sample/AppData/Local/Willow/数据库",
+      "directory": true,
+      "label": "application_data"
+    },
+    {
+      "group": "willow",
+      "split": "train",
+      "path": "C:/Users/sample/AppData/Local/Willow/数据库/消息.db",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "elm",
+      "split": "train",
+      "path": "D:/Apps/Elm/database/settings.db",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "elm",
+      "split": "train",
+      "path": "D:/Apps/Elm/config/settings.json",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "elm",
+      "split": "train",
+      "path": "D:/Apps/Elm/settings",
+      "directory": true,
+      "label": "application_data"
+    },
+    {
+      "group": "elm",
+      "split": "train",
+      "path": "D:/Apps/Elm/database",
+      "directory": true,
+      "label": "application_data"
+    },
+    {
+      "group": "elm",
+      "split": "train",
+      "path": "D:/Apps/Elm/config",
+      "directory": true,
+      "label": "application_data"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/Cache",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/Cache/response.bin",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/GPUCache/data_0",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/Code Cache/js/module.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/缓存",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/logs",
+      "directory": true,
+      "label": "logs"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/logs/renderer.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/diagnostics/trace.etl",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/diagnostics/crash.dmp",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/日志",
+      "directory": true,
+      "label": "logs"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/temp",
+      "directory": true,
+      "label": "temporary"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/temp/session.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/tmp/render.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/TempState/entry.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/临时",
+      "directory": true,
+      "label": "temporary"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/Documents",
+      "directory": true,
+      "label": "personal"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/Documents/contract.docx",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/Pictures/family.jpg",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/Backups/work.bak",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/文档",
+      "directory": true,
+      "label": "personal"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/config",
+      "directory": true,
+      "label": "application_data"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/config/settings.toml",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/database/accounts.db",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/settings/preferences.json",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "aster-holdout",
+      "split": "test",
+      "path": "D:/Portable/Aster/配置",
+      "directory": true,
+      "label": "application_data"
+    },
+    {
+      "group": "lotus-holdout",
+      "split": "test",
+      "path": "E:/Programs/Lotus/HTTP Cache/response.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "lotus-holdout",
+      "split": "test",
+      "path": "E:/Programs/Lotus/Cache_Data",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "lotus-holdout",
+      "split": "test",
+      "path": "E:/Programs/Lotus/ShaderCache/shader.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "lotus-holdout",
+      "split": "test",
+      "path": "E:/Programs/Lotus/log",
+      "directory": true,
+      "label": "logs"
+    },
+    {
+      "group": "lotus-holdout",
+      "split": "test",
+      "path": "E:/Programs/Lotus/log/debug.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "lotus-holdout",
+      "split": "test",
+      "path": "E:/Programs/Lotus/日志/运行.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "lotus-holdout",
+      "split": "test",
+      "path": "E:/Programs/Lotus/temporary",
+      "directory": true,
+      "label": "temporary"
+    },
+    {
+      "group": "lotus-holdout",
+      "split": "test",
+      "path": "E:/Programs/Lotus/temporary/build.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "lotus-holdout",
+      "split": "test",
+      "path": "E:/Programs/Lotus/临时/工作.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "lotus-holdout",
+      "split": "test",
+      "path": "E:/Programs/Lotus/Documents/budget.xlsx",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "lotus-holdout",
+      "split": "test",
+      "path": "E:/Programs/Lotus/Downloads/guide.pdf",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "lotus-holdout",
+      "split": "test",
+      "path": "E:/Programs/Lotus/备份/项目.bak",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "lotus-holdout",
+      "split": "test",
+      "path": "E:/Programs/Lotus/database",
+      "directory": true,
+      "label": "application_data"
+    },
+    {
+      "group": "lotus-holdout",
+      "split": "test",
+      "path": "E:/Programs/Lotus/config/settings.ini",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "lotus-holdout",
+      "split": "test",
+      "path": "E:/Programs/Lotus/数据库/消息.db",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "ambiguous-holdout",
+      "split": "test",
+      "path": "D:/Unseen/objects/0123456789",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "ambiguous-holdout",
+      "split": "test",
+      "path": "D:/Unseen/objects",
+      "directory": true,
+      "label": null
+    },
+    {
+      "group": "ambiguous-holdout",
+      "split": "test",
+      "path": "D:/Unseen/opaque.qzx",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "ambiguous-holdout",
+      "split": "test",
+      "path": "D:/Unseen/mixed",
+      "directory": true,
+      "label": null
+    },
+    {
+      "group": "ambiguous-holdout",
+      "split": "test",
+      "path": "D:/Unseen/data.bin",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "ambiguous-holdout",
+      "split": "test",
+      "path": "D:/Unseen/qwerty.tmp",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "ambiguous-holdout",
+      "split": "test",
+      "path": "D:/Unseen/newapp",
+      "directory": true,
+      "label": null
+    },
+    {
+      "group": "ambiguous-holdout",
+      "split": "test",
+      "path": "D:/陌生目录/未识别文件.未知",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "protected-holdout",
+      "split": "test",
+      "path": "D:/Unseen/Cache/contract.docx",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "protected-holdout",
+      "split": "test",
+      "path": "D:/Unseen/temp/backup.zip",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "protected-holdout",
+      "split": "test",
+      "path": "D:/Unseen/logs/messages.db",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "protected-holdout",
+      "split": "test",
+      "path": "D:/Unseen/LocalCache/Cache/entry.cache",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "protected-holdout",
+      "split": "test",
+      "path": "D:/Unseen/IndexedDB/Cache/entry.cache",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "protected-holdout",
+      "split": "test",
+      "path": "D:/Unseen/Local Storage/Cache/entry.cache",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "protected-holdout",
+      "split": "test",
+      "path": "D:/Unseen/db_storage/logs/entry.log",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "protected-holdout",
+      "split": "test",
+      "path": "D:/Unseen/.ssh/temp/private.key",
+      "directory": false,
+      "label": null
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/缓存",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/缓存/对象.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/网页缓存",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/网页缓存/response.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/图形缓存",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/图形缓存/shader.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/GPUCache/data_1",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/日志",
+      "directory": true,
+      "label": "logs"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/日志/运行.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/诊断日志",
+      "directory": true,
+      "label": "logs"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/诊断日志/错误.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/logs/server.log.1",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/logs/output.log.20261024",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/临时",
+      "directory": true,
+      "label": "temporary"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/临时/会话.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/临时文件",
+      "directory": true,
+      "label": "temporary"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/临时文件/build.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/文档",
+      "directory": true,
+      "label": "personal"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/文档/合同.docx",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/备份",
+      "directory": true,
+      "label": "personal"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/备份/工程.bak",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/Pictures/family.jpg",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/配置",
+      "directory": true,
+      "label": "application_data"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/配置/设置.json",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/数据库",
+      "directory": true,
+      "label": "application_data"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/数据库/数据.db",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "birch",
+      "split": "train",
+      "path": "D:/Tools/Birch/settings/config.ini",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/缓存",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/缓存/对象.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/网页缓存",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/网页缓存/response.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/图形缓存",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/图形缓存/shader.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/GPUCache/data_1",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/日志",
+      "directory": true,
+      "label": "logs"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/日志/运行.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/诊断日志",
+      "directory": true,
+      "label": "logs"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/诊断日志/错误.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/logs/server.log.1",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/logs/output.log.20261024",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/临时",
+      "directory": true,
+      "label": "temporary"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/临时/会话.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/临时文件",
+      "directory": true,
+      "label": "temporary"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/临时文件/build.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/文档",
+      "directory": true,
+      "label": "personal"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/文档/合同.docx",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/备份",
+      "directory": true,
+      "label": "personal"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/备份/工程.bak",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/Pictures/family.jpg",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/配置",
+      "directory": true,
+      "label": "application_data"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/配置/设置.json",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/数据库",
+      "directory": true,
+      "label": "application_data"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/数据库/数据.db",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "plum",
+      "split": "train",
+      "path": "C:/Apps/Plum/settings/config.ini",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/缓存",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/缓存/对象.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/网页缓存",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/网页缓存/response.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/图形缓存",
+      "directory": true,
+      "label": "cache"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/图形缓存/shader.cache",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/GPUCache/data_1",
+      "directory": false,
+      "label": "cache"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/日志",
+      "directory": true,
+      "label": "logs"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/日志/运行.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/诊断日志",
+      "directory": true,
+      "label": "logs"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/诊断日志/错误.log",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/logs/server.log.1",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/logs/output.log.20261024",
+      "directory": false,
+      "label": "logs"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/临时",
+      "directory": true,
+      "label": "temporary"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/临时/会话.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/临时文件",
+      "directory": true,
+      "label": "temporary"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/临时文件/build.tmp",
+      "directory": false,
+      "label": "temporary"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/文档",
+      "directory": true,
+      "label": "personal"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/文档/合同.docx",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/备份",
+      "directory": true,
+      "label": "personal"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/备份/工程.bak",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/Pictures/family.jpg",
+      "directory": false,
+      "label": "personal"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/配置",
+      "directory": true,
+      "label": "application_data"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/配置/设置.json",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/数据库",
+      "directory": true,
+      "label": "application_data"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/数据库/数据.db",
+      "directory": false,
+      "label": "application_data"
+    },
+    {
+      "group": "reed",
+      "split": "train",
+      "path": "E:/Local/Reed/settings/config.ini",
+      "directory": false,
+      "label": "application_data"
+    }
+  ]
+}

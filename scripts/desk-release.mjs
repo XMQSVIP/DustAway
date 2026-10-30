@@ -67,7 +67,14 @@ try {
     await js('return document.querySelector(".app-shell").dataset.runtime;'),
     'standard',
   );
-  assert.equal(boot.rules.length, 23);
+  const currentCapabilities = JSON.parse(
+    await readFile(resolve('docs/current-capabilities.json'), 'utf8'),
+  );
+  assert.equal(boot.version, currentCapabilities.version);
+  assert.equal(
+    boot.rules.filter((rule) => !rule.requires_admin).length,
+    currentCapabilities.user_rules,
+  );
   assert.equal(boot.capabilities.system_cleanup, false);
   const before = await ipc('get_runtime_snapshot', { scope: 'user' });
   await js('document.documentElement.dataset.motion="system";');
@@ -102,7 +109,7 @@ try {
       [760, 580],
     ]) {
       await request('POST', `/session/${session}/window/rect`, { width, height });
-      for (const page of ['清理', '空间分析', '历史', '设置']) {
+      for (const page of ['清理', '空间分析', '软件卸载', '历史', '设置']) {
         await clickNav(page);
         await js('document.querySelector("main").scrollTop=0;');
         const layout = await inspect();
@@ -112,11 +119,12 @@ try {
       }
     }
   }
-  // Chromium emulation checks 100/125/150% reflow, respecting the native 760×580 minimum.
+  // Chromium emulation checks 100/150/200% reflow, respecting the native 760×580 minimum.
   // It does not change Windows settings or certify a different monitor DPI.
   let scaleCheck;
+  let scalePassed = false;
   try {
-    for (const scale of [1, 1.25, 1.5]) {
+    for (const scale of [1, 1.5, 2]) {
       await request('POST', `/session/${session}/ms/cdp/execute`, {
         cmd: 'Emulation.setDeviceMetricsOverride',
         params: {
@@ -126,7 +134,7 @@ try {
           mobile: false,
         },
       });
-      for (const page of ['清理', '空间分析', '历史', '设置']) {
+      for (const page of ['清理', '空间分析', '软件卸载', '历史', '设置']) {
         await clickNav(page);
         await js('document.querySelector("main").scrollTop=0;');
         const layout = await inspect();
@@ -135,6 +143,7 @@ try {
       }
     }
     scaleCheck = 'Chromium device emulation passed; native monitor DPI unchanged';
+    scalePassed = true;
   } catch (e) {
     scaleCheck = 'Device emulation unavailable or failed: ' + e.message;
   }
@@ -152,7 +161,9 @@ try {
   const checked = {
     version,
     packagedExecutable: app,
-    passed: true,
+    passed: scalePassed,
+    nativeLayoutsPassed: true,
+    emulationPassed: scalePassed,
     nativeLayouts: layouts,
     emulatedLayouts: emulated,
     scaleCheck,
@@ -163,6 +174,7 @@ try {
   };
   await writeFile(join(output, 'result.json'), JSON.stringify(checked, null, 2));
   console.log(JSON.stringify(checked, null, 2));
+  assert(scalePassed, scaleCheck);
 } catch (e) {
   if (session) await screenshot('failure').catch(() => {});
   throw e;

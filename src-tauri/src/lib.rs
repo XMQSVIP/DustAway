@@ -288,12 +288,18 @@ fn initialize_service(data_failure: &AtomicBool) -> anyhow::Result<Arc<Service>>
     #[cfg(not(all(debug_assertions, feature = "e2e-fixture")))]
     let analysis_provider: Arc<dyn AnalysisPlatform> =
         Arc::new(dustaway_windows::WindowsAnalysis::new());
+    #[cfg(all(debug_assertions, feature = "e2e-fixture"))]
+    let default_cache = journal.parent().unwrap().join("analysis-index");
+    #[cfg(not(all(debug_assertions, feature = "e2e-fixture")))]
+    let default_cache = data.join("analysis-cache");
+    #[cfg(all(debug_assertions, feature = "e2e-fixture"))]
+    let cache_path = default_cache.clone();
+    #[cfg(not(all(debug_assertions, feature = "e2e-fixture")))]
     let cache_path = std::fs::read(data.join("analysis-storage.json"))
         .ok()
         .and_then(|b| serde_json::from_slice::<std::path::PathBuf>(&b).ok())
         .filter(|p| dustaway_windows::fs::is_fixed_ntfs(p).is_ok())
-        .unwrap_or_else(|| data.join("analysis-cache"));
-    let default_cache = data.join("analysis-cache");
+        .unwrap_or_else(|| default_cache.clone());
     let analysis = AnalysisEngine::with_storage(
         analysis_provider.clone(),
         AnalysisStorage::new(cache_path.clone()),
@@ -481,7 +487,12 @@ mod tests {
         if cfg!(feature = "system-cleanup") {
             return;
         }
-        assert_eq!(available_rules().unwrap().len(), 141);
+        let capabilities: serde_json::Value =
+            serde_json::from_str(include_str!("../../docs/current-capabilities.json")).unwrap();
+        assert_eq!(
+            available_rules().unwrap().len() as u64,
+            capabilities["user_rules"].as_u64().unwrap()
+        );
         assert!(require_scope(Scope::System).is_err());
         for ids in [
             vec!["windows.system_temp".into()],

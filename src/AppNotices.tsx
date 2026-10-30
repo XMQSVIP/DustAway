@@ -1,5 +1,5 @@
 import { CircleAlert, LoaderCircle, X } from 'lucide-react';
-import { analysisStates } from './AnalysisPanel';
+import { analysisStates } from './analysisStates';
 import { text as t, ui } from './i18n';
 import { uninstallActive, uninstallLabels } from './softwareTypes';
 import type { AppController } from './useAppController';

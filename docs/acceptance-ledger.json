@@ -1,0 +1,825 @@
+{
+  "schema_version": 1,
+  "version": "0.25.0",
+  "rules": [
+    {
+      "rule_id": "windows.user_temp",
+      "rule_version": 2,
+      "title": "用户临时文件",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/scan_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "edge.http",
+      "rule_version": 1,
+      "title": "Edge 网页缓存",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/scan_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "edge.code",
+      "rule_version": 1,
+      "title": "Edge 代码缓存",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/scan_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "edge.gpu",
+      "rule_version": 1,
+      "title": "Edge 图形缓存",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/scan_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "chrome.http",
+      "rule_version": 1,
+      "title": "Chrome 网页缓存",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/scan_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "chrome.code",
+      "rule_version": 1,
+      "title": "Chrome 代码缓存",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/scan_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "chrome.gpu",
+      "rule_version": 1,
+      "title": "Chrome 图形缓存",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/scan_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "firefox.http",
+      "rule_version": 1,
+      "title": "Firefox 网页缓存",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/scan_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "brave.http",
+      "rule_version": 1,
+      "title": "Brave 网页缓存",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/scan_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "brave.code",
+      "rule_version": 1,
+      "title": "Brave 代码缓存",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/scan_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "brave.gpu",
+      "rule_version": 1,
+      "title": "Brave 图形缓存",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/scan_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "vivaldi.http",
+      "rule_version": 1,
+      "title": "Vivaldi 网页缓存",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/scan_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "vivaldi.code",
+      "rule_version": 1,
+      "title": "Vivaldi 代码缓存",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/scan_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "vivaldi.gpu",
+      "rule_version": 1,
+      "title": "Vivaldi 图形缓存",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/scan_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dingtalk.http",
+      "rule_version": 1,
+      "title": "钉钉网页缓存",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "passed",
+      "release_evidence": [
+        {
+          "application_version": "8.2.0.119",
+          "evidence_id": "home-cleanup-20261001-dingtalk-http",
+          "layout_id": "dingtalk-web-profile-v1",
+          "rule_id": "dingtalk.http",
+          "rule_version": 1
+        }
+      ],
+      "isolated_tests": [
+        "crates/windows/src/application_acceptance_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dingtalk.code",
+      "rule_version": 1,
+      "title": "钉钉代码缓存",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "passed",
+      "release_evidence": [
+        {
+          "application_version": "8.2.0.119",
+          "evidence_id": "home-cleanup-20261001-dingtalk-code",
+          "layout_id": "dingtalk-web-profile-v1",
+          "rule_id": "dingtalk.code",
+          "rule_version": 1
+        }
+      ],
+      "isolated_tests": [
+        "crates/windows/src/application_acceptance_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dev.npm_cache",
+      "rule_version": 1,
+      "title": "npm 下载缓存",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/developer_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dev.npm_logs",
+      "rule_version": 1,
+      "title": "npm 历史日志",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/developer_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dev.pip_http",
+      "rule_version": 1,
+      "title": "pip 下载缓存",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/developer_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dev.pip_wheels",
+      "rule_version": 1,
+      "title": "pip 构建轮子缓存",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/developer_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dev.nuget_http",
+      "rule_version": 1,
+      "title": "NuGet 下载缓存",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/developer_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dev.vscode_cache",
+      "rule_version": 1,
+      "title": "VS Code 运行缓存",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/developer_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dev.vscode_logs",
+      "rule_version": 1,
+      "title": "VS Code 历史日志",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/developer_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dev.jetbrains_logs",
+      "rule_version": 1,
+      "title": "JetBrains 历史日志",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/developer_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dev.conda_archives",
+      "rule_version": 1,
+      "title": "Conda / Mamba 下载包",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/developer_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dev.cargo_archives",
+      "rule_version": 1,
+      "title": "Cargo 下载包",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/developer_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dev.rustup_downloads",
+      "rule_version": 1,
+      "title": "Rustup 下载缓存",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/developer_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dev.gradle_logs",
+      "rule_version": 1,
+      "title": "Gradle 历史日志",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/developer_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dev.composer_archives",
+      "rule_version": 1,
+      "title": "Composer 下载包",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/developer_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dev.gem_archives",
+      "rule_version": 1,
+      "title": "RubyGems 下载包",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/developer_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dev.vcpkg_archives",
+      "rule_version": 1,
+      "title": "vcpkg 二进制缓存",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/developer_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dev.android_logs",
+      "rule_version": 1,
+      "title": "Android Studio 历史日志",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/developer_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dev.cursor_cache",
+      "rule_version": 1,
+      "title": "Cursor 运行缓存",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/developer_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dev.cursor_logs",
+      "rule_version": 1,
+      "title": "Cursor 历史日志",
+      "operation": "files",
+      "sources": [],
+      "registered_operation_validation": "not_indexed",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/developer_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "appcache.vscode_vsix",
+      "rule_version": 1,
+      "title": "VS Code 扩展下载缓存",
+      "operation": "files",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/vscode/110a328ea54b42367b803ec53ee0bf52ef26b419/src/vs/platform/extensionManagement/node/extensionDownloader.ts"
+        }
+      ],
+      "registered_operation_validation": "not_verified",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/app_cache_tests.rs",
+        "crates/windows/src/documented_cache_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "appcache.vscode_code",
+      "rule_version": 1,
+      "title": "VS Code 旧构建代码缓存",
+      "operation": "files",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/vscode/110a328ea54b42367b803ec53ee0bf52ef26b419/src/vs/code/electron-utility/sharedProcess/contrib/codeCacheCleaner.ts"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/chromium/chromium/main/net/disk_cache/simple/simple_entry_format.h",
+          "title": "Chromium Simple Cache 文件格式（仅用于格式核验，不单独授予应用删除许可）"
+        }
+      ],
+      "registered_operation_validation": "not_verified",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/app_cache_tests.rs",
+        "crates/windows/src/documented_cache_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "appcache.vscode_insiders_vsix",
+      "rule_version": 1,
+      "title": "VS Code Insiders 扩展下载缓存",
+      "operation": "files",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/vscode/110a328ea54b42367b803ec53ee0bf52ef26b419/src/vs/platform/extensionManagement/node/extensionDownloader.ts"
+        }
+      ],
+      "registered_operation_validation": "not_verified",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/app_cache_tests.rs",
+        "crates/windows/src/documented_cache_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "appcache.vscode_insiders_code",
+      "rule_version": 1,
+      "title": "VS Code Insiders 旧构建代码缓存",
+      "operation": "files",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/microsoft/vscode/110a328ea54b42367b803ec53ee0bf52ef26b419/src/vs/code/electron-utility/sharedProcess/contrib/codeCacheCleaner.ts"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/chromium/chromium/main/net/disk_cache/simple/simple_entry_format.h",
+          "title": "Chromium Simple Cache 文件格式（仅用于格式核验，不单独授予应用删除许可）"
+        }
+      ],
+      "registered_operation_validation": "not_verified",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/app_cache_tests.rs",
+        "crates/windows/src/documented_cache_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "appcache.cherry_gpu",
+      "rule_version": 1,
+      "title": "Cherry Studio 图形缓存",
+      "operation": "files",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/CherryHQ/cherry-studio/v1.8.1/src/main/ipc.ts",
+          "kind": "official_source",
+          "role": "vendor_cache_invalidation"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/chromium/chromium/144.0.7559.236/net/disk_cache/blockfile/disk_format.h",
+          "kind": "official_source",
+          "role": "format_only"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/chromium/chromium/144.0.7559.236/gpu/command_buffer/service/gr_shader_cache.cc",
+          "kind": "official_source",
+          "role": "shader_cache_miss_rebuild"
+        }
+      ],
+      "registered_operation_validation": "not_verified",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/app_cache_tests.rs",
+        "crates/windows/src/documented_cache_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "appcache.cherry_code",
+      "rule_version": 1,
+      "title": "Cherry Studio 代码缓存",
+      "operation": "files",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/CherryHQ/cherry-studio/v1.8.1/src/main/ipc.ts",
+          "kind": "official_source",
+          "role": "vendor_cache_invalidation"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/chromium/chromium/144.0.7559.236/net/disk_cache/simple/simple_entry_format.h",
+          "kind": "official_source",
+          "role": "format_only"
+        }
+      ],
+      "registered_operation_validation": "not_verified",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/app_cache_tests.rs",
+        "crates/windows/src/documented_cache_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "appcache.pycharm_gpu",
+      "rule_version": 2,
+      "title": "PyCharm 图形缓存",
+      "operation": "files",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/JetBrains/intellij-community/pycharm/261.22158.340/platform/ui.jcef/jcef/JBCefAppCache.kt",
+          "kind": "official_source",
+          "role": "vendor_cache_invalidation"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/chromium/chromium/137.0.7151.104/net/disk_cache/blockfile/disk_format.h",
+          "kind": "official_source",
+          "role": "format_only"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/chromium/chromium/137.0.7151.104/gpu/command_buffer/service/gr_shader_cache.cc",
+          "kind": "official_source",
+          "role": "shader_cache_miss_rebuild"
+        }
+      ],
+      "registered_operation_validation": "not_verified",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/app_cache_tests.rs",
+        "crates/windows/src/documented_cache_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "appcache.pycharm_code",
+      "rule_version": 2,
+      "title": "PyCharm 代码缓存",
+      "operation": "files",
+      "sources": [
+        {
+          "url": "https://raw.githubusercontent.com/JetBrains/intellij-community/pycharm/261.22158.340/platform/ui.jcef/jcef/JBCefAppCache.kt",
+          "kind": "official_source",
+          "role": "vendor_cache_invalidation"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/chromium/chromium/137.0.7151.104/net/disk_cache/simple/simple_entry_format.h",
+          "kind": "official_source",
+          "role": "format_only"
+        }
+      ],
+      "registered_operation_validation": "not_verified",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/app_cache_tests.rs",
+        "crates/windows/src/documented_cache_tests.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dev.uv",
+      "rule_version": 1,
+      "title": "uv 共享缓存",
+      "operation": "official_tool",
+      "sources": [
+        {
+          "url": "https://docs.astral.sh/uv/concepts/cache/",
+          "kind": "official",
+          "role": "fixed_command"
+        }
+      ],
+      "registered_operation_validation": "not_verified",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/uv_cache.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dev.yarn",
+      "rule_version": 1,
+      "title": "Yarn Classic 缓存",
+      "operation": "official_tool",
+      "sources": [
+        {
+          "url": "https://classic.yarnpkg.com/lang/en/docs/cli/cache/",
+          "kind": "official",
+          "role": "fixed_command"
+        }
+      ],
+      "registered_operation_validation": "not_verified",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/maintenance.rs",
+        "crates/windows/src/maintenance_tools.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dev.go_build",
+      "rule_version": 1,
+      "title": "Go 构建缓存",
+      "operation": "official_tool",
+      "sources": [
+        {
+          "url": "https://go.dev/cmd/go/",
+          "kind": "official",
+          "role": "fixed_command"
+        }
+      ],
+      "registered_operation_validation": "not_verified",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/maintenance.rs",
+        "crates/windows/src/maintenance_tools.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    },
+    {
+      "rule_id": "dev.ccache",
+      "rule_version": 1,
+      "title": "ccache 编译缓存",
+      "operation": "official_tool",
+      "sources": [
+        {
+          "url": "https://ccache.dev/manual/4.14.html",
+          "kind": "official",
+          "role": "fixed_command"
+        }
+      ],
+      "registered_operation_validation": "not_verified",
+      "release_evidence": [],
+      "isolated_tests": [
+        "crates/windows/src/maintenance.rs",
+        "crates/windows/src/maintenance_tools.rs",
+        "crates/core/tests/engine.rs",
+        "crates/windows/tests/cleanup_release.rs"
+      ],
+      "limitation": "测试路径表示覆盖入口，不是本次执行结果。历史操作验证不等于本次完整应用恢复验收；not_indexed 表示尚未归档到结构化台账。"
+    }
+  ]
+}

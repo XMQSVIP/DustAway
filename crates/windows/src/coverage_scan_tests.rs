@@ -4,7 +4,7 @@ use super::*;
 fn specs() -> impl Iterator<Item = &'static dustaway_core::app_cache::CacheSpec> {
     dustaway_core::app_cache::catalog()
         .iter()
-        .filter(|s| s.kind == "readonly_observed")
+        .filter(|s| s.kind == "readonly_observed" && s.folder != "discovered")
 }
 fn roots(platform: &WindowsPlatform, spec: &dustaway_core::app_cache::CacheSpec) -> Vec<PathBuf> {
     let folder = if spec.folder == "local" {

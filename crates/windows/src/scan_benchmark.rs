@@ -168,6 +168,8 @@ fn performance_fixture() {
                 tool_roots: Default::default(),
                 tool_probe: std::sync::Arc::new(crate::tool_discovery::UnavailableProbe),
                 real_app_acceptance: None,
+                log_test_acceptance: None,
+                discovery_drives: vec![],
                 app_test_identity: None,
                 app_test_acceptance: None,
                 scope: Scope::User,
