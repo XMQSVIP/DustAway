@@ -1,7 +1,7 @@
 拂尘 (DustAway) third-party notices
 Generated from Cargo.lock, pnpm-lock.yaml and installed package sources.
 Includes development/test and cross-platform dependencies; inclusion does not imply shipment.
-Original license files follow without modification. Packages without packaged license text and documented development-only exceptions are listed in inventory.json.
+Original license texts follow with line endings normalized to LF. Packages without packaged license text and documented development-only exceptions are listed in inventory.json.
 WebView2 is a separately installed Microsoft runtime: https://developer.microsoft.com/microsoft-edge/webview2/
 NSIS components (experimental installer only): https://nsis.sourceforge.io/License
 

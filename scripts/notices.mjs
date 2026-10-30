@@ -93,6 +93,9 @@ for (const entry of await readdir('node_modules/.pnpm', { withFileTypes: true })
     } else if (p.isDirectory()) await npmPackage(join(directory, p.name));
   }
 }
+// Package archives and local overrides can use different line endings.
+// Emit canonical LF while preserving the license wording.
+for (const p of packages) p.text = p.text.replace(/\r\n/g, '\n');
 packages.sort((a, b) =>
   `${a.ecosystem}/${a.name}/${a.version}`.localeCompare(`${b.ecosystem}/${b.name}/${b.version}`),
 );
@@ -112,7 +115,7 @@ await writeFile(
   ) + '\n',
 );
 const header =
-  '拂尘 (DustAway) third-party notices\nGenerated from Cargo.lock, pnpm-lock.yaml and installed package sources.\nIncludes development/test and cross-platform dependencies; inclusion does not imply shipment.\nOriginal license files follow without modification. Packages without packaged license text and documented development-only exceptions are listed in inventory.json.\nWebView2 is a separately installed Microsoft runtime: https://developer.microsoft.com/microsoft-edge/webview2/\nNSIS components (experimental installer only): https://nsis.sourceforge.io/License\n\n';
+  '拂尘 (DustAway) third-party notices\nGenerated from Cargo.lock, pnpm-lock.yaml and installed package sources.\nIncludes development/test and cross-platform dependencies; inclusion does not imply shipment.\nOriginal license texts follow with line endings normalized to LF. Packages without packaged license text and documented development-only exceptions are listed in inventory.json.\nWebView2 is a separately installed Microsoft runtime: https://developer.microsoft.com/microsoft-edge/webview2/\nNSIS components (experimental installer only): https://nsis.sourceforge.io/License\n\n';
 await writeFile(
   'licenses/THIRD-PARTY-NOTICES.txt',
   header +
